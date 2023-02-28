@@ -2,12 +2,20 @@
 #define MOTEUR_H
 
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 class Moteur{
     private:
-        char nom[16];
+        string nom;
         int puissance;
+    public:
+        Moteur();
+        Moteur(string n,int p);
+        Moteur(const Moteur & M);
+
 };
+
 
 #endif

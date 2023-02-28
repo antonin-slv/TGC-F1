@@ -6,11 +6,13 @@
 #include <iostream>
 using namespace std;
 
-class Voiture{
+class Voiture {
     private:
-        Moteur M;
-        Roues R;
+        Moteur * mot;
+        Roues * roue;
         float vitesse, orientation, poids, coef_aero;
+    public:
+        Voiture(const Moteur & m,const Roues & r, float v, float o, float p, float c);
 };
 
 #endif

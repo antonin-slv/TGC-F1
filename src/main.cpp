@@ -3,9 +3,10 @@
  using namespace std;
 
  int main(){
-    M1 = Moteur("Moteur 1",100);
-    R1 = Roues("Roues 1",0,1);
-    V1 = Voiture(M1,R1,0,0,1000,1);
+   
+   Moteur M1 (string("Moteur 1"),100);
+   Roues R1 (string("Roues 1"),0,1);
+   Voiture V1 (M1,R1,0,0,1000,1);
 
-    return 0;
+   return 0;
  }

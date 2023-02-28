@@ -1,14 +1,20 @@
-Vroum: main.o Voiture.o Moteur.o Roues.o
-	g++ main.o Voiture.o Moteur.o Roues.o -o Vroum
+all: bin/Vroum
 
-main.o: main.cpp
-	g++ -Wall -c main.cpp
+bin/Vroum: obj/main.o obj/Voiture.o obj/Moteur.o obj/Roues.o
+	g++ obj/main.o obj/Voiture.o obj/Moteur.o obj/Roues.o -o bin/Vroum
 
-Voiture.o: Voiture.cpp Voiture.h
-	g++ -Wall -c Voiture.cpp
+obj/main.o: src/Voiture.h src/Moteur.h src/Roues.h
+	g++ -g -Wall -c src/main.cpp -o obj/main.o
 
-Moteur.o: Moteur.cpp Moteur.h
-	g++ -Wall -c Moteur.cpp
+obj/Voiture.o: src/Voiture.h
+	g++ -g -Wall -c src/Voiture.cpp -o obj/Voiture.o
 
-Roues.o: Roues.cpp Roues.h
-	g++ -Wall -c Roues.cpp
+obj/Moteur.o: src/Moteur.h
+	g++ -g -Wall -c src/Moteur.cpp -o obj/Moteur.o
+
+obj/Roues.o: src/Roues.h 
+	g++ -g -Wall -c src/Roues.cpp -o obj/Roues.o
+
+clean:
+	rm -f obj/*
+	rm -f bin/*
