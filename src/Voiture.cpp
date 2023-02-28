@@ -13,5 +13,5 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float v, float o, float p, f
     orientation = o;
     poids = p;
     coef_aero = coef;
-    cout << "Construct voiture";
+    cout << "Construct voiture" << endl;
 }
