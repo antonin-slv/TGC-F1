@@ -15,3 +15,9 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float v, float o, float p, f
     coef_aero = coef;
     cout << "Construct voiture" << endl;
 }
+
+Voiture::~Voiture(){
+    delete mot;
+    delete roue;
+    cout << "Destruct voiture" << endl;
+}
