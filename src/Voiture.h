@@ -5,6 +5,8 @@
 #include "Roues.h"
 #include <iostream>
 #include <math.h>
+#include "Physique.h"
+
 using namespace std;
 
 class Voiture {
@@ -27,9 +29,8 @@ class Voiture {
         float getAngle();
         float getPoids();
         float getCoefAero();
-        
-        float claculAcceleration();
-        void accelerer();
+
+        float accelerer();
 };
 
 #endif

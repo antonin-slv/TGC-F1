@@ -2,6 +2,8 @@
 #include "Roues.h"
 #include "Voiture.h"
 #include <iostream>
+#include "Physique.h"
+
 using namespace std;
 
 Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit){
@@ -35,8 +37,9 @@ float Voiture::getPoids(){  return poids; }
 
 float Voiture::getCoefAero(){   return coef_aero; }
 
-float Voiture::claculAcceleration(){
-    return mot->getPuissance()/(poids * (1 + coef_aero));
+float Voiture::accelerer(){
+    float a = calculAcceleration(vitesse,angle,poids,coef_aero,mot->getPuissance());
+    vitesse += a;
+    return a;
 }
-
 
