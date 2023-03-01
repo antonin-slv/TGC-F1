@@ -1,3 +1,3 @@
-./obj
-./bin
-./doc
+./obj/*.o
+./bin/*
+./doc/*
