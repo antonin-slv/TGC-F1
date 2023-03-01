@@ -14,6 +14,9 @@ class Roues{
         Roues();
         Roues(string n,float o, float g);
         Roues(const Roues & R);
+        string getNom();
+        float getOrientation();
+        float getGrip();
 };
 
 #endif

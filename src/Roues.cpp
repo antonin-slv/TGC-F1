@@ -21,3 +21,15 @@ Roues::Roues(const Roues & R){
     grip = R.grip;
     cout << "Construct roues copie" << endl;
 }
+
+string Roues::getNom(){
+    return nom;
+}
+
+float Roues::getOrientation(){
+    return orientation;
+}
+
+float Roues::getGrip(){
+    return grip;
+}

@@ -19,3 +19,11 @@ Moteur::Moteur(const Moteur & M){
     puissance = M.puissance;
     cout << "Construct moteur copie" << endl;
 }
+
+string Moteur::getNom(){
+    return nom;
+}
+
+int Moteur::getPuissance(){
+    return puissance;
+}

@@ -14,6 +14,8 @@ class Moteur{
         Moteur();
         Moteur(string n,int p);
         Moteur(const Moteur & M);
+        string getNom();
+        int getPuissance();
 
 };
 

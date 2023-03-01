@@ -12,8 +12,11 @@ class Voiture {
         Roues * roue;
         float vitesse, orientation, poids, coef_aero;
     public:
-        Voiture(const Moteur & m,const Roues & r, float v, float o, float p, float c);
+        Voiture(const Moteur & m,const Roues & r, float vit, float orient, float poi, float coef);
         ~Voiture();
+        float claculAcceleration();
+        Moteur * getMoteur();
+        Roues * getRoues();
 };
 
 #endif
