@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit){
+Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit, float x, float y){
     
     mot = new Moteur(M);
     roue = new Roues(R);
@@ -25,21 +25,29 @@ Voiture::~Voiture(){
     cout << "Destruct voiture" << endl;
 }
 
-Moteur * Voiture::getMoteur(){  return mot; }
+Moteur * Voiture::getMoteur(){ return mot; }
 
-Roues * Voiture::getRoues(){    return roue; }
+Roues * Voiture::getRoues(){ return roue; }
 
-float Voiture::getVitesse(){    return vitesse; }
+float Voiture::getVitesse(){ return vitesse; }
 
-float Voiture::getAngle(){  return angle; }
+float Voiture::getAngle(){ return angle; }
 
-float Voiture::getPoids(){  return poids; }
+float Voiture::getPoids(){ return poids; }
 
-float Voiture::getCoefAero(){   return coef_aero; }
+float Voiture::getCoefAero(){ return coef_aero; }
 
-float Voiture::accelerer(){
-    float a = calculAcceleration(vitesse,angle,poids,coef_aero,mot->getPuissance());
-    vitesse += a;
-    return a;
+float Voiture::getX(){ return x; }
+
+float Voiture::getY(){ return y; }
+
+void Voiture::accelerer_sur(float dt){
+    float acc = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance());
+    vitesse = calculVitesse(vitesse, acc, dt);
 }
+
+void Voiture::calculPosition(float dt){
+    calculCoordonnee(x,y,angle,vitesse,dt);
+}
+
 

@@ -15,12 +15,14 @@ class Voiture {
 
         Moteur * mot;
         Roues * roue;
+
         float vitesse, angle;
+        float x,y;
         float poids, coef_aero;
 
     public:
 
-        Voiture(const Moteur & m,const Roues & r, float poi, float coef, float orient=M_PI/2, float vit=0);
+        Voiture(const Moteur & m,const Roues & r, float poi, float coef, float orient=M_PI/2, float vit=0, float x=0, float y=0);
         ~Voiture();
 
         Moteur * getMoteur();
@@ -29,8 +31,11 @@ class Voiture {
         float getAngle();
         float getPoids();
         float getCoefAero();
+        float getX();
+        float getY();
 
-        float accelerer();
+        void accelerer_sur(float dt=1);
+        void calculPosition(float dt=1);
 };
 
 #endif
