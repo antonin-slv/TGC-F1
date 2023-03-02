@@ -36,6 +36,8 @@ class Voiture {
 
         void accelerer_sur(float dt=1);
         void calculPosition(float dt=1);
+
+        void calculPosition_precis(float dt=1);
 };
 
 #endif

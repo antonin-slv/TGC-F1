@@ -5,7 +5,7 @@
 
 */
 float calculAcceleration(float vitesse, float poids, float coef_aero, float puissance){
-    float a = puissance - coef_aero*vitesse*vitesse*7;
+    float a = puissance - coef_aero*vitesse*vitesse*6.2;
     if (poids >= 0.001) a /= poids;
     else a /= 0.001;
 
@@ -20,6 +20,9 @@ float calculVitesse(float vitesse_init, float acceleration, float dt){
 void calculCoordonnee(float & x, float & y, float angle, float vitesse, float dt){
     x=x + vitesse*cos(angle)*dt;
     y=y + vitesse*sin(angle)*dt;
+}
 
-
+void calculCoordonnee_precise(float & x, float & y, float angle, float vitesse, float acc, float dt){
+    x=x + cos(angle) * dt * (vitesse + 0.5*acc*dt);
+    y=y + sin(angle) * dt * (vitesse + 0.5*acc*dt);
 }

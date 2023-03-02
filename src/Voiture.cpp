@@ -50,4 +50,11 @@ void Voiture::calculPosition(float dt){
     calculCoordonnee(x,y,angle,vitesse,dt);
 }
 
+void Voiture::calculPosition_precis(float dt)
+{   
+    float acc = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance());
+    calculCoordonnee_precise(x,y,angle,vitesse,acc,dt);
+    vitesse=calculVitesse(vitesse,acc,dt);
+}
+
 
