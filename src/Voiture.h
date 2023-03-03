@@ -16,7 +16,7 @@ class Voiture {
         Moteur * mot;
         Roues * roue;
 
-        float vitesse, angle;
+        float vitesse, angle, acceleration;
         float x,y;
         float poids, coef_aero;
 
@@ -34,10 +34,17 @@ class Voiture {
         float getX();
         float getY();
 
-        void accelerer_sur(float dt=1);
-        void calculPosition(float dt=1);
+        //met a jour l'acceleration dt : temps d'acc, teta : proportion de la puissance usitée
+        void calculAcc(float dt=1,float teta=1);
+        //met à jour la vitesse fct de l'acceleration
+        void calculVitesse(float dt=1);
 
+        //change les coordonnées de la voiture
+        void calculPosition(float dt=1);
         void calculPosition_precis(float dt=1);
+        
+        //fait tourner la voiture (dépend de la vitesse)
+        void tourner(float angle_roue_rad,float dt);
 };
 
 #endif

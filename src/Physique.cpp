@@ -12,7 +12,7 @@ float calculAcceleration(float vitesse, float poids, float coef_aero, float puis
     return a;
 }
 
-float calculVitesse(float vitesse_init, float acceleration, float dt){
+float calculVitesse_P(float vitesse_init, float acceleration, float dt){
    return vitesse_init + acceleration*dt;
 }
 
@@ -25,4 +25,10 @@ void calculCoordonnee(float & x, float & y, float angle, float vitesse, float dt
 void calculCoordonnee_precise(float & x, float & y, float angle, float vitesse, float acc, float dt){
     x=x + cos(angle) * dt * (vitesse + 0.5*acc*dt);
     y=y + sin(angle) * dt * (vitesse + 0.5*acc*dt);
+}
+
+void rotation_xy(float & x, float & y, float angle){
+    float x2 = x*cos(angle) - y*sin(angle);
+    y = x*sin(angle) + y*cos(angle);
+    x = x2;
 }

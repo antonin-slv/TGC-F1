@@ -41,9 +41,14 @@ float Voiture::getX(){ return x; }
 
 float Voiture::getY(){ return y; }
 
-void Voiture::accelerer_sur(float dt){
-    float acc = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance());
-    vitesse = calculVitesse(vitesse, acc, dt);
+void Voiture::calculAcc(float dt,float teta)
+{
+    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*teta);
+}
+
+void Voiture::calculVitesse(float dt)
+{
+    vitesse=calculVitesse_P(vitesse,acceleration,dt);
 }
 
 void Voiture::calculPosition(float dt){
@@ -51,10 +56,13 @@ void Voiture::calculPosition(float dt){
 }
 
 void Voiture::calculPosition_precis(float dt)
-{   
-    float acc = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance());
-    calculCoordonnee_precise(x,y,angle,vitesse,acc,dt);
-    vitesse=calculVitesse(vitesse,acc,dt);
+{
+    calculCoordonnee_precise(x,y,angle,vitesse,acceleration,dt);
 }
 
+void Voiture::tourner(float angle_roue_rad, float dt)
+{   angle += vitesse * dt * angle_roue_rad / 5;
+    if (angle > 2*M_PI) angle -= 2*M_PI;
+    if (angle < -2*M_PI) angle += 2*M_PI;
+}
 
