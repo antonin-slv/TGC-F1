@@ -3,10 +3,10 @@
 using namespace std;
 
 Roues::Roues(){
-    nom = string("");
+    nom = string("defaut");
     orientation = 0;
-    grip = 0;
-    cout << "Construct roues vide" << endl;
+    grip = 1;
+    cout << "Construct roues def" << endl;
 }
 Roues::Roues(string n,float o, float g){
     nom = n;

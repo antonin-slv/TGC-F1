@@ -22,7 +22,9 @@ class Voiture {
 
     public:
 
-        Voiture(const Moteur & m,const Roues & r, float poi, float coef, float orient=M_PI/2, float vit=0, float x=0, float y=0);
+        Voiture();
+        Voiture(const Moteur & m,const Roues & r, float poi, float coef, float orient=M_PI/2, float vit=0, float x=0, float y=0, float acc=0);
+        Voiture(const Voiture & V);
         ~Voiture();
 
         Moteur * getMoteur();

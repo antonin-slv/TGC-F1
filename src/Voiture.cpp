@@ -6,7 +6,19 @@
 
 using namespace std;
 
-Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit, float x, float y){
+Voiture::Voiture()
+{
+    mot = new Moteur();
+    roue = new Roues();
+    vitesse = 0;
+    angle= 0;
+    poids = 796;
+    coef_aero = 0.14;
+    acceleration=0;
+    cout << "Construct voiture def" << endl;
+}
+
+Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit, float x, float y, float acc){
     
     mot = new Moteur(M);
     roue = new Roues(R);
@@ -15,7 +27,20 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, floa
     angle= orient;
     poids = poid;
     coef_aero = coef;
+    acceleration=acc;
     
+    cout << "Construct voiture" << endl;
+}
+
+Voiture::Voiture(const Voiture & V){
+    mot = new Moteur(*V.mot);
+    roue = new Roues(*V.roue);
+
+    vitesse = V.vitesse;
+    angle= V.angle;
+    poids = V.poids;
+    coef_aero = V.coef_aero;
+    acceleration=V.acceleration;
     cout << "Construct voiture" << endl;
 }
 

@@ -1,9 +1,11 @@
 #include "Voiture.h"
 #include <iostream>
 #include "Physique.h"
+#include "Jeu.h"
+/* librairies pour le chrono */
+
 #include <chrono>
 #include <thread>
-
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
@@ -17,7 +19,7 @@ int main(){
   Moteur M1 (string("Moteur 1"),1000*2.7*3.5);
   Roues R1 (string("Roues 1"),0,1);
   Voiture V1 (M1,R1,796,0.14,0,0);
-  Voiture V2 (M1,R1,796,0.14,0,0);
+  Voiture V2 (V1);
   cout << "init ok" << endl;
 
   cout << "L'accélération de la voiture sera "
@@ -47,7 +49,7 @@ int main(){
     V2.calculAcc(1);
     V2.calculPosition_precis(1);
     V2.calculVitesse(1);
-    V2.tourner(M_PI/45,1);//rotaion de 1° pendant 1/10 sec
+    V2.tourner(M_PI/45,1);//rotaion de ° pendant 1/10 sec
     
     //sleep_for(std::chrono::nanoseconds( 100000000));
     //sleep_until(system_clock::now() + seconds(1));}

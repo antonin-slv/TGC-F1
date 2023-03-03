@@ -4,8 +4,8 @@
 using namespace std;
 
 Moteur::Moteur(){
-    nom = string("");
-    puissance = 0;
+    nom = string("defaut");
+    puissance = 1000*2.7*3.5;
     cout << "Construct moteur vide" << endl;
 }
 Moteur::Moteur(string n,int p){
