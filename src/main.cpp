@@ -47,9 +47,9 @@ int main(){
     V2.calculAcc(1);
     V2.calculPosition_precis(1);
     V2.calculVitesse(1);
-    V2.tourner(M_PI/180/10,1);
+    V2.tourner(M_PI/45,1);//rotaion de 1° pendant 1/10 sec
     
-    sleep_for(std::chrono::nanoseconds( 100000000));
+    //sleep_for(std::chrono::nanoseconds( 100000000));
     //sleep_until(system_clock::now() + seconds(1));}
     //system("cls");
     

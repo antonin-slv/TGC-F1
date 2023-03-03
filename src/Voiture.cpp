@@ -61,8 +61,9 @@ void Voiture::calculPosition_precis(float dt)
 }
 
 void Voiture::tourner(float angle_roue_rad, float dt)
-{   angle += vitesse * dt * angle_roue_rad / 5;
+{   angle += dt * angle_roue_rad / 2;
+    //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
+    //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite) 
     if (angle > 2*M_PI) angle -= 2*M_PI;
     if (angle < -2*M_PI) angle += 2*M_PI;
 }
-
