@@ -33,8 +33,7 @@ class Props
     public:
         Props();
         Props(int px, int py, Tip t, float rot=0);
-        ~Props();
-
+        
         void prop_set_type(Tip t);
 
 };
