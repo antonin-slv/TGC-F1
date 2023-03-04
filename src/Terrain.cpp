@@ -33,11 +33,11 @@ Terrain::Terrain(int l, int h, int nb)
     longueur = h;
     nb_props = nb;
     tab_props = new Props[nb_props];
-    
+
 }
 
 Terrain::~Terrain()
-{
+{   
     if(tab_props != nullptr) delete [] tab_props;
 }
 
@@ -47,6 +47,6 @@ void Terrain::Initialiser()
     {
         tab_props[i].x = rand()%largeur;
         tab_props[i].y = rand()%longueur;
-        tab_props[i].prop_set_type((Tip)(rand()%4));
+        tab_props[i].prop_set_type((Tip)(0));
     }
 }
