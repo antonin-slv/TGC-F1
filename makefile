@@ -1,16 +1,16 @@
 all: bin/Vroum
 
-bin/Vroum: obj/main.o obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/terrain.o obj/jeu.o
+bin/Vroum: obj/main.o obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Terrain.o obj/jeu.o
 	g++ obj/main.o obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o -o bin/Vroum
 
-obj/main.o: src/main.cpp src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h src/terrain.h src/jeu.h
+obj/main.o: src/main.cpp src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h src/Terrain.h src/jeu.h
 	g++ -g -Wall -c src/main.cpp -o obj/main.o
 
-obj/jeu.o: src/jeu.cpp src/jeu.h src/terrain.h src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h
+obj/jeu.o: src/jeu.cpp src/jeu.h src/Terrain.h src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h
 	g++ -g -Wall -c src/jeu.cpp -o obj/jeu.o
 
-obj/terrain.o: src/terrain.cpp src/terrain.h
-	g++ -g -Wall -c src/terrain.cpp -o obj/terrain.o
+obj/Terrain.o: src/Terrain.cpp src/Terrain.h
+	g++ -g -Wall -c src/Terrain.cpp -o obj/Terrain.o
 
 obj/Voiture.o: src/Voiture.cpp src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h
 	g++ -g -Wall -c src/Voiture.cpp -o obj/Voiture.o
