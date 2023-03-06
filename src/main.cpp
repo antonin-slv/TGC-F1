@@ -26,34 +26,29 @@ int main(){
        << calculAcceleration(V1.getVitesse(),V1.getPoids(),V1.getCoefAero(),V1.getMoteur()->getPuissance())
        << " mètres par seconde carre " << endl;
   int j;
-  for (int i=0; i<100; i++){
-    if (i<=10 || i>=98)
-    {
-        cout << "après " << i << " secondes"<<endl;
+  for (int i=0; i<110; i++){
+      if (i<=10 || i>=90)
+      {
+          cout << "après " << i << " secondes"<<endl;
+        
+          cout << "  1 vitesse : "<< V1.getVitesse()*3.6 << " km/h ";
+          
+          cout << ",  position : "<<"("<< V1.getX()<<","<<V1.getY()<<") , angle : "<<V1.getAngle()*180/M_PI<<"°"<<endl;
+
+          cout << "  2 vitesse : "<< V2.getVitesse()*3.6 << " km/h ";
+          
+          cout << ", position : "<<"("<< V2.getX()<<","<<V2.getY()<<"), angle : "<<V2.getAngle()*180/M_PI<<"°"<<endl;
+      }
+      for (j=0;j<10;j++) V1.accelerer(0.1);
+
+    if (i>=90 and i< 90) V2.ralentir(1);//acceleration max pendant 1 sec
+    else if (i >= 90) for (int j=0;j<10;j++) V2.freiner(0.1);//freinage max pendant 1 sec
+    else V2.accelerer(1);//acceleration max pendant 1 sec
+    //  V2.tourner_d(1);//rotaion max à droite pendant 1 sec
       
-        cout << "  1 vitesse : "<< V1.getVitesse()*3.6 << " km/h ";
-        
-        cout << ",  position : "<<"("<< V1.getX()<<","<<V1.getY()<<") , angle : "<<V1.getAngle()*180/M_PI<<"°"<<endl;
-
-        cout << "  2 vitesse : "<< V2.getVitesse()*3.6 << " km/h ";
-        
-        cout << ", position : "<<"("<< V2.getX()<<","<<V2.getY()<<"), angle : "<<V2.getAngle()*180/M_PI<<"°"<<endl;
-    }
-    for (j=0;j<10;j++)
-    {
-      V1.calculAcc(0.1);
-      V1.calculVitesse(0.1);
-      V1.calculPosition(0.1);
-    }
-
-    V2.calculAcc(1);
-    V2.calculPosition_precis(1);
-    V2.calculVitesse(1);
-    V2.tourner(M_PI/45,1);//rotaion de ° pendant 1/10 sec
-    
-    //sleep_for(std::chrono::nanoseconds( 100000000));
-    //sleep_until(system_clock::now() + seconds(1));}
-    //system("cls");
+      //sleep_for(std::chrono::nanoseconds( 100000000));
+      //sleep_until(system_clock::now() + seconds(1));}
+      //system("cls");
     
   }
   return 0;

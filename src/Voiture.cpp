@@ -3,6 +3,7 @@
 #include "Voiture.h"
 #include <iostream>
 #include "Physique.h"
+#include <math.h>
 
 using namespace std;
 
@@ -85,10 +86,39 @@ void Voiture::calculPosition_precis(float dt)
     calculCoordonnee_precise(x,y,angle,vitesse,acceleration,dt);
 }
 
-void Voiture::tourner(float angle_roue_rad, float dt)
-{   angle += dt * angle_roue_rad / 2;
+void Voiture::tourner_var(float angle_roue_rad, float dt)
+{   angle += dt * angle_roue_rad;
     //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
     //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite) 
-    if (angle > 2*M_PI) angle -= 2*M_PI;
-    if (angle < -2*M_PI) angle += 2*M_PI;
+    if (angle > M_PI) angle -= 2*M_PI;
+    if (angle < -M_PI) angle += 2*M_PI;
+}
+
+
+
+void Voiture::tourner_g(float dt) { tourner_var(0.7,dt); }
+
+void Voiture::tourner_d(float dt) { tourner_var(-0.7,dt); }
+
+void Voiture::accelerer(float dt)
+{   calculAcc(dt,1);
+    calculPosition_precis(dt);
+    calculVitesse(dt);
+}
+
+void Voiture::ralentir(float dt)
+{   calculAcc(dt,0);
+    calculPosition_precis(dt);
+    calculVitesse(dt);
+}
+
+void Voiture::freiner(float dt)
+{   if (vitesse > 0) calculAcc(dt,-vitesse/150-1);
+    else if (vitesse <= 0)
+    {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance()/4);
+        //if (vitesse < -40) vitesse = -40;
+    }
+    calculPosition_precis(dt);
+    calculVitesse(dt);
+    //if (vitesse < 0.1) vitesse = 0;
 }

@@ -5,7 +5,9 @@
 
 */
 float calculAcceleration(float vitesse, float poids, float coef_aero, float puissance){
-    float a = puissance - coef_aero*vitesse*vitesse*6.2;
+    float a = puissance - coef_aero*abs(vitesse)*vitesse*6.2;
+    
+    
     if (poids >= 0.001) a /= poids;
     else a /= 0.001;
 
