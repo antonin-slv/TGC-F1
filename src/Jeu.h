@@ -2,7 +2,7 @@
 #define _JEU_H_
 
 
-#include "terrain.h"
+#include "Terrain.h"
 #include "Voiture.h"
 #include "Physique.h"
 #include <iostream>

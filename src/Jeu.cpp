@@ -1,4 +1,4 @@
-#include "jeu.h"
+#include "Jeu.h"
 
 Jeu::Jeu()
 {   
