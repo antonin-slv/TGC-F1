@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <bits/stdc++.h>
+#include <fstream>
+#include "json/json.h"
 
 using namespace std;
 
@@ -51,6 +53,7 @@ class Terrain
         Terrain(int l, int h, int nb=1);
         ~Terrain();
         void Initialiser();
+        void chargerJSON(string path);
     
 };
 

@@ -50,10 +50,5 @@ int main(){
     
   }
 
-  ofstream Flux("test.json");
-  if(Flux){
-    Flux << "{\"Props\" : [{ \"Nom\" : \"Element 1\"}]}" << endl;
-  }
-
   return 0;
 }

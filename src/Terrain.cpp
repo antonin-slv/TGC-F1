@@ -1,5 +1,7 @@
+#include <iostream>
+#include <fstream>
 #include "Terrain.h"
-
+#include "json/json.h"
 
 Props::Props()
 {
@@ -49,4 +51,8 @@ void Terrain::Initialiser()
         tab_props[i].y = rand()%longueur;
         tab_props[i].prop_set_type((Tip)(0));
     }
+}
+
+void Terrain::chargerJSON(string path){
+
 }
