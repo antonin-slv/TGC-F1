@@ -1,0 +1,23 @@
+{
+    "Props" : [
+        {
+            "Nom" : "Prop1",
+            "Type" : "Route",
+            "x" : 0,
+            "y" : 0,
+            "L" : 1,
+            "l" : 1,
+            "rotation" : 0
+        },
+
+        {
+            "Nom" : "Prop2",
+            "Type" : "Route",
+            "x" : 1,
+            "y" : 0,
+            "L" : 1,
+            "l" : 1,
+            "rotation" : 0
+        }
+    ]
+}
