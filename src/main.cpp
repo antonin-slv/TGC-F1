@@ -50,7 +50,7 @@ int main(){
     
   }
 
-  Terrain T1;
+  Terrain T1(1000,1000,10);
   T1.chargerJSON("data/circuits/test.json");
 
   return 0;

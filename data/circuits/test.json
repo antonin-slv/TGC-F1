@@ -2,22 +2,38 @@
     "Props" : [
         {
             "Nom" : "Prop1",
-            "Type" : "Route",
-            "x" : 0,
-            "y" : 0,
+            "Type" : 3,
+            "x" : 10,
+            "y" : 20,
             "L" : 1,
             "l" : 1,
-            "rotation" : 0
+            "rotation" : 1.5707963267948966
         },
 
         {
             "Nom" : "Prop2",
-            "Type" : "Route",
-            "x" : 1,
+            "Type" : 3,
+            "x" : 50,
             "y" : 0,
-            "L" : 1,
-            "l" : 1,
+            "L" : 2,
+            "l" : 2,
             "rotation" : 0
         }
     ]
+}
+{
+    "Type" : [ 
+        {
+            "Nom" : "notdefined",
+            "L" : 1,
+            "l" : 1,
+        }, 
+        
+        {
+            "Nom" : "notdefined",
+            "L" : 2,
+            "l" : 2,
+        }
+    ]
+
 }
