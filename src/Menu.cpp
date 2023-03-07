@@ -4,19 +4,21 @@
 
 using namespace std;
 
-void Menu_Pause()
+bool Menu_Pause(void)
 {   string option;  
     do{
         cout<<"entrer p pour sortir"<<endl;
         cin>>option;
-    } while ( strcmp(option, "p") != 0);
-}
+    } while ( option != "p");
+    return 1;
+};
 
-void Menu_Principal()
+bool Menu_Principal(void)
 {   string option;  
     do{
         cout<<"entrer p pour sortir"<<endl;
         cin>>option;
-    } while ( strcmp(option, "p") != 0);
+    } while ( option != "p");
+    return 1;
 }
     
