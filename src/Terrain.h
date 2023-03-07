@@ -5,8 +5,7 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include <string>
-#include "json/json.h"
-
+#include "json.hpp"
 using namespace std;
 
 
