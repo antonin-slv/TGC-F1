@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "Terrain.h"
 #include "json/json.h"
 
@@ -54,5 +55,9 @@ void Terrain::Initialiser()
 }
 
 void Terrain::chargerJSON(string path){
-
+    ifstream fichier(path);
+    string ligne;
+    while(getline(fichier, ligne)){
+        cout << ligne << endl;
+    }
 }

@@ -50,5 +50,8 @@ int main(){
     
   }
 
+  Terrain T1;
+  T1.chargerJSON("../data/circuits/test.json");
+
   return 0;
 }
