@@ -67,9 +67,9 @@ float Voiture::getX(){ return x; }
 
 float Voiture::getY(){ return y; }
 
-void Voiture::calculAcc(float dt,float teta)
+void Voiture::calculAcc(float dt,float theta)
 {
-    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*teta);
+    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*theta);
 }
 
 void Voiture::calculVitesse(float dt)
@@ -107,7 +107,7 @@ void Voiture::accelerer(float dt)
 }
 
 void Voiture::ralentir(float dt)
-{   calculAcc(dt,0);
+{   calculAcc(dt,0.1);
     calculPosition_precis(dt);
     calculVitesse(dt);
 }

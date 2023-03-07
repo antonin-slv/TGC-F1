@@ -1,5 +1,6 @@
-#include "Voiture.h"
 #include <iostream>
+#include <fstream>
+#include "Voiture.h"
 #include "Physique.h"
 #include "Jeu.h"
 /* librairies pour le chrono */
@@ -25,10 +26,8 @@ int main(){
   cout << "L'accélération de la voiture sera "
        << calculAcceleration(V1.getVitesse(),V1.getPoids(),V1.getCoefAero(),V1.getMoteur()->getPuissance())
        << " mètres par seconde carre " << endl;
-  int j;
   for (int i=0; i<110; i++){
-      if (i<=10 || i>=90)
-      {
+      if (i<=10 || i>=90){
           cout << "après " << i << " secondes"<<endl;
         
           cout << "  1 vitesse : "<< V1.getVitesse()*3.6 << " km/h ";
@@ -39,9 +38,8 @@ int main(){
           
           cout << ", position : "<<"("<< V2.getX()<<","<<V2.getY()<<"), angle : "<<V2.getAngle()*180/M_PI<<"°"<<endl;
       }
-      for (j=0;j<10;j++) V1.accelerer(0.1);
-
-    if (i>=90 and i< 90) V2.ralentir(1);//acceleration max pendant 1 sec
+    V1.accelerer(1);
+    if (i>=90 and i< 95) V2.ralentir(1);//acceleration max pendant 1 sec
     else if (i >= 90) for (int j=0;j<10;j++) V2.freiner(0.1);//freinage max pendant 1 sec
     else V2.accelerer(1);//acceleration max pendant 1 sec
     //  V2.tourner_d(1);//rotaion max à droite pendant 1 sec
@@ -51,5 +49,11 @@ int main(){
       //system("cls");
     
   }
+
+  ofstream Flux("test.json");
+  if(Flux){
+    Flux << "{\"Props\" : [{ \"Nom\" : \"Element 1\"}]}" << endl;
+  }
+
   return 0;
 }
