@@ -2,7 +2,8 @@
 #include <fstream>
 #include <string>
 #include "Terrain.h"
-#include "json/json.h"
+#include "json.hpp"
+using namespace std;
 
 Props::Props()
 {
@@ -55,9 +56,10 @@ void Terrain::Initialiser()
 }
 
 void Terrain::chargerJSON(string path){
+    cout << "Ok 0" << endl;
     ifstream fichier(path);
-    string ligne;
-    while(getline(fichier, ligne)){
-        cout << ligne << endl;
+    cout << "Ok 1" << endl;
+    if(fichier.is_open()){
+        cout << "Ok 2" << endl;
     }
 }

@@ -3,6 +3,8 @@
 #include "Voiture.h"
 #include "Physique.h"
 #include "Jeu.h"
+#include "Terrain.h"
+#include "json.hpp"
 /* librairies pour le chrono */
 
 #include <chrono>
@@ -10,9 +12,6 @@
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
-
-
-
 using namespace std;
 
 int main(){
