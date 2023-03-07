@@ -12,6 +12,7 @@
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
+using json = nlohmann::json;
 using namespace std;
 
 int main(){
@@ -50,7 +51,7 @@ int main(){
   }
 
   Terrain T1;
-  T1.chargerJSON("../data/circuits/test.json");
+  T1.chargerJSON("data/circuits/test.json");
 
   return 0;
 }

@@ -4,6 +4,7 @@
 #include "Terrain.h"
 #include "json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
 Props::Props()
 {
@@ -56,10 +57,9 @@ void Terrain::Initialiser()
 }
 
 void Terrain::chargerJSON(string path){
-    cout << "Ok 0" << endl;
+    
     ifstream fichier(path);
-    cout << "Ok 1" << endl;
-    if(fichier.is_open()){
-        cout << "Ok 2" << endl;
-    }
+    json j;
+    fichier >> j;
+    cout << j["Props"][0]["Nom"] << endl;
 }
