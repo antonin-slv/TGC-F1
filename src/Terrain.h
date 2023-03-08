@@ -31,6 +31,7 @@ class Props
 {   public:
         int x;//en m
         int y;//en m
+        //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         float L;//en m
         float l;//en m
         float rotation;//en radiant -> 0 = bas , pi/2 = droite, pi = haut, 3pi/2 = gauche
@@ -41,6 +42,8 @@ class Props
         Props();
         Props(int px, int py, Tip t, float rot=0,float l=0, float L=0);
         
+        void afficher_txt();
+
         void prop_set_type(Tip t);
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
         bool chargerJSON(json const & obj);
@@ -50,11 +53,11 @@ class Terrain
 {   private:
         int largeur;//en m
         int longueur;//en m
-        vector<Props> tab_props;
+        
         int nb_props;
 
     public:
-
+        vector<Props> tab_props;
         Terrain();
         Terrain(int l, int h, int nb=1);
         ~Terrain();

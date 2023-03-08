@@ -17,13 +17,14 @@ class Voiture {
         Roues * roue;
 
         float vitesse, angle, acceleration;
-        float x,y;
+        float x,y, largeur, longueur;
+        //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         float poids, coef_aero;
 
     public:
 
         Voiture();
-        Voiture(const Moteur & m,const Roues & r, float poi, float coef, float orient=M_PI/2, float vit=0, float x=0, float y=0, float acc=0);
+        Voiture(const Moteur & m,const Roues & r, float poi, float coef,float largeur,float longu, float orient=M_PI/2, float vit=0, float x=0, float y=0, float acc=0);
         Voiture(const Voiture & V);
         ~Voiture();
 
@@ -35,6 +36,11 @@ class Voiture {
         float getCoefAero();
         float getX();
         float getY();
+        
+        void afficher_txt();
+
+        float getLargeur();
+        float getLongueur();
 
 
         //fait accélérer la voiture pendant 1 seconde

@@ -19,7 +19,7 @@ Voiture::Voiture()
     cout << "Construct voiture def" << endl;
 }
 
-Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float orient, float vit, float x, float y, float acc){
+Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float larg, float longu, float orient, float vit, float x, float y, float acc){
     
     mot = new Moteur(M);
     roue = new Roues(R);
@@ -27,6 +27,8 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, floa
     vitesse = vit;
     angle= orient;
     poids = poid;
+    largeur=larg;
+    longueur=longu;
     coef_aero = coef;
     acceleration=acc;
     
@@ -41,6 +43,8 @@ Voiture::Voiture(const Voiture & V){
     angle= V.angle;
     poids = V.poids;
     coef_aero = V.coef_aero;
+    largeur=V.largeur;
+    longueur=V.longueur;
     acceleration=V.acceleration;
     cout << "Construct voiture" << endl;
 }
@@ -67,6 +71,18 @@ float Voiture::getX(){ return x; }
 
 float Voiture::getY(){ return y; }
 
+float Voiture::getLargeur(){ return largeur; }
+
+float Voiture::getLongueur(){ return longueur; }
+
+void Voiture::afficher_txt()
+{   
+    cout<<"("<<x<<','<<y<<") at ";
+    cout<<vitesse*3.6 << " km/h ";
+    cout<<" with : "<<angle*180/M_PI<<"°"<<endl;
+
+}
+
 void Voiture::calculAcc(float dt,float theta)
 {
     acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*theta);
@@ -87,18 +103,20 @@ void Voiture::calculPosition_precis(float dt)
 }
 
 void Voiture::tourner_var(float angle_roue_rad, float dt)
-{   angle += dt * angle_roue_rad;
+{    if ( abs(vitesse) > 1) angle += dt * angle_roue_rad;
+    else angle += dt * vitesse * angle_roue_rad;
     //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
-    //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite) 
+    //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite)
+    //le else est un ajout pour que la voiture ne tourne pas à l'arrêt
     if (angle > M_PI) angle -= 2*M_PI;
     if (angle < -M_PI) angle += 2*M_PI;
 }
 
 
 
-void Voiture::tourner_g(float dt) { tourner_var(0.7,dt); }
+void Voiture::tourner_g(float dt) { tourner_var(0.6,dt); }
 
-void Voiture::tourner_d(float dt) { tourner_var(-0.7,dt); }
+void Voiture::tourner_d(float dt) { tourner_var(-0.6,dt); }
 
 void Voiture::accelerer(float dt)
 {   calculAcc(dt,1);

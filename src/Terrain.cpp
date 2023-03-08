@@ -28,6 +28,12 @@ Props::Props(int px, int py, Tip t, float rot, float nl, float nL)
     L=nL;
 };
 
+void Props::afficher_txt()
+{   cout <<"PROPS "<<type<<" : "<<endl;
+    cout << "(" << x <<','<< y << ") avec " << rotation*180/M_PI << "°" << endl;
+    cout << "L = " << L << " et l = " << l << endl;
+}
+
 void Props::setProp(int px, int py, float rot, float nl, float nL)
 {
     x = px;
@@ -75,7 +81,7 @@ Terrain::Terrain(int l, int h, int nb)
 }
 
 Terrain::~Terrain()
-{   
+{  tab_props.clear();
 }
 
 void Terrain::Initialiser()
@@ -109,7 +115,6 @@ void Terrain::chargerJSON(string const & path){
         if (temp.chargerJSON(tab["Props"][i]))
         {   tab_props.push_back(temp);
             cout<<"prop "<<i-j<<" chargé"<<endl;
-            
         }
         else j++;
     }
@@ -123,7 +128,8 @@ void Terrain::afficher_txt()
     cout << "Terrain de " << largeur << " m par " << longueur << " m" << endl;
     cout << "Il y a " << nb_props << " props" << endl;
     for (int i=0; i<nb_props; i++)
-    {
-        cout << "Prop " << i << " : " << tab_props[i].x << " m x " << tab_props[i].y << " m" << endl;
+    {   cout << i << " : " ;
+        tab_props[i].afficher_txt();
+
     }
 }

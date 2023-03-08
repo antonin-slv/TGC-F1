@@ -6,6 +6,7 @@
 #include "Voiture.h"
 #include "Physique.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,11 +15,18 @@ class Jeu
     public:
         Jeu();
         ~Jeu();
-        void run();
-    
+        
+        //fonctions de debug
+        Terrain * getTerrain() const;
+        Voiture * getVoiture(int i=0);
+        
+        void ChargerTerrain(string const & nom_fichier);
+        void AjouterVoiture(Voiture & V);
+        
     private:
+
         Terrain * terrain;
-        Voiture * tab_voit;
+        vector<Voiture> tab_voit;
         int nb_voit;
 
 };
