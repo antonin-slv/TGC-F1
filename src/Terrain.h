@@ -41,7 +41,7 @@ class Props
         
         void prop_set_type(Tip t);
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
-        void chargerJSON(json obj);
+        bool chargerJSON(json obj);
 };
 
 class Terrain

@@ -108,7 +108,7 @@ void Terrain::chargerJSON(string path){
     int j=0;
     for (int i=0; i<nb_props; i++)
     {  
-        if (tab_props[i-j].chargerJSON(tab["Props"][i]==false)
+        if (tab_props[i-j].chargerJSON(tab["Props"][i])==false)
         {   
             j++;
         }
