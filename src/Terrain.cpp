@@ -3,7 +3,7 @@
 #include <string>
 #include "Terrain.h"
 #include "json.hpp"
-
+#include <vector>
 
 using namespace std;
 using json = nlohmann::json;
@@ -38,7 +38,7 @@ void Props::setProp(int px, int py, float rot, float nl, float nL)
 }
 void Props::prop_set_type(Tip t) { type = t; }
 
-bool Props::chargerJSON(json obj)
+bool Props::chargerJSON(json const & obj)
 {   if (obj.type() != json::value_t::object)
     {
         cout << "Prop corrompu" << endl;
@@ -64,7 +64,6 @@ Terrain::Terrain()
     largeur = 1000;
     longueur = 1000;
     nb_props = 0;
-    tab_props = nullptr;
 }
 
 Terrain::Terrain(int l, int h, int nb)
@@ -72,13 +71,11 @@ Terrain::Terrain(int l, int h, int nb)
     largeur = l;
     longueur = h;
     nb_props = nb;
-    tab_props = new Props[nb_props];
-
+    vector<Props> tab_props(nb_props);
 }
 
 Terrain::~Terrain()
 {   
-    if(tab_props != nullptr) delete [] tab_props;
 }
 
 void Terrain::Initialiser()
@@ -91,7 +88,7 @@ void Terrain::Initialiser()
     }
 }
 
-void Terrain::chargerJSON(string path){
+void Terrain::chargerJSON(string const & path){
     
     ifstream fichier(path);
     if (!fichier.good())
@@ -106,14 +103,27 @@ void Terrain::chargerJSON(string path){
 
     nb_props = tab["Props"].size();
     int j=0;
+    Props temp;
     for (int i=0; i<nb_props; i++)
     {  
-        if (tab_props[i-j].chargerJSON(tab["Props"][i])==false)
-        {   
-            j++;
+        if (temp.chargerJSON(tab["Props"][i]))
+        {   tab_props.push_back(temp);
+            cout<<"prop "<<i-j<<" chargé"<<endl;
+            
         }
+        else j++;
     }
     nb_props-=j;
-
+    if (j> 0)cout<<j<<" props corrompus"<<endl;
     fichier.close();
+}
+
+void Terrain::afficher_txt()
+{
+    cout << "Terrain de " << largeur << " m par " << longueur << " m" << endl;
+    cout << "Il y a " << nb_props << " props" << endl;
+    for (int i=0; i<nb_props; i++)
+    {
+        cout << "Prop " << i << " : " << tab_props[i].x << " m x " << tab_props[i].y << " m" << endl;
+    }
 }

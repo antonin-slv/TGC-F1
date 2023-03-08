@@ -5,7 +5,9 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "json.hpp"
+
 using namespace std;
 using json = nlohmann::json;
 
@@ -41,14 +43,14 @@ class Props
         
         void prop_set_type(Tip t);
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
-        bool chargerJSON(json obj);
+        bool chargerJSON(json const & obj);
 };
 
 class Terrain
 {   private:
         int largeur;//en m
         int longueur;//en m
-        Props * tab_props;
+        vector<Props> tab_props;
         int nb_props;
 
     public:
@@ -57,7 +59,8 @@ class Terrain
         Terrain(int l, int h, int nb=1);
         ~Terrain();
         void Initialiser();
-        void chargerJSON(string path);
+        void chargerJSON(string const & path);
+        void afficher_txt();
     
 };
 
