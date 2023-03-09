@@ -17,8 +17,8 @@ class Jeu
         ~Jeu();
 
         //fonctions de debug
-        Terrain * getTerrain() const;
-        Voiture * getVoiture(int i=0);
+        Terrain *  getTerrain() const ;
+        Voiture & getVoiture(int i=0);
         void ChargerTerrain(string const & nom_fichier);
         void AjouterVoiture(Voiture & V);
         

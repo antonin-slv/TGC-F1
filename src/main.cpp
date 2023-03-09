@@ -22,10 +22,12 @@ int main(){
 
   Jeu J1;
   J1.ChargerTerrain("data/circuits/test.json");
-  J1.getVoiture(0)->accelerer(100);
+  J1.getVoiture(0).accelerer(100);
   cout<<"voiture du jeu : ";
-  afficherVoitureTxt(*J1.getVoiture(0));
- // J1.terrain[1].
+  //ça marche avec du déréférencement parce que le type de sortie c'est un pointeur vers une voiture...
+  afficherVoitureTxt(J1.getVoiture(0));
+  cout<<"Terrain du jeu :"<<endl;
+  afficherTerrainTxt(J1.getTerrain());
 
   cout << "init ok" << endl;
 

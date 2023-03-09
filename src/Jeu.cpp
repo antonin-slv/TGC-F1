@@ -20,7 +20,7 @@ void Jeu::ChargerTerrain(string const & nom_fichier)
 
 Terrain * Jeu::getTerrain() const
 {
-    return terrain;
+    return  terrain;
 }
 
 void Jeu::AjouterVoiture(Voiture & V)
@@ -29,7 +29,7 @@ void Jeu::AjouterVoiture(Voiture & V)
     nb_voit++;
 }
 
-Voiture * Jeu::getVoiture(int i)
+Voiture & Jeu::getVoiture(int i)
 {
-    return & tab_voit[i];
+    return tab_voit[i];
 }

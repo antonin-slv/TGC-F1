@@ -67,7 +67,7 @@ class Terrain
         int getLongueur() const;
         int getNbProps() const;
 
-        Props * getProp(int i);
+        Props & getProp(int i);
 
         void Initialiser();
         void chargerJSON(string const & path);

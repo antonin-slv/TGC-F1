@@ -136,7 +136,8 @@ void Terrain::chargerJSON(string const & path){
     fichier.close();
 }
 
-Props * Terrain::getProp(int i) {
+Props & Terrain::getProp(int i)
+{
     assert(i < nb_props);
-    return & tab_props[i];
+    return tab_props[i];
 }
