@@ -21,16 +21,13 @@ enum Tip : int
     route_h_g=13,
     route_h_d=12,
     route_g_d=11,
-    route_h_b=16,
-    
-    
+    route_h_b=16,   
 };
-
 
 class Props
 {   public:
-        int x;//en m
-        int y;//en m
+        float x;//en m
+        float y;//en m
         //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         float L;//en m
         float l;//en m
@@ -42,8 +39,12 @@ class Props
         Props();
         Props(int px, int py, Tip t, float rot=0,float l=0, float L=0);
         
-        void afficher_txt();
-
+        float getX() const;
+        float getY() const;
+        float getRotation() const;
+        float getLarg() const;
+        float getLong() const;
+        Tip getType() const;
         void prop_set_type(Tip t);
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
         bool chargerJSON(json const & obj);
@@ -61,6 +62,13 @@ class Terrain
         Terrain();
         Terrain(int l, int h, int nb=1);
         ~Terrain();
+
+        int getLargeur() const;
+        int getLongueur() const;
+        int getNbProps() const;
+
+        Props * getProp(int i);
+
         void Initialiser();
         void chargerJSON(string const & path);
         void afficher_txt();

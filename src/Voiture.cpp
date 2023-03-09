@@ -55,33 +55,25 @@ Voiture::~Voiture(){
     cout << "Destruct voiture" << endl;
 }
 
-Moteur * Voiture::getMoteur(){ return mot; }
+Moteur * Voiture::getMoteur() const { return mot; }
 
-Roues * Voiture::getRoues(){ return roue; }
+Roues * Voiture::getRoues() const { return roue; }
 
-float Voiture::getVitesse(){ return vitesse; }
+float Voiture::getVitesse() const { return vitesse; }
 
-float Voiture::getAngle(){ return angle; }
+float Voiture::getAngle() const { return angle; }
 
-float Voiture::getPoids(){ return poids; }
+float Voiture::getPoids() const { return poids; }
 
-float Voiture::getCoefAero(){ return coef_aero; }
+float Voiture::getCoefAero() const { return coef_aero; }
 
-float Voiture::getX(){ return x; }
+float Voiture::getX() const { return x; }
 
-float Voiture::getY(){ return y; }
+float Voiture::getY() const { return y; }
 
-float Voiture::getLargeur(){ return largeur; }
+float Voiture::getLargeur() const { return largeur; }
 
-float Voiture::getLongueur(){ return longueur; }
-
-void Voiture::afficher_txt()
-{   
-    cout<<"("<<x<<','<<y<<") at ";
-    cout<<vitesse*3.6 << " km/h ";
-    cout<<" with : "<<angle*180/M_PI<<"°"<<endl;
-
-}
+float Voiture::getLongueur() const { return longueur; }
 
 void Voiture::calculAcc(float dt,float theta)
 {

@@ -1,16 +1,26 @@
+#ifndef _AFFICHAGE_H_
+#define _AFFICHAGE_H_
+
 #include "Editeur.h"
 #include "Jeu.h"
 #include "Menu.h"
 #include "Terrain.h"
 
 
-void Afficher(Terrain & terrain, int x, int y, int rotation, int zoom);
+void afficherPropsTxt(Props const * p);
+void afficherTerrainGenTxt(Terrain & terrain);
+void afficherTerrainTxt(Terrain & terrain);
 
-void AfficherTXT(Jeu & jeu);
-void AfficherSFML(Jeu & jeu);
+void afficherVoitureTxt(Voiture & voit);
 
 
-void Afficher(Editeur & editeur);
+void afficher(Terrain & terrain, int x, int y, int rotation, int zoom);
 
-void Afficher(Menu & menu);
+void afficherJeuTXT(Jeu & jeu);
+void afficherJeuSFML(Jeu & jeu);
 
+
+void afficher(Editeur & editeur);
+
+
+#endif

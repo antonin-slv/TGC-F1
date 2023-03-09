@@ -18,7 +18,7 @@ editeur : obj/Editeur.o
 $(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o
 	g++ obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o -o $(EXECUTABLE)
 
-obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h
+obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h
 	g++ $(CFLAGS) -c src/main.cpp -o obj/main.o
 
 obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h

@@ -28,19 +28,17 @@ class Voiture {
         Voiture(const Voiture & V);
         ~Voiture();
 
-        Moteur * getMoteur();
-        Roues * getRoues();
-        float getVitesse();
-        float getAngle();
-        float getPoids();
-        float getCoefAero();
-        float getX();
-        float getY();
-        
-        void afficher_txt();
+        Moteur * getMoteur() const;
+        Roues * getRoues() const;
+        float getVitesse() const;
+        float getAngle() const;
+        float getPoids() const;
+        float getCoefAero() const;
+        float getX() const;
+        float getY() const;
 
-        float getLargeur();
-        float getLongueur();
+        float getLargeur() const;
+        float getLongueur() const;
 
 
         //fait accélérer la voiture pendant 1 seconde

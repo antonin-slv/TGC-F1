@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
-#include "Voiture.h"
 #include "Physique.h"
-#include "Jeu.h"
+#include "Voiture.h"
 #include "Terrain.h"
+#include "Jeu.h"
+#include "Affichage.h"
 #include "json.hpp"
 /* librairies pour le chrono */
 
@@ -23,7 +24,7 @@ int main(){
   J1.ChargerTerrain("data/circuits/test.json");
   J1.getVoiture(0)->accelerer(100);
   cout<<"voiture du jeu : ";
-  J1.getVoiture(0)->afficher_txt();
+  afficherVoitureTxt(*J1.getVoiture(0));
  // J1.terrain[1].
 
   cout << "init ok" << endl;
@@ -36,10 +37,10 @@ int main(){
           cout << "après " << i << " secondes"<<endl;
         
           cout << "  V 1 ";
-          V1.afficher_txt();
+          afficherVoitureTxt(V1);
 
           cout << "  V 2 ";
-          V2.afficher_txt();
+          afficherVoitureTxt(V2);
       }
     V1.accelerer(1);
     if (i>=90 and i< 95) V2.ralentir(1);//acceleration max pendant 1 sec

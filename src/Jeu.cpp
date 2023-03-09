@@ -25,7 +25,7 @@ Terrain * Jeu::getTerrain() const
 
 void Jeu::AjouterVoiture(Voiture & V)
 {
-    tab_voit.push_back(Voiture());
+    tab_voit.push_back(Voiture(V));
     nb_voit++;
 }
 
