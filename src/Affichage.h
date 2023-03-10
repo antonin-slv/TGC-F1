@@ -11,7 +11,7 @@
 void afficherPropsTxt(Props const & p);
 void afficherTerrainGenTxt(Terrain * terrain);
 void afficherTerrainTxt(Terrain * terrain);
-
+void afficherTerrainTxt(Terrain & terrain);
 void afficherVoitureTxt(Voiture & voit);
 
 

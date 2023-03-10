@@ -24,6 +24,13 @@ void afficherTerrainTxt(Terrain * terrain)
     }
 }
 
+void afficherTerraintxt(Terrain & terrain)
+{
+    Terrain * t = &terrain;
+    afficherTerrainTxt(t);
+    delete t;
+}
+
 
 void afficherVoitureTxt(Voiture & voit)
 {
