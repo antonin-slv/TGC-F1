@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "Physique.h"
-#include "Voiture.h"
+#include "Voiture/Physique.h"
+#include "Voiture/Voiture.h"
 #include "Terrain.h"
 #include "Jeu.h"
 #include "Affichage.h"

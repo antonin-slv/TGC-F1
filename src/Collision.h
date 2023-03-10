@@ -2,7 +2,7 @@
 #define _COLLISION_H_
 
 #include "Terrain.h"
-#include "Voiture.h"
+#include "Voiture/Voiture.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
 CFLAGS = -Wall -g
-HVOITURE = src/Voiture.h src/Moteur.h src/Roues.h src/Physique.h
+HVOITURE = src/Voiture/Voiture.h src/Voiture/Moteur.h src/Voiture/Roues.h src/Voiture/Physique.h
 HEDITEUR = src/Editeur.h src/Terrain.h
 HINTERFACE = src/Affichage.h src/Menu.h
 
@@ -36,17 +36,17 @@ obj/Terrain.o: src/Terrain.cpp src/Terrain.h
 obj/Collision.o: src/Collision.cpp src/Collision.h $(HVOITURE) src/Terrain.h
 	g++ $(CFLAGS) -c src/Collision.cpp -o obj/Collision.o
 
-obj/Voiture.o: src/Voiture.cpp $(HVOITURE)
-	g++ $(CFLAGS) -c src/Voiture.cpp -o obj/Voiture.o
+obj/Voiture.o: src/Voiture/Voiture.cpp $(HVOITURE)
+	g++ $(CFLAGS) -c src/Voiture/Voiture.cpp -o obj/Voiture.o
 
-obj/Moteur.o: src/Moteur.h
-	g++ $(CFLAGS) -c src/Moteur.cpp -o obj/Moteur.o
+obj/Moteur.o: src/Voiture/Moteur.h
+	g++ $(CFLAGS) -c src/Voiture/Moteur.cpp -o obj/Moteur.o
 
-obj/Roues.o: src/Roues.h 
-	g++ $(CFLAGS) -c src/Roues.cpp -o obj/Roues.o
+obj/Roues.o: src/Voiture/Roues.h 
+	g++ $(CFLAGS) -c src/Voiture/Roues.cpp -o obj/Roues.o
 
-obj/Physique.o: src/Physique.cpp src/Physique.h
-	g++ $(CFLAGS) -c src/Physique.cpp -o obj/Physique.o
+obj/Physique.o: src/Voiture/Physique.cpp src/Voiture/Physique.h
+	g++ $(CFLAGS) -c src/Voiture/Physique.cpp -o obj/Physique.o
 
 obj/Menu.o: src/Menu.cpp src/Menu.h
 	g++ $(CFLAGS) -c src/Menu.cpp -o obj/Menu.o

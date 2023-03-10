@@ -3,8 +3,8 @@
 
 
 #include "Terrain.h"
-#include "Voiture.h"
-#include "Physique.h"
+#include "Voiture/Voiture.h"
+#include "Voiture/Physique.h"
 #include <iostream>
 #include <vector>
 

@@ -1,7 +1,7 @@
 #include "Collision.h"
-#include "Voiture.h"
+#include "Voiture/Voiture.h"
 #include "Terrain.h"
-#include "Physique.h"
+#include "Voiture/Physique.h"
 
 bool test_point_int_box(float x, float y, float l, float L)
 {   return  (x >= - L && x <= L && y >= - l && y<= l);

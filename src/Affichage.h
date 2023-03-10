@@ -5,6 +5,7 @@
 #include "Jeu.h"
 #include "Menu.h"
 #include "Terrain.h"
+#include "Voiture/Voiture.h"
 
 //plus ou moins ok -> j'ai pas compris pourquoi on peut pas mettre de const devant terrain...
 void afficherPropsTxt(Props const & p);
