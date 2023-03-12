@@ -23,8 +23,8 @@ Terrain * Jeu::getTerrain() const
     return  terrain;
 }
 
-void Jeu::AjouterVoiture(Voiture & V)
-{
+void Jeu::AjouterVoiture(Voiture const & V)
+{   //on créé une voiture identique à V et on l'ajoute au tableau
     tab_voit.push_back(Voiture(V));
     nb_voit++;
 }

@@ -45,6 +45,7 @@ class Props
         float getLarg() const;
         float getLong() const;
         Tip getType() const;
+        
         void prop_set_type(Tip t);
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
         bool chargerJSON(json const & obj);

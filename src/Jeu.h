@@ -20,7 +20,7 @@ class Jeu
         Terrain *  getTerrain() const ;
         Voiture & getVoiture(int i=0);
         void ChargerTerrain(string const & nom_fichier);
-        void AjouterVoiture(Voiture & V);
+        void AjouterVoiture(Voiture const & V);
         
     private:
 
