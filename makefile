@@ -3,7 +3,7 @@ CC = g++
 
 PATH_VOIT = src/Voiture/
 
-HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h
+HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h
 HINTERFACE = src/Affichage.h src/Menu.h
 
@@ -54,6 +54,9 @@ obj/Physique.o: $(PATH_VOIT)Physique.cpp $(PATH_VOIT)Physique.h
 
 obj/Menu.o: src/Menu.cpp src/Menu.h
 	$(CC) $(CFLAGS) -c src/Menu.cpp -o obj/Menu.o
+
+obj/Vecteur.o: src/Voiture/Vecteur.cpp src/Voiture/Vecteur.h
+	$(CC) $(CFLAGS) -c src/Voiture/Vecteur.cpp -o obj/Vecteur.o
 
 clean:
 	rm -f obj/*

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <math.h>
 #include "Physique.h"
+#include "Vecteur.h"
 
 using namespace std;
 
