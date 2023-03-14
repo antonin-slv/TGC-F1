@@ -15,17 +15,26 @@ class Jeu
     public:
         Jeu();
         ~Jeu();
+        //ajouter chargement voiture
+        Jeu(string const & nom_fichier);
+
 
         //fonctions de debug
-        Terrain *  getTerrain() const ;
+        Terrain &  getTerrain() ;
         Voiture & getVoiture(int i=0);
+
+
         void ChargerTerrain(string const & nom_fichier);
         void AjouterVoiture(Voiture const & V);
         
+        void update(char const & touche);
+
+
     private:
 
-        Terrain * terrain;
+        Terrain terrain;
         vector<Voiture> tab_voit;
+        float frame_time;
         int nb_voit;
 
 };

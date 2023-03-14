@@ -59,6 +59,9 @@ clean:
 	rm -f obj/*
 	rm -f bin/*
 
+lessclean :
+	rm -f obj/*
+
 clean_o_voiture:
 	rm -f $(OVOITURE)
 
