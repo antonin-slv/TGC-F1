@@ -7,11 +7,9 @@
 #include "Terrain.h"
 #include "Jeu.h"
 #include "Affichage.h"
+#include "Collision.h"
 
 #include "json.hpp"
-
-
-#include "Collision.h"
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // milliseconds, system_clock, seconds
@@ -36,13 +34,16 @@ int main(){
        << calculAcceleration(V1.getVitesse(),V1.getPoids(),V1.getCoefAero(),V1.getMoteur()->getPuissance())
        << " mètres par seconde carre " << endl;
 
-  for(int i=0; i<10000;i+=8){
-    sleep_for(milliseconds(8));
-    cout << i << " ms"<<endl;
+  for(int i=0;i<100000;i+=8){
+    time_point<system_clock> start, end;
+    start = system_clock::now();
     V1.accelerer(0.008);
+    cout << i << "ms" << endl;
     afficherVoitureTxt(V1);
-   
-}
-
+    end = system_clock::now();
+    duration<double> elapsed_seconds = end-start;
+    sleep_for(milliseconds(8) - duration_cast<milliseconds>(elapsed_seconds));
+  }
+  
   return 0;
 }
