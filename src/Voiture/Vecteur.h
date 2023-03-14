@@ -10,6 +10,7 @@ class Vecteur
 {   public :
         float x;
         float y;
+        
 
         Vecteur();
         Vecteur(float px, float py);

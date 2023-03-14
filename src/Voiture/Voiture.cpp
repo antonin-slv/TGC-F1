@@ -12,7 +12,8 @@ Voiture::Voiture()
 {
     mot = new Moteur();
     roue = new Roues();
-    vitesse = Vecteur();
+    vitesse = vitesse;
+    angle = M_PI/2;
     position = Vecteur();
     poids = 796;
     coef_aero = 0.14;
@@ -24,8 +25,8 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, floa
     
     mot = new Moteur(M);
     roue = new Roues(R);
-    vitesse=Vecteur();
-    vitesse.setVecteur(vit,orient);
+    vitesse=vit;
+    angle=orient;
     position=Vecteur(x,y);
     poids = poid;
     largeur=larg;
@@ -41,6 +42,7 @@ Voiture::Voiture(const Voiture & V){
     roue = new Roues(*V.roue);
 
     vitesse = V.vitesse;
+    angle = V.angle;
     position = V.position;
 
     poids = V.poids;
@@ -61,9 +63,9 @@ Moteur * Voiture::getMoteur() const { return mot; }
 
 Roues * Voiture::getRoues() const { return roue; }
 
-float Voiture::getVitesse() const { return vitesse.getNorme(); }
+float Voiture::getVitesse() const { return vitesse; }
 
-float Voiture::getAngle() const { return vitesse.getRotation(); }
+float Voiture::getAngle() const { return angle; }
 
 float Voiture::getPoids() const { return poids; }
 
@@ -79,29 +81,26 @@ float Voiture::getLongueur() const { return longueur; }
 
 void Voiture::calculAcc(float dt,float theta)
 {
-    acceleration = calculAcceleration(vitesse.getNorme(),poids,coef_aero,mot->getPuissance()*theta);
+    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*theta);
 }
 
 void Voiture::calculVitesse(float dt)
 {
-    vitesse.setVecteur(
-        calculVitesse_P(vitesse.getNorme(),acceleration,dt),
-        vitesse.getRotation()
-        );
+    vitesse = calculVitesse_P(vitesse,acceleration,dt);
 }
 
 void Voiture::calculPosition(float dt){
-    calculCoordonnee(position.x,position.y,vitesse.getRotation(),vitesse.getNorme(),dt);
+    calculCoordonnee(position.x,position.y,angle,vitesse,dt);
 }
 
 void Voiture::calculPosition_precis(float dt)
 {
-    calculCoordonnee_precise(position.x,position.y,vitesse.getRotation(),vitesse.getNorme(),acceleration,dt);
+    calculCoordonnee_precise(position.x,position.y,angle,vitesse,acceleration,dt);
 }
 
 void Voiture::tourner_var(float angle_roue_rad, float dt)
-{    if ( abs(vitesse.getNorme()) > 1) vitesse.tourner(angle_roue_rad*dt);
-    else vitesse.tourner(dt * vitesse.getNorme() * angle_roue_rad);
+{    if ( abs(vitesse) > 1) angle += angle_roue_rad*dt;
+    else angle += dt * vitesse * angle_roue_rad;
     //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
     //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite)
     //le else est un ajout pour que la voiture ne tourne pas à l'arrêt
@@ -124,9 +123,9 @@ void Voiture::ralentir(float dt)
 }
 
 void Voiture::freiner(float dt)
-{   if (vitesse.getNorme() > 0) calculAcc(dt,-vitesse.getNorme()/150-1);
+{   if (vitesse > 0) calculAcc(dt,-vitesse/150-1);
     else
-    {   acceleration = calculAcceleration(vitesse.getNorme(),poids,coef_aero*10,-mot->getPuissance()/4);
+    {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance()/4);
         //if (vitesse < -40) vitesse = -40;
     }
     calculPosition_precis(dt);

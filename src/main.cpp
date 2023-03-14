@@ -33,11 +33,12 @@ int main(){
        << calculAcceleration(V1.getVitesse(),V1.getPoids(),V1.getCoefAero(),V1.getMoteur()->getPuissance())
        << " mètres par seconde carre " << endl;
 
-  for(int i=0; i<10000;i++){
+  for(int i=0; i<10000;i+=8){
     sleep_for(milliseconds(8));
     cout << i << " ms"<<endl;
     V1.accelerer(0.008);
     afficherVoitureTxt(V1);
+    
 }
 
   return 0;
