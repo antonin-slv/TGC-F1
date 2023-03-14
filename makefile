@@ -7,7 +7,7 @@ HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH
 HEDITEUR = src/Editeur.h src/Terrain.h
 HINTERFACE = src/Affichage.h src/Menu.h
 
-OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o
+OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
 OINTERFACE= obj/Affichage.o obj/Menu.o
 
