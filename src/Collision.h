@@ -16,6 +16,6 @@ bool testColRect(Props const & prop, Voiture const & voit);
 
 bool testCol(Voiture & v1, Voiture & v2);
 
-
+void temoin();
 
 #endif

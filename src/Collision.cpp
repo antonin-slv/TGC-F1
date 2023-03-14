@@ -49,3 +49,7 @@ bool testColRect(Props const & prop, Voiture & voit)
 
     return false;
 }
+
+void temoin()
+{   cout << "ALLO ?" << endl;
+}
