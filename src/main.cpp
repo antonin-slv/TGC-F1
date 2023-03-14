@@ -43,6 +43,8 @@ int main(){
     end = system_clock::now();
     duration<double> elapsed_seconds = end-start;
     sleep_for(milliseconds(8) - duration_cast<milliseconds>(elapsed_seconds));
+    if (testColPropVoit(J1.getTerrain().getProp(0),V1)) cout<<"oui";
+    else cout<<"non";
   }
   
   return 0;

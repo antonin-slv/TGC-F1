@@ -8,7 +8,7 @@ bool test_point_int_box(float x, float y, float l, float L)
 {   return  (x >= - L && x <= L && y >= - l && y<= l);
 }
 
-bool testColPropVoit(Props const & prop, Voiture & voit)
+bool testColPropVoit(Props & prop, Voiture & voit)
 {   float rx = - voit.getX()+prop.getX();
     float ry = -voit.getY()+prop.getY();
 
@@ -50,4 +50,3 @@ bool testColPropVoit(Props const & prop, Voiture & voit)
 
     return false;
 }
-

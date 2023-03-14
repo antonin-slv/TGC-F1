@@ -13,7 +13,7 @@ Voiture::Voiture()
     mot = new Moteur();
     roue = new Roues();
     vitesse = vitesse;
-    angle = M_PI/2;
+    angle = 0;
     position = Vecteur();
     poids = 796;
     coef_aero = 0.14;
