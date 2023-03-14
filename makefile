@@ -20,7 +20,7 @@ voiture : obj/Voiture.o
 editeur : obj/Editeur.o
 
 $(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o
-	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o -o $(EXECUTABLE)
+	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o -o $(EXECUTABLE)
 
 obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h
 	$(CC) $(CFLAGS) -c src/main.cpp -o obj/main.o

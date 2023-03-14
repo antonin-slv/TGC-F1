@@ -7,8 +7,11 @@
 #include "Terrain.h"
 #include "Jeu.h"
 #include "Affichage.h"
-#include "Collision.h"
+
 #include "json.hpp"
+
+
+#include "Collision.h"
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // milliseconds, system_clock, seconds
@@ -38,7 +41,7 @@ int main(){
     cout << i << " ms"<<endl;
     V1.accelerer(0.008);
     afficherVoitureTxt(V1);
-    
+   
 }
 
   return 0;
