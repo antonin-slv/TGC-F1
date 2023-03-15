@@ -16,13 +16,14 @@ class Voiture {
 
         Moteur * mot;
         Roues * roue;
+
         Vecteur position;
-        
+        Vecteur hitbox;
+
         float acceleration;
         float vitesse;
         float angle;
-        
-        float largeur, longueur;
+
         //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         float poids, coef_aero;
 
@@ -41,7 +42,9 @@ class Voiture {
         float getCoefAero() const;
         float getX() const;
         float getY() const;
+        Vecteur getPos() const;
 
+        Vecteur getHitbox() const;
         float getLargeur() const;
         float getLongueur() const;
 

@@ -8,13 +8,13 @@
 using namespace std;
 
 //teste si un point est dans une rectangle centré ed largeur L et de longueur l
-bool test_point_int_box(float x, float y, float l, float L);
-bool test_point_int_box(Vecteur v, float l, float L);
+bool test_point_in_box(float x, float y, float l, float L);
+bool test_point_in_box(Vecteur point, Vecteur box);
 
 //test si 8 points de la voiture sont dans le props
 
-bool testColPropVoit(Props & prop, Voiture & voit);
 bool testColPropVoit2(Props & prop, Voiture & voit);
+bool testColPropVoit(Props & prop, Voiture & voit);
 
 //bool testColBlova(Props const & prop, Voiture const & voit);
 

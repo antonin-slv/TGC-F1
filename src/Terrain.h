@@ -27,12 +27,10 @@ enum Tip : int
 
 class Props
 {   public:
-        float x;//en m
-        float y;//en m
+
         Vecteur pos;
         //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
-        float L;//en m
-        float l;//en m
+        Vecteur hitbox;
         float rotation;//en radiant -> 0 = bas , pi/2 = droite, pi = haut, 3pi/2 = gauche
     private:
         Tip type;
@@ -43,9 +41,11 @@ class Props
         
         float getX() const;
         float getY() const;
+        Vecteur getPos() const;
         float getRotation() const;
         float getLarg() const;
         float getLong() const;
+        Vecteur getHitbox() const;
         Tip getType() const;
         
         void prop_set_type(Tip t);
@@ -72,7 +72,6 @@ class Terrain
 
         Props & getProp(int i);
 
-        void Initialiser();
         void chargerJSON(string const & path);
         void afficher_txt();
     

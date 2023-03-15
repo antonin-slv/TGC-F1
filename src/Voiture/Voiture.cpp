@@ -12,9 +12,10 @@ Voiture::Voiture()
 {
     mot = new Moteur();
     roue = new Roues();
-    vitesse = vitesse;
+    vitesse = 0;
     angle = 0;
     position = Vecteur();
+    hitbox = Vecteur(1,2.5);
     poids = 796;
     coef_aero = 0.14;
     acceleration=0;
@@ -28,9 +29,8 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, floa
     vitesse=vit;
     angle=orient;
     position=Vecteur(x,y);
+    hitbox=Vecteur(larg,longu);
     poids = poid;
-    largeur=larg;
-    longueur=longu;
     coef_aero = coef;
     acceleration=acc;
     
@@ -47,8 +47,7 @@ Voiture::Voiture(const Voiture & V){
 
     poids = V.poids;
     coef_aero = V.coef_aero;
-    largeur=V.largeur;
-    longueur=V.longueur;
+    hitbox = V.hitbox;
     acceleration=V.acceleration;
     cout << "Construct voiture" << endl;
 }
@@ -75,9 +74,11 @@ float Voiture::getX() const { return position.x; }
 
 float Voiture::getY() const { return position.y; }
 
-float Voiture::getLargeur() const { return largeur; }
+float Voiture::getLargeur() const { return hitbox.y; }
 
-float Voiture::getLongueur() const { return longueur; }
+float Voiture::getLongueur() const { return hitbox.x; }
+
+Vecteur Voiture::getPos() const { return position; }
 
 void Voiture::calculAcc(float dt,float theta)
 {
