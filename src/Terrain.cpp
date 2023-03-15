@@ -10,8 +10,7 @@ using json = nlohmann::json;
 
 Props::Props()
 {
-    x = 0;
-    y = 0;
+    pos = Vecteur(0,0);
     rotation = 0;
     type = nondef;
     l=0;
@@ -20,8 +19,8 @@ Props::Props()
 
 Props::Props(int px, int py, Tip t, float rot, float nl, float nL)
 {
-    x = px;
-    y = py;
+    pos.x = px;
+    pos.y = py;
     rotation = rot;
     type = t;
     l=nl;
@@ -29,9 +28,9 @@ Props::Props(int px, int py, Tip t, float rot, float nl, float nL)
 };
 
 
-float Props::getX() const { return x; }
+float Props::getX() const { return pos.x; }
 
-float Props::getY() const { return y; }
+float Props::getY() const { return pos.y; }
 
 float Props::getRotation() const { return rotation; }
 
@@ -44,9 +43,7 @@ Tip Props::getType() const { return type; }
 
 
 void Props::setProp(int px, int py, float rot, float nl, float nL)
-{
-    x = px;
-    y = py;
+{   pos.setVecteur(px,py);
     rotation = rot;
     l=nl;
     L=nL;
@@ -59,9 +56,9 @@ bool Props::chargerJSON(json const & obj)
         cout << "Prop corrompu" << endl;
         return false;
     }
-    if (obj["x"].type() == json::value_t::null) x=0;
+    if (obj["x"].type() == json::value_t::null) pos.x=0;
     else x = obj["x"];
-    if (obj["y"].type() == json::value_t::null) y=0;
+    if (obj["y"].type() == json::value_t::null) pos.y=0;
     else y = obj["y"];
     if (obj["rotation"].type() == json::value_t::null) rotation=0;
     else rotation = obj["rotation"];

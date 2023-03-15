@@ -4,7 +4,7 @@ CC = g++
 PATH_VOIT = src/Voiture/
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
-HEDITEUR = src/Editeur.h src/Terrain.h
+HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
 HINTERFACE = src/Affichage.h src/Menu.h
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
@@ -34,7 +34,7 @@ obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
 	$(CC) $(CFLAGS) -c src/Editeur.cpp -o obj/Editeur.o
 
-obj/Terrain.o: src/Terrain.cpp src/Terrain.h
+obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)/Vecteur.h
 	$(CC) $(CFLAGS) -c src/Terrain.cpp -o obj/Terrain.o
 
 obj/Collision.o: src/Collision.cpp src/Collision.h $(HVOITURE) src/Terrain.h

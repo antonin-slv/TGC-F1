@@ -2,10 +2,19 @@
 #include "Voiture/Voiture.h"
 #include "Terrain.h"
 #include "Voiture/Physique.h"
-
+#include "Voiture/Vecteur.h"
 
 bool test_point_int_box(float x, float y, float l, float L)
 {   return  (x >= - L && x <= L && y >= - l && y<= l);
+}
+bool test_point_int_box(Vecteur v, float l, float L)
+{   return (v.x >= - L && v.x <= L && v.y >= - l && v.y <= l);
+}
+
+bool testColPropVoit2(Props & prop, Voiture & voit)
+{   Vecteur diff;
+
+
 }
 
 bool testColPropVoit(Props & prop, Voiture & voit)

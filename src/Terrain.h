@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "json.hpp"
+#include "Voiture/Vecteur.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -28,6 +29,7 @@ class Props
 {   public:
         float x;//en m
         float y;//en m
+        Vecteur pos;
         //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         float L;//en m
         float l;//en m
