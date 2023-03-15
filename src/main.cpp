@@ -33,19 +33,23 @@ int main(){
   cout << "L'accélération de la voiture sera "
        << calculAcceleration(V1.getVitesse(),V1.getPoids(),V1.getCoefAero(),V1.getMoteur()->getPuissance())
        << " mètres par seconde carre " << endl;
+  
+  bool fin = false;
+  int i = 0;
 
-  for(int i=0;i<100000;i+=8){
+  while (!fin){
     time_point<system_clock> start, end;
     start = system_clock::now();
+    i+=8;
     V1.accelerer(0.008);
     cout << i << "ms" << endl;
     afficherVoitureTxt(V1);
     end = system_clock::now();
     duration<double> elapsed_seconds = end-start;
     sleep_for(milliseconds(8) - duration_cast<milliseconds>(elapsed_seconds));
-    if (testColPropVoit(J1.getTerrain().getProp(0),V1)) cout<<"oui";
-    else cout<<"non";
+    fin = testColPropVoit(J1.getTerrain().getProp(1),V1);
   }
+  cout << "Vous aveez tapé un mur à " << V1.getVitesse()*3.6 << "km/h ! Vous êtes morts !" << endl;
   
   return 0;
 }
