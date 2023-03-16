@@ -10,7 +10,7 @@ Jeu::Jeu()
     terrain=Terrain();
     nb_voit = 1;
     tab_voit = vector<Voiture>(nb_voit);
-    frame_time = 1/60;
+    frame_time = 0.0167;
 }
 
 
@@ -20,7 +20,7 @@ Jeu::Jeu(string const & nom_fichier)
     ChargerTerrain(nom_fichier);
     nb_voit = 1;
     tab_voit = vector<Voiture>(nb_voit);
-    frame_time = 1/60;
+    frame_time = 0.0167;
 }
 
 void Jeu::setframe_time(float const & tps) { frame_time = tps; }
@@ -41,7 +41,7 @@ void Jeu::AjouterVoiture(Voiture const & V)
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 
-void Jeu::update(char const & touche)
+bool Jeu::update(char const & touche)
 {   //on met à jour la position de la voiture
     //tab_voit[0].update(frame_time, touche);
 
@@ -63,7 +63,7 @@ void Jeu::update(char const & touche)
         tab_voit[0].freiner(frame_time);
         break;
     default:
-        tab_voit[0].ralentir(frame_time);    
+        tab_voit[0].ralentir(frame_time);
         break;
     }
 
@@ -72,8 +72,8 @@ void Jeu::update(char const & touche)
         if (testColPropVoit(terrain.getProp(i), tab_voit[0]))
         {   //si oui, on met à jour la position de la voiture
             collisionPropVoit(terrain.getProp(i), tab_voit[0]);
-            break;
+            return true;
         }
     }
-
+    return false;
 }

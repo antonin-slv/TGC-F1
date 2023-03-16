@@ -35,7 +35,9 @@ class Jeu
         void ChargerTerrain(string const & nom_fichier);
         void AjouterVoiture(Voiture const & V);
         
-        void update(char const & touche);
+
+        //retirer le bool a terme ?
+        bool update(char const & touche);
     
 };
 
