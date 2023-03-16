@@ -10,7 +10,7 @@ using json = nlohmann::json;
 
 Props::Props()
 {
-    pos = Vecteur(0,0);
+    pos.setVecteur(0,0);
     hitbox = pos;
 
     rotation = 0;
@@ -19,8 +19,8 @@ Props::Props()
 
 Props::Props(int px, int py, Tip t, float rot, float nl, float nL)
 {
-    pos = Vecteur(px,py);
-    hitbox = Vecteur(nl,nL);
+    pos.setVecteur(px,py);
+    hitbox.setVecteur(nl,nL);
     rotation = rot;
     type = t;
 };

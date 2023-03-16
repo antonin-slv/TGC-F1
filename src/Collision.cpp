@@ -19,10 +19,9 @@ bool testColPropVoit(Props & prop, Voiture & voit)
 
     float nrot = prop.getRotation() + voit.getAngle();
 
-    Vecteur car(voit.getLongueur(), voit.getLargeur());
-
-    Vecteur avant(cos(nrot)*car.x,sin(nrot)*car.x);
-    Vecteur cote (cos(nrot)*car.y,sin(nrot)*car.y);
+    
+    Vecteur avant(cos(nrot)*voit.getHitbox().x,sin(nrot)*voit.getHitbox().x);
+    Vecteur cote (cos(nrot)*voit.getHitbox().y,sin(nrot)*voit.getHitbox().y);
 
     if (test_point_in_box(diff+avant, prop.getHitbox())) return true;
     if (test_point_in_box(diff+avant+cote, prop.getHitbox())) return true;
@@ -79,4 +78,20 @@ bool testColPropVoit2(Props & prop, Voiture & voit)
     if (test_point_in_box(rx-lgx-Lrx, ry-lgy-Lry, prop.getLong(), prop.getLarg())) return true;
 
     return false;
+}
+
+
+void collisionPropVoit(Props & prop, Voiture & voit)
+{   Vecteur diff = prop.getPosition() - voit.getPosition()
+    float angleVitesse = prop.getRotation() - voit.getAngle();
+
+  
+
+    voit.postion = voit.getPosition() + diff;
+    voit.angle = voit.getAngle() + prop.getRotation();
+
+    //on calcul la part de la vitesse dans la direction du prop, et on ne garde qu'elle.
+    voit.vitessse = voit.getVitesse()* cos(angleVitesse);
+
+    voit.crash(diff, prop.getRotation());
 }

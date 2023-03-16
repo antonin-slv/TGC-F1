@@ -12,13 +12,11 @@ bool test_point_in_box(float x, float y, float l, float L);
 bool test_point_in_box(Vecteur point, Vecteur box);
 
 //test si 8 points de la voiture sont dans le props
+bool testColPropVoit2(Props & prop, Voiture & voit);//ancienne methide
+bool testColPropVoit(Props & prop, Voiture & voit);//utilise vecteurs
 
-bool testColPropVoit2(Props & prop, Voiture & voit);
-bool testColPropVoit(Props & prop, Voiture & voit);
-
-//bool testColBlova(Props const & prop, Voiture const & voit);
-
-bool testCol(Voiture & v1, Voiture & v2);
+//donne les effets de collision entre une voiture et un props
+void collisionPropVoit(Props & prop, Voiture & voit);
 
 
 #endif

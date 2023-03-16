@@ -53,13 +53,17 @@ class Voiture {
         void accelerer(float dt=1);
         void ralentir(float dt=1);
         void freiner(float dt=1);
+        
         //fait tourner la voiture d'un certain angle par seconde
+         void tourner_var(float angle_roue_rad,float dt=1);
         void tourner_g(float dt=1);
         void tourner_d(float dt=1);
 
+        //diff est la distance entre le centre de la voiture et le centre du mur
+        void crash(Vecteur diff, float anglemur);
     private :
         
-        void tourner_var(float angle_roue_rad,float dt=1);
+       
         
         //met a jour l'acceleration dt : temps d'acc, theta : proportion de la puissance usitée
         void calculAcc(float dt=1,float theta=1);

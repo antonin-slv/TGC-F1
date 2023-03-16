@@ -11,13 +11,18 @@
 using namespace std;
 
 class Jeu
-{   
+{   private :
+        Terrain terrain;
+        vector<Voiture> tab_voit;
+        float frame_time;
+        int nb_voit;
+
     public:
         Jeu();
-        ~Jeu();
-        //ajouter chargement voiture
         Jeu(string const & nom_fichier);
+        ~Jeu(); 
 
+        //ajouter chargement voiture
 
         //fonctions de debug
         Terrain &  getTerrain() ;
@@ -30,12 +35,7 @@ class Jeu
         void update(char const & touche);
 
 
-    private:
 
-        Terrain terrain;
-        vector<Voiture> tab_voit;
-        float frame_time;
-        int nb_voit;
 
 };
 

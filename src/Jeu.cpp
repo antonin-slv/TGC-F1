@@ -1,4 +1,5 @@
 #include "Jeu.h"
+#include <string>
 
 Jeu::Jeu()
 {   
@@ -16,18 +17,15 @@ Jeu::Jeu(string const & nom_fichier)
     nb_voit = 1;
     tab_voit = vector<Voiture>(nb_voit);
     frame_time = 1/60;
-    
 }
 
-Jeu::~Jeu()
-{
-    tab_voit.clear();
-}
 
 void Jeu::ChargerTerrain(string const & nom_fichier)
 {
     terrain.chargerJSON(nom_fichier);
 }
+
+Jeu::~Jeu() { tab_voit.clear(); terrain.~terrain() }
 
 Terrain & Jeu::getTerrain()
 {
@@ -49,4 +47,36 @@ Voiture & Jeu::getVoiture(int i)
 void Jeu::update(char const & touche)
 {   //on met à jour la position de la voiture
     //tab_voit[0].update(frame_time, touche);
+
+    switch (touche)
+    {   //on met à jour la direction de la voiture en fonction de la touche appuyée
+    
+    case 'z':
+        tab_voit[0].accelerer(frame_time);
+        break;
+    case 'q':
+        tab_voit[0].tourner_g(frame_time);
+        tab_voit[0].ralentir(frame_time);
+        break;
+    case 'd' :
+        tab_voit[0].tourner_d(frame_time);
+        tab_voit[0].ralentir(frame_time);
+        break;
+    case 's':
+        tab_voit[0].freiner(frame_time);
+        break;
+    default:
+        tab_voit[0].ralentir(frame_time);    
+        break;
+    }
+
+    for (int i=0; i<terrain.nb_props; i++)
+    {   //on vérifie si la voiture est en collision avec un prop
+        if (testColPropVoit(terrain.getProps(i), tab_voit[0]))
+        {   //si oui, on met à jour la position de la voiture
+            collisionPropVoit(terrain.getProps(i), tab_voit[0]);
+            break;
+        }
+    }
+
 }
