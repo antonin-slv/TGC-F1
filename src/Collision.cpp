@@ -82,16 +82,6 @@ bool testColPropVoit2(Props & prop, Voiture & voit)
 
 
 void collisionPropVoit(Props & prop, Voiture & voit)
-{   Vecteur diff = prop.getPosition() - voit.getPosition()
-    float angleVitesse = prop.getRotation() - voit.getAngle();
-
-  
-
-    voit.postion = voit.getPosition() + diff;
-    voit.angle = voit.getAngle() + prop.getRotation();
-
-    //on calcul la part de la vitesse dans la direction du prop, et on ne garde qu'elle.
-    voit.vitessse = voit.getVitesse()* cos(angleVitesse);
-
+{   Vecteur diff = prop.getPos() - voit.getPos();
     voit.crash(diff, prop.getRotation());
 }

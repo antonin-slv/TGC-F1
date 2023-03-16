@@ -34,7 +34,7 @@ obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
 	$(CC) $(CFLAGS) -c src/Editeur.cpp -o obj/Editeur.o
 
-obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)/Vecteur.h
+obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h
 	$(CC) $(CFLAGS) -c src/Terrain.cpp -o obj/Terrain.o
 
 obj/Collision.o: src/Collision.cpp src/Collision.h $(HVOITURE) src/Terrain.h

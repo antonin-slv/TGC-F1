@@ -18,7 +18,6 @@ using namespace std;
 
 int main(){
   Voiture V1;
-  Voiture V2;
 
   Jeu J1;
   J1.ChargerTerrain("data/circuits/test.json");
@@ -35,13 +34,13 @@ int main(){
        << " mètres par seconde carre " << endl;
   
   bool fin = false;
-  int i = 0;
+  bool i = 0;
 
   while (!fin){
     time_point<system_clock> start, end;
     start = system_clock::now();
-    i+=8;
-    V1.accelerer(0.008);
+    i+=1/60;
+    V1.accelerer(1/60);
     cout << i << "ms" << endl;
     afficherVoitureTxt(V1);
     end = system_clock::now();

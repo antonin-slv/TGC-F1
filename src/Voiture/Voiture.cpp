@@ -78,6 +78,8 @@ float Voiture::getLargeur() const { return hitbox.y; }
 
 float Voiture::getLongueur() const { return hitbox.x; }
 
+Vecteur Voiture::getHitbox() const { return hitbox; }
+
 Vecteur Voiture::getPos() const { return position; }
 
 void Voiture::calculAcc(float dt,float theta)
@@ -137,6 +139,6 @@ void Voiture::freiner(float dt)
 void Voiture::crash(Vecteur diff, float anglemur)
 {   
     vitesse = vitesse * cos(anglemur - angle);
-    position += diff;
+    position = position + diff;
     angle = anglemur + M_PI - angle;
 }

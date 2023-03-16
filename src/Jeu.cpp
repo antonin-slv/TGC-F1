@@ -1,5 +1,9 @@
 #include "Jeu.h"
 #include <string>
+#include "Collision.h"
+#include "Voiture/Physique.h"
+#include "Voiture/Vecteur.h"
+
 
 Jeu::Jeu()
 {   
@@ -19,18 +23,14 @@ Jeu::Jeu(string const & nom_fichier)
     frame_time = 1/60;
 }
 
+void Jeu::setframe_time(float const & tps) { frame_time = tps; }
 
-void Jeu::ChargerTerrain(string const & nom_fichier)
-{
-    terrain.chargerJSON(nom_fichier);
-}
 
-Jeu::~Jeu() { tab_voit.clear(); terrain.~terrain() }
+void Jeu::ChargerTerrain(string const & nom_fichier) { terrain.chargerJSON(nom_fichier); }
 
-Terrain & Jeu::getTerrain()
-{
-    return terrain;
-}
+Jeu::~Jeu() { tab_voit.clear();}
+
+Terrain & Jeu::getTerrain() { return terrain; }
 
 void Jeu::AjouterVoiture(Voiture const & V)
 {   //on créé une voiture identique à V et on l'ajoute au tableau
@@ -38,10 +38,7 @@ void Jeu::AjouterVoiture(Voiture const & V)
     nb_voit++;
 }
 
-Voiture & Jeu::getVoiture(int i)
-{
-    return tab_voit[i];
-}
+Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 
 void Jeu::update(char const & touche)
@@ -70,11 +67,11 @@ void Jeu::update(char const & touche)
         break;
     }
 
-    for (int i=0; i<terrain.nb_props; i++)
+    for (int i=0; i<terrain.getNbProps(); i++)
     {   //on vérifie si la voiture est en collision avec un prop
-        if (testColPropVoit(terrain.getProps(i), tab_voit[0]))
+        if (testColPropVoit(terrain.getProp(i), tab_voit[0]))
         {   //si oui, on met à jour la position de la voiture
-            collisionPropVoit(terrain.getProps(i), tab_voit[0]);
+            collisionPropVoit(terrain.getProp(i), tab_voit[0]);
             break;
         }
     }

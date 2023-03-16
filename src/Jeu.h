@@ -5,6 +5,8 @@
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
 #include "Voiture/Physique.h"
+#include "Collision.h"
+
 #include <iostream>
 #include <vector>
 
@@ -20,7 +22,7 @@ class Jeu
     public:
         Jeu();
         Jeu(string const & nom_fichier);
-        ~Jeu(); 
+        ~Jeu();
 
         //ajouter chargement voiture
 
@@ -28,15 +30,13 @@ class Jeu
         Terrain &  getTerrain() ;
         Voiture & getVoiture(int i=0);
 
+        void setframe_time(float const & tps);
 
         void ChargerTerrain(string const & nom_fichier);
         void AjouterVoiture(Voiture const & V);
         
         void update(char const & touche);
-
-
-
-
+    
 };
 
 
