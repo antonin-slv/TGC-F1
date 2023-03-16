@@ -47,10 +47,11 @@ int main(){
     end = system_clock::now();
     duration<double> elapsed_seconds = end-start;
     sleep_for(milliseconds(8) - duration_cast<milliseconds>(elapsed_seconds));
-    if (testColPropVoit2(J1.getTerrain().getProp(1),V1)) cout<<"collision vectorielle"<<endl;
-    fin = testColPropVoit(J1.getTerrain().getProp(1),V1);
+    bool testFin = testColPropVoit(J1.getTerrain().getProp(1),V1);
+    if (testFin) cout<<"collision vectorielle"<<endl;
+    fin = testFin;
   }
-  cout << "Vous aveez tapé un mur à " << V1.getVitesse()*3.6 << "km/h ! Vous êtes morts !" << endl;
+  cout << "Vous aveez tapé un mur à " << V1.getVitesse()*3.6 << "km/h ! J'espère que vous aviez bien attaché la ceinture de sécurité !" << endl;
   
   return 0;
 }
