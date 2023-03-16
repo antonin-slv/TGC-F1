@@ -50,7 +50,7 @@ int main(){
     
     fin = testColPropVoit(J1.getTerrain().getProp(1),V1);
   }
-  cout << "Vous aveez tapé un mur à " << V1.getVitesse()*3.6 << "km/h ! Vous êtes morts !" << endl;
+  cout << "Vous aveez tapé un mur à " << V1.getVitesse()*3.6 << "km/h ! J'espère que vous aviez bien attaché la ceinture de sécurité !" << endl;
   
   return 0;
 }
