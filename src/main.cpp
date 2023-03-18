@@ -34,20 +34,20 @@ int main(){
   J1.setframe_time(0.008);
   //sleep_for(milliseconds(2000));
   termClear();
-  WinTXT win(J1.getTerrain().getLongueur()+5,J1.getTerrain().getLargeur()+5);
+  WinTXT win(J1.getTerrain().getLongueur()+15,J1.getTerrain().getLargeur()+10);
  
   while (!fin){
     
     time_point<system_clock> start, end;
     start = system_clock::now();
 
-    i+=0.0167;
-
-    fin = J1.update('z');
+    i+=0.008;
+    char a = win.getCh();
+    fin = J1.update(a);
 
    if (true)
     {
-      win.clear(' ');
+      win.clear('.');
       Vecteur temp;
       for (int x = 0; x < J1.getTerrain().getLongueur(); x++)
       { for (int y = 0; y < J1.getTerrain().getLargeur(); y++)
@@ -70,7 +70,8 @@ int main(){
     //termMove(J1.getTerrain().getLongueur(),J1.getTerrain().getLargeur());
       cout << i << "s" << endl
            << "vitesse : " << J1.getVoiture(0).getVitesse()*3.6 << "km/h " << endl
-           << "position : " << J1.getVoiture(0).getX() << " " << J1.getVoiture(0).getY() << endl;
+           << "position : " << J1.getVoiture(0).getX() << " " << J1.getVoiture(0).getY() << endl
+           << a << endl;
     
     end = system_clock::now();
     duration<double> elapsed_seconds = end-start;
