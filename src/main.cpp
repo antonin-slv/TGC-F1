@@ -45,24 +45,28 @@ int main(){
 
     fin = J1.update('z');
 
-    if (true)
+   if (true)
     {
       win.clear(' ');
-    
+      Vecteur temp;
       for (int x = 0; x < J1.getTerrain().getLongueur(); x++)
       { for (int y = 0; y < J1.getTerrain().getLargeur(); y++)
         { for (int i = 0; i < J1.getTerrain().getNbProps(); i++)
-          { if (test_point_in_box(Vecteur(x,y)-J1.getTerrain().getProp(i).getPos(),J1.getTerrain().getProp(i).getHitbox()))
-            { win.print(x,y,'P'); }   
+          { //cout<<"prop";
+            temp = Vecteur(x,y) - J1.getTerrain().getProp(i).getPos();
+            temp.tourner( J1.getTerrain().getProp(i).getRotation());
+            if (test_point_in_box( temp, J1.getTerrain().getProp(i).getHitbox() ))
+            { win.print(x,y,'P'); }
           }
-          if (test_point_in_box(Vecteur(x,y)-J1.getVoiture(0).getPos(),J1.getVoiture(0).getHitbox()))
+          temp=Vecteur(x,y)-J1.getVoiture(0).getPos();
+          temp.tourner( J1.getVoiture(0).getAngle() );
+          if (test_point_in_box(temp,J1.getVoiture(0).getHitbox()))
           { win.print(x,y,'V'); }
         }
       }
       win.draw();
     
     }
-
     //termMove(J1.getTerrain().getLongueur(),J1.getTerrain().getLargeur());
       cout << i << "s" << endl
            << "vitesse : " << J1.getVoiture(0).getVitesse()*3.6 << "km/h " << endl
