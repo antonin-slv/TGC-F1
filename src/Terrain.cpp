@@ -62,7 +62,7 @@ bool Props::chargerJSON(json const & obj)
     if (obj["rotation"].type() == json::value_t::null) rotation=0;
     else rotation = obj["rotation"];
     if (obj["l"].type() == json::value_t::null) hitbox.x=0;
-    else hitbox.y = obj["l"];
+    else hitbox.x = obj["l"];
     if (obj["L"].type() == json::value_t::null) hitbox.y=0;
     else hitbox.y = obj["L"];
     
