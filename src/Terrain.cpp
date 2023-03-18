@@ -77,10 +77,10 @@ Terrain::Terrain()
     nb_props = 0;
 }
 
-Terrain::Terrain(int l, int h, int nb)
+Terrain::Terrain(int lon, int haut, int nb)
 {   
-    largeur = l;
-    longueur = h;
+    largeur = haut;
+    longueur = lon;
     nb_props = nb;
     vector<Props> tab_props(nb_props);
 }
@@ -120,6 +120,7 @@ void Terrain::chargerJSON(string const & path){
     nb_props-=j;
     if (j> 0)cout<<j<<" props corrompus"<<endl;
     fichier.close();
+    
 }
 
 Props & Terrain::getProp(int i)

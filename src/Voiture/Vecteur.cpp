@@ -28,7 +28,10 @@ float Vecteur::getNorme() const
 {
     return sqrt(x*x + y*y);
 }
-
+float Vecteur::getNorme2() const
+{
+    return x*x + y*y;
+}
 float Vecteur::getRotation() const
 {
     return atan2(y, x);
@@ -47,5 +50,10 @@ Vecteur operator+(Vecteur a, Vecteur b)
 Vecteur operator-(Vecteur a, Vecteur b)
 {
     return Vecteur(a.x-b.x, a.y-b.y);
+}
+
+Vecteur operator*(Vecteur a, float b)
+{
+    return Vecteur(a.x*b, a.y*b);
 }
 

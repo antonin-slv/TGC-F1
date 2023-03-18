@@ -20,7 +20,6 @@ void afficherTerrainTxt(Terrain & terrain)
     {
         cout << i << " : ";
         afficherPropsTxt(terrain.getProp(i));
-        
     }
 }
 
@@ -30,4 +29,10 @@ void afficherVoitureTxt(Voiture & voit)
     cout<<voit.getVitesse()*3.6 << " km/h ";
     cout<<" with : "<<voit.getAngle()*180/M_PI<<"°"<<endl;
 
+}
+
+
+void afficherJeuFTXT(Jeu & jeu)
+{   
+    
 }

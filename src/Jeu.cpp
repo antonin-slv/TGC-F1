@@ -7,7 +7,7 @@
 
 Jeu::Jeu()
 {   
-    terrain=Terrain();
+    terrain=Terrain(100,30);
     nb_voit = 1;
     tab_voit = vector<Voiture>(nb_voit);
     frame_time = 0.0167;

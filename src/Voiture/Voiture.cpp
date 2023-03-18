@@ -139,6 +139,6 @@ void Voiture::freiner(float dt)
 void Voiture::crash(Vecteur diff, float anglemur)
 {   
     vitesse = vitesse * cos(anglemur - angle);
-    position = position + diff;
+    position = position - diff*0.1;
     angle = anglemur + M_PI - angle;
 }

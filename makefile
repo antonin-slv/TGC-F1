@@ -19,14 +19,17 @@ voiture : obj/Voiture.o
 
 editeur : obj/Editeur.o
 
-$(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o
-	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o -o $(EXECUTABLE)
+$(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o
+	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o -o $(EXECUTABLE)
 
-obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h
+obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h src/winTxt.h
 	$(CC) $(CFLAGS) -c src/main.cpp -o obj/main.o
 
-obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h
+obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h src/winTxt.h
 	$(CC) $(CFLAGS) -c src/Affichage.cpp -o obj/Affichage.o
+
+obj/winTxt.o: src/winTxt.cpp src/winTxt.h
+	$(CC) $(CFLAGS) -c src/winTxt.cpp -o obj/winTxt.o
 
 obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o

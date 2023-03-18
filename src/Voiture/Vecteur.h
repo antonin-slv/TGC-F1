@@ -18,6 +18,7 @@ class Vecteur
 
         void setVecteur(float norme, float rotation);
         float getNorme() const;
+        float getNorme2() const;
         float getRotation() const;
         void tourner(float angle=0);
 };
@@ -27,6 +28,7 @@ class Vecteur
 
 Vecteur operator+(Vecteur a, Vecteur b);
 Vecteur operator-(Vecteur a, Vecteur b);
+Vecteur operator*(Vecteur a, float b);
 
 
 
