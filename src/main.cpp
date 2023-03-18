@@ -34,7 +34,7 @@ int main(){
   J1.setframe_time(0.008);
   //sleep_for(milliseconds(2000));
   termClear();
-  WinTXT win(J1.getTerrain().getLongueur()*1.5,J1.getTerrain().getLargeur()*1.5);
+  WinTXT win(J1.getTerrain().getLongueur()+5,J1.getTerrain().getLargeur()+5);
  
   while (!fin){
     
@@ -49,8 +49,8 @@ int main(){
     {
       win.clear(' ');
     
-      for (int x = 0; x < J1.getTerrain().getLongueur()*1.5; x++)
-      { for (int y = 0; y < J1.getTerrain().getLargeur()*1.5; y++)
+      for (int x = 0; x < J1.getTerrain().getLongueur(); x++)
+      { for (int y = 0; y < J1.getTerrain().getLargeur(); y++)
         { for (int i = 0; i < J1.getTerrain().getNbProps(); i++)
           { if (test_point_in_box(Vecteur(x,y)-J1.getTerrain().getProp(i).getPos(),J1.getTerrain().getProp(i).getHitbox()))
             { win.print(x,y,'P'); }   
