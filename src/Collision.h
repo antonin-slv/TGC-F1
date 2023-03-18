@@ -11,6 +11,7 @@ using namespace std;
 bool test_point_in_box(float x, float y, float l, float L);
 bool test_point_in_box(Vecteur point, Vecteur box);
 
+bool test_colPointbox(Vecteur point, Vecteur const & position, Vecteur const &  box, float Rotation);
 //test si 8 points de la voiture sont dans le props
 bool testColPropVoit2(Props & prop, Voiture & voit);//ancienne methide
 bool testColPropVoit(Props & prop, Voiture & voit);//utilise vecteurs

@@ -14,8 +14,8 @@ Voiture::Voiture()
     roue = new Roues();
     vitesse = 0;
     angle = 0;
-    position = Vecteur();
-    hitbox = Vecteur(1,2.5);
+    position = Vecteur(0,10);
+    hitbox = Vecteur(2.5,1);
     poids = 796;
     coef_aero = 0.14;
     acceleration=0;

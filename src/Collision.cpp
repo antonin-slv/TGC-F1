@@ -5,10 +5,16 @@
 #include "Voiture/Vecteur.h"
 
 bool test_point_in_box(float x, float y, float l, float L)
-{   return  (x >= - L && x <= L && y >= - l && y<= l);
+{   return  (x >= - l && x <= l && y >= - L && y<= L);
 }
 bool test_point_in_box(Vecteur point, Vecteur box)
-{   return test_point_in_box(point.x, point.y, box.x, box.y);
+{   return (point.x >= - box.x && point.x <= box.x && point.y >= - box.y && point.y <= box.y);
+}
+
+bool test_colPointbox(Vecteur point, Vecteur const &  box, float Rotation)
+{   point = point;
+    point.tourner(-Rotation);
+    return test_point_in_box(point,box);
 }
 
 bool testColPropVoit(Props & prop, Voiture & voit)

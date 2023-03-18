@@ -20,7 +20,7 @@ class Vecteur
         float getNorme() const;
         float getNorme2() const;
         float getRotation() const;
-        void tourner(float angle=0);
+        void tourner(float angle=0);//sens horaire !!!!
 };
        
 
