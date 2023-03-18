@@ -114,7 +114,7 @@ void Voiture::tourner_g(float dt) { tourner_var(-0.6,dt); }
 void Voiture::tourner_d(float dt) { tourner_var(0.6,dt); }
 
 void Voiture::accelerer(float dt)
-{   calculAcc(dt,1);
+{   calculAcc(dt,2);
     calculPosition_precis(dt);
     calculVitesse(dt);
 }
@@ -129,7 +129,7 @@ void Voiture::freiner(float dt)
 {   if (vitesse > 0) calculAcc(dt,-vitesse/150-1);
     else
     {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance()/4);
-        //if (vitesse < -40) vitesse = -40;
+        if (vitesse < -40) vitesse = -40;
     }
     calculPosition_precis(dt);
     calculVitesse(dt);
