@@ -62,6 +62,19 @@ bool Jeu::update(char const & touche)
     case 'l':
         tab_voit[0].freiner(frame_time);
         break;
+    case 'p'://menu pause
+        if (frame_time <= 0.001)
+        {
+            frame_time = 0.0167;
+        }
+        else
+        {
+            frame_time = 0;
+        }
+        break;
+    case 'q':
+        return true;
+        break;
     default:
         tab_voit[0].ralentir(frame_time);
         break;
@@ -72,7 +85,6 @@ bool Jeu::update(char const & touche)
         if (testColPropVoit(terrain.getProp(i), tab_voit[0]))
         {   //si oui, on met à jour la position de la voiture
             collisionPropVoit(terrain.getProp(i), tab_voit[0]);
-            return true;
         }
     }
     return false;

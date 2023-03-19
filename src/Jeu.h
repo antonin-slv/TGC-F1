@@ -29,6 +29,8 @@ class Jeu
         //fonctions de debug
         Terrain &  getTerrain() ;
         Voiture & getVoiture(int i=0);
+        
+
 
         void setframe_time(float const & tps);
 
