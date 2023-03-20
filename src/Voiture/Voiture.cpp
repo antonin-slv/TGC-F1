@@ -8,6 +8,10 @@
 
 using namespace std;
 
+/**
+ * @brief Constructeur par défaut de Voiture, ne prends aucun paramètre
+ * 
+ */
 Voiture::Voiture()
 {
     mot = new Moteur();
@@ -22,6 +26,21 @@ Voiture::Voiture()
     cout << "Construct voiture def" << endl;
 }
 
+/**
+ * @brief Construct a new Voiture:: Voiture object
+ * 
+ * @param M 
+ * @param R 
+ * @param poid 
+ * @param coef 
+ * @param larg 
+ * @param longu 
+ * @param orient 
+ * @param vit 
+ * @param x 
+ * @param y 
+ * @param acc 
+ */
 Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float larg, float longu, float orient, float vit, float x, float y, float acc){
     
     mot = new Moteur(M);
