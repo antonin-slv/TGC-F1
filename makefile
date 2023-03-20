@@ -46,10 +46,10 @@ obj/Collision.o: src/Collision.cpp src/Collision.h $(HVOITURE) src/Terrain.h
 obj/Voiture.o: $(PATH_VOIT)Voiture.cpp $(HVOITURE)
 	$(CC) $(CFLAGS) -c $(PATH_VOIT)Voiture.cpp -o obj/Voiture.o
 
-obj/Moteur.o: $(PATH_VOIT)Moteur.h
+obj/Moteur.o: $(PATH_VOIT)Moteur.h $(PATH_VOIT)Moteur.cpp
 	$(CC) $(CFLAGS) -c $(PATH_VOIT)Moteur.cpp -o obj/Moteur.o
 
-obj/Roues.o: $(PATH_VOIT)Roues.h 
+obj/Roues.o: $(PATH_VOIT)Roues.h $(PATH_VOIT)Roues.cpp
 	$(CC) $(CFLAGS) -c $(PATH_VOIT)Roues.cpp -o obj/Roues.o
 
 obj/Physique.o: $(PATH_VOIT)Physique.cpp $(PATH_VOIT)Physique.h
