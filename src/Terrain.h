@@ -12,6 +12,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+/** @brief Les "tip" (types) de props */
 enum Tip : int
 {   nondef=0,
     arbre=1,
@@ -25,6 +26,10 @@ enum Tip : int
     route_h_b=16,   
 };
 
+/** 
+ * @brief La classe Props
+ * 
+ */
 class Props
 {   public:
 
@@ -36,23 +41,42 @@ class Props
         Tip type;
 
     public:
-        Props();
+        Props(); /** \brief Constructeur par défaut \return Props */
+
+        /** \brief Constructeur avec paramètres
+         * \param px Position en x
+         * \param py Position en y
+         * \param t Type de props
+         * \param rot Rotation du props
+         * \param l Largeur du props
+         * \param L Longueur du props
+         * \return Props
+         */
         Props(int px, int py, Tip t, float rot=0,float l=0, float L=0);
         
-        float getX() const;
-        float getY() const;
-        Vecteur getPos() const;
-        float getRotation() const;
-        float getLarg() const;
-        float getLong() const;
-        Vecteur getHitbox() const;
-        Tip getType() const;
+        float getX() const; /** \brief Retourne la position en x \return float */
+        float getY() const; /** \brief Retourne la position en y \return float */
+        Vecteur getPos() const; /** \brief Retourne la position \return Vecteur */
+        float getRotation() const; /** \brief Retourne la rotation \return float */
+        float getLarg() const; /** \brief Retourne la largeur \return float */
+        float getLong() const; /** \brief Retourne la longueur \return float */
+        Vecteur getHitbox() const; /** \brief Retourne la hitbox \return Vecteur */
+        Tip getType() const; /** \brief Retourne le type \return Tip */
         
-        void prop_set_type(Tip t);
+        void prop_set_type(Tip t); /** \brief Donne le type \param t Type \return void */
+
+        /** \brief Donne la position
+         * \param px Position en x
+         * \param py Position en y
+         */
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
-        bool chargerJSON(json const & obj);
+        bool chargerJSON(json const & obj); /** \brief Charge les données depuis un fichier JSON \param obj Objet JSON \return bool */
 };
 
+/** 
+ * @brief La classe du Terrain
+ * 
+ */
 class Terrain
 {   private:
         int largeur;//en m

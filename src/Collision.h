@@ -7,16 +7,65 @@
 #include <iostream>
 using namespace std;
 
-//teste si un point est dans une rectangle centré ed largeur L et de longueur l
+/**
+ * @brief Teste si un point est dans un rectangle
+ * 
+ * @param x 
+ * @param y 
+ * @param l 
+ * @param L
+ * @return bool
+ */
 bool test_point_in_box(float x, float y, float l, float L);
+
+/**
+ * @brief Teste si un point est dans un rectangle via les vecteurs
+ * 
+ * @param point 
+ * @param box 
+ * @return bool
+ */
 bool test_point_in_box(Vecteur point, Vecteur box);
 
+/**
+ * @brief Teste si un point est dans un rectangle via les vecteurs
+ * 
+ * @param point 
+ * @param position 
+ * @param box 
+ * @param Rotation 
+ * @return bool
+ */
 bool test_colPointbox(Vecteur point, Vecteur const & position, Vecteur const &  box, float Rotation);
-//test si 8 points de la voiture sont dans le props
-bool testColPropVoit2(Props & prop, Voiture & voit);//ancienne methide
-bool testColPropVoit(Props & prop, Voiture & voit);//utilise vecteurs
 
-//donne les effets de collision entre une voiture et un props
+/**
+ * @brief Teste si 8 points sont dans un rectangle (ancienne méthode)
+ * 
+ * @param voit 
+ * @param position 
+ * @param box 
+ * @param Rotation 
+ * @return bool
+ */
+bool testColPropVoit2(Props & prop, Voiture & voit);
+
+/**
+ * @brief Teste si 8 points sont dans un rectangle (avec les vecteurs)
+ * 
+ * @param voit 
+ * @param position 
+ * @param box 
+ * @param Rotation 
+ * @return bool
+ */
+bool testColPropVoit(Props & prop, Voiture & voit);
+
+/**
+ * @brief Applique les effets de collision entre la voiture et le prop
+ * 
+ * @param prop 
+ * @param voit 
+ */
 void collisionPropVoit(Props & prop, Voiture & voit);
 
 
