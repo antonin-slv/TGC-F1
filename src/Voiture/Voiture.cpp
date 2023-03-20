@@ -109,9 +109,9 @@ void Voiture::tourner_var(float angle_roue_rad, float dt)
     //le else est un ajout pour que la voiture ne tourne pas à l'arrêt
 }
 
-void Voiture::tourner_g(float dt) { tourner_var(-0.6,dt); }
+void Voiture::tourner_g(float dt) { tourner_var(-1,dt); }
 
-void Voiture::tourner_d(float dt) { tourner_var(0.6,dt); }
+void Voiture::tourner_d(float dt) { tourner_var(1,dt); }
 
 void Voiture::accelerer(float dt)
 {   calculAcc(dt,2);
@@ -126,7 +126,7 @@ void Voiture::ralentir(float dt)
 }
 
 void Voiture::freiner(float dt)
-{   if (vitesse > 0) calculAcc(dt,-vitesse/150-1);
+{   if (vitesse > 0) acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance());
     else
     {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance()/4);
         if (vitesse < -40) vitesse = -40;
