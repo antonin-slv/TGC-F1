@@ -1,0 +1,148 @@
+\hypertarget{classJeu}{}\doxysection{Jeu Class Reference}
+\label{classJeu}\index{Jeu@{Jeu}}
+
+
+Classe du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Jeu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJeu_afc67a177622f4ef264a376ef1f75ba1b}{Jeu}} (string const \&nom\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJeu_a9cd19e73df169d7f09397be61ba8548c}{$\sim$\+Jeu}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}\label{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}} 
+\mbox{\hyperlink{classTerrain}{Terrain}} \& \mbox{\hyperlink{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}{get\+Terrain}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVoiture}{Voiture}} \& \mbox{\hyperlink{classJeu_a1348607f76e505e28c78c74a775f2723}{get\+Voiture}} (int i=0)
+\begin{DoxyCompactList}\small\item\em Debug pour tenter de charger un terrain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a988460e745f29d87e906426398defd29}{setframe\+\_\+time}} (float const \&tps)
+\begin{DoxyCompactList}\small\item\em Debug pour tenter de charger une voiture (non fait) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a560639838f39e1efccdbfbcc58b55c4a}{Charger\+Terrain}} (string const \&nom\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em Définit le temps d\textquotesingle{}une frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_adb2cf017710624992195dbd9555da8d3}{Ajouter\+Voiture}} (\mbox{\hyperlink{classVoiture}{Voiture}} const \&V)
+\begin{DoxyCompactList}\small\item\em Charge un terrain. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJeu_af495db0e53f321a43a83b3e8041b8415}{update}} (char const \&touche)
+\begin{DoxyCompactList}\small\item\em Ajoute une voiture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classJeu_afc67a177622f4ef264a376ef1f75ba1b}\label{classJeu_afc67a177622f4ef264a376ef1f75ba1b}} 
+\index{Jeu@{Jeu}!Jeu@{Jeu}}
+\index{Jeu@{Jeu}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{Jeu()}{Jeu()}}
+{\footnotesize\ttfamily Jeu\+::\+Jeu (\begin{DoxyParamCaption}\item[{string const \&}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+Constructeur par défaut. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classJeu}{Jeu}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJeu_a9cd19e73df169d7f09397be61ba8548c}\label{classJeu_a9cd19e73df169d7f09397be61ba8548c}} 
+\index{Jeu@{Jeu}!````~Jeu@{$\sim$Jeu}}
+\index{````~Jeu@{$\sim$Jeu}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Jeu()}{~Jeu()}}
+{\footnotesize\ttfamily Jeu\+::$\sim$\+Jeu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur avec paramètres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Nom du fichier à charger \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classJeu}{Jeu}} 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJeu_adb2cf017710624992195dbd9555da8d3}\label{classJeu_adb2cf017710624992195dbd9555da8d3}} 
+\index{Jeu@{Jeu}!AjouterVoiture@{AjouterVoiture}}
+\index{AjouterVoiture@{AjouterVoiture}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{AjouterVoiture()}{AjouterVoiture()}}
+{\footnotesize\ttfamily void Jeu\+::\+Ajouter\+Voiture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVoiture}{Voiture}} const \&}]{V }\end{DoxyParamCaption})}
+
+
+
+Charge un terrain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom\+\_\+fichier} & Nom du fichier à charger, passé par référence \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJeu_a560639838f39e1efccdbfbcc58b55c4a}\label{classJeu_a560639838f39e1efccdbfbcc58b55c4a}} 
+\index{Jeu@{Jeu}!ChargerTerrain@{ChargerTerrain}}
+\index{ChargerTerrain@{ChargerTerrain}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{ChargerTerrain()}{ChargerTerrain()}}
+{\footnotesize\ttfamily void Jeu\+::\+Charger\+Terrain (\begin{DoxyParamCaption}\item[{string const \&}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+Définit le temps d\textquotesingle{}une frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tps} & Temps d\textquotesingle{}une frame \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJeu_a1348607f76e505e28c78c74a775f2723}\label{classJeu_a1348607f76e505e28c78c74a775f2723}} 
+\index{Jeu@{Jeu}!getVoiture@{getVoiture}}
+\index{getVoiture@{getVoiture}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{getVoiture()}{getVoiture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVoiture}{Voiture}} \& Jeu\+::get\+Voiture (\begin{DoxyParamCaption}\item[{int}]{i = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Debug pour tenter de charger un terrain. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classTerrain}{Terrain}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJeu_a988460e745f29d87e906426398defd29}\label{classJeu_a988460e745f29d87e906426398defd29}} 
+\index{Jeu@{Jeu}!setframe\_time@{setframe\_time}}
+\index{setframe\_time@{setframe\_time}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{setframe\_time()}{setframe\_time()}}
+{\footnotesize\ttfamily void Jeu\+::setframe\+\_\+time (\begin{DoxyParamCaption}\item[{float const \&}]{tps }\end{DoxyParamCaption})}
+
+
+
+Debug pour tenter de charger une voiture (non fait) 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classVoiture}{Voiture}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJeu_af495db0e53f321a43a83b3e8041b8415}\label{classJeu_af495db0e53f321a43a83b3e8041b8415}} 
+\index{Jeu@{Jeu}!update@{update}}
+\index{update@{update}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily int Jeu\+::update (\begin{DoxyParamCaption}\item[{char const \&}]{touche }\end{DoxyParamCaption})}
+
+
+
+Ajoute une voiture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & \mbox{\hyperlink{classVoiture}{Voiture}} à ajouter, passé par référence \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/ninot/\+Documents/\+COURS/\+S4/\+LIFAP4/jeu course/src/Jeu.\+h\item 
+/mnt/c/\+Users/ninot/\+Documents/\+COURS/\+S4/\+LIFAP4/jeu course/src/Jeu.\+cpp\end{DoxyCompactItemize}
