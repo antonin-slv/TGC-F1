@@ -2,10 +2,12 @@ CFLAGS = -Wall -g
 CC = g++
 
 PATH_VOIT = src/Voiture/
+EXTERNAL = src/External/
+
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
-HINTERFACE = src/Affichage.h src/Menu.h
+HINTERFACE = src/Affichage.h src/Menu.h 
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
@@ -22,14 +24,14 @@ editeur : obj/Editeur.o
 $(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o
 	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o -o $(EXECUTABLE)
 
-obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h src/winTxt.h
+obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c src/main.cpp -o obj/main.o
 
-obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h src/winTxt.h
+obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c src/Affichage.cpp -o obj/Affichage.o
 
-obj/winTxt.o: src/winTxt.cpp src/winTxt.h
-	$(CC) $(CFLAGS) -c src/winTxt.cpp -o obj/winTxt.o
+obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
+	$(CC) $(CFLAGS) -c $(EXTERNAL)winTxt.cpp -o obj/winTxt.o
 
 obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o
@@ -37,7 +39,7 @@ obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
 	$(CC) $(CFLAGS) -c src/Editeur.cpp -o obj/Editeur.o
 
-obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h
+obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h 
 	$(CC) $(CFLAGS) -c src/Terrain.cpp -o obj/Terrain.o
 
 obj/Collision.o: src/Collision.cpp src/Collision.h $(HVOITURE) src/Terrain.h

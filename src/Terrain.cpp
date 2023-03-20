@@ -1,8 +1,10 @@
+#include "Terrain.h"
+
+#include "External/json.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Terrain.h"
-#include "json.hpp"
 #include <vector>
 
 using namespace std;
@@ -97,7 +99,7 @@ void Terrain::chargerJSON(string const & path){
     
     ifstream fichier(path);
     if (!fichier.good())
-    {
+    {   nb_props = 0;
         cout << "Erreur lors de l'ouverture du fichier" << endl;
         return;
     }
