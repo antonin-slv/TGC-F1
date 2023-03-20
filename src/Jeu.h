@@ -6,6 +6,7 @@
 #include "Voiture/Voiture.h"
 #include "Voiture/Physique.h"
 #include "Collision.h"
+#include "External/json.hpp"
 
 #include <iostream>
 #include <vector>

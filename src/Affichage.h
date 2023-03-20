@@ -6,7 +6,7 @@
 #include "Menu.h"
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
-#include "winTxt.h"
+#include "External/winTxt.h"
 
 
 //plus ou moins ok -> j'ai pas compris pourquoi on peut pas mettre de const devant terrain...

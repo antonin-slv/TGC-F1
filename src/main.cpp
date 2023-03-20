@@ -14,8 +14,8 @@
 #include "Affichage.h"
 #include "Collision.h"
 
-#include "json.hpp"
-#include "winTxt.h"
+#include "External/json.hpp"
+#include "External/winTxt.h"
 
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // milliseconds, system_clock, seconds
@@ -32,7 +32,7 @@ int main(){
   cout<<"Terrain du jeu :"<<endl;
   afficherTerrainTxt(J1.getTerrain());
   cout << "init ok" << endl;
-
+  sleep_for(milliseconds(2000));
   bool fin = false;
   float i = 0;
   J1.setframe_time(0.016);
