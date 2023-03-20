@@ -10,8 +10,8 @@ using namespace std;
 
 Voiture::Voiture()
 {
-    mot = new Moteur();
-    roue = new Roues();
+    mot = Moteur();
+    roue = Roues();
     vitesse = 0;
     angle = 0;
     position = Vecteur(0,10);
@@ -19,13 +19,13 @@ Voiture::Voiture()
     poids = 796;
     coef_aero = 0.14;
     acceleration=0;
-    cout << "Construct voiture def" << endl;
+    //cout << "Construct voiture def" << endl;
 }
 
 Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, float larg, float longu, float orient, float vit, float x, float y, float acc){
     
-    mot = new Moteur(M);
-    roue = new Roues(R);
+    mot = Moteur(M);
+    roue = Roues(R);
     vitesse=vit;
     angle=orient;
     position=Vecteur(x,y);
@@ -34,12 +34,12 @@ Voiture::Voiture(const Moteur & M, const Roues & R, float poid, float coef, floa
     coef_aero = coef;
     acceleration=acc;
     
-    cout << "Construct voiture" << endl;
+    //cout << "Construct voiture" << endl;
 }
 
 Voiture::Voiture(const Voiture & V){
-    mot = new Moteur(*V.mot);
-    roue = new Roues(*V.roue);
+    mot =V.mot;
+    roue = V.roue;
 
     vitesse = V.vitesse;
     angle = V.angle;
@@ -49,18 +49,14 @@ Voiture::Voiture(const Voiture & V){
     coef_aero = V.coef_aero;
     hitbox = V.hitbox;
     acceleration=V.acceleration;
-    cout << "Construct voiture" << endl;
+    //cout << "Construct voiture" << endl;
 }
-
 Voiture::~Voiture(){
-    if (mot != nullptr) delete mot;
-    if (roue != nullptr) delete roue;
-    cout << "Destruct voiture" << endl;
-}
+    //cout << "Destruct voiture" << endl;
+}	
+const Moteur & Voiture::getMoteur() const { return mot; }
 
-Moteur * Voiture::getMoteur() const { return mot; }
-
-Roues * Voiture::getRoues() const { return roue; }
+const Roues & Voiture::getRoues() const { return roue; }
 
 float Voiture::getVitesse() const { return vitesse; }
 
@@ -84,7 +80,7 @@ Vecteur Voiture::getPos() const { return position; }
 
 void Voiture::calculAcc(float dt,float theta)
 {
-    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot->getPuissance()*theta);
+    acceleration = calculAcceleration(vitesse,poids,coef_aero,mot.getPuissance()*theta);
 }
 
 void Voiture::calculVitesse(float dt)
@@ -126,9 +122,9 @@ void Voiture::ralentir(float dt)
 }
 
 void Voiture::freiner(float dt)
-{   if (vitesse > 0) acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance());
+{   if (vitesse > 0) acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot.getPuissance());
     else
-    {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot->getPuissance()/4);
+    {   acceleration = calculAcceleration(vitesse,poids,coef_aero*10,-mot.getPuissance()/4);
         if (vitesse < -40) vitesse = -40;
     }
     calculPosition_precis(dt);

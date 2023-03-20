@@ -39,7 +39,7 @@ class Jeu
         
 
         //retirer le bool a terme ?
-        bool update(char const & touche);
+        int update(char const & touche);
     
 };
 

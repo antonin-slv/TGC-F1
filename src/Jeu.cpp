@@ -28,7 +28,11 @@ void Jeu::setframe_time(float const & tps) { frame_time = tps; }
 
 void Jeu::ChargerTerrain(string const & nom_fichier) { terrain.chargerJSON(nom_fichier); }
 
-Jeu::~Jeu() { tab_voit.clear();}
+Jeu::~Jeu() { 
+    cout<<"debut destruction jeu"<<endl;
+    //tab_voit.clear();
+    cout<<"fin destruction jeu"<<endl;
+}
 
 Terrain & Jeu::getTerrain() { return terrain; }
 
@@ -41,7 +45,7 @@ void Jeu::AjouterVoiture(Voiture const & V)
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 
-bool Jeu::update(char const & touche)
+int Jeu::update(char const & touche)
 {   //on met à jour la position de la voiture
     //tab_voit[0].update(frame_time, touche);
 
@@ -62,19 +66,6 @@ bool Jeu::update(char const & touche)
     case 'l':
         tab_voit[0].freiner(frame_time);
         break;
-    case 'p'://menu pause
-        if (frame_time <= 0.001)
-        {
-            frame_time = 0.0167;
-        }
-        else
-        {
-            frame_time = 0;
-        }
-        break;
-    case 'q':
-        return true;
-        break;
     default:
         tab_voit[0].ralentir(frame_time);
         break;
@@ -87,5 +78,5 @@ bool Jeu::update(char const & touche)
             collisionPropVoit(terrain.getProp(i), tab_voit[0]);
         }
     }
-    return false;
+    return 3;
 }

@@ -15,8 +15,8 @@ class Voiture {
 
     private:
 
-        Moteur * mot;
-        Roues * roue;
+        Moteur mot;
+        Roues roue;
 
         Vecteur position;
         Vecteur hitbox;
@@ -35,8 +35,8 @@ class Voiture {
         Voiture(const Voiture & V);
         ~Voiture();
 
-        Moteur * getMoteur() const;
-        Roues * getRoues() const;
+        const Moteur & getMoteur() const;
+        const Roues & getRoues() const;
         float getVitesse() const;
         float getAngle() const;
         float getPoids() const;
