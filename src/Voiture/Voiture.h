@@ -32,14 +32,17 @@ class Voiture {
         float poids, coef_aero;
 
         /** \brief Actualise l'accélération de la voiture \param dt Delta temps \param theta Angle de la voiture */
-        void calculAcc(float dt=1,float theta=1); 
-        void calculVitesse(float dt=1); /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
-        void calculPosition(float dt=1); /** \brief Actualise la position de la voiture \param dt Delta temps */
-        void calculPosition_precis(float dt=1); /** \brief Actualise la position de la voiture (plus précis) \param dt Delta temps */
+        void calculAcc(float dt=1,float theta=1);
+        /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
+        void calculVitesse(float dt=1); 
+        /** \brief Actualise la position de la voiture \param dt Delta temps */
+        void calculPosition(float dt=1); 
+        /** \brief Actualise la position de la voiture (plus précis) \param dt Delta temps */
+        void calculPosition_precis(float dt=1); 
 
     public:
-
-        Voiture(); /** \brief Constructeur par défaut */
+        /** \brief Constructeur par défaut */
+        Voiture(); 
         
         /** \brief Constructeur avec paramètres
          * \param m Moteur de la voiture
@@ -57,34 +60,53 @@ class Voiture {
          */
         Voiture(const Moteur & m,const Roues & r, float poi, float coef,float largeur,float longu, float orient=M_PI/2, float vit=0, float x=0,
                 float y=0, float acc=0);
-        Voiture(const Voiture & V); /** \brief Constructeur par copie \param V Voiture à copier, passée par référence \return Voiture */
-        ~Voiture(); /** \brief Destructeur de Voiture */
+        /** \brief Constructeur par copie \param V Voiture à copier, passée par référence \return Voiture */
+        Voiture(const Voiture & V);
+         /** \brief Destructeur de Voiture */
+        ~Voiture();
 
-        const Moteur & getMoteur() const; /** \brief Retourne le moteur de la voiture \return Moteur */
-        const Roues & getRoues() const; /** \brief Retourne les roues de la voiture \return Roues */
-        float getVitesse() const; /** \brief Retourne la vitesse de la voiture \return float */
-        float getAngle() const; /** \brief Retourne l'angle de la voiture \return float */
-        float getPoids() const; /** \brief Retourne le poids de la voiture \return float */
-        float getCoefAero() const; /** \brief Retourne le coefficient aérodynamique de la voiture \return float */
-        float getX() const; /** \brief Retourne la position x de la voiture \return float */
-        float getY() const; /** \brief Retourne la position y de la voiture \return float */
-        Vecteur getPos() const; /** \brief Retourne la position de la voiture \return Vecteur */
+        /** \brief Retourne le moteur de la voiture \return Moteur */
+        const Moteur & getMoteur() const;
+        /** \brief Retourne les roues de la voiture \return Roues */ 
+        const Roues & getRoues() const;
+        /** \brief Retourne la vitesse de la voiture \return float */
+        float getVitesse() const;
+        /** \brief Retourne l'angle de la voiture \return float */
+        float getAngle() const;
+        /** \brief Retourne le poids de la voiture \return float */
+        float getPoids() const;
+        /** \brief Retourne le coefficient aérodynamique de la voiture \return float */
+        float getCoefAero() const;
+        /** \brief Retourne la position x de la voiture \return float */
+        float getX() const;
+         /** \brief Retourne la position y de la voiture \return float */
+        float getY() const;
+        /** \brief Retourne le vecteur position de la voiture \return Vecteur */
+        Vecteur getPos() const; 
 
-        Vecteur getHitbox() const; /** \brief Retourne la hitbox de la voiture \return Vecteur */
-        float getLargeur() const; /** \brief Retourne la largeur de la voiture \return float */
-        float getLongueur() const; /** \brief Retourne la longueur de la voiture \return float */
+        /** \brief Retourne le vecteur hitbox de la voiture \return Vecteur */
+        Vecteur getHitbox() const;
+        /** \brief Retourne la largeur de la voiture \return float */
+        float getLargeur() const; 
+        /** \brief Retourne la longueur de la voiture \return float */
+        float getLongueur() const; 
 
-        void accelerer(float dt=1); /** \brief Accélère la voiture \param dt Temps durant lequel la voiture est accélérée */
-        void ralentir(float dt=1); /** \brief Ralentit la voiture \param dt Temps durant lequel la voiture est ralentie */
-        void freiner(float dt=1); /** \brief Freine la voiture \param dt Temps durant lequel la voiture est freinée */
+        /** \brief Accélère la voiture \param dt Temps durant lequel la voiture est accélérée */
+        void accelerer(float dt=1);
+        /** \brief Ralentit la voiture \param dt Temps durant lequel la voiture est ralentie */
+        void ralentir(float dt=1);
+        /** \brief Freine la voiture \param dt Temps durant lequel la voiture est freinée */
+        void freiner(float dt=1); 
         
         /** \brief Tourne la voiture
          * \param angle_roue_rad Angle de rotation des roues
          * \param dt Temps durant lequel la voiture est tournée
          */
         void tourner_var(float angle_roue_rad,float dt=1);
-        void tourner_g(float dt=1); /** \brief Tourne la voiture vers la gauche \param dt Temps durant lequel la voiture est tournée */
-        void tourner_d(float dt=1); /** \brief Tourne la voiture vers la droite \param dt Temps durant lequel la voiture est tournée */
+        /** \brief Tourne la voiture vers la gauche \param dt Temps durant lequel la voiture est tournée */
+        void tourner_g(float dt=1);
+        /** \brief Tourne la voiture vers la droite \param dt Temps durant lequel la voiture est tournée */ 
+        void tourner_d(float dt=1); 
 
         /** \brief Gère les collisions avec les murs
          * \param diff Vecteur de différence entre la voiture et le mur
