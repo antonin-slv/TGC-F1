@@ -25,25 +25,33 @@ class Jeu
         int nb_voit;
 
     public:
-        Jeu(); /** \brief Constructeur par défaut \return Jeu */
-        Jeu(string const & nom_fichier); /** \brief Constructeur avec paramètres \param nom_fichier Nom du fichier à charger \return Jeu */
-        ~Jeu(); /** \brief Destructeur */
+         /** \brief Constructeur par défaut \return Jeu */
+        Jeu();
+         /** \brief Constructeur avec paramètres \param nom_fichier Nom du fichier à charger \return Jeu */
+        Jeu(string const & nom_fichier);
+         /** \brief Destructeur */
+        ~Jeu();
 
         //ajouter chargement voiture
 
         //fonctions de debug
-        Terrain &  getTerrain(); /** \brief Debug pour tenter de charger un terrain \return Terrain */
-        Voiture & getVoiture(int i=0); /** \brief Debug pour tenter de charger une voiture (non fait) \return Voiture */
+         /** \brief Debug pour tenter de charger un terrain \return Terrain */
+        Terrain &  getTerrain();
+         /** \brief Debug pour tenter de charger une voiture (non fait) \return Voiture */
+        Voiture & getVoiture(int i=0);
         
 
-
-        void setframe_time(float const & tps); /** \brief Définit le temps d'une frame \param tps Temps d'une frame */
-        void ChargerTerrain(string const & nom_fichier); /** \brief Charge un terrain \param nom_fichier Nom du fichier à charger, passé par référence */
-        void AjouterVoiture(Voiture const & V); /** \brief Ajoute une voiture \param V Voiture à ajouter, passé par référence */
+         /** \brief Définit le temps d'une frame \param tps Temps d'une frame */
+        void setframe_time(float const & tps);
+         /** \brief Charge un terrain \param nom_fichier Nom du fichier à charger, passé par référence */
+        void ChargerTerrain(string const & nom_fichier);
+         /** \brief Ajoute une voiture \param V Voiture à ajouter, passé par référence */
+        void AjouterVoiture(Voiture const & V);
         
 
         //retirer le bool a terme ?
-        int update(char const & touche); /** \brief Met à jour le jeu \param touche Touche appuyée \return int */
+         /** \brief Met à jour le jeu \param touche Touche appuyée \return int */
+        int update(char const & touche);
     
 };
 
