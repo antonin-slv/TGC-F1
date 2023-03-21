@@ -11,11 +11,11 @@ LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
-HINTERFACE = src/AffichageSFML.h src/Menu.h 
+HINTERFACE = src/GestionaireSFML.h src/Menu.h 
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
-OINTERFACE= obj/AffichageSFML.o obj/Menu.o
+OINTERFACE= obj/GestionaireSFML.o obj/Menu.o
 
 EXECUTABLETXT = bin/VroumTXT
 EXECUTABLESFML = bin/VroumSFML
@@ -41,8 +41,8 @@ obj/mainSFML.o: src/mainSFML.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h
 obj/AffichageTXT.o: src/AffichageTXT.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c src/AffichageTXT.cpp -o obj/AffichageTXT.o
 
-obj/AffichageSFML.o: src/AffichageSFML.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h
-	$(CC) $(CFLAGS) -c src/AffichageSFML.cpp $(ISFML) -o obj/AffichageSFML.o
+obj/GestionaireSFML.o: src/GestionaireSFML.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h
+	$(CC) $(CFLAGS) -c src/GestionaireSFML.cpp $(ISFML) -o obj/GestionaireSFML.o
 
 
 obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
