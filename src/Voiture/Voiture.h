@@ -23,16 +23,16 @@ class Voiture {
         Roues roue;
 
         Vecteur position;
-        Vecteur hitbox;
+        Vecteur hitbox; //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
 
         float acceleration;
         float vitesse;
         float angle;
-
-        //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
+        
         float poids, coef_aero;
 
-        void calculAcc(float dt=1,float theta=1); /** \brief Actualise l'accélération de la voiture \param dt Delta temps \param theta Angle de la voiture */
+        /** \brief Actualise l'accélération de la voiture \param dt Delta temps \param theta Angle de la voiture */
+        void calculAcc(float dt=1,float theta=1); 
         void calculVitesse(float dt=1); /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
         void calculPosition(float dt=1); /** \brief Actualise la position de la voiture \param dt Delta temps */
         void calculPosition_precis(float dt=1); /** \brief Actualise la position de la voiture (plus précis) \param dt Delta temps */
