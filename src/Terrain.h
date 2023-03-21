@@ -41,7 +41,8 @@ class Props
         Tip type;
 
     public:
-        Props(); /** \brief Constructeur par défaut \return Props */
+        /** \brief Constructeur par défaut \return Props */
+        Props(); 
 
         /** \brief Constructeur avec paramètres
          * \param px Position en x
@@ -54,23 +55,33 @@ class Props
          */
         Props(int px, int py, Tip t, float rot=0,float l=0, float L=0);
         
-        float getX() const; /** \brief Retourne la position en x \return float */
-        float getY() const; /** \brief Retourne la position en y \return float */
-        Vecteur getPos() const; /** \brief Retourne la position \return Vecteur */
-        float getRotation() const; /** \brief Retourne la rotation \return float */
-        float getLarg() const; /** \brief Retourne la largeur \return float */
-        float getLong() const; /** \brief Retourne la longueur \return float */
-        Vecteur getHitbox() const; /** \brief Retourne la hitbox \return Vecteur */
-        Tip getType() const; /** \brief Retourne le type \return Tip */
+        /** \brief Retourne la position en x \return float */
+        float getX() const;
+        /** \brief Retourne la position en y \return float */ 
+        float getY() const;
+        /** \brief Retourne le vecteur position \return Vecteur */
+        Vecteur getPos() const;
+        /** \brief Retourne la rotation \return float */ 
+        float getRotation() const;
+        /** \brief Retourne la largeur \return float */
+        float getLarg() const;
+        /** \brief Retourne la longueur \return float */
+        float getLong() const;
+        /** \brief Retourne le vecteur hitbox \return Vecteur */
+        Vecteur getHitbox() const;
+        /** \brief Retourne le type \return Tip */
+        Tip getType() const; 
         
-        void prop_set_type(Tip t); /** \brief Donne le type \param t Type \return void */
+        /** \brief Donne le type \param t Type \return void */
+        void prop_set_type(Tip t); 
 
         /** \brief Donne la position
          * \param px Position en x
          * \param py Position en y
          */
         void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
-        bool chargerJSON(json const & obj); /** \brief Charge les données depuis un fichier JSON \param obj Objet JSON \return bool */
+        /** \brief Charge les données depuis un fichier JSON \param obj Objet JSON \return bool */
+        bool chargerJSON(json const & obj); 
 };
 
 /** 

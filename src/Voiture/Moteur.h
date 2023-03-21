@@ -18,13 +18,16 @@ class Moteur{
         int puissance;
 
     public:
-
-        Moteur(); /** \brief Constructeur par défaut \return Moteur */
-        Moteur(string n,int p); /** \brief Constructeur avec paramètres \param n Nom du moteur \param p Puissance du moteur \return Moteur */
-        Moteur(const Moteur & M); /** \brief Constructeur par copie \param M Moteur à copier, passé par référence \return Moteur */
-
-        string getNom(); /** \brief Retourne le nom du moteur \return string */
-        int getPuissance(); /** \brief Retourne la puissance du moteur \return int */
+         /** \brief Constructeur par défaut \return Moteur */
+        Moteur();
+         /** \brief Constructeur avec paramètres \param n Nom du moteur \param p Puissance du moteur \return Moteur */
+        Moteur(string n,int p);
+        /** \brief Constructeur par copie \param M Moteur à copier, passé par référence \return Moteur */
+        Moteur(const Moteur & M); 
+        /** \brief Retourne le nom du moteur \return string */
+        string getNom();
+        /** \brief Retourne la puissance du moteur \return int */ 
+        int getPuissance(); 
 
 };
 
