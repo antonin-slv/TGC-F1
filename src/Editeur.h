@@ -12,8 +12,9 @@ class Editeur : public Terrain
     private :
         float x, y;
         int zoom;//10 par def
-    public : 
-        //Editeur() : Terrain() {x = 0; y = 0; zoom = 10;}; /** @brief Constructeur par défaut (non fait) */
+    public :
+         /** @brief Constructeur par défaut (non fait) */
+        //Editeur() : Terrain() {x = 0; y = 0; zoom = 10;};
 
 };
 
