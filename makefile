@@ -4,6 +4,10 @@ CC = g++
 PATH_VOIT = src/Voiture/
 EXTERNAL = src/External/
 
+ISFML = -I/usr/include/SFML
+LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
@@ -22,10 +26,10 @@ voiture : obj/Voiture.o
 editeur : obj/Editeur.o
 
 $(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o
-	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o -o $(EXECUTABLE)
+	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o $(LIBSFML) -o $(EXECUTABLE)
 
 obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h $(EXTERNAL)winTxt.h
-	$(CC) $(CFLAGS) -c src/main.cpp -o obj/main.o
+	$(CC) $(CFLAGS) -c src/main.cpp $(ISFML) -o obj/main.o
 
 obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c src/Affichage.cpp -o obj/Affichage.o
