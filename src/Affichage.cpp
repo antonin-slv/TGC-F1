@@ -31,24 +31,24 @@ void afficherVoitureTxt(Voiture & voit)
 
 }
 
-void afficherJeuFTXT(WinTXT & win,Jeu & J1,const int i)
+void afficherJeuFTXT(WinTXT & win,Jeu & J1,const int i, const int zoom)
 {   win.clear('.');
     Vecteur temp;
     Voiture v;
     Props p;
-    for (int x = 0; x < J1.getTerrain().getLongueur(); x++)
-    {   for (int y = 0; y < J1.getTerrain().getLargeur(); y++)
+    for (int x = 0; x < J1.getTerrain().getLongueur()+20; x++)
+    {   for (int y = 0; y < J1.getTerrain().getLargeur()+20; y++)
         {   for (int i = 0; i < J1.getTerrain().getNbProps(); i++)
             { //cout<<"prop";
             p = J1.getTerrain().getProp(i);
-            temp = Vecteur(x,y) - p.getPos();
+            temp = (Vecteur(x,y)*(10/(float)zoom) - p.getPos());
             temp.tourner( -p.getRotation());
             if (test_point_in_box( temp, p.getHitbox() ))
             { win.print(x,y,'P'); }
             }
 
         v=J1.getVoiture(0);
-        temp=Vecteur(x,y)-v.getPos();
+        temp=(Vecteur(x,y)*(10/(float)zoom)-v.getPos());
         temp.tourner(-v.getAngle() );
         if (test_point_in_box(temp,v.getHitbox()))
         { win.print(x,y,'V'); }

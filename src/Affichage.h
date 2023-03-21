@@ -7,7 +7,7 @@
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
 #include "External/winTxt.h"
-
+#include "Voiture/Vecteur.h"
 #include <iostream>
 
 //plus ou moins ok -> j'ai pas compris pourquoi on peut pas mettre de const devant terrain...
@@ -23,7 +23,7 @@ void afficherVoitureTxt(Voiture & voit);
 //AFFICHE LE JEU EN TXT Fenetré
 
 /** \brief Affiche le jeu en mode texte fenetré (non fait)*/
-void afficherJeuFTXT(WinTXT & win,Jeu & jeu, const int i);
+void afficherJeuFTXT(WinTXT & win,Jeu & jeu, const int i, const int zoom=10);
 
 //pas fait
 /** \brief Affiche le terrain en mode graphique (non fait) */

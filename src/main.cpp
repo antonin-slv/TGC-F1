@@ -65,7 +65,7 @@ int main(){
     { i+=0.008;
       J1.update(a);
       
-      afficherJeuFTXT(win, J1, i);
+      afficherJeuFTXT(win, J1, i, 5);
       
       end = system_clock::now();
       duration<double> elapsed_seconds = end-start;
