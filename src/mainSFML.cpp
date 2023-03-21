@@ -13,7 +13,7 @@
 #include "Terrain.h"
 #include "Jeu.h"
 #include "Collision.h"
-#include "AffichageSFML.h"
+#include "GestionnaireSFML.h"
 #include "Editeur.h"
 #include "Menu.h"
 
