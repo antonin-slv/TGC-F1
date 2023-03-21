@@ -41,7 +41,7 @@ class Voiture {
         void calculPosition_precis(float dt=1); 
 
     public:
-        /** \brief Constructeur par défaut */
+        /** \brief Constructeur par défaut \return Voiture */
         Voiture(); 
         
         /** \brief Constructeur avec paramètres

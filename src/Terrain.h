@@ -94,20 +94,34 @@ class Terrain
         int longueur;//en m
         
         int nb_props;
+        vector<Props> tab_props;
 
     public:
-        vector<Props> tab_props;
+        /** \brief Constructeur par défaut \return Terrain */
         Terrain();
+        /** \brief Constructeur avec paramètres
+         * \param l Largeur du terrain
+         * \param h Longueur du terrain
+         * \param nb Nombre de props
+         * \return Terrain
+         */
         Terrain(int l, int h, int nb=1);
+        /** \brief Destructeur */
         ~Terrain();
 
+        /** \brief Retourne la largeur du terrain \return int */
         int getLargeur() const;
+        /** \brief Retourne la longueur du terrain \return int */
         int getLongueur() const;
+        /** \brief Retourne le nombre de props du terrain \return int */
         int getNbProps() const;
 
+        /** Retourne le ième props du terrain \param i Numéro du props \return Props */
         Props & getProp(int i);
 
+        /** Charge les données depuis un fichier JSON \param path Chemin du fichier */
         void chargerJSON(string const & path);
+        /** \brief Affiche le terrain en TXT */
         void afficher_txt();
     
 };
