@@ -12,21 +12,22 @@ La classe \mbox{\hyperlink{classVecteur}{Vecteur}}.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classVecteur_a182a3c1858a560f0642342dec9dda4a6}{Vecteur}} (float px, float py)
+\mbox{\hyperlink{classVecteur_a8227543ef6aadc8f9fbbc93de68af43b}{Vecteur}} ()
 \begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVecteur}{Vecteur}} \& \mbox{\hyperlink{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}{operator=}} (const \mbox{\hyperlink{classVecteur}{Vecteur}} \&v)
+\mbox{\hyperlink{classVecteur_a182a3c1858a560f0642342dec9dda4a6}{Vecteur}} (float px, float py)
 \begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}{set\+Vecteur}} (float norme, float rotation)
+\mbox{\hyperlink{classVecteur}{Vecteur}} \& \mbox{\hyperlink{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}{operator=}} (const \mbox{\hyperlink{classVecteur}{Vecteur}} \&v)
 \begin{DoxyCompactList}\small\item\em Opérateur d\textquotesingle{}affectation. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classVecteur_a9afdeb58722f8a37bafef7bcd58c3e00}\label{classVecteur_a9afdeb58722f8a37bafef7bcd58c3e00}} 
-float {\bfseries get\+Norme} () const
-\item 
-float \mbox{\hyperlink{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}{get\+Norme2}} () const
+void \mbox{\hyperlink{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}{set\+Vecteur}} (float norme, float rotation)
+\begin{DoxyCompactList}\small\item\em modifie un vecteur à partir d\textquotesingle{}une norme et d\textquotesingle{}un angle \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classVecteur_a9afdeb58722f8a37bafef7bcd58c3e00}{get\+Norme}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la norme du vecteur. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVecteur_a21960416c80796f3f49c14c4ee186d77}{get\+Rotation}} () const
+float \mbox{\hyperlink{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}{get\+Norme2}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la norme au carré du vecteur. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classVecteur_a21960416c80796f3f49c14c4ee186d77}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la rotation du vecteur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classVecteur_ad6eb5e7ce8c522e041f6f9cfca7fd9dd}{tourner}} (float angle=0)
-\begin{DoxyCompactList}\small\item\em Retourne la rotation du vecteur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tourne le vecteur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,11 +43,11 @@ float {\bfseries y}
 La classe \mbox{\hyperlink{classVecteur}{Vecteur}}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classVecteur_a182a3c1858a560f0642342dec9dda4a6}\label{classVecteur_a182a3c1858a560f0642342dec9dda4a6}} 
+\mbox{\Hypertarget{classVecteur_a8227543ef6aadc8f9fbbc93de68af43b}\label{classVecteur_a8227543ef6aadc8f9fbbc93de68af43b}} 
 \index{Vecteur@{Vecteur}!Vecteur@{Vecteur}}
 \index{Vecteur@{Vecteur}!Vecteur@{Vecteur}}
-\doxysubsubsection{\texorpdfstring{Vecteur()}{Vecteur()}}
-{\footnotesize\ttfamily Vecteur\+::\+Vecteur (\begin{DoxyParamCaption}\item[{float}]{px,  }\item[{float}]{py }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{Vecteur()}{Vecteur()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vecteur\+::\+Vecteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -55,40 +56,11 @@ Constructeur par défaut.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
-
-
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}\label{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}} 
-\index{Vecteur@{Vecteur}!getNorme2@{getNorme2}}
-\index{getNorme2@{getNorme2}!Vecteur@{Vecteur}}
-\doxysubsubsection{\texorpdfstring{getNorme2()}{getNorme2()}}
-{\footnotesize\ttfamily float Vecteur\+::get\+Norme2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Retourne la norme du vecteur. 
-
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classVecteur_a21960416c80796f3f49c14c4ee186d77}\label{classVecteur_a21960416c80796f3f49c14c4ee186d77}} 
-\index{Vecteur@{Vecteur}!getRotation@{getRotation}}
-\index{getRotation@{getRotation}!Vecteur@{Vecteur}}
-\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
-{\footnotesize\ttfamily float Vecteur\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Retourne la norme au carré du vecteur. 
-
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}\label{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}} 
-\index{Vecteur@{Vecteur}!operator=@{operator=}}
-\index{operator=@{operator=}!Vecteur@{Vecteur}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classVecteur}{Vecteur}} \& Vecteur\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVecteur}{Vecteur}} \&}]{v }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classVecteur_a182a3c1858a560f0642342dec9dda4a6}\label{classVecteur_a182a3c1858a560f0642342dec9dda4a6}} 
+\index{Vecteur@{Vecteur}!Vecteur@{Vecteur}}
+\index{Vecteur@{Vecteur}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{Vecteur()}{Vecteur()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vecteur\+::\+Vecteur (\begin{DoxyParamCaption}\item[{float}]{px,  }\item[{float}]{py }\end{DoxyParamCaption})}
 
 
 
@@ -104,11 +76,53 @@ Constructeur avec paramètres.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}\label{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}} 
-\index{Vecteur@{Vecteur}!setVecteur@{setVecteur}}
-\index{setVecteur@{setVecteur}!Vecteur@{Vecteur}}
-\doxysubsubsection{\texorpdfstring{setVecteur()}{setVecteur()}}
-{\footnotesize\ttfamily void Vecteur\+::set\+Vecteur (\begin{DoxyParamCaption}\item[{float}]{norme,  }\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVecteur_a9afdeb58722f8a37bafef7bcd58c3e00}\label{classVecteur_a9afdeb58722f8a37bafef7bcd58c3e00}} 
+\index{Vecteur@{Vecteur}!getNorme@{getNorme}}
+\index{getNorme@{getNorme}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{getNorme()}{getNorme()}}
+{\footnotesize\ttfamily float Vecteur\+::get\+Norme (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la norme du vecteur. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}\label{classVecteur_a3e35b8a1c6847e6a441c804dab3063de}} 
+\index{Vecteur@{Vecteur}!getNorme2@{getNorme2}}
+\index{getNorme2@{getNorme2}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{getNorme2()}{getNorme2()}}
+{\footnotesize\ttfamily float Vecteur\+::get\+Norme2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la norme au carré du vecteur. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVecteur_a21960416c80796f3f49c14c4ee186d77}\label{classVecteur_a21960416c80796f3f49c14c4ee186d77}} 
+\index{Vecteur@{Vecteur}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily float Vecteur\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la rotation du vecteur. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}\label{classVecteur_aaadb1e4908d753adce8f19b3c49788cd}} 
+\index{Vecteur@{Vecteur}!operator=@{operator=}}
+\index{operator=@{operator=}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVecteur}{Vecteur}} \& Vecteur\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVecteur}{Vecteur}} \&}]{v }\end{DoxyParamCaption})}
 
 
 
@@ -120,9 +134,19 @@ Opérateur d\textquotesingle{}affectation.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classVecteur}{Vecteur}}
+\mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
-Création d\textquotesingle{}un vecteur à partir de sa norme et de sa rotation 
+\mbox{\Hypertarget{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}\label{classVecteur_a00a626fa55dcdf4484ffbe6ad787ab85}} 
+\index{Vecteur@{Vecteur}!setVecteur@{setVecteur}}
+\index{setVecteur@{setVecteur}!Vecteur@{Vecteur}}
+\doxysubsubsection{\texorpdfstring{setVecteur()}{setVecteur()}}
+{\footnotesize\ttfamily void Vecteur\+::set\+Vecteur (\begin{DoxyParamCaption}\item[{float}]{norme,  }\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+
+modifie un vecteur à partir d\textquotesingle{}une norme et d\textquotesingle{}un angle 
+
+
 \begin{DoxyParams}{Parameters}
 {\em norme} & Norme du vecteur \\
 \hline
@@ -137,11 +161,13 @@ Création d\textquotesingle{}un vecteur à partir de sa norme et de sa rotation
 
 
 
-Retourne la rotation du vecteur. 
+Tourne le vecteur. 
 
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle de rotation \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

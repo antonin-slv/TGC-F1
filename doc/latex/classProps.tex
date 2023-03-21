@@ -12,32 +12,32 @@ La classe \mbox{\hyperlink{classProps}{Props}}.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classProps_a5c53bf58e15fe819c68bb6023bf74a35}{Props}} (int px, int py, Tip t, float rot=0, float l=0, float L=0)
+\mbox{\hyperlink{classProps_a8c536a129516681899157a8293c9ae05}{Props}} ()
 \begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classProps_ab6abc26ef8462acff672b9a49fc93aa1}\label{classProps_ab6abc26ef8462acff672b9a49fc93aa1}} 
-float {\bfseries getX} () const
-\item 
-float \mbox{\hyperlink{classProps_a357c46890339b8a248209b2baf96f03a}{getY}} () const
+\mbox{\hyperlink{classProps_a5c53bf58e15fe819c68bb6023bf74a35}{Props}} (int px, int py, Tip t, float rot=0, float l=0, float L=0)
+\begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classProps_ab6abc26ef8462acff672b9a49fc93aa1}{getX}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la position en x. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classProps_a56bd1b72125cbbacaedde0372e8213f0}{get\+Pos}} () const
+float \mbox{\hyperlink{classProps_a357c46890339b8a248209b2baf96f03a}{getY}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la position en y. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classProps_a56bd1b72125cbbacaedde0372e8213f0}{get\+Pos}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vecteur position. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classProps_a030c25b4643913537176fcaede1ee140}{get\+Rotation}} () const
-\begin{DoxyCompactList}\small\item\em Retourne la position. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classProps_aaa2700214e53e14874e78880c4d79f04}{get\+Larg}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la rotation. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classProps_ae4b4d216b4d9f2c8e30f3de2de042b45}{get\+Long}} () const
+float \mbox{\hyperlink{classProps_aaa2700214e53e14874e78880c4d79f04}{get\+Larg}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la largeur. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classProps_a4f5af825e8886fe696a3ae18c645336f}{get\+Hitbox}} () const
+float \mbox{\hyperlink{classProps_ae4b4d216b4d9f2c8e30f3de2de042b45}{get\+Long}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la longueur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classProps_a4f5af825e8886fe696a3ae18c645336f}{get\+Hitbox}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vecteur hitbox. \end{DoxyCompactList}\item 
 Tip \mbox{\hyperlink{classProps_adc9c008375853928b54cb8de401a3d0d}{get\+Type}} () const
-\begin{DoxyCompactList}\small\item\em Retourne la hitbox. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classProps_aa04f12c90c55f281401782b6e928b8da}{prop\+\_\+set\+\_\+type}} (Tip t)
 \begin{DoxyCompactList}\small\item\em Retourne le type. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}{set\+Prop}} (int px, int py, float rot=0, float nl=0, float nL=0)
+void \mbox{\hyperlink{classProps_aa04f12c90c55f281401782b6e928b8da}{prop\+\_\+set\+\_\+type}} (Tip t)
 \begin{DoxyCompactList}\small\item\em Donne le type. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classProps_a2a52dd2a5547f81a6f373bedde31e41a}\label{classProps_a2a52dd2a5547f81a6f373bedde31e41a}} 
-bool {\bfseries charger\+JSON} (json const \&obj)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}{set\+Prop}} (int px, int py, float rot=0, float nl=0, float nL=0)
+\begin{DoxyCompactList}\small\item\em Donne la position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProps_a2a52dd2a5547f81a6f373bedde31e41a}{charger\+JSON}} (json const \&obj)
+\begin{DoxyCompactList}\small\item\em Charge les données depuis un fichier JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,20 +56,30 @@ float {\bfseries rotation}
 La classe \mbox{\hyperlink{classProps}{Props}}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classProps_a5c53bf58e15fe819c68bb6023bf74a35}\label{classProps_a5c53bf58e15fe819c68bb6023bf74a35}} 
+\mbox{\Hypertarget{classProps_a8c536a129516681899157a8293c9ae05}\label{classProps_a8c536a129516681899157a8293c9ae05}} 
 \index{Props@{Props}!Props@{Props}}
 \index{Props@{Props}!Props@{Props}}
-\doxysubsubsection{\texorpdfstring{Props()}{Props()}}
-{\footnotesize\ttfamily Props\+::\+Props (\begin{DoxyParamCaption}\item[{int}]{px,  }\item[{int}]{py,  }\item[{Tip}]{t,  }\item[{float}]{rot = {\ttfamily 0},  }\item[{float}]{l = {\ttfamily 0},  }\item[{float}]{L = {\ttfamily 0} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{Props()}{Props()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Props\+::\+Props (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Constructeur par défaut. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classProps}{Props}}
+\mbox{\hyperlink{classProps}{Props}} 
 \end{DoxyReturn}
-Constructeur avec paramètres 
+\mbox{\Hypertarget{classProps_a5c53bf58e15fe819c68bb6023bf74a35}\label{classProps_a5c53bf58e15fe819c68bb6023bf74a35}} 
+\index{Props@{Props}!Props@{Props}}
+\index{Props@{Props}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{Props()}{Props()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Props\+::\+Props (\begin{DoxyParamCaption}\item[{int}]{px,  }\item[{int}]{py,  }\item[{Tip}]{t,  }\item[{float}]{rot = {\ttfamily 0},  }\item[{float}]{l = {\ttfamily 0},  }\item[{float}]{L = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructeur avec paramètres. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em px} & Position en x \\
 \hline
@@ -90,6 +100,24 @@ Constructeur avec paramètres
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classProps_a2a52dd2a5547f81a6f373bedde31e41a}\label{classProps_a2a52dd2a5547f81a6f373bedde31e41a}} 
+\index{Props@{Props}!chargerJSON@{chargerJSON}}
+\index{chargerJSON@{chargerJSON}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{chargerJSON()}{chargerJSON()}}
+{\footnotesize\ttfamily bool Props\+::charger\+JSON (\begin{DoxyParamCaption}\item[{json const \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Charge les données depuis un fichier JSON. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Objet JSON \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classProps_a4f5af825e8886fe696a3ae18c645336f}\label{classProps_a4f5af825e8886fe696a3ae18c645336f}} 
 \index{Props@{Props}!getHitbox@{getHitbox}}
 \index{getHitbox@{getHitbox}!Props@{Props}}
@@ -98,10 +126,10 @@ Constructeur avec paramètres
 
 
 
-Retourne la longueur. 
+Retourne le vecteur hitbox. 
 
 \begin{DoxyReturn}{Returns}
-float 
+\mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_aaa2700214e53e14874e78880c4d79f04}\label{classProps_aaa2700214e53e14874e78880c4d79f04}} 
 \index{Props@{Props}!getLarg@{getLarg}}
@@ -111,7 +139,7 @@ float
 
 
 
-Retourne la rotation. 
+Retourne la largeur. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -124,7 +152,7 @@ float
 
 
 
-Retourne la largeur. 
+Retourne la longueur. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -137,10 +165,10 @@ float
 
 
 
-Retourne la position en y. 
+Retourne le vecteur position. 
 
 \begin{DoxyReturn}{Returns}
-float 
+\mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_a030c25b4643913537176fcaede1ee140}\label{classProps_a030c25b4643913537176fcaede1ee140}} 
 \index{Props@{Props}!getRotation@{getRotation}}
@@ -150,10 +178,10 @@ float
 
 
 
-Retourne la position. 
+Retourne la rotation. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classVecteur}{Vecteur}} 
+float 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_adc9c008375853928b54cb8de401a3d0d}\label{classProps_adc9c008375853928b54cb8de401a3d0d}} 
 \index{Props@{Props}!getType@{getType}}
@@ -163,10 +191,23 @@ Retourne la position.
 
 
 
-Retourne la hitbox. 
+Retourne le type. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classVecteur}{Vecteur}} 
+Tip 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classProps_ab6abc26ef8462acff672b9a49fc93aa1}\label{classProps_ab6abc26ef8462acff672b9a49fc93aa1}} 
+\index{Props@{Props}!getX@{getX}}
+\index{getX@{getX}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily float Props\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la position en x. 
+
+\begin{DoxyReturn}{Returns}
+float 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_a357c46890339b8a248209b2baf96f03a}\label{classProps_a357c46890339b8a248209b2baf96f03a}} 
 \index{Props@{Props}!getY@{getY}}
@@ -176,7 +217,7 @@ Retourne la hitbox.
 
 
 
-Retourne la position en x. 
+Retourne la position en y. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -189,10 +230,15 @@ float
 
 
 
-Retourne le type. 
+Donne le type. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Type \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Tip 
+void 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}\label{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}} 
 \index{Props@{Props}!setProp@{setProp}}
@@ -202,17 +248,9 @@ Tip
 
 
 
-Donne le type. 
+Donne la position. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em t} & Type \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void
-\end{DoxyReturn}
-Donne la position 
 \begin{DoxyParams}{Parameters}
 {\em px} & Position en x \\
 \hline
