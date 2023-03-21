@@ -1,0 +1,75 @@
+\hypertarget{Voiture_8h_source}{}\doxysection{Voiture.\+h}
+\label{Voiture_8h_source}\index{/home/thomas/Documents/GitHub/test-\/project/src/Voiture/Voiture.h@{/home/thomas/Documents/GitHub/test-\/project/src/Voiture/Voiture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VOITURE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VOITURE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Moteur.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Roues.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Physique.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Vecteur.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVoiture}{Voiture}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMoteur}{Moteur}}\ mot;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRoues}{Roues}}\ roue;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ position;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ hitbox;\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ acceleration;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ vitesse;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ poids,\ coef\_aero;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ calculAcc(\textcolor{keywordtype}{float}\ dt=1,\textcolor{keywordtype}{float}\ theta=1);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ calculVitesse(\textcolor{keywordtype}{float}\ dt=1);\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ calculPosition(\textcolor{keywordtype}{float}\ dt=1);\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ calculPosition\_precis(\textcolor{keywordtype}{float}\ dt=1);\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}{Voiture}}();\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}{Voiture}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMoteur}{Moteur}}\ \&\ m,\textcolor{keyword}{const}\ \mbox{\hyperlink{classRoues}{Roues}}\ \&\ r,\ \textcolor{keywordtype}{float}\ poi,\ \textcolor{keywordtype}{float}\ coef,\textcolor{keywordtype}{float}\ largeur,\textcolor{keywordtype}{float}\ longu,\ \textcolor{keywordtype}{float}\ orient=M\_PI/2,\ \textcolor{keywordtype}{float}\ vit=0,\ \textcolor{keywordtype}{float}\ x=0,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y=0,\ \textcolor{keywordtype}{float}\ acc=0);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}{Voiture}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVoiture}{Voiture}}\ \&\ V);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVoiture_afe85820a993b6908d0fdb524245e5133}{\string~Voiture}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMoteur}{Moteur}}\ \&\ \mbox{\hyperlink{classVoiture_ae822327715a58e98b9ef119b25d674e7}{getMoteur}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRoues}{Roues}}\ \&\ \mbox{\hyperlink{classVoiture_a2d793c4c971800b998bced0dfb2cbb7b}{getRoues}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_a0662eee180a9eb5cd8de8a9fb3058136}{getVitesse}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_a3686b23aa9e733c84a5ef13d715d6e95}{getAngle}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_aedd6778872cb5f8d65506732a02eca6b}{getPoids}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_ad2443cd7ab2aded3fc5f75b96d6db948}{getCoefAero}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_a6dec9ada176063e2f367f246af55cbb0}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_a43524a9619d2e45ae3a329edd8f01105}{getY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classVoiture_abf59c4c58c73a84f6e7dc19b1bd01e83}{getPos}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classVoiture_ae95616250d53e8c67b74b038e07ca14f}{getHitbox}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_ab1fa6f84636a46d15834d16252c836a7}{getLargeur}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVoiture_a3ba9a19a42bf103ba244883257cd5061}{getLongueur}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_aef579a7bffe578d59fd1035a38ddb0ff}{accelerer}}(\textcolor{keywordtype}{float}\ dt=1);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_aabd0756ab65d8761c8f6fe53811ffb0c}{ralentir}}(\textcolor{keywordtype}{float}\ dt=1);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_af80a0a2e15b4e704753fbad75880bc1a}{freiner}}(\textcolor{keywordtype}{float}\ dt=1);\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_a152907ba14a4c34ffcafef7e6b2f4110}{tourner\_var}}(\textcolor{keywordtype}{float}\ angle\_roue\_rad,\textcolor{keywordtype}{float}\ dt=1);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}{tourner\_g}}(\textcolor{keywordtype}{float}\ dt=1);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_aa6460fe94c7a200876d77065a44e337e}{tourner\_d}}(\textcolor{keywordtype}{float}\ dt=1);\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVoiture_a11652cce3a606272449f1f9d7df9ecfd}{crash}}(\mbox{\hyperlink{classVecteur}{Vecteur}}\ diff,\ \textcolor{keywordtype}{float}\ anglemur);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

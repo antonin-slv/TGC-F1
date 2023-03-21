@@ -18,39 +18,139 @@ Inheritance diagram for Terrain\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTerrain_a0845486a40eed57ccc606879f2b29ac3}\label{classTerrain_a0845486a40eed57ccc606879f2b29ac3}} 
-{\bfseries Terrain} (int l, int h, int nb=1)
+\mbox{\hyperlink{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}{Terrain}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTerrain_a0845486a40eed57ccc606879f2b29ac3}{Terrain}} (int l, int h, int nb=1)
+\begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_a2f7f0a2aee54886324ccf48a6f321de0}\label{classTerrain_a2f7f0a2aee54886324ccf48a6f321de0}} 
+{\bfseries $\sim$\+Terrain} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}{get\+Largeur}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la largeur du terrain. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTerrain_a704e45ae5884d23a42574a55c356ac53}{get\+Longueur}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la longueur du terrain. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}{get\+Nb\+Props}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de props du terrain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProps}{Props}} \& \mbox{\hyperlink{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}{get\+Prop}} (int i)
 \item 
-\mbox{\Hypertarget{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}\label{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}} 
-int {\bfseries get\+Largeur} () const
-\item 
-\mbox{\Hypertarget{classTerrain_a704e45ae5884d23a42574a55c356ac53}\label{classTerrain_a704e45ae5884d23a42574a55c356ac53}} 
-int {\bfseries get\+Longueur} () const
-\item 
-\mbox{\Hypertarget{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}\label{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}} 
-int {\bfseries get\+Nb\+Props} () const
-\item 
-\mbox{\Hypertarget{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}\label{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}} 
-\mbox{\hyperlink{classProps}{Props}} \& {\bfseries get\+Prop} (int i)
-\item 
-\mbox{\Hypertarget{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}\label{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}} 
-void {\bfseries charger\+JSON} (string const \&path)
+void \mbox{\hyperlink{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}{charger\+JSON}} (string const \&path)
 \item 
 \mbox{\Hypertarget{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}\label{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}} 
 void {\bfseries afficher\+\_\+txt} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classTerrain_ac956df7f5e97b0016ce7df00aba63521}\label{classTerrain_ac956df7f5e97b0016ce7df00aba63521}} 
-vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ {\bfseries tab\+\_\+props}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Affiche le terrain en TXT. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 La classe du \mbox{\hyperlink{classTerrain}{Terrain}}. 
 
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}\label{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}} 
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{Terrain()}{Terrain()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Terrain\+::\+Terrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructeur par défaut. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classTerrain}{Terrain}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_a0845486a40eed57ccc606879f2b29ac3}\label{classTerrain_a0845486a40eed57ccc606879f2b29ac3}} 
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\index{Terrain@{Terrain}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{Terrain()}{Terrain()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Terrain\+::\+Terrain (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{h,  }\item[{int}]{nb = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Constructeur avec paramètres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Largeur du terrain \\
+\hline
+{\em h} & Longueur du terrain \\
+\hline
+{\em nb} & Nombre de props \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classTerrain}{Terrain}} 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}\label{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}} 
+\index{Terrain@{Terrain}!chargerJSON@{chargerJSON}}
+\index{chargerJSON@{chargerJSON}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{chargerJSON()}{chargerJSON()}}
+{\footnotesize\ttfamily void Terrain\+::charger\+JSON (\begin{DoxyParamCaption}\item[{string const \&}]{path }\end{DoxyParamCaption})}
+
+Charge les données depuis un fichier JSON
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin du fichier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}\label{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}} 
+\index{Terrain@{Terrain}!getLargeur@{getLargeur}}
+\index{getLargeur@{getLargeur}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getLargeur()}{getLargeur()}}
+{\footnotesize\ttfamily int Terrain\+::get\+Largeur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la largeur du terrain. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_a704e45ae5884d23a42574a55c356ac53}\label{classTerrain_a704e45ae5884d23a42574a55c356ac53}} 
+\index{Terrain@{Terrain}!getLongueur@{getLongueur}}
+\index{getLongueur@{getLongueur}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getLongueur()}{getLongueur()}}
+{\footnotesize\ttfamily int Terrain\+::get\+Longueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la longueur du terrain. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}\label{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}} 
+\index{Terrain@{Terrain}!getNbProps@{getNbProps}}
+\index{getNbProps@{getNbProps}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getNbProps()}{getNbProps()}}
+{\footnotesize\ttfamily int Terrain\+::get\+Nb\+Props (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre de props du terrain. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}\label{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}} 
+\index{Terrain@{Terrain}!getProp@{getProp}}
+\index{getProp@{getProp}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getProp()}{getProp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProps}{Props}} \& Terrain\+::get\+Prop (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Retourne le ième props du terrain
+\begin{DoxyParams}{Parameters}
+{\em i} & Numéro du props \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classProps}{Props}} 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/mnt/c/\+Users/ninot/\+Documents/\+COURS/\+S4/\+LIFAP4/jeu course/src/Terrain.\+h\item 
-/mnt/c/\+Users/ninot/\+Documents/\+COURS/\+S4/\+LIFAP4/jeu course/src/Terrain.\+cpp\end{DoxyCompactItemize}
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Terrain.\+h\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Terrain.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+\hypertarget{Jeu_8h_source}{}\doxysection{Jeu.\+h}
+\label{Jeu_8h_source}\index{/home/thomas/Documents/GitHub/test-\/project/src/Jeu.h@{/home/thomas/Documents/GitHub/test-\/project/src/Jeu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_JEU\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_JEU\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Terrain.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Voiture/Voiture.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Voiture/Physique.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Collision.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}External/json.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classJeu}{Jeu}}}
+\DoxyCodeLine{00021\ \{\ \ \ private\ :}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain}{Terrain}}\ terrain;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ vector<Voiture>\ tab\_voit;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ frame\_time;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_voit;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}{Jeu}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}{Jeu}}(\textcolor{keywordtype}{string}\ \textcolor{keyword}{const}\ \&\ nom\_fichier);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classJeu_a9cd19e73df169d7f09397be61ba8548c}{\string~Jeu}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ajouter\ chargement\ voiture}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//fonctions\ de\ debug}}
+\DoxyCodeLine{00039\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain}{Terrain}}\ \&\ \ \mbox{\hyperlink{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}{getTerrain}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVoiture}{Voiture}}\ \&\ \mbox{\hyperlink{classJeu_a1348607f76e505e28c78c74a775f2723}{getVoiture}}(\textcolor{keywordtype}{int}\ i=0);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJeu_a988460e745f29d87e906426398defd29}{setframe\_time}}(\textcolor{keywordtype}{float}\ \textcolor{keyword}{const}\ \&\ tps);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJeu_a560639838f39e1efccdbfbcc58b55c4a}{ChargerTerrain}}(\textcolor{keywordtype}{string}\ \textcolor{keyword}{const}\ \&\ nom\_fichier);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classJeu_adb2cf017710624992195dbd9555da8d3}{AjouterVoiture}}(\mbox{\hyperlink{classVoiture}{Voiture}}\ \textcolor{keyword}{const}\ \&\ V);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//retirer\ le\ bool\ a\ terme\ ?}}
+\DoxyCodeLine{00054\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classJeu_af495db0e53f321a43a83b3e8041b8415}{update}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ \&\ touche);}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
