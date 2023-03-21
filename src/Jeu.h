@@ -18,7 +18,7 @@ using namespace std;
  * 
  */
 class Jeu
-{   private :
+{   protected :
         Terrain terrain;
         vector<Voiture> tab_voit;
         float frame_time;

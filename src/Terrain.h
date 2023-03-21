@@ -89,7 +89,7 @@ class Props
  * 
  */
 class Terrain
-{   private:
+{   protected:
         int largeur;//en m
         int longueur;//en m
         
