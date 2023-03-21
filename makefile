@@ -11,28 +11,39 @@ LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
-HINTERFACE = src/Affichage.h src/Menu.h 
+HINTERFACE = src/AffichageSFML.h src/Menu.h 
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
-OINTERFACE= obj/Affichage.o obj/Menu.o
+OINTERFACE= obj/AffichageSFML.o obj/Menu.o
 
-EXECUTABLE = bin/Vroum
+EXECUTABLETXT = bin/VroumTXT
+EXECUTABLESFML = bin/VroumSFML
 
-all: $(EXECUTABLE)
+all: $(EXECUTABLETXT) $(EXECUTABLESFML)
 
-voiture : obj/Voiture.o
+SFML : $(EXECUTABLESFML)
 
-editeur : obj/Editeur.o
+TXT : $(EXECUTABLETXT)
 
-$(EXECUTABLE): obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o
-	$(CC) obj/main.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o obj/winTxt.o $(LIBSFML) -o $(EXECUTABLE)
+$(EXECUTABLESFML): obj/mainSFML.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o
+	$(CC) obj/mainSFML.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o $(LIBSFML) -o $(EXECUTABLESFML)
 
-obj/main.o: src/main.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h $(EXTERNAL)winTxt.h
-	$(CC) $(CFLAGS) -c src/main.cpp $(ISFML) -o obj/main.o
+$(EXECUTABLETXT): obj/mainTXT.o $(OVOITURE) $(OEDITEUR) obj/AffichageTXT.o obj/Jeu.o obj/Collision.o obj/winTxt.o
+	$(CC) obj/mainTXT.o $(OVOITURE) $(OEDITEUR) obj/AffichageTXT.o obj/Jeu.o obj/Collision.o obj/winTxt.o -o $(EXECUTABLETXT)
 
-obj/Affichage.o: src/Affichage.cpp $(HINTERFACE) $(HVOITURE) $(HEDITEUR) src/Jeu.h $(EXTERNAL)winTxt.h
-	$(CC) $(CFLAGS) -c src/Affichage.cpp -o obj/Affichage.o
+obj/mainTXT.o: src/mainTXT.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h $(EXTERNAL)winTxt.h
+	$(CC) $(CFLAGS) -c src/mainTXT.cpp -o obj/mainTXT.o
+
+obj/mainSFML.o: src/mainSFML.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h src/Collision.h
+	$(CC) $(CFLAGS) -c src/mainSFML.cpp $(ISFML) -o obj/mainSFML.o
+
+obj/AffichageTXT.o: src/AffichageTXT.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h $(EXTERNAL)winTxt.h
+	$(CC) $(CFLAGS) -c src/AffichageTXT.cpp -o obj/AffichageTXT.o
+
+obj/AffichageSFML.o: src/AffichageSFML.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h
+	$(CC) $(CFLAGS) -c src/AffichageSFML.cpp $(ISFML) -o obj/AffichageSFML.o
+
 
 obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c $(EXTERNAL)winTxt.cpp -o obj/winTxt.o
