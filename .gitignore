@@ -1,6 +1,5 @@
 ./obj/**.o
 ./bin/Vroum
 .vscode/**
-./doc/**.html
-./doc/**.pdf
-./doc/**.png
+./doc/html 
+./doc/latex

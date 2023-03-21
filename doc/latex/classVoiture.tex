@@ -13,54 +13,52 @@ La classe \mbox{\hyperlink{classVoiture}{Voiture}}.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}{Voiture}} ()
-\begin{DoxyCompactList}\small\item\em Actualise la position de la voiture (plus précis) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVoiture_acecda298456a3ecd11f435e54bdc9861}{Voiture}} (const \mbox{\hyperlink{classMoteur}{Moteur}} \&m, const \mbox{\hyperlink{classRoues}{Roues}} \&r, float poi, float coef, float largeur, float longu, float orient=M\+\_\+\+PI/2, float vit=0, float x=0, float y=0, float acc=0)
 \begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classVoiture_abef23da1b535c884524875918a918b3d}\label{classVoiture_abef23da1b535c884524875918a918b3d}} 
-{\bfseries Voiture} (const \mbox{\hyperlink{classVoiture}{Voiture}} \&V)
-\item 
-\mbox{\hyperlink{classVoiture_afe85820a993b6908d0fdb524245e5133}{$\sim$\+Voiture}} ()
+\mbox{\hyperlink{classVoiture_acecda298456a3ecd11f435e54bdc9861}{Voiture}} (const \mbox{\hyperlink{classMoteur}{Moteur}} \&m, const \mbox{\hyperlink{classRoues}{Roues}} \&r, float poi, float coef, float largeur, float longu, float orient=M\+\_\+\+PI/2, float vit=0, float x=0, float y=0, float acc=0)
+\begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVoiture_abef23da1b535c884524875918a918b3d}{Voiture}} (const \mbox{\hyperlink{classVoiture}{Voiture}} \&V)
 \begin{DoxyCompactList}\small\item\em Constructeur par copie. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classVoiture_ae822327715a58e98b9ef119b25d674e7}\label{classVoiture_ae822327715a58e98b9ef119b25d674e7}} 
-const \mbox{\hyperlink{classMoteur}{Moteur}} \& \mbox{\hyperlink{classVoiture_ae822327715a58e98b9ef119b25d674e7}{get\+Moteur}} () const
+\mbox{\Hypertarget{classVoiture_afe85820a993b6908d0fdb524245e5133}\label{classVoiture_afe85820a993b6908d0fdb524245e5133}} 
+\mbox{\hyperlink{classVoiture_afe85820a993b6908d0fdb524245e5133}{$\sim$\+Voiture}} ()
 \begin{DoxyCompactList}\small\item\em Destructeur de \mbox{\hyperlink{classVoiture}{Voiture}}. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classRoues}{Roues}} \& \mbox{\hyperlink{classVoiture_a2d793c4c971800b998bced0dfb2cbb7b}{get\+Roues}} () const
+const \mbox{\hyperlink{classMoteur}{Moteur}} \& \mbox{\hyperlink{classVoiture_ae822327715a58e98b9ef119b25d674e7}{get\+Moteur}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le moteur de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_a0662eee180a9eb5cd8de8a9fb3058136}{get\+Vitesse}} () const
+const \mbox{\hyperlink{classRoues}{Roues}} \& \mbox{\hyperlink{classVoiture_a2d793c4c971800b998bced0dfb2cbb7b}{get\+Roues}} () const
 \begin{DoxyCompactList}\small\item\em Retourne les roues de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_a3686b23aa9e733c84a5ef13d715d6e95}{get\+Angle}} () const
+float \mbox{\hyperlink{classVoiture_a0662eee180a9eb5cd8de8a9fb3058136}{get\+Vitesse}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la vitesse de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_aedd6778872cb5f8d65506732a02eca6b}{get\+Poids}} () const
+float \mbox{\hyperlink{classVoiture_a3686b23aa9e733c84a5ef13d715d6e95}{get\+Angle}} () const
 \begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}angle de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_ad2443cd7ab2aded3fc5f75b96d6db948}{get\+Coef\+Aero}} () const
+float \mbox{\hyperlink{classVoiture_aedd6778872cb5f8d65506732a02eca6b}{get\+Poids}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le poids de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_a6dec9ada176063e2f367f246af55cbb0}{getX}} () const
+float \mbox{\hyperlink{classVoiture_ad2443cd7ab2aded3fc5f75b96d6db948}{get\+Coef\+Aero}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le coefficient aérodynamique de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_a43524a9619d2e45ae3a329edd8f01105}{getY}} () const
+float \mbox{\hyperlink{classVoiture_a6dec9ada176063e2f367f246af55cbb0}{getX}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la position x de la voiture. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classVoiture_abf59c4c58c73a84f6e7dc19b1bd01e83}{get\+Pos}} () const
+float \mbox{\hyperlink{classVoiture_a43524a9619d2e45ae3a329edd8f01105}{getY}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la position y de la voiture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classVoiture_abf59c4c58c73a84f6e7dc19b1bd01e83}{get\+Pos}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vecteur position de la voiture. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classVecteur}{Vecteur}} \mbox{\hyperlink{classVoiture_ae95616250d53e8c67b74b038e07ca14f}{get\+Hitbox}} () const
-\begin{DoxyCompactList}\small\item\em Retourne la position de la voiture. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Retourne le vecteur hitbox de la voiture. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classVoiture_ab1fa6f84636a46d15834d16252c836a7}{get\+Largeur}} () const
-\begin{DoxyCompactList}\small\item\em Retourne la hitbox de la voiture. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classVoiture_a3ba9a19a42bf103ba244883257cd5061}{get\+Longueur}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la largeur de la voiture. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVoiture_aef579a7bffe578d59fd1035a38ddb0ff}{accelerer}} (float dt=1)
+float \mbox{\hyperlink{classVoiture_a3ba9a19a42bf103ba244883257cd5061}{get\+Longueur}} () const
 \begin{DoxyCompactList}\small\item\em Retourne la longueur de la voiture. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVoiture_aabd0756ab65d8761c8f6fe53811ffb0c}{ralentir}} (float dt=1)
+void \mbox{\hyperlink{classVoiture_aef579a7bffe578d59fd1035a38ddb0ff}{accelerer}} (float dt=1)
 \begin{DoxyCompactList}\small\item\em Accélère la voiture. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVoiture_af80a0a2e15b4e704753fbad75880bc1a}{freiner}} (float dt=1)
+void \mbox{\hyperlink{classVoiture_aabd0756ab65d8761c8f6fe53811ffb0c}{ralentir}} (float dt=1)
 \begin{DoxyCompactList}\small\item\em Ralentit la voiture. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classVoiture_a152907ba14a4c34ffcafef7e6b2f4110}{tourner\+\_\+var}} (float angle\+\_\+roue\+\_\+rad, float dt=1)
+void \mbox{\hyperlink{classVoiture_af80a0a2e15b4e704753fbad75880bc1a}{freiner}} (float dt=1)
 \begin{DoxyCompactList}\small\item\em Freine la voiture. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}\label{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}} 
-void {\bfseries tourner\+\_\+g} (float dt=1)
-\item 
-void \mbox{\hyperlink{classVoiture_aa6460fe94c7a200876d77065a44e337e}{tourner\+\_\+d}} (float dt=1)
+void \mbox{\hyperlink{classVoiture_a152907ba14a4c34ffcafef7e6b2f4110}{tourner\+\_\+var}} (float angle\+\_\+roue\+\_\+rad, float dt=1)
+\begin{DoxyCompactList}\small\item\em Tourne la voiture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}{tourner\+\_\+g}} (float dt=1)
 \begin{DoxyCompactList}\small\item\em Tourne la voiture vers la gauche. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVoiture_aa6460fe94c7a200876d77065a44e337e}{tourner\+\_\+d}} (float dt=1)
+\begin{DoxyCompactList}\small\item\em Tourne la voiture vers la droite. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classVoiture_a11652cce3a606272449f1f9d7df9ecfd}{crash}} (\mbox{\hyperlink{classVecteur}{Vecteur}} diff, float anglemur)
-\begin{DoxyCompactList}\small\item\em Tourne la voiture vers la droite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gère les collisions avec les murs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -70,33 +68,26 @@ La classe \mbox{\hyperlink{classVoiture}{Voiture}}.
 \mbox{\Hypertarget{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}\label{classVoiture_a5bcf57fecc474ac7dba49ca67529e31b}} 
 \index{Voiture@{Voiture}!Voiture@{Voiture}}
 \index{Voiture@{Voiture}!Voiture@{Voiture}}
-\doxysubsubsection{\texorpdfstring{Voiture()}{Voiture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{Voiture()}{Voiture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily Voiture\+::\+Voiture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Actualise la position de la voiture (plus précis) 
-
-Constructeur par défaut de \mbox{\hyperlink{classVoiture}{Voiture}}, ne prends aucun paramètre.
-
-
-\begin{DoxyParams}{Parameters}
-{\em dt} & Delta temps \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classVoiture_acecda298456a3ecd11f435e54bdc9861}\label{classVoiture_acecda298456a3ecd11f435e54bdc9861}} 
-\index{Voiture@{Voiture}!Voiture@{Voiture}}
-\index{Voiture@{Voiture}!Voiture@{Voiture}}
-\doxysubsubsection{\texorpdfstring{Voiture()}{Voiture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Voiture\+::\+Voiture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMoteur}{Moteur}} \&}]{M,  }\item[{const \mbox{\hyperlink{classRoues}{Roues}} \&}]{R,  }\item[{float}]{poid,  }\item[{float}]{coef,  }\item[{float}]{larg,  }\item[{float}]{longu,  }\item[{float}]{orient = {\ttfamily M\+\_\+PI/2},  }\item[{float}]{vit = {\ttfamily 0},  }\item[{float}]{x = {\ttfamily 0},  }\item[{float}]{y = {\ttfamily 0},  }\item[{float}]{acc = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
 Constructeur par défaut. 
 
+Constructeur par défaut de \mbox{\hyperlink{classVoiture}{Voiture}}, ne prends aucun paramètre. \mbox{\Hypertarget{classVoiture_acecda298456a3ecd11f435e54bdc9861}\label{classVoiture_acecda298456a3ecd11f435e54bdc9861}} 
+\index{Voiture@{Voiture}!Voiture@{Voiture}}
+\index{Voiture@{Voiture}!Voiture@{Voiture}}
+\doxysubsubsection{\texorpdfstring{Voiture()}{Voiture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Voiture\+::\+Voiture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMoteur}{Moteur}} \&}]{M,  }\item[{const \mbox{\hyperlink{classRoues}{Roues}} \&}]{R,  }\item[{float}]{poid,  }\item[{float}]{coef,  }\item[{float}]{larg,  }\item[{float}]{longu,  }\item[{float}]{orient = {\ttfamily M\+\_\+PI/2},  }\item[{float}]{vit = {\ttfamily 0},  }\item[{float}]{x = {\ttfamily 0},  }\item[{float}]{y = {\ttfamily 0},  }\item[{float}]{acc = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructeur avec paramètres. 
+
 Construct a new \mbox{\hyperlink{classVoiture}{Voiture}}\+:\+: \mbox{\hyperlink{classVoiture}{Voiture}} object.
 
-Constructeur avec paramètres 
+
 \begin{DoxyParams}{Parameters}
 {\em m} & \mbox{\hyperlink{classMoteur}{Moteur}} de la voiture \\
 \hline
@@ -149,11 +140,11 @@ Constructeur avec paramètres
 {\em acc} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classVoiture_afe85820a993b6908d0fdb524245e5133}\label{classVoiture_afe85820a993b6908d0fdb524245e5133}} 
-\index{Voiture@{Voiture}!````~Voiture@{$\sim$Voiture}}
-\index{````~Voiture@{$\sim$Voiture}!Voiture@{Voiture}}
-\doxysubsubsection{\texorpdfstring{$\sim$Voiture()}{~Voiture()}}
-{\footnotesize\ttfamily Voiture\+::$\sim$\+Voiture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classVoiture_abef23da1b535c884524875918a918b3d}\label{classVoiture_abef23da1b535c884524875918a918b3d}} 
+\index{Voiture@{Voiture}!Voiture@{Voiture}}
+\index{Voiture@{Voiture}!Voiture@{Voiture}}
+\doxysubsubsection{\texorpdfstring{Voiture()}{Voiture()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Voiture\+::\+Voiture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVoiture}{Voiture}} \&}]{V }\end{DoxyParamCaption})}
 
 
 
@@ -178,11 +169,13 @@ Constructeur par copie.
 
 
 
-Retourne la longueur de la voiture. 
+Accélère la voiture. 
 
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Temps durant lequel la voiture est accélérée \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classVoiture_a11652cce3a606272449f1f9d7df9ecfd}\label{classVoiture_a11652cce3a606272449f1f9d7df9ecfd}} 
 \index{Voiture@{Voiture}!crash@{crash}}
 \index{crash@{crash}!Voiture@{Voiture}}
@@ -191,14 +184,9 @@ float
 
 
 
-Tourne la voiture vers la droite. 
+Gère les collisions avec les murs. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em dt} & Temps durant lequel la voiture est tournée\\
-\hline
-\end{DoxyParams}
-Gère les collisions avec les murs 
 \begin{DoxyParams}{Parameters}
 {\em diff} & \mbox{\hyperlink{classVecteur}{Vecteur}} de différence entre la voiture et le mur \\
 \hline
@@ -213,11 +201,11 @@ Gère les collisions avec les murs
 
 
 
-Ralentit la voiture. 
+Freine la voiture. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em dt} & Temps durant lequel la voiture est ralentie \\
+{\em dt} & Temps durant lequel la voiture est freinée \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVoiture_a3686b23aa9e733c84a5ef13d715d6e95}\label{classVoiture_a3686b23aa9e733c84a5ef13d715d6e95}} 
@@ -228,7 +216,7 @@ Ralentit la voiture.
 
 
 
-Retourne la vitesse de la voiture. 
+Retourne l\textquotesingle{}angle de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -241,7 +229,7 @@ float
 
 
 
-Retourne le poids de la voiture. 
+Retourne le coefficient aérodynamique de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -254,7 +242,7 @@ float
 
 
 
-Retourne la position de la voiture. 
+Retourne le vecteur hitbox de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classVecteur}{Vecteur}} 
@@ -267,10 +255,10 @@ Retourne la position de la voiture.
 
 
 
-Retourne la hitbox de la voiture. 
+Retourne la largeur de la voiture. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classVecteur}{Vecteur}} 
+float 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVoiture_a3ba9a19a42bf103ba244883257cd5061}\label{classVoiture_a3ba9a19a42bf103ba244883257cd5061}} 
 \index{Voiture@{Voiture}!getLongueur@{getLongueur}}
@@ -280,10 +268,23 @@ Retourne la hitbox de la voiture.
 
 
 
-Retourne la largeur de la voiture. 
+Retourne la longueur de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVoiture_ae822327715a58e98b9ef119b25d674e7}\label{classVoiture_ae822327715a58e98b9ef119b25d674e7}} 
+\index{Voiture@{Voiture}!getMoteur@{getMoteur}}
+\index{getMoteur@{getMoteur}!Voiture@{Voiture}}
+\doxysubsubsection{\texorpdfstring{getMoteur()}{getMoteur()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMoteur}{Moteur}} \& Voiture\+::get\+Moteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le moteur de la voiture. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMoteur}{Moteur}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVoiture_aedd6778872cb5f8d65506732a02eca6b}\label{classVoiture_aedd6778872cb5f8d65506732a02eca6b}} 
 \index{Voiture@{Voiture}!getPoids@{getPoids}}
@@ -293,7 +294,7 @@ float
 
 
 
-Retourne l\textquotesingle{}angle de la voiture. 
+Retourne le poids de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -306,10 +307,10 @@ float
 
 
 
-Retourne la position y de la voiture. 
+Retourne le vecteur position de la voiture. 
 
 \begin{DoxyReturn}{Returns}
-float 
+\mbox{\hyperlink{classVecteur}{Vecteur}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVoiture_a2d793c4c971800b998bced0dfb2cbb7b}\label{classVoiture_a2d793c4c971800b998bced0dfb2cbb7b}} 
 \index{Voiture@{Voiture}!getRoues@{getRoues}}
@@ -319,10 +320,10 @@ float
 
 
 
-Retourne le moteur de la voiture. 
+Retourne les roues de la voiture. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classMoteur}{Moteur}} 
+\mbox{\hyperlink{classRoues}{Roues}} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVoiture_a0662eee180a9eb5cd8de8a9fb3058136}\label{classVoiture_a0662eee180a9eb5cd8de8a9fb3058136}} 
 \index{Voiture@{Voiture}!getVitesse@{getVitesse}}
@@ -332,10 +333,10 @@ Retourne le moteur de la voiture.
 
 
 
-Retourne les roues de la voiture. 
+Retourne la vitesse de la voiture. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classRoues}{Roues}} 
+float 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVoiture_a6dec9ada176063e2f367f246af55cbb0}\label{classVoiture_a6dec9ada176063e2f367f246af55cbb0}} 
 \index{Voiture@{Voiture}!getX@{getX}}
@@ -345,7 +346,7 @@ Retourne les roues de la voiture.
 
 
 
-Retourne le coefficient aérodynamique de la voiture. 
+Retourne la position x de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -358,7 +359,7 @@ float
 
 
 
-Retourne la position x de la voiture. 
+Retourne la position y de la voiture. 
 
 \begin{DoxyReturn}{Returns}
 float 
@@ -371,11 +372,11 @@ float
 
 
 
-Accélère la voiture. 
+Ralentit la voiture. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em dt} & Temps durant lequel la voiture est accélérée \\
+{\em dt} & Temps durant lequel la voiture est ralentie \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVoiture_aa6460fe94c7a200876d77065a44e337e}\label{classVoiture_aa6460fe94c7a200876d77065a44e337e}} 
@@ -383,6 +384,21 @@ Accélère la voiture.
 \index{tourner\_d@{tourner\_d}!Voiture@{Voiture}}
 \doxysubsubsection{\texorpdfstring{tourner\_d()}{tourner\_d()}}
 {\footnotesize\ttfamily void Voiture\+::tourner\+\_\+d (\begin{DoxyParamCaption}\item[{float}]{dt = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Tourne la voiture vers la droite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Temps durant lequel la voiture est tournée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}\label{classVoiture_abdcb1e8ade4177246ff5d990ff2a9ab0}} 
+\index{Voiture@{Voiture}!tourner\_g@{tourner\_g}}
+\index{tourner\_g@{tourner\_g}!Voiture@{Voiture}}
+\doxysubsubsection{\texorpdfstring{tourner\_g()}{tourner\_g()}}
+{\footnotesize\ttfamily void Voiture\+::tourner\+\_\+g (\begin{DoxyParamCaption}\item[{float}]{dt = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 
 
@@ -401,14 +417,9 @@ Tourne la voiture vers la gauche.
 
 
 
-Freine la voiture. 
+Tourne la voiture. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em dt} & Temps durant lequel la voiture est freinée\\
-\hline
-\end{DoxyParams}
-Tourne la voiture 
 \begin{DoxyParams}{Parameters}
 {\em angle\+\_\+roue\+\_\+rad} & Angle de rotation des roues \\
 \hline

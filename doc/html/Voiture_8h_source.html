@@ -98,40 +98,46 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">float</span> poids, coef_aero;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> calculAcc(<span class="keywordtype">float</span> dt=1,<span class="keywordtype">float</span> theta=1); </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> calculVitesse(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> calculPosition(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> calculPosition_precis(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(); </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(<span class="keyword">const</span> <a class="code" href="classMoteur.html">Moteur</a> &amp; m,<span class="keyword">const</span> <a class="code" href="classRoues.html">Roues</a> &amp; r, <span class="keywordtype">float</span> poi, <span class="keywordtype">float</span> coef,<span class="keywordtype">float</span> largeur,<span class="keywordtype">float</span> longu, <span class="keywordtype">float</span> orient=M_PI/2, <span class="keywordtype">float</span> vit=0, <span class="keywordtype">float</span> x=0,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordtype">float</span> y=0, <span class="keywordtype">float</span> acc=0);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(<span class="keyword">const</span> <a class="code" href="classVoiture.html">Voiture</a> &amp; V); </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        ~<a class="code" href="classVoiture.html">Voiture</a>(); </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">const</span> <a class="code" href="classMoteur.html">Moteur</a> &amp; getMoteur() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">const</span> <a class="code" href="classRoues.html">Roues</a> &amp; getRoues() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">float</span> getVitesse() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">float</span> getAngle() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">float</span> getPoids() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">float</span> getCoefAero() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">float</span> getX() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">float</span> getY() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="classVecteur.html">Vecteur</a> getPos() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classVecteur.html">Vecteur</a> getHitbox() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">float</span> getLargeur() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">float</span> getLongueur() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> accelerer(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> ralentir(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">void</span> freiner(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">void</span> tourner_var(<span class="keywordtype">float</span> angle_roue_rad,<span class="keywordtype">float</span> dt=1);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span> tourner_g(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> tourner_d(<span class="keywordtype">float</span> dt=1); </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> crash(<a class="code" href="classVecteur.html">Vecteur</a> diff, <span class="keywordtype">float</span> anglemur);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> calculAcc(<span class="keywordtype">float</span> dt=1,<span class="keywordtype">float</span> theta=1);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> calculVitesse(<span class="keywordtype">float</span> dt=1); </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> calculPosition(<span class="keywordtype">float</span> dt=1); </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> calculPosition_precis(<span class="keywordtype">float</span> dt=1); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(); </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(<span class="keyword">const</span> <a class="code" href="classMoteur.html">Moteur</a> &amp; m,<span class="keyword">const</span> <a class="code" href="classRoues.html">Roues</a> &amp; r, <span class="keywordtype">float</span> poi, <span class="keywordtype">float</span> coef,<span class="keywordtype">float</span> largeur,<span class="keywordtype">float</span> longu, <span class="keywordtype">float</span> orient=M_PI/2, <span class="keywordtype">float</span> vit=0, <span class="keywordtype">float</span> x=0,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordtype">float</span> y=0, <span class="keywordtype">float</span> acc=0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="classVoiture.html">Voiture</a>(<span class="keyword">const</span> <a class="code" href="classVoiture.html">Voiture</a> &amp; V);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        ~<a class="code" href="classVoiture.html">Voiture</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">const</span> <a class="code" href="classMoteur.html">Moteur</a> &amp; getMoteur() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> <a class="code" href="classRoues.html">Roues</a> &amp; getRoues() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">float</span> getVitesse() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">float</span> getAngle() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">float</span> getPoids() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">float</span> getCoefAero() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">float</span> getX() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">float</span> getY() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="classVecteur.html">Vecteur</a> getPos() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="classVecteur.html">Vecteur</a> getHitbox() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">float</span> getLargeur() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">float</span> getLongueur() <span class="keyword">const</span>; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> accelerer(<span class="keywordtype">float</span> dt=1);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span> ralentir(<span class="keywordtype">float</span> dt=1);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> freiner(<span class="keywordtype">float</span> dt=1); </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span> tourner_var(<span class="keywordtype">float</span> angle_roue_rad,<span class="keywordtype">float</span> dt=1);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordtype">void</span> tourner_g(<span class="keywordtype">float</span> dt=1);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> tourner_d(<span class="keywordtype">float</span> dt=1); </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">void</span> crash(<a class="code" href="classVecteur.html">Vecteur</a> diff, <span class="keywordtype">float</span> anglemur);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassMoteur_html"><div class="ttname"><a href="classMoteur.html">Moteur</a></div><div class="ttdoc">La classe Moteur.</div><div class="ttdef"><b>Definition:</b> Moteur.h:13</div></div>
 <div class="ttc" id="aclassRoues_html"><div class="ttname"><a href="classRoues.html">Roues</a></div><div class="ttdoc">La classe Roues.</div><div class="ttdef"><b>Definition:</b> Roues.h:13</div></div>
 <div class="ttc" id="aclassVecteur_html"><div class="ttname"><a href="classVecteur.html">Vecteur</a></div><div class="ttdoc">La classe Vecteur.</div><div class="ttdef"><b>Definition:</b> Vecteur.h:11</div></div>
