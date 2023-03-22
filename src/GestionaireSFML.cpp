@@ -1,7 +1,7 @@
 #include "GestionaireSFML.h"
 
 #include <iostream>
-
+#include <math.h>
 using namespace std;
 using namespace sf;
 
@@ -19,7 +19,7 @@ GestionSFML::GestionSFML()
         voitures.push_back(RectangleShape(Vector2f(getVoiture(i).getLongueur(),getVoiture(i).getLargeur())));
         voitures[i].setFillColor(Color(255,0,0));
         voitures[i].setPosition(getVoiture(i).getX(),getVoiture(i).getY());
-        voitures[i].setRotation(getVoiture(i).getAngle());
+        voitures[i].setRotation(getVoiture(i).getAngle()*180/M_PI);
     }
 
     for (int i = 0; i < terrain.getNbProps(); i++)
@@ -27,7 +27,7 @@ GestionSFML::GestionSFML()
         obstacles.push_back(RectangleShape(Vector2f(terrain.getProp(i).getLong(),terrain.getProp(i).getLarg())));
         obstacles[i].setFillColor(Color(0,0,255));
         obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY());
-        obstacles[i].setRotation(terrain.getProp(i).getRotation());
+        obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
     }
 
     zoom = 1;
@@ -73,7 +73,7 @@ void GestionSFML::boucleJeuSFML()
         for (int i = 0; i < nb_voit; i++)
         {
             voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
-            voitures[i].setRotation(tab_voit[i].getAngle());
+            voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
         }
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
