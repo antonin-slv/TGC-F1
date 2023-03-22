@@ -31,7 +31,6 @@ GestionSFML::GestionSFML()
     }
 
     zoom = 1;
-    centre = Vecteur(0, 0);
     rotation = 0;
 }
 
@@ -47,8 +46,8 @@ GestionSFML::~GestionSFML()
 
 void GestionSFML::boucleJeuSFML()
 {   sf::RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
-
-    window.setView(sf::View(sf::Vector2f(0.f, 0.f), sf::Vector2f(640.f, 360.f)));
+    //centre la vue sur (0,0) avec un carré de 640*360 px
+    
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
     Event event;
@@ -99,6 +98,8 @@ void GestionSFML::boucleJeuSFML()
             window.close();
         }
         // Affichage
+        
+        window.setView(sf::View(voitures[0].getPosition(), sf::Vector2f(320.f, 180.f)));
         window.display();
     }
   }

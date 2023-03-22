@@ -23,7 +23,7 @@ class GestionSFML : public Jeu
         sf::RenderWindow window;
         vector<sf::RectangleShape> voitures;
         vector<sf::RectangleShape> obstacles;
-        Vecteur centre;
+        
         float rotation;
 
     public :
