@@ -11,6 +11,8 @@
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
 #include "Voiture/Vecteur.h"
+
+#include <vector>
 #include <iostream>
 
 
@@ -19,19 +21,23 @@ class GestionSFML : public Jeu
 {   private :
         float zoom;
         sf::RenderWindow window;
-        sf::RectangleShape rectangle;
+        vector<sf::RectangleShape> voitures;
+        vector<sf::RectangleShape> obstacles;
         Vecteur centre;
         float rotation;
 
     public :
         GestionSFML();
         GestionSFML(int width, int height, std::string title);
+
+        ~GestionSFML();
+
         void initWindow(int width, int height, std::string title);
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
         void afficherJeuSFML();
         void boucleJeuSFML();
 
-}
+};
 
 
 void initWindow(sf::RenderWindow & window, int width, int height, std::string title);

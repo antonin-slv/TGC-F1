@@ -13,7 +13,7 @@
 #include "Terrain.h"
 #include "Jeu.h"
 #include "Collision.h"
-#include "GestionnaireSFML.h"
+#include "GestionaireSFML.h"
 #include "Editeur.h"
 #include "Menu.h"
 
@@ -25,9 +25,10 @@ using json = nlohmann::json; //pour le json
 using namespace std;
 
 int main(){
-
+  /*
   Jeu J1;
   J1.ChargerTerrain("data/circuits/test.json");
+  J1.setframe_time(0.016);
   float zoom = 10;
 
   // Création de la fenêtre et des objets
@@ -55,27 +56,32 @@ int main(){
 
   // Boucle du programme
   while (window.isOpen()){
-
-    // Partie physique
-    if(Keyboard::isKeyPressed(Keyboard::O)){
-      J1.update('o');
-    }
-     
-    if(Keyboard::isKeyPressed(Keyboard::K)){
-      J1.update('k');
-    }
-
-    if(Keyboard::isKeyPressed(Keyboard::L)){
-      J1.update('l');
-    }
-
-    if(Keyboard::isKeyPressed(Keyboard::M)){
-      J1.update('m');
-    }
-
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
     Event event;
     while (window.pollEvent(event)){
+      // Partie physique
+      if(Keyboard::isKeyPressed(Keyboard::O)){
+        J1.update('o');
+      }
+        
+      else if(Keyboard::isKeyPressed(Keyboard::K)){
+        J1.update('k');
+      }
+
+      else if(Keyboard::isKeyPressed(Keyboard::L)){
+        J1.update('l');
+      }
+
+      else if(Keyboard::isKeyPressed(Keyboard::M)){
+        J1.update('m');
+      }
+      else J1.update(' ');
+
+      V1.setPosition(J1.getVoiture(0).getX()*zoom,J1.getVoiture(0).getY()*zoom);
+      //V1.setPosition(50,50);
+      V1.setRotation(J1.getVoiture(0).getAngle());
+      
+    
       // Fermeture de la fenêtre avec la croix (inutile pour le moment)
       if (event.type == Event::Closed){
         window.close();
@@ -96,6 +102,9 @@ int main(){
       window.display();
     }
   }
-
+  */
+  GestionSFML G1;
+  G1.initWindow(1280,720,"Vroum");
+  G1.boucleJeuSFML();
   return 0;
 }
