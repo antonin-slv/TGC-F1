@@ -161,14 +161,3 @@ void Voiture::crash(Vecteur diff, float anglemur)
     angle = anglemur + M_PI - angle;
 }
 
-
-void Voiture::nouveau_ACC(float portion)
-{
-    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion);
-}
-
-void Voiture::nouvelle_VIT(float dt)
-{
-    vitesse = calculVitesse_P(0,acceleration,dt);
-}
-

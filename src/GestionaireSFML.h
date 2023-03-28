@@ -15,14 +15,16 @@
 #include <vector>
 #include <iostream>
 
-
+using namespace std;
+using namespace sf;
 
 class GestionSFML : public Jeu
 {   private :
         float zoom;
-        sf::RenderWindow window;
-        vector<sf::RectangleShape> voitures;
-        vector<sf::RectangleShape> obstacles;
+        RenderWindow window;
+        vector<RectangleShape> voitures;
+        vector<RectangleShape> obstacles;
+        vector<Sprite> sprites;
         
         float rotation;
         
