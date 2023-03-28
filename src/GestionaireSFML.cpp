@@ -13,21 +13,28 @@ GestionSFML::GestionSFML()
     //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
 
     setframe_time(0.016);
+    float l, h;
 
     for (int i = 0; i < nb_voit; i++)
-    {
-        voitures.push_back(RectangleShape(Vector2f(getVoiture(i).getLongueur(),getVoiture(i).getLargeur())));
+    {   l=tab_voit[i].getLongueur();
+        h=tab_voit[i].getLargeur();
+        voitures.push_back(RectangleShape(Vector2f(l,h)));
         voitures[i].setFillColor(Color(255,0,0));
+        voitures[i].setOrigin(l/2,h/2);
         voitures[i].setPosition(getVoiture(i).getX(),getVoiture(i).getY());
         voitures[i].setRotation(getVoiture(i).getAngle()*180/M_PI);
+
     }
 
     for (int i = 0; i < terrain.getNbProps(); i++)
-    {
-        obstacles.push_back(RectangleShape(Vector2f(terrain.getProp(i).getLong(),terrain.getProp(i).getLarg())));
+    {   l=terrain.getProp(i).getLong();
+        h=terrain.getProp(i).getLarg();
+        obstacles.push_back(RectangleShape(Vector2f(l,h)));
+        obstacles[i].setOrigin(l/2,h/2);
         obstacles[i].setFillColor(Color(0,0,255));
         obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY());
         obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
+
     }
 
     zoom = 1;
