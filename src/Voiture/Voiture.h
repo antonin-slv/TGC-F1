@@ -98,6 +98,14 @@ class Voiture {
         /** \brief Freine la voiture \param dt Temps durant lequel la voiture est freinée */
         void freiner(float dt=1); 
         
+
+        //les fonctions nouvelles pour meilleure update
+        void avancer(float proportion=1); //fait accélérer la voiture à proportion de sa puissance
+        void new_freiner(float proportion=1); //fait freiner la voiture à proportion de sa puissance de freinage
+        void new_ralentir(float proportion=1); //fait ralentir la voiture à proportion de sa puissance de ralentissement
+        
+        
+        
         /** \brief Tourne la voiture
          * \param angle_roue_rad Angle de rotation des roues
          * \param dt Temps durant lequel la voiture est tournée
