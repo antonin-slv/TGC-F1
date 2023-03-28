@@ -25,6 +25,13 @@ GestionSFML::GestionSFML()
         voitures[i].setOrigin(l/2,h/2);
         voitures[i].setPosition(getVoiture(i).getX(),getVoiture(i).getY());
         voitures[i].setRotation(getVoiture(i).getAngle()*180/M_PI);
+        Texture texture;
+        if (!texture.loadFromFile("data/cars/F1.png"))
+            {   cout << "Erreur lors du chargement de l'image" << endl;
+        }
+        Sprite sprite;
+        sprite.setTexture(texture);
+        sprites.push_back(sprite);
 
     }
 
@@ -129,7 +136,9 @@ void GestionSFML::boucleJeuSFML()
         for (int i = 0; i < nb_voit; i++)
         {
             voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
+                sprites[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
             voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
+                sprites[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
         }
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
@@ -153,12 +162,13 @@ void GestionSFML::boucleJeuSFML()
 }
 
 
-void GestionSFML::afficherJeuSFML(sf::RenderWindow & window)
+void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
     for (int i = 0; i < nb_voit; i++)
     {
         window.draw(voitures[i]);
+        window.draw(sprites[i]);
     }
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
