@@ -25,7 +25,7 @@ class GestionSFML : public Jeu
         vector<sf::RectangleShape> obstacles;
         
         float rotation;
-
+        
     public :
         GestionSFML();
         GestionSFML(int width, int height, std::string title);
@@ -34,7 +34,7 @@ class GestionSFML : public Jeu
 
         void initWindow(int width, int height, std::string title);
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
-        void afficherJeuSFML();
+        void afficherJeuSFML(sf::RenderWindow & window);
         void boucleJeuSFML();
 
 };
@@ -46,7 +46,7 @@ void initWindow(sf::RenderWindow & window, int width, int height, std::string ti
 void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
 
  /** \brief Affiche le jeu en mode graphique SFML (non fait) */
-void afficherJeuSFML(Jeu & jeu);
+//void afficherJeuSFML(Jeu & jeu);
 
  /** \brief Affiche l'éditeur en mode graphique (non fait) */
 void afficher(Editeur & editeur);

@@ -80,28 +80,34 @@ void GestionSFML::boucleJeuSFML()
         if (event.type == Event::Closed){
             window.close();
         }
-
-        // Clear en noir
-        window.clear(Color::Black);
-
-        // Dessins
-        for (int i = 0; i < nb_voit; i++)
-        {
-            window.draw(voitures[i]);
-        }
-        for (int i = 0; i < terrain.getNbProps(); i++)
-        {
-            window.draw(obstacles[i]);
-        }
-
-        if(Keyboard::isKeyPressed(Keyboard::Q)){
+         if(Keyboard::isKeyPressed(Keyboard::Q)){
             window.close();
         }
-        // Affichage
-        
-        window.setView(sf::View(voitures[0].getPosition(), sf::Vector2f(320.f, 180.f)));
-        window.display();
+
+        afficherJeuSFML(window);
     }
   }
+}
+
+
+void GestionSFML::afficherJeuSFML(sf::RenderWindow & window)
+{   // Clear en noir
+    window.clear(Color::Black);
+
+    // Dessins
+    for (int i = 0; i < nb_voit; i++)
+    {
+        window.draw(voitures[i]);
+    }
+    for (int i = 0; i < terrain.getNbProps(); i++)
+    {
+        window.draw(obstacles[i]);
+    }
+    
+    // Affichage
+    
+    window.setView(sf::View(voitures[0].getPosition(), sf::Vector2f(320.f, 180.f)));
+    window.display();
+
 }
 
