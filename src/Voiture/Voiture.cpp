@@ -97,6 +97,7 @@ Vecteur Voiture::getHitbox() const { return hitbox; }
 
 Vecteur Voiture::getPos() const { return position; }
 
+
 void Voiture::calculAcc(float dt,float theta)
 {
     acceleration = calculAcceleration(vitesse,poids,coef_aero,mot.getPuissance()*theta);
@@ -116,6 +117,7 @@ void Voiture::calculPosition_precis(float dt)
     calculCoordonnee_precise(position.x,position.y,angle,vitesse,acceleration,dt);
 }
 
+
 void Voiture::tourner_var(float angle_roue_rad, float dt)
 {    if ( abs(vitesse) > 1) angle += angle_roue_rad*dt;
     else angle += dt * vitesse * angle_roue_rad;
@@ -128,8 +130,9 @@ void Voiture::tourner_g(float dt) { tourner_var(-1.5,dt); }
 
 void Voiture::tourner_d(float dt) { tourner_var(1.5,dt); }
 
+
 void Voiture::accelerer(float dt)
-{   calculAcc(dt,2);
+{   calculAcc(dt,1);
     calculPosition_precis(dt);
     calculVitesse(dt);
 }
@@ -157,3 +160,15 @@ void Voiture::crash(Vecteur diff, float anglemur)
     position = position - diff*0.1;
     angle = anglemur + M_PI - angle;
 }
+
+
+void Voiture::nouveau_ACC(float portion)
+{
+    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion);
+}
+
+void Voiture::nouvelle_VIT(float dt)
+{
+    vitesse = calculVitesse_P(0,acceleration,dt);
+}
+

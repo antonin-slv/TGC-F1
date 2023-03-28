@@ -20,6 +20,8 @@ GestionSFML::GestionSFML()
         h=tab_voit[i].getLargeur();
         voitures.push_back(RectangleShape(Vector2f(l,h)));
         voitures[i].setFillColor(Color(255,0,0));
+        cout<<voitures[i].getOrigin().x<<" "<<voitures[i].getOrigin().y<<endl;
+        cout<<"vers"<<l/2<<" "<<h/2<<endl;
         voitures[i].setOrigin(l/2,h/2);
         voitures[i].setPosition(getVoiture(i).getX(),getVoiture(i).getY());
         voitures[i].setRotation(getVoiture(i).getAngle()*180/M_PI);
@@ -30,6 +32,8 @@ GestionSFML::GestionSFML()
     {   l=terrain.getProp(i).getLong();
         h=terrain.getProp(i).getLarg();
         obstacles.push_back(RectangleShape(Vector2f(l,h)));
+        cout<<obstacles[i].getOrigin().x<<" "<<obstacles[i].getOrigin().y<<endl;
+        cout<<"vers"<<l/2<<" "<<h/2<<endl;
         obstacles[i].setOrigin(l/2,h/2);
         obstacles[i].setFillColor(Color(0,0,255));
         obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY());
@@ -74,53 +78,63 @@ void GestionSFML::boucleJeuSFML()
 
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
-    Event event;
-    while (window.pollEvent(event)){
+        Event event;
+        while (window.pollEvent(event)){
 
-        // Partie physique
-        if(Keyboard::isKeyPressed(Keyboard::O)){
-            update('o');
-        }
-        else if(Keyboard::isKeyPressed(Keyboard::K)){
-            update('k');
-        }
-        else if(Keyboard::isKeyPressed(Keyboard::L)){
-            update('l');
-        }
-        else if(Keyboard::isKeyPressed(Keyboard::M)){
-            update('m');
-        }
-        else
-        {   update(' ');
-            //cout<<"ralenti"<<clock.getElapsedTime().asSeconds()<<endl;
-        }
+            // Partie physique
+            //1-> on fait tout accélérer/tourner.
+            if (event.type == Event::KeyPressed){
+                switch (event.key.code){
+                    case Keyboard::Z :
+                        update('z');
+                        break;
+                    case Keyboard::S :
+                        update('s');
+                        break;
+                    case Keyboard::Q :
+                        update('q');
+                        break;
+                    case Keyboard::D :
+                        update('d');
+                        break;
+                    case Keyboard::ESCAPE :
+                        window.close();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            //2-> on applique la résistance de l'air
 
-        //actualise position des voitures du jeu
-        for (int i = 0; i < nb_voit; i++)
-        {
-            voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
-            voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
+            //3-> on teste les collisions
+
+
+
+
+            //actualise position des voitures du jeu
+            for (int i = 0; i < nb_voit; i++)
+            {
+                voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
+                voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
+            }
+            
+            // Fermeture de la fenêtre avec la croix (inutile pour le moment)
+            if (event.type == Event::Closed){
+                window.close();
+            }
+
+            text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h");
+            
+            
+            // Clear en noir
+            window.clear(Color::Black);
+            text.setPosition(window.mapPixelToCoords(sf::Vector2i(10, 10)));
+            
+            
+            window.draw(text);
+            // On affiche le jeu
+            afficherJeuSFML(window);
         }
-        
-        // Fermeture de la fenêtre avec la croix (inutile pour le moment)
-        if (event.type == Event::Closed){
-            window.close();
-        }
-         if(Keyboard::isKeyPressed(Keyboard::Q)){
-            window.close();
-        }
-        text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h");
-        
-        
-        // Clear en noir
-        window.clear(Color::Black);
-        text.setPosition(window.mapPixelToCoords(sf::Vector2i(10, 10)));
-        
-        
-        window.draw(text);
-        // On affiche le jeu
-        afficherJeuSFML(window);
-    }
   }
 }
 
