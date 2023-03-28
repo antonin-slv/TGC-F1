@@ -108,10 +108,6 @@ void Voiture::calculVitesse(float dt)
     vitesse = calculVitesse_P(vitesse,acceleration,dt);
 }
 
-void Voiture::calculPosition(float dt){
-    calculCoordonnee(position.x,position.y,angle,vitesse,dt);
-}
-
 void Voiture::calculPosition_precis(float dt)
 {
     calculCoordonnee_precise(position.x,position.y,angle,vitesse,acceleration,dt);
@@ -161,3 +157,30 @@ void Voiture::crash(Vecteur diff, float anglemur)
     angle = anglemur + M_PI - angle;
 }
 
+
+
+//des fonctions mieux ?
+void Voiture::avancer(float portion)
+{
+    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion);
+}
+
+
+void Voiture::new_freiner(float proportion)
+{   if (vitesse > 0)
+    {   acceleration = calculAcceleration(0,poids,0,-proportion*mot.getPuissance());
+    }
+    else
+    {   acceleration = calculAcceleration(0,poids,0,-proportion*mot.getPuissance()/2);
+        if (vitesse < -40) vitesse = -40;
+    }
+}
+
+void Voiture::new_ralentir(float dt)
+{   acceleration -= calculAcceleration(vitesse,poids,coef_aero,0);
+    vitesse = calculVitesse_P(vitesse,acceleration,dt);
+}
+
+void Voiture::calculPosition(float dt){
+    calculCoordonnee(position.x,position.y,angle,vitesse,dt);
+}
