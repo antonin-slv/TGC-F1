@@ -61,6 +61,8 @@ void GestionSFML::boucleJeuSFML()
     sf::Clock clock;
     clock.restart();
     
+    Clock frames;
+
     sf::Font font;
     if (!font.loadFromFile("data/fonts/Papyrus.ttf")){
         cout << "Souci de police" << endl;
@@ -71,19 +73,24 @@ void GestionSFML::boucleJeuSFML()
     // select the font
     text.setFont(font); // font is a sf::Font
     // set the character size
-    text.setCharacterSize(20); // in pixels, not points!
-    text.setScale(0.25,0.25);
+    text.setCharacterSize(50); // in pixels, not points!
+    text.setScale(0.025,0.025);
     // set the color
     text.setFillColor(sf::Color::White);
-
+    
+    bool ACTION=false;
+    float temps=0;
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
+        ACTION=false;
+        temps+=frame_time;
+        frames.restart();
         while (window.pollEvent(event)){
-
             // Partie physique
             //1-> on fait tout accélérer/tourner.
-            if (event.type == Event::KeyPressed){
+            if (event.type == Event::KeyPressed && !ACTION){
+                ACTION=true;
                 switch (event.key.code){
                     case Keyboard::Z :
                         update('z');
@@ -97,44 +104,51 @@ void GestionSFML::boucleJeuSFML()
                     case Keyboard::D :
                         update('d');
                         break;
-                    case Keyboard::ESCAPE :
+                    case Keyboard::Escape :
+                        window.close();
+                        break;
+                    case Keyboard::A :
                         window.close();
                         break;
                     default:
+                        update(' ');
                         break;
                 }
             }
             //2-> on applique la résistance de l'air
+            
+            //3 -> update vitesse/position
 
             //3-> on teste les collisions
-
-
-
-
-            //actualise position des voitures du jeu
-            for (int i = 0; i < nb_voit; i++)
-            {
-                voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
-                voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
-            }
-            
-            // Fermeture de la fenêtre avec la croix (inutile pour le moment)
-            if (event.type == Event::Closed){
-                window.close();
-            }
-
-            text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h");
-            
-            
-            // Clear en noir
-            window.clear(Color::Black);
-            text.setPosition(window.mapPixelToCoords(sf::Vector2i(10, 10)));
-            
-            
-            window.draw(text);
-            // On affiche le jeu
-            afficherJeuSFML(window);
         }
+        if (!ACTION) 
+        {   update(' ');
+        }
+
+        //actualise position des voitures du jeu
+        for (int i = 0; i < nb_voit; i++)
+        {
+            voitures[i].setPosition(tab_voit[i].getX(),tab_voit[i].getY());
+            voitures[i].setRotation(tab_voit[i].getAngle()*180/M_PI);
+        }
+        
+        // Fermeture de la fenêtre avec la croix (inutile pour le moment)
+        if (event.type == Event::Closed){
+            window.close();
+        }
+        text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
+                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles");
+        
+        
+        // Clear en noir
+        window.clear(Color::Black);
+        text.setPosition(window.mapPixelToCoords(sf::Vector2i(10, 10)));
+        
+        
+        window.draw(text);
+        // On affiche le jeu
+        afficherJeuSFML(window);
+        frame_time=frames.getElapsedTime().asSeconds();
   }
 }
 
@@ -153,7 +167,7 @@ void GestionSFML::afficherJeuSFML(sf::RenderWindow & window)
     
     // Affichage
     
-    window.setView(sf::View(voitures[0].getPosition(), sf::Vector2f(320.f, 180.f)));
+    window.setView(sf::View(voitures[0].getPosition(), sf::Vector2f(128.f, 72.f)));
     window.display();
 
 }
