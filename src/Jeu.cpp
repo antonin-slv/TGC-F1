@@ -52,18 +52,18 @@ int Jeu::update(char const & touche)
     switch (touche)
     {   //on met à jour la direction de la voiture en fonction de la touche appuyée
     
-    case 'o':
-        tab_voit[0].accelerer(frame_time);
+    case 'z':
+        tab_voit[0].calculer_acceleration(frame_time);
         break;
-    case 'k':
+    case 'q':
         tab_voit[0].tourner_g(frame_time);
         tab_voit[0].ralentir(frame_time);
         break;
-    case 'm' :
+    case 'd' :
         tab_voit[0].tourner_d(frame_time);
         tab_voit[0].ralentir(frame_time);
         break;
-    case 'l':
+    case 's':
         tab_voit[0].freiner(frame_time);
         break;
     default:
