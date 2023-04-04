@@ -95,13 +95,13 @@ Terrain::~Terrain()
 {  tab_props.clear();
 }
 
-void Terrain::chargerJSON(string const & path){
+bool Terrain::chargerJSON(string const & path){
     
     ifstream fichier(path);
     if (!fichier.good())
     {   nb_props = 0;
         cout << "Erreur lors de l'ouverture du fichier" << endl;
-        return;
+        return 0;
     }
 
     json tab;
@@ -122,7 +122,7 @@ void Terrain::chargerJSON(string const & path){
     nb_props-=j;
     if (j> 0)cout<<j<<" props corrompus"<<endl;
     fichier.close();
-    
+    return 1;
 }
 
 Props & Terrain::getProp(int i)

@@ -17,13 +17,14 @@ enum Tip : int
 {   nondef=0,
     arbre=1,
     gradin=2,
-    Route=10,
-    route_b_g=15,
-    route_b_d=14,
-    route_h_g=13,
-    route_h_d=12,
-    route_g_d=11,
-    route_h_b=16,   
+    Route=3,
+    route_b_g=4,
+    route_b_d=5,
+    route_h_g=6,
+    route_h_d=7,
+    route_g_d=8,
+    route_h_b=9,
+    end_of_class=10   
 };
 
 /** 
@@ -120,7 +121,7 @@ class Terrain
         Props & getProp(int i);
 
         /** Charge les données depuis un fichier JSON \param path Chemin du fichier */
-        void chargerJSON(string const & path);
+        bool chargerJSON(string const & path);
         /** \brief Affiche le terrain en TXT */
         void afficher_txt();
     

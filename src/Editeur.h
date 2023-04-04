@@ -24,7 +24,7 @@ class Editeur : public Terrain
     private :
         float x, y;
         int zoom;//10 par def
-        int props_selectionne;
+        int prop_selectionne;
         vector<Props> ref_props;
     public :
         Editeur();
@@ -34,14 +34,15 @@ class Editeur : public Terrain
         void deplacer(float dx=0, float dy=0);
 
         
-        void ajouter_props();
-        void selectionner_prop();
+        void ajouter_prop(Tip t = Tip::Route);
+        void select_prop();
         void supprimer_props();
 
         void Init_props();
         void sauvegarder();
-        void charger();
-        void sauvegarder_props();
+        bool charger();
+
+        bool test_regression();
 };
 
 

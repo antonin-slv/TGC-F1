@@ -9,13 +9,6 @@ Editeur::Editeur()
     zoom = 10;
 }
 
-Editeur::Editeur(float x, float y, int zoom)
-{
-    this->x = x;
-    this->y = y;
-    this->zoom = zoom;
-}
-
 void Editeur::afficher()
 {
 
@@ -36,37 +29,68 @@ void Editeur::deplacer(float dx, float dy)
     y += dy;
 }
 
-void Editeur::charger()
-{   string path = "data/circuits/test.json"
-    void chargerJSON(path);
+bool Editeur::charger()
+{   string path = "data/circuits/test1.json";
+    return chargerJSON(path);
 }
 
 void Editeur::sauvegarder()
-{   string path = "data/circuits/test1.json"
+{   string path = "data/circuits/test1.json";
 
-    ofstream fichier(path);
+    ofstream fichier;
 
-    json j =
-    {
-    "Props" : [
-    ]
-    };
+    json j;
 
     for (int i = 0; i < nb_props; i++)
-    {   j["props"][i]["x"] = props[i].getX();
-        j["props"][i]["y"] = props[i].getY();
-        j["props"][i]["rotation"] = props[i].getRotation();
-        j["props"][i]["type"] = props[i].getType();
-        j["props"][i]["l"] = props[i].getLongueur();
-        j["props"][i]["L"] = props[i].getLargeur();
+    {   j["props"][i]["x"] = tab_props[i].getX();
+        j["props"][i]["y"] = tab_props[i].getY();
+        j["props"][i]["rotation"] = tab_props[i].getRotation();
+        j["props"][i]["type"] = tab_props[i].getType();
+        j["props"][i]["l"] = tab_props[i].getLong();
+        j["props"][i]["L"] = tab_props[i].getLarg();
     }
 
-    fichier << j;
+    fichier.open(path);
+
+    fichier << j.dump(4);
 
     fichier.close();
 }
 
-void Editeur::selectionner_prop()
-{
+void Editeur::Init_props()
+{   int i=0;
+    while (i++ != Tip::end_of_class)
+    {   ref_props.push_back(Props());
+        ref_props[i].prop_set_type((Tip) i);
+    }
     //TODO
 }
+
+
+void Editeur::ajouter_prop(Tip t)
+{   tab_props.push_back(ref_props[t]);
+    nb_props++;
+    prop_selectionne = nb_props-1;
+    //TODO
+}
+
+void Editeur::select_prop()
+{   
+    if(prop_selectionne <= 0) prop_selectionne = nb_props;
+    prop_selectionne--;
+}
+
+void Editeur::supprimer_props()
+{   tab_props.erase(prop_selectionne);
+    nb_props--;
+    prop_selectionne--;
+}
+
+bool Editeur::test_regression()
+{   charger();
+    Init_props();
+    sauvegarder();
+    //TODO
+    return true;
+}
+
