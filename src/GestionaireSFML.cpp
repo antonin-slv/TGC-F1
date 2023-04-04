@@ -24,7 +24,7 @@ GestionSFML::GestionSFML()
         text_voiture.setSmooth(true);
         voiture.setTexture(text_voiture);
         voiture.setScale(Vector2f(0.01,0.01));
-        voiture.setOrigin(l/2,h/2);
+        voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
         cout << "Chargement voiture ok" << endl;
     }
     
@@ -150,7 +150,7 @@ void GestionSFML::boucleJeuSFML()
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
-        frame_time=frames.getElapsedTime().asSeconds()*15;
+        frame_time=frames.getElapsedTime().asSeconds();
   }
 }
 

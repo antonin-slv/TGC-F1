@@ -81,7 +81,7 @@ void Editeur::select_prop()
 }
 
 void Editeur::supprimer_props()
-{   tab_props.erase(prop_selectionne);
+{   //tab_props.erase(prop_selectionne);
     nb_props--;
     prop_selectionne--;
 }
