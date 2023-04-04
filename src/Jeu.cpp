@@ -53,23 +53,24 @@ int Jeu::update(char const & touche)
     {   //on met à jour la direction de la voiture en fonction de la touche appuyée
     
     case 'z':
-        tab_voit[0].accelerer(frame_time);
+        tab_voit[0].avancer(frame_time);
         break;
     case 'q':
         tab_voit[0].tourner_g(frame_time);
-        tab_voit[0].ralentir(frame_time);
+        
         break;
     case 'd' :
         tab_voit[0].tourner_d(frame_time);
-        tab_voit[0].ralentir(frame_time);
         break;
     case 's':
-        tab_voit[0].freiner(frame_time);
+        tab_voit[0].new_freiner(frame_time);
         break;
     default:
-        tab_voit[0].ralentir(frame_time);
         break;
     }
+    cout<<tab_voit[0].getAcceleration()<<endl;
+    tab_voit[0].new_ralentir(frame_time);
+    tab_voit[0].calculPosition(frame_time);
 
     for (int i=0; i<terrain.getNbProps(); i++)
     {   //on vérifie si la voiture est en collision avec un prop

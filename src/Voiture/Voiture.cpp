@@ -113,6 +113,8 @@ const Moteur & Voiture::getMoteur() const { return mot; }
 
 const Roues & Voiture::getRoues() const { return roue; }
 
+float Voiture::getAcceleration() const { return acceleration; }
+
 float Voiture::getVitesse() const { return vitesse; }
 
 float Voiture::getAngle() const { return angle; }
@@ -153,6 +155,9 @@ void Voiture::calculPosition_precis(float dt)
 void Voiture::tourner_var(float angle_roue_rad, float dt)
 {    if ( abs(vitesse) > 1) angle += angle_roue_rad*dt;
     else angle += dt * vitesse * angle_roue_rad;
+    if (angle > M_PI) angle -= 2*M_PI;
+    else if (angle < -M_PI) angle += 2*M_PI;
+    acceleration=0;
     //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
     //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite)
     //le else est un ajout pour que la voiture ne tourne pas à l'arrêt
@@ -198,7 +203,7 @@ void Voiture::crash(Vecteur diff, float anglemur)
 //des fonctions mieux ?
 void Voiture::avancer(float portion)
 {
-    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion);
+    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion*10);
 }
 
 
@@ -213,7 +218,9 @@ void Voiture::new_freiner(float proportion)
 }
 
 void Voiture::new_ralentir(float dt)
-{   acceleration -= calculAcceleration(vitesse,poids,coef_aero,0);
+{   cout<<acceleration;
+    acceleration += calculAcceleration(vitesse,poids,coef_aero,0);
+    cout<<"vers "<< acceleration<<endl;
     vitesse = calculVitesse_P(vitesse,acceleration,dt);
 }
 

@@ -35,8 +35,6 @@ class Voiture {
         void calculAcc(float dt=1,float theta=1);
         /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
         void calculVitesse(float dt=1); 
-        /** \brief Actualise la position de la voiture \param dt Delta temps */
-        void calculPosition(float dt=1); 
         /** \brief Actualise la position de la voiture (plus précis) \param dt Delta temps */
         void calculPosition_precis(float dt=1); 
 
@@ -69,6 +67,8 @@ class Voiture {
         const Moteur & getMoteur() const;
         /** \brief Retourne les roues de la voiture \return Roues */ 
         const Roues & getRoues() const;
+        
+        float getAcceleration() const;
         /** \brief Retourne la vitesse de la voiture \return float */
         float getVitesse() const;
         /** \brief Retourne l'angle de la voiture \return float */
@@ -103,6 +103,8 @@ class Voiture {
         //bool chargerJSON(json const & obj); 
 
         //les fonctions nouvelles pour meilleure update
+         /** \brief Actualise la position de la voiture \param dt Delta temps */
+        void calculPosition(float dt=1); 
         void avancer(float proportion=1); //fait accélérer la voiture à proportion de sa puissance
         void new_freiner(float proportion=1); //fait freiner la voiture à proportion de sa puissance de freinage
         void new_ralentir(float proportion=1); //fait ralentir la voiture à proportion de sa puissance de ralentissement

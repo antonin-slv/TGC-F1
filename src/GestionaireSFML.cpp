@@ -83,12 +83,13 @@ void GestionSFML::boucleJeuSFML()
     bool ACTION=false;
     float temps=0;
     cout << "debut ok" << endl;
+    bool forward=false;
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
         ACTION=false;
         temps+=frame_time;
-        frames.restart();
+        frame_time=frames.restart().asSeconds();
         while (window.pollEvent(event)){
             // Partie physique
             //1-> on fait tout accélérer/tourner.
@@ -96,6 +97,7 @@ void GestionSFML::boucleJeuSFML()
                 ACTION=true;
                 switch (event.key.code){
                     case Keyboard::Z :
+                        cout<<"acc ";
                         update('z');
                         break;
                     case Keyboard::S :
@@ -118,6 +120,8 @@ void GestionSFML::boucleJeuSFML()
                         break;
                 }
             }
+            
+           
             //2-> on applique la résistance de l'air
             
             //3 -> update vitesse/position
@@ -150,7 +154,6 @@ void GestionSFML::boucleJeuSFML()
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
-        frame_time=frames.getElapsedTime().asSeconds();
   }
 }
 
