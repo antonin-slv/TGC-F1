@@ -102,10 +102,10 @@ int main(){
       window.display();
     }
   }
-  */
+  
   Editeur E1;
   E1.test_regression();
-
+*/  
   GestionSFML G1;
   G1.initWindow(1280,720,"Vroum");
   G1.boucleJeuSFML();
