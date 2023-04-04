@@ -99,6 +99,9 @@ class Voiture {
         void freiner(float dt=1); 
         
 
+
+        //bool chargerJSON(json const & obj); 
+
         //les fonctions nouvelles pour meilleure update
         void avancer(float proportion=1); //fait accélérer la voiture à proportion de sa puissance
         void new_freiner(float proportion=1); //fait freiner la voiture à proportion de sa puissance de freinage
