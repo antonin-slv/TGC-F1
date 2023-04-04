@@ -22,6 +22,7 @@ GestionSFML::GestionSFML()
             cout << "Problème de chargement de texture" << endl;
         }
         voiture.setTexture(text_voiture);
+        voiture.setScale(Vector2f(0.05f,0.05f));
         cout << "Chargement voiture ok" << endl;
     }
 
@@ -134,6 +135,7 @@ void GestionSFML::boucleJeuSFML()
             window.close();
         }
         text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
+                        "Position : " + to_string(getVoiture(0).getX()) + " , " + to_string(getVoiture(0).getY()) + "\n" +
                         "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles");
         
         
@@ -153,6 +155,7 @@ void GestionSFML::boucleJeuSFML()
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
+    voiture.setRotation(90);
     window.draw(voiture);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
