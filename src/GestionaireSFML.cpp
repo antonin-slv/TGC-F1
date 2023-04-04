@@ -12,7 +12,7 @@ GestionSFML::GestionSFML()
 
     //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
 
-    setframe_time(0.016);
+    setframe_time(0);
     float l, h;
 
     for (int i = 0; i < 1; i++)
@@ -22,20 +22,19 @@ GestionSFML::GestionSFML()
             cout << "Problème de chargement de texture" << endl;
         }
         voiture.setTexture(text_voiture);
-        voiture.setScale(Vector2f(0.05f,0.05f));
+        voiture.setScale(Vector2f(0.01f,0.01f));
         cout << "Chargement voiture ok" << endl;
     }
-
-    Sprite temp;
+    
     for (int i = 0; i < terrain.getNbProps(); i++)
-    {   l=terrain.getProp(i).getLong(); cout << "ok1" << endl;
-        h=terrain.getProp(i).getLarg(); cout << "ok2" << endl;
-        obstacles.push_back(temp);
-        cout<<obstacles[i].getOrigin().x<<" "<<obstacles[i].getOrigin().y<<endl; cout << "ok3" << endl;
-        cout<<"vers"<<l/2<<" "<<h/2<<endl; cout << "ok4" << endl;
-        obstacles[i].setOrigin(l/2,h/2); cout << "ok5" << endl;
-        obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY()); cout << "ok6" << endl;
-        obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI); cout << "ok7" << endl;
+    {   l=terrain.getProp(i).getLong();
+        h=terrain.getProp(i).getLarg();
+        obstacles.push_back(RectangleShape(Vector2f(l,h)));
+        cout<<obstacles[i].getOrigin().x<<" "<<obstacles[i].getOrigin().y<<endl;
+        cout<<"vers"<<l/2<<" "<<h/2<<endl;
+        obstacles[i].setOrigin(l/2,h/2);
+        obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY());
+        obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
         cout << "props ok" << endl;
     }
 
@@ -147,7 +146,7 @@ void GestionSFML::boucleJeuSFML()
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
-        frame_time=frames.getElapsedTime().asSeconds();
+        frame_time=frames.getElapsedTime().asSeconds()*10;
   }
 }
 
@@ -155,7 +154,7 @@ void GestionSFML::boucleJeuSFML()
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
-    voiture.setRotation(90);
+    voiture.setRotation(-90);
     window.draw(voiture);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
