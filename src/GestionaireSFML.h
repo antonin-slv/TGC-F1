@@ -24,6 +24,8 @@ class GestionSFML : public Jeu
         RenderWindow window;
         Sprite voiture;
         Texture text_voiture;
+        Sprite fond;
+        Texture text_fond;
         vector <RectangleShape> obstacles;
         
         float rotation;

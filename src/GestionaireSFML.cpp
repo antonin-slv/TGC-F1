@@ -21,8 +21,10 @@ GestionSFML::GestionSFML()
         if(!text_voiture.loadFromFile("data/cars/F1.png")){
             cout << "Problème de chargement de texture" << endl;
         }
+        text_voiture.setSmooth(true);
         voiture.setTexture(text_voiture);
-        voiture.setScale(Vector2f(0.01f,0.01f));
+        voiture.setScale(Vector2f(0.01,0.01));
+        voiture.setOrigin(l/2,h/2);
         cout << "Chargement voiture ok" << endl;
     }
     
@@ -37,6 +39,10 @@ GestionSFML::GestionSFML()
         obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
         cout << "props ok" << endl;
     }
+
+    text_fond.loadFromFile("data/circuits/circuit.png");
+    fond.setTexture(text_fond);
+    fond.setScale(0.1,0.1);
 
     zoom = 1;
     rotation = 0;
@@ -123,11 +129,8 @@ void GestionSFML::boucleJeuSFML()
         }
 
         //actualise position des voitures du jeu
-        for (int i = 0; i < nb_voit; i++)
-        {
-            voiture.setPosition(tab_voit[i].getX(),tab_voit[i].getY());
-            voiture.setRotation(tab_voit[i].getAngle()*180/M_PI);
-        }
+        voiture.setPosition(tab_voit[0].getX(),tab_voit[0].getY());
+        voiture.setRotation(tab_voit[0].getAngle()*180/M_PI-90);
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
         if (event.type == Event::Closed){
@@ -135,6 +138,7 @@ void GestionSFML::boucleJeuSFML()
         }
         text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
                         "Position : " + to_string(getVoiture(0).getX()) + " , " + to_string(getVoiture(0).getY()) + "\n" +
+                        "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n" +
                         "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles");
         
         
@@ -146,7 +150,7 @@ void GestionSFML::boucleJeuSFML()
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
-        frame_time=frames.getElapsedTime().asSeconds()*10;
+        frame_time=frames.getElapsedTime().asSeconds()*15;
   }
 }
 
@@ -154,12 +158,13 @@ void GestionSFML::boucleJeuSFML()
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
-    voiture.setRotation(-90);
+    window.draw(fond);
     window.draw(voiture);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
         window.draw(obstacles[i]);
     }
+    
     
     // Affichage
     
