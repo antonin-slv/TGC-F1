@@ -146,7 +146,7 @@ void GestionSFML::boucleJeuSFML()
         window.clear(Color::Black);
         text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
         
-        
+        window.draw(fond);
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
@@ -158,7 +158,7 @@ void GestionSFML::boucleJeuSFML()
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
-    window.draw(fond);
+    
     window.draw(voiture);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
