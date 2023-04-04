@@ -52,7 +52,7 @@ obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o
 
 obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
-	$(CC) $(CFLAGS) -c src/Editeur.cpp -o obj/Editeur.o
+	$(CC) $(CFLAGS) -c src/Editeur.cpp $(ISFML) -o obj/Editeur.o
 
 obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h 
 	$(CC) $(CFLAGS) -c src/Terrain.cpp -o obj/Terrain.o
