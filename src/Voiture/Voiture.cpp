@@ -72,7 +72,43 @@ Voiture::Voiture(const Voiture & V){
 }
 Voiture::~Voiture(){
     //cout << "Destruct voiture" << endl;
-}	
+}
+/*
+bool Voiture::chargerJSON(const char * obj)
+{   
+    if (obj.type() != json::value_t::object)
+    {
+        cout << "voiture corrompue" << endl;
+        return false;
+    }
+    if (obj["x"].type() == json::value_t::null) pos.x=0;
+    else pos.x = obj["x"];
+    if (obj["y"].type() == json::value_t::null) pos.y=0;
+    else pos.y = obj["y"];
+    if (obj["angle"].type() == json::value_t::null) angle=0;
+    else angle = obj["angle"];
+    if (obj["vitesse"].type() == json::value_t::null) vitesse=0;
+    else vitesse = obj["vitesse"];
+    if (obj["l"].type() == json::value_t::null) hitbox.x=0;
+    else hitbox.x = obj["l"];
+    if (obj["L"].type() == json::value_t::null) hitbox.y=0;
+    else hitbox.y = obj["L"];
+    if (obj["poids"].type() == json::value_t::null) poids=1000;
+    else poids = obj["poids"];
+    if (obj["coef_aero"].type() == json::value_t::null) coef_aero=1;
+    else coef_aero = obj["coef_aero"];
+    if (obj["acceleration"].type() == json::value_t::null) acceleration=0;
+    else acceleration = obj["acceleration"];
+
+    if(obj["Puissance"].type() == json::value_t::null) mot = Moteur();
+    else mot = Moteur("basic",obj["Puissance"]);
+    if(obj["Grip"].type() == json::value_t::null) roue = Roues();
+    else roue = Roues("basic",obj["Grip"]);
+    return true;
+}
+*/
+
+
 const Moteur & Voiture::getMoteur() const { return mot; }
 
 const Roues & Voiture::getRoues() const { return roue; }
