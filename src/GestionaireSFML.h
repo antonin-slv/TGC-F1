@@ -22,9 +22,9 @@ class GestionSFML : public Jeu
 {   private :
         float zoom;
         RenderWindow window;
-        vector<RectangleShape> voitures;
-        vector<RectangleShape> obstacles;
-        vector<Sprite> sprites;
+        Sprite voiture;
+        Texture text_voiture;
+        vector <Sprite> obstacles;
         
         float rotation;
         
