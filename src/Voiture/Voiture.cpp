@@ -24,6 +24,7 @@ Voiture::Voiture()
     coef_aero = 0.14;
     acceleration=0;
     //cout << "Construct voiture def" << endl;
+
 }
 
 /**
@@ -69,6 +70,8 @@ Voiture::Voiture(const Voiture & V){
     hitbox = V.hitbox;
     acceleration=V.acceleration;
     //cout << "Construct voiture" << endl;
+    action=V.action;
+
 }
 Voiture::~Voiture(){
     //cout << "Destruct voiture" << endl;
@@ -153,11 +156,10 @@ void Voiture::calculPosition_precis(float dt)
 
 
 void Voiture::tourner_var(float angle_roue_rad, float dt)
-{    if ( abs(vitesse) > 1) angle += angle_roue_rad*dt;
-    else angle += dt * vitesse * angle_roue_rad;
+{    if ( abs(vitesse) > 1) angle += angle_roue_rad*dt * (vitesse/16.141527) ;
+    else angle += dt * vitesse * angle_roue_rad ;
     if (angle > M_PI) angle -= 2*M_PI;
     else if (angle < -M_PI) angle += 2*M_PI;
-    acceleration=0;
     //en principe il faudrait prendre la vitesse en compte, mais ça sert pour limiter la rotation de la voiture à haute vitesse
     //on a l'impression que la voiture tourne toujours de la même façon, mais les roues non (l'angle est moins grand quand on roule vite)
     //le else est un ajout pour que la voiture ne tourne pas à l'arrêt
@@ -203,27 +205,35 @@ void Voiture::crash(Vecteur diff, float anglemur)
 //des fonctions mieux ?
 void Voiture::avancer(float portion)
 {
-    acceleration = calculAcceleration(0,poids,0,mot.getPuissance()*portion*10);
+    acceleration = mot.getPuissance()*portion/poids-coef_aero*vitesse*vitesse/100;
 }
 
 
 void Voiture::new_freiner(float proportion)
-{   if (vitesse > 0)
-    {   acceleration = calculAcceleration(0,poids,0,-proportion*mot.getPuissance());
-    }
-    else
-    {   acceleration = calculAcceleration(0,poids,0,-proportion*mot.getPuissance()/2);
-        if (vitesse < -40) vitesse = -40;
-    }
+{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*vitesse*vitesse/100;
+    if (vitesse <= 0)  acceleration /= 2;
+
 }
 
 void Voiture::new_ralentir(float dt)
-{   cout<<acceleration;
-    acceleration += calculAcceleration(vitesse,poids,coef_aero,0);
-    cout<<"vers "<< acceleration<<endl;
-    vitesse = calculVitesse_P(vitesse,acceleration,dt);
+{
+    acceleration = -coef_aero*vitesse*vitesse/100;
+
 }
 
 void Voiture::calculPosition(float dt){
     calculCoordonnee(position.x,position.y,angle,vitesse,dt);
+}
+
+
+
+void Voiture::update(float dt)
+{   acceleration = 0;
+    if (action.freine) new_freiner(1);
+    else if (action.accelere) avancer(1);
+    else new_ralentir(dt);
+    if (action.gauche) tourner_g(dt);
+    if (action.droite) tourner_d(dt);
+    calculPosition_precis(dt);
+    calculVitesse(dt);
 }

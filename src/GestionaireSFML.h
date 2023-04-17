@@ -41,6 +41,8 @@ class GestionSFML : public Jeu
         void afficherJeuSFML(sf::RenderWindow & window);
         void boucleJeuSFML();
 
+        bool test_regression();
+
 };
 
 

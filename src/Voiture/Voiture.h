@@ -11,6 +11,16 @@
 
 using namespace std;
 
+
+struct ActionClavier
+{
+    bool freine=false;
+    bool gauche=false;
+    bool droite=false;
+    bool accelere=false;
+};
+
+
 /**
  * @brief La classe Voiture
  * 
@@ -39,6 +49,13 @@ class Voiture {
         void calculPosition_precis(float dt=1); 
 
     public:
+        //booléens de controle de la voiture
+        ActionClavier action;
+        
+
+        void update(float dt=1/60);
+
+
         /** \brief Constructeur par défaut \return Voiture */
         Voiture(); 
         

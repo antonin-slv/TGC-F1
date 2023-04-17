@@ -13,6 +13,9 @@
 
 using namespace std;
 
+
+
+
 /**
  * @brief Classe du jeu
  * 
@@ -52,7 +55,8 @@ class Jeu
         //retirer le bool a terme ?
          /** \brief Met à jour le jeu \param touche Touche appuyée \return int */
         int update(char const & touche);
-    
+
+        void update(ActionClavier const & action);
 };
 
 

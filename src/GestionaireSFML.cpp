@@ -83,7 +83,8 @@ void GestionSFML::boucleJeuSFML()
     bool ACTION=false;
     float temps=0;
     cout << "debut ok" << endl;
-    bool forward=false;
+    ActionClavier action;
+
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
@@ -93,21 +94,20 @@ void GestionSFML::boucleJeuSFML()
         while (window.pollEvent(event)){
             // Partie physique
             //1-> on fait tout accélérer/tourner.
-            if (event.type == Event::KeyPressed && !ACTION){
+            if (event.type == Event::KeyPressed){
                 ACTION=true;
                 switch (event.key.code){
                     case Keyboard::Z :
-                        cout<<"acc ";
-                        update('z');
+                        action.accelere=true;
                         break;
                     case Keyboard::S :
-                        update('s');
+                        action.freine=true;
                         break;
                     case Keyboard::Q :
-                        update('q');
+                        action.gauche=true;
                         break;
                     case Keyboard::D :
-                        update('d');
+                        action.droite=true;
                         break;
                     case Keyboard::Escape :
                         window.close();
@@ -116,21 +116,33 @@ void GestionSFML::boucleJeuSFML()
                         window.close();
                         break;
                     default:
-                        update(' ');
                         break;
                 }
             }
-            
-           
-            //2-> on applique la résistance de l'air
-            
-            //3 -> update vitesse/position
+            else if (event.type == Event::KeyReleased){
+                ACTION=true;
+                switch (event.key.code){
+                    case Keyboard::Z :
+                        action.accelere=false;
+                        break;
+                    case Keyboard::S :
+                        action.freine=false;
+                        break;
+                    case Keyboard::Q :
+                        action.gauche=false;
+                        break;
+                    case Keyboard::D :
+                        action.droite=false;
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-            //3-> on teste les collisions
+            
         }
-        if (!ACTION) 
-        {   update(' ');
-        }
+        //fait tout le bouleau d'update du jeu
+        update(action);
 
         //actualise position des voitures du jeu
         voiture.setPosition(tab_voit[0].getX(),tab_voit[0].getY());
@@ -175,4 +187,6 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
     window.display();
 
 }
+
+
 

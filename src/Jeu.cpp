@@ -81,3 +81,15 @@ int Jeu::update(char const & touche)
     }
     return 3;
 }
+
+void Jeu::update(ActionClavier const & Action)
+{    tab_voit[0].action=Action;
+
+    tab_voit[0].update(frame_time);
+
+    for (int i=0; i<terrain.getNbProps(); i++)
+    {   if (testColPropVoit(terrain.getProp(i), tab_voit[0]))
+        {   collisionPropVoit(terrain.getProp(i), tab_voit[0]);
+        }
+    }
+}   
