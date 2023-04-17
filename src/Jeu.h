@@ -53,9 +53,8 @@ class Jeu
         
 
         //retirer le bool a terme ?
-         /** \brief Met à jour le jeu \param touche Touche appuyée \return int */
-        int update(char const & touche);
-
+         /** \brief Met à jour le jeu \param action actions du joueur \return void */
+        
         void update(ActionClavier const & action);
 };
 
