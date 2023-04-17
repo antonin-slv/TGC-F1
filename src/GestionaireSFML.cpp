@@ -121,7 +121,7 @@ void GestionSFML::boucleJeuSFML()
     // set the color
     text.setFillColor(Color::White);
     
-
+    long int nb_frames=0;
     float temps=0;
     cout << "debut ok" << endl;
     ActionClavier action;
@@ -129,7 +129,7 @@ void GestionSFML::boucleJeuSFML()
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
-
+        nb_frames++;
         temps+=frame_time;
         frame_time=frames.restart().asSeconds();
         while (window.pollEvent(event)){
@@ -188,7 +188,10 @@ void GestionSFML::boucleJeuSFML()
         window.draw(text);
         // On affiche le jeu
         afficherJeuSFML(window);
-  }
+    }
+    cout<<"nb frames : "<<nb_frames<<endl;
+    cout<<"temps : "<<temps<<endl;
+    cout<<"fps_moy : "<<nb_frames/temps<<endl;
 }
 
 
