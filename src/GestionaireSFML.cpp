@@ -57,6 +57,47 @@ GestionSFML::~GestionSFML()
     obstacles.clear();
 }
 
+void getActionClavier(Event event, ActionClavier & action)
+{   if (event.type == Event::KeyPressed){
+        switch (event.key.code){
+            case Keyboard::Z :
+                action.accelere=true;
+                break;
+            case Keyboard::S :
+                action.freine=true;
+                break;
+            case Keyboard::Q :
+                action.gauche=true;
+                break;
+            case Keyboard::D :
+                action.droite=true;
+                break;
+            default:
+                break;
+        }
+    }
+    else if (event.type == Event::KeyReleased){
+
+        switch (event.key.code){
+            case Keyboard::Z :
+                action.accelere=false;
+                break;
+            case Keyboard::S :
+                action.freine=false;
+                break;
+            case Keyboard::Q :
+                action.gauche=false;
+                break;
+            case Keyboard::D :
+                action.droite=false;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
 void GestionSFML::boucleJeuSFML()
 {   RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
     //centre la vue sur (0,0) avec un carré de 640*360 px
@@ -80,7 +121,7 @@ void GestionSFML::boucleJeuSFML()
     // set the color
     text.setFillColor(Color::White);
     
-    bool ACTION=false;
+
     float temps=0;
     cout << "debut ok" << endl;
     ActionClavier action;
@@ -88,27 +129,15 @@ void GestionSFML::boucleJeuSFML()
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
-        ACTION=false;
+
         temps+=frame_time;
         frame_time=frames.restart().asSeconds();
         while (window.pollEvent(event)){
             // Partie physique
             //1-> on fait tout accélérer/tourner.
             if (event.type == Event::KeyPressed){
-                ACTION=true;
+
                 switch (event.key.code){
-                    case Keyboard::Z :
-                        action.accelere=true;
-                        break;
-                    case Keyboard::S :
-                        action.freine=true;
-                        break;
-                    case Keyboard::Q :
-                        action.gauche=true;
-                        break;
-                    case Keyboard::D :
-                        action.droite=true;
-                        break;
                     case Keyboard::Escape :
                         window.close();
                         break;
@@ -116,25 +145,15 @@ void GestionSFML::boucleJeuSFML()
                         window.close();
                         break;
                     default:
+                        getActionClavier(event,action);
                         break;
                 }
             }
             else if (event.type == Event::KeyReleased){
-                ACTION=true;
+
                 switch (event.key.code){
-                    case Keyboard::Z :
-                        action.accelere=false;
-                        break;
-                    case Keyboard::S :
-                        action.freine=false;
-                        break;
-                    case Keyboard::Q :
-                        action.gauche=false;
-                        break;
-                    case Keyboard::D :
-                        action.droite=false;
-                        break;
                     default:
+                        getActionClavier(event,action);
                         break;
                 }
             }

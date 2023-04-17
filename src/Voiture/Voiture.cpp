@@ -206,18 +206,19 @@ void Voiture::crash(Vecteur diff, float anglemur)
 void Voiture::avancer(float portion)
 {
     acceleration = mot.getPuissance()*portion/poids-coef_aero*vitesse*vitesse/100;
+    if (vitesse < 0)  acceleration *= 2;
 }
 
 
 void Voiture::new_freiner(float proportion)
-{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*vitesse*vitesse/100;
-    if (vitesse <= 0)  acceleration /= 2;
+{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/50;
+    if (vitesse > 0)  acceleration *= 2;
 
 }
 
 void Voiture::new_ralentir(float dt)
 {
-    acceleration = -coef_aero*vitesse*vitesse/100;
+    acceleration = -coef_aero*abs(vitesse)*vitesse/50;
 
 }
 
