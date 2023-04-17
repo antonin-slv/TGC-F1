@@ -52,7 +52,7 @@ class Voiture {
         //booléens de controle de la voiture
         ActionClavier action;
         
-
+        /** \brief Actualise la voiture \n !!penser à mettre a jour les action avant  \param dt Delta temps */
         void update(float dt=1/60);
 
 
@@ -84,7 +84,7 @@ class Voiture {
         const Moteur & getMoteur() const;
         /** \brief Retourne les roues de la voiture \return Roues */ 
         const Roues & getRoues() const;
-        
+        /** \brief Retourne l'accélération de la voiture \return float */
         float getAcceleration() const;
         /** \brief Retourne la vitesse de la voiture \return float */
         float getVitesse() const;
@@ -94,37 +94,20 @@ class Voiture {
         float getPoids() const;
         /** \brief Retourne le coefficient aérodynamique de la voiture \return float */
         float getCoefAero() const;
-        /** \brief Retourne la position x de la voiture \return float */
-        float getX() const;
-         /** \brief Retourne la position y de la voiture \return float */
-        float getY() const;
         /** \brief Retourne le vecteur position de la voiture \return Vecteur */
         Vecteur getPos() const; 
 
         /** \brief Retourne le vecteur hitbox de la voiture \return Vecteur */
         Vecteur getHitbox() const;
-        /** \brief Retourne la largeur de la voiture \return float */
-        float getLargeur() const; 
-        /** \brief Retourne la longueur de la voiture \return float */
-        float getLongueur() const; 
-
-        /** \brief Accélère la voiture \param dt Temps durant lequel la voiture est accélérée */
-        void accelerer(float dt=1);
-        /** \brief Ralentit la voiture \param dt Temps durant lequel la voiture est ralentie */
-        void ralentir(float dt=1);
-        /** \brief Freine la voiture \param dt Temps durant lequel la voiture est freinée */
-        void freiner(float dt=1); 
         
-
-
         //bool chargerJSON(json const & obj); 
 
-        //les fonctions nouvelles pour meilleure update
-         /** \brief Actualise la position de la voiture \param dt Delta temps */
-        void calculPosition(float dt=1); 
-        void avancer(float proportion=1); //fait accélérer la voiture à proportion de sa puissance
-        void new_freiner(float proportion=1); //fait freiner la voiture à proportion de sa puissance de freinage
-        void new_ralentir(float proportion=1); //fait ralentir la voiture à proportion de sa puissance de ralentissement
+        /** \brief met a jour l'accélération de la voiture \param proportion entre 0 et 1 */
+        void avancer(float proportion=1);
+        /** \brief met a jour l'accélération de la voiture \param proportion entre 0 et 1 */
+        void new_freiner(float proportion=1); 
+        /** \brief met a jour l'accélération de la voiture quand il n'y a pas d'action */
+        void new_ralentir(); 
         
         
         

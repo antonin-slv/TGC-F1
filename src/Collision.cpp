@@ -44,44 +44,44 @@ bool testColPropVoit(Props & prop, Voiture & voit)
 }
 
 bool testColPropVoit2(Props & prop, Voiture & voit)
-{   float rx = - voit.getX()+prop.getX();
-    float ry = -voit.getY()+prop.getY();
-
+{   Vecteur diff= voit.getPos() - prop.getPos();
+    
     //on fait tourner le centre de la voiture autour de celui du prop
-    rotation_xy(rx, ry, prop.getRotation());
+    diff.tourner(prop.getRotation());
 
     //somme de la rotation de la voiture et de la rotation du prop
     float nrot = prop.getRotation() + voit.getAngle();
     
-    
-    float lo_voit = voit.getLongueur();
-    float La_voit = voit.getLargeur();
+    Vecteur hitbox_voit = voit.getHitbox();
+
+    float crot = cos(nrot);
+    float srot = sin(nrot);
     //on fait tourner le point de la voiture à l'avant pour le ramener au bon endroit
-    float lgx = cos(nrot)*lo_voit;
-    float lgy = sin(nrot)*lo_voit;
+    float lgx = crot*hitbox_voit.x;
+    float lgy = srot*hitbox_voit.x;
     //pareil avec celui à droite
-    float Lrx = cos(nrot)*La_voit;
-    float Lry = sin(nrot)*La_voit;
+    float rx = crot*hitbox_voit.y;
+    float ry = srot*hitbox_voit.y;
 
     //mieux de dabord récupérer Larg et Long dans 2 variables ?
 
     //test si le point au bout de la voiture est dedans
-    if (test_point_in_box(rx+lgx, ry+lgy, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x+lgx, diff.y+lgy, prop.getLong(), prop.getLarg())) return true;
     //test si le point à l'arrière de la voiture est dedans
-    if (test_point_in_box(rx-lgx, ry-lgy, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x-lgx, diff.y-lgy, prop.getLong(), prop.getLarg())) return true;
     //test si le point à droite de la voiture est dedans
-    if (test_point_in_box(rx+Lrx, ry+Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x+rx, diff.y+ry, prop.getLong(), prop.getLarg())) return true;
     //test si le point à gauche de la voiture est dedans
-    if (test_point_in_box(rx-Lrx, ry-Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x-rx, diff.y-ry, prop.getLong(), prop.getLarg())) return true;
 
     //test si le coin avant droit de la voiture est dedans
-    if (test_point_in_box(rx+lgx+Lrx, ry+lgy+Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x+lgx+rx, diff.y+lgy+ry, prop.getLong(), prop.getLarg())) return true;
     //test si le coin avant gauche de la voiture est dedans
-    if (test_point_in_box(rx+lgx-Lrx, ry+lgy-Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x+lgx-rx, diff.y+lgy-ry, prop.getLong(), prop.getLarg())) return true;
     //test si le coin arrière droit de la voiture est dedans
-    if (test_point_in_box(rx-lgx+Lrx, ry-lgy+Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x-lgx+rx, diff.y-lgy+ry, prop.getLong(), prop.getLarg())) return true;
     //test si le coin arrière gauche de la voiture est dedans
-    if (test_point_in_box(rx-lgx-Lrx, ry-lgy-Lry, prop.getLong(), prop.getLarg())) return true;
+    if (test_point_in_box(diff.x-lgx-rx, diff.y-lgy-ry, prop.getLong(), prop.getLarg())) return true;
 
     return false;
 }

@@ -16,8 +16,7 @@ GestionSFML::GestionSFML()
     float l, h;
 
     for (int i = 0; i < 1; i++)
-    {   l=tab_voit[i].getLongueur();
-        h=tab_voit[i].getLargeur();
+    {   
         if(!text_voiture.loadFromFile("data/cars/F1.png")){
             cout << "Problème de chargement de texture" << endl;
         }
@@ -27,7 +26,8 @@ GestionSFML::GestionSFML()
         voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
         cout << "Chargement voiture ok" << endl;
     }
-    
+    Vecteur hitbox;
+    Vecteur position;
     for (int i = 0; i < terrain.getNbProps(); i++)
     {   l=terrain.getProp(i).getLong();
         h=terrain.getProp(i).getLarg();
@@ -164,7 +164,8 @@ void GestionSFML::boucleJeuSFML()
         update(action);
 
         //actualise position des voitures du jeu
-        voiture.setPosition(tab_voit[0].getX(),tab_voit[0].getY());
+        Vecteur pos=getVoiture(0).getPos();
+        voiture.setPosition(pos.x,pos.y);
         voiture.setRotation(tab_voit[0].getAngle()*180/M_PI-90);
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
@@ -172,9 +173,11 @@ void GestionSFML::boucleJeuSFML()
             window.close();
         }
         text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
-                        "Position : " + to_string(getVoiture(0).getX()) + " , " + to_string(getVoiture(0).getY()) + "\n" +
+                        "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +
                         "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n" +
-                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles");
+                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles\n"
+                        "frame time : " + to_string(frame_time) + "\n"
+                        "fps : " + to_string(1/frame_time) + "\n");
         
         
         // Clear en noir
