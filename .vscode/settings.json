@@ -12,6 +12,7 @@
         "vector": "cpp",
         "any": "cpp",
         "system_error": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "sstream": "cpp"
     }
 }

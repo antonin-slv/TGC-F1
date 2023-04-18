@@ -63,15 +63,35 @@ void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tou
             case Keyboard::Z :
                 action.accelere=true;
                 break;
+
             case Keyboard::S :
                 action.freine=true;
                 break;
+
             case Keyboard::Q :
                 action.gauche=true;
                 break;
+
             case Keyboard::D :
                 action.droite=true;
                 break;
+            
+            case Keyboard::Up :
+                action.accelere=true;
+                break;
+            
+            case Keyboard::Down :
+                action.freine=true;
+                break;
+            
+            case Keyboard::Left :
+                action.gauche=true;
+                break;
+            
+            case Keyboard::Right :
+                action.droite=true;
+                break;
+
             default:
                 break;
         }
@@ -82,22 +102,51 @@ void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tou
             case Keyboard::Z :
                 action.accelere=false;
                 break;
+
             case Keyboard::S :
                 action.freine=false;
                 break;
+            
             case Keyboard::Q :
                 action.gauche=false;
                 break;
+
             case Keyboard::D :
                 action.droite=false;
                 break;
+            
+            case Keyboard::Up :
+                action.accelere=false;
+                break;
+            
+            case Keyboard::Down :
+                action.freine=false;
+                break;
+            
+            case Keyboard::Left :
+                action.gauche=false;
+                break;
+            
+            case Keyboard::Right :
+                action.droite=false;
+                break;
+
             case Keyboard::R :
                 _temps_au_tour.restart();
                 break;
+
             default:
                 break;
         }
     }
+}
+
+string affiche_temps(float t){
+    int minutes = floor(t/60);
+    t-=minutes*60;
+    int secondes = floor(t);
+    t-=secondes;
+    return to_string(minutes) + "'" + to_string(secondes) + "\"" + to_string(int(t*1000));
 }
 
 
@@ -174,13 +223,13 @@ void GestionSFML::boucleJeuSFML()
                         "frame time : " + to_string(frame_time) + "\n"
                         "fps : " + to_string(1/frame_time) + "\n");
         
-        texte_chrono.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()) + " secondes");
+        texte_chrono.setString(affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
         
         // On affiche le jeu
         afficherJeuSFML(window);
         
-        View vue(voiture.getPosition(), Vector2f(64.f, 32.f));
-        vue.move(cos(getVoiture(0).getAngle()) * 7,7*sin(getVoiture(0).getAngle()));
+        View vue(voiture.getPosition(), Vector2f(96.f, 48.f));
+        vue.move(cos(getVoiture(0).getAngle()) * 1,1*sin(getVoiture(0).getAngle()));
         //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
         //vue.setRotation(voiture.getRotation()+180);
         window.setView(vue);
