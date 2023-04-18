@@ -22,7 +22,7 @@ using namespace sf;
 class Editeur : public Terrain
 {   
     private :
-        float x, y;
+        Vecteur centre;
         int zoom;//10 par def
         int prop_selectionne;
         vector<Props> ref_props;
@@ -33,7 +33,10 @@ class Editeur : public Terrain
         void zoom_out();
         void deplacer(float dx=0, float dy=0);
 
+        void boucleEditeur(RenderWindow & window);
         
+
+
         void ajouter_prop(Tip t = Tip::Route);
         void select_prop();
         void supprimer_props();

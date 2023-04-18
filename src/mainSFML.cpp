@@ -25,6 +25,22 @@ using namespace std;
 
 int main(){
   GestionSFML G1;
-  G1.boucleJeuSFML();
+  Editeur E1;
+  bool quitter = false;
+  string choix="1";
+  //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
+  do{
+    RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
+    if (choix == "2") E1.boucleEditeur(window);
+    else if (choix == "1") G1.boucleJeuSFML(window);
+    else quitter = true;
+    window.close();
+    if (!quitter) {  
+      cout<<"entrer 1 pour jouer, 2 pour editer, 3 pour quitter :"<<endl;
+      cin>>choix;
+  
+    }
+
+  }while(!quitter);
   return 0;
 }

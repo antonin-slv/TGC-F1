@@ -11,11 +11,11 @@ LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
 HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
-HINTERFACE = src/GestionaireSFML.h src/Menu.h 
+HINTERFACE = src/GestionaireSFML.h src/Menu.h src/Interface.h
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
-OINTERFACE= obj/GestionaireSFML.o obj/Menu.o
+OINTERFACE= obj/GestionaireSFML.o obj/Menu.o obj/Interface.o
 
 EXECUTABLETXT = bin/VroumTXT
 EXECUTABLESFML = bin/VroumSFML
@@ -50,6 +50,9 @@ obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
 
 obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o
+
+obj/Interface.o: src/Interface.cpp src/Interface.h obj/Jeu.o obj/Editeur.o obj/GestionaireSFML.o obj/Terrain.o
+	$(CC) $(CFLAGS) -c src/Interface.cpp $(ISFML) -o obj/Interface.o
 
 obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
 	$(CC) $(CFLAGS) -c src/Editeur.cpp $(ISFML) -o obj/Editeur.o

@@ -3,14 +3,43 @@
 
 
 Editeur::Editeur()
-{
-    x = 0;
-    y = 0;
+{   centre = Vecteur(0,0);
     zoom = 10;
 }
 
 void Editeur::afficher()
 {
+
+}
+
+void Editeur::boucleEditeur(RenderWindow & window)
+{   charger();
+    Event event;
+    while (window.pollEvent(event))
+    {   if (event.type == Event::Closed) return;
+        if (event.type == Event::KeyPressed)
+        {   if (event.key.code == Keyboard::Escape) return;
+            if (event.key.code == Keyboard::Z)
+                deplacer(0, 1);
+            if (event.key.code == Keyboard::S)
+                deplacer(0, -1);
+            if (event.key.code == Keyboard::Q)
+                deplacer(-1, 0);
+            if (event.key.code == Keyboard::D)
+                deplacer(1, 0);
+            if (event.key.code == Keyboard::A)
+                select_prop();
+            
+            /*
+            if (event.key.code == Keyboard::E)
+                ajouter_prop();
+            if (event.key.code == Keyboard::R)
+                supprimer_props();
+            */
+        }
+    }
+
+    
 
 }
 
@@ -25,8 +54,8 @@ void Editeur::zoom_out()
 
 void Editeur::deplacer(float dx, float dy)
 {
-    x += dx;
-    y += dy;
+    centre.x += dx;
+    centre.y += dy;
 }
 
 bool Editeur::charger()
@@ -78,6 +107,7 @@ void Editeur::select_prop()
 {   
     if(prop_selectionne <= 0) prop_selectionne = nb_props;
     prop_selectionne--;
+    centre=tab_props[prop_selectionne].getPos();
 }
 
 void Editeur::supprimer_props()

@@ -11,7 +11,7 @@
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
 #include "Voiture/Vecteur.h"
-
+#include "Interface.h"
 #include <vector>
 #include <iostream>
 
@@ -21,14 +21,11 @@ using namespace sf;
 class GestionSFML : public Jeu
 {   private :
         float zoom;
-        RenderWindow window;
-        Sprite voiture;
-        Texture text_voiture;
+
         Sprite fond;
         Texture text_fond;
-        vector <RectangleShape> obstacles;
+        Interface interface;
         
-        float rotation;
         
     public :
         GestionSFML();
@@ -39,7 +36,7 @@ class GestionSFML : public Jeu
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
         void afficherDebug(RenderWindow &Window, Text & texte1, Text & texte2);
         void afficherJeuSFML(sf::RenderWindow & window);
-        void boucleJeuSFML();
+        void boucleJeuSFML(sf::RenderWindow & window);
 
         bool test_regression();
 
@@ -49,7 +46,7 @@ class GestionSFML : public Jeu
 void initWindow(sf::RenderWindow & window, int width, int height, std::string title);
 
 /** \brief Affiche le terrain en mode graphique (non fait) */
-void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
+void afficherterrain(sf::RenderWindow & window,Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
 
  /** \brief Affiche le jeu en mode graphique SFML (non fait) */
 //void afficherJeuSFML(Jeu & jeu);

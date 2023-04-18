@@ -46,7 +46,7 @@ bool test_colPointbox(Vecteur point, Vecteur const &  box, float Rotation);
  * @param Rotation 
  * @return bool
  */
-bool testColPropVoit2(Props & prop, Voiture & voit);
+bool testColPropVoit2(Props const & prop, Voiture & voit);
 
 /**
  * @brief Teste si 8 points sont dans un rectangle (avec les vecteurs)
@@ -57,7 +57,7 @@ bool testColPropVoit2(Props & prop, Voiture & voit);
  * @param Rotation 
  * @return bool
  */
-bool testColPropVoit(Props & prop, Voiture & voit);
+bool testColPropVoit(Props const & prop, Voiture & voit);
 
 /**
  * @brief Applique les effets de collision entre la voiture et le prop
@@ -65,7 +65,7 @@ bool testColPropVoit(Props & prop, Voiture & voit);
  * @param prop 
  * @param voit 
  */
-void collisionPropVoit(Props & prop, Voiture & voit);
+void collisionPropVoit(Props const & prop, Voiture & voit);
 
 
 #endif

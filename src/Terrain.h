@@ -118,7 +118,7 @@ class Terrain
         int getNbProps() const;
 
         /** Retourne le ième props du terrain \param i Numéro du props \return Props */
-        Props & getProp(int i);
+        Props const & getProp(int i);
 
         /** Charge les données depuis un fichier JSON \param path Chemin du fichier */
         bool chargerJSON(string const & path);

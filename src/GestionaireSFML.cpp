@@ -8,54 +8,20 @@ using namespace sf;
 GestionSFML::GestionSFML()
 {   
     ChargerTerrain("data/circuits/test.json");
-    float l, h;
-
-    
-    for (int i = 0; i < 1; i++)
-    {   //génération de sprite
-        if(!text_voiture.loadFromFile("data/cars/F1.png")){
-            cout << "Problème de chargement de texture" << endl;
-        }
-        text_voiture.setSmooth(true);
-        Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
-        float proportion = taille.y/taille.x;
-        taille=Vecteur(5/taille.y,5/taille.y);
-        
-        Vecteur hitbox(proportion,1);   
-        voiture.setTexture(text_voiture);
-        voiture.setScale(taille.x,taille.y);
-        voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
-        //ajoute une voiture de la classe voiture
-        ajouterVoiture(Voiture(Moteur(),Roues(),796,0.14,hitbox.x,hitbox.y,0,0,0,0,0));
-        cout<<"Hitbox : "<<hitbox.x<<" "<<hitbox.y<<endl;
-        cout << "Chargement voiture ok" << endl;
-    }
-    Vecteur hitbox;
-    Vecteur pos;
-    for (int i = 0; i < terrain.getNbProps(); i++)
-    {   hitbox=terrain.getProp(i).getHitbox()*2;
-        obstacles.push_back(RectangleShape(Vector2f(hitbox.x,hitbox.y)));
-        hitbox.x=hitbox.x/2;
-        hitbox.y=hitbox.y/2;
-        obstacles[i].setOrigin(hitbox.x,hitbox.y);
-
-        pos=terrain.getProp(i).getPos();
-        obstacles[i].setPosition(pos.x,pos.y);
-        obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
-        cout << "props ok" << endl;
-    }
+    interface.loadTerrain(terrain,"");
+    Voiture Voit_temp;
+    interface.loadVoiture(Voit_temp,"data/cars/F1.png");
+    ajouterVoiture(Voit_temp);
 
     text_fond.loadFromFile("data/circuits/circuit.png");
     fond.setTexture(text_fond);
     fond.setScale(0.1,0.1);
 
     zoom = 1;
-    rotation = 0;
 }
 
 GestionSFML::~GestionSFML()
-{   window.close();
-    obstacles.clear();
+{   
 }
 
 void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
@@ -102,9 +68,8 @@ void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tou
 }
 
 
-void GestionSFML::boucleJeuSFML()
-{   RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
-    window.setFramerateLimit(120);
+void GestionSFML::boucleJeuSFML(RenderWindow & window)
+{   window.setFramerateLimit(120);
     Clock clock;
     clock.restart();
     
@@ -161,8 +126,6 @@ void GestionSFML::boucleJeuSFML()
 
         //actualise position des voitures du jeu
         Vecteur pos=getVoiture(0).getPos();
-        voiture.setPosition(pos.x,pos.y);
-        voiture.setRotation(tab_voit[0].getAngle()*180/M_PI-90);
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
         if (event.type == Event::Closed){
@@ -180,7 +143,7 @@ void GestionSFML::boucleJeuSFML()
         // On affiche le jeu
         afficherJeuSFML(window);
         
-        View vue(voiture.getPosition(), Vector2f(96.f, 48.f));
+        View vue(interface.voiture.getPosition(), Vector2f(96.f, 48.f));
         vue.move(cos(getVoiture(0).getAngle()) * 7,7*sin(getVoiture(0).getAngle()));
         //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
         //vue.setRotation(voiture.getRotation()+180);
@@ -206,39 +169,8 @@ void GestionSFML::afficherDebug(RenderWindow & window, Text & text, Text & texte
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
-    // Dessins
-    window.clear(Color(0,200,0));
-    
+    window.clear();
     window.draw(fond);
-    
-    
-    RectangleShape hit_box(Vector2f(getVoiture(0).getHitbox().x*2, getVoiture(0).getHitbox().y*2));
-    
-    hit_box.setOrigin(getVoiture(0).getHitbox().x, getVoiture(0).getHitbox().y);
-    
-    hit_box.setRotation(getVoiture(0).getAngle()*180/M_PI);
-    hit_box.setFillColor(Color(255,0,0,150));
-    //RectangleShape hit_box(Vector2f(10,10));
-    hit_box.setPosition(voiture.getPosition());
-    window.draw(hit_box);
-
-    window.draw(voiture);
-
-    for (int i = 0; i < terrain.getNbProps(); i++)
-    {
-        window.draw(obstacles[i]);
-        /*
-        for (int x=-5; x<=5;x++)
-        { for (int y=-5;y<=5;y++)
-            {   Vecteur pos = terrain.getProp(i).getPos()+Vecteur(x,y) * 0.1;
-                
-                if (test_colPointbox(pos, terrain.getProp(i).getHitbox(), terrain.getProp(i).getRotation()))
-                {   Vertex point((Vector2f(pos.x+x,pos.y+y)), Color(255,0,20,150));
-                    
-                    window.draw(&point, 1,sf::Points);
-                }
-            }
-        }
-        */
-    }
+    interface.drawVoiture(window, tab_voit[0]);
+    interface.drawTerrain(window);
 }

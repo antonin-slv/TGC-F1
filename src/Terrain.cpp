@@ -125,7 +125,7 @@ bool Terrain::chargerJSON(string const & path){
     return 1;
 }
 
-Props & Terrain::getProp(int i)
+Props const & Terrain::getProp(int i)
 {
     assert(i < nb_props);
     return tab_props[i];

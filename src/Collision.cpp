@@ -17,7 +17,7 @@ bool test_colPointbox(Vecteur point, Vecteur const &  box, float Rotation)
     return test_point_in_box(point,box);
 }
 
-bool testColPropVoit(Props & prop, Voiture & voit)
+bool testColPropVoit(Props const & prop, Voiture & voit)
 {   Vecteur diff;
     diff = voit.getPos() - prop.getPos();
 
@@ -43,7 +43,7 @@ bool testColPropVoit(Props & prop, Voiture & voit)
     return false;
 }
 
-bool testColPropVoit2(Props & prop, Voiture & voit)
+bool testColPropVoit2(Props const & prop, Voiture & voit)
 {   Vecteur diff= voit.getPos() - prop.getPos();
     
     //on fait tourner le centre de la voiture autour de celui du prop
@@ -87,7 +87,7 @@ bool testColPropVoit2(Props & prop, Voiture & voit)
 }
 
 
-void collisionPropVoit(Props & prop, Voiture & voit)
+void collisionPropVoit(Props const & prop, Voiture & voit)
 {   Vecteur diff = prop.getPos() - voit.getPos();
     voit.crash(diff, prop.getRotation());
 }
