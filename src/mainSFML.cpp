@@ -20,7 +20,6 @@
 #include "External/json.hpp"
 
 using namespace sf;
-using namespace std::chrono; // milliseconds, system_clock, seconds
 using json = nlohmann::json; //pour le json
 using namespace std;
 

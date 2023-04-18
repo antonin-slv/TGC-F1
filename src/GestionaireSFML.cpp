@@ -242,6 +242,3 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
         */
     }
 }
-
-
-
