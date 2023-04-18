@@ -192,7 +192,7 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
         // On affiche le jeu
         afficherJeuSFML(window);
         
-        View vue(voiture.getPosition(), Vector2f(96.f, 48.f));
+        View vue(interface.voiture.getPosition(), Vector2f(96.f, 48.f));
         vue.move(cos(getVoiture(0).getAngle()) * 7,7*sin(getVoiture(0).getAngle()));
         //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
         //vue.setRotation(voiture.getRotation()+180);
