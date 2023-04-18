@@ -31,12 +31,11 @@ bool test_point_in_box(Vecteur point, Vecteur box);
  * @brief Teste si un point est dans un rectangle via les vecteurs
  * 
  * @param point 
- * @param position 
  * @param box 
  * @param Rotation 
  * @return bool
  */
-bool test_colPointbox(Vecteur point, Vecteur const & position, Vecteur const &  box, float Rotation);
+bool test_colPointbox(Vecteur point, Vecteur const &  box, float Rotation);
 
 /**
  * @brief Teste si 8 points sont dans un rectangle (ancienne méthode)
