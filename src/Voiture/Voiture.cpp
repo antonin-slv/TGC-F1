@@ -175,9 +175,16 @@ void Voiture::new_freiner(float proportion)
 
 }
 
-void Voiture::new_ralentir()
+void Voiture::new_ralentir(float dt)
 {
     acceleration = -coef_aero*abs(vitesse)*vitesse/50;
+    if (vitesse > 3) acceleration-=2;
+    else if (vitesse < -3) acceleration+=2;
+    else{
+        acceleration = 0;
+        vitesse /= 1+dt*2;
+        
+    }   
 
 }
 
@@ -185,9 +192,10 @@ void Voiture::update(float dt)
 {   acceleration = 0;
     if (action.freine) new_freiner(1);
     else if (action.accelere) avancer(1);
-    else new_ralentir();
+    else new_ralentir(dt);
     if (action.gauche) tourner_g(dt);
     if (action.droite) tourner_d(dt);
+
     calculPosition_precis(dt);
     calculVitesse(dt);
 }

@@ -107,7 +107,7 @@ class Voiture {
         /** \brief met a jour l'accélération de la voiture \param proportion entre 0 et 1 */
         void new_freiner(float proportion=1); 
         /** \brief met a jour l'accélération de la voiture quand il n'y a pas d'action */
-        void new_ralentir(); 
+        void new_ralentir(float dt=1/60); 
         
         
         
