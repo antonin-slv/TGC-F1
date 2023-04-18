@@ -166,12 +166,14 @@ void Voiture::avancer(float portion)
 {
     acceleration = mot.getPuissance()*portion/poids-coef_aero*vitesse*vitesse/100;
     if (vitesse < 0)  acceleration *= 2;
+    else if (vitesse > 0.1) acceleration -= 0.1;
 }
 
 
 void Voiture::new_freiner(float proportion)
 {   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/50;
     if (vitesse > 0)  acceleration *= 2;
+    else if (vitesse < -0.1) acceleration += 0.1;
 
 }
 
@@ -188,6 +190,7 @@ void Voiture::update(float dt)
     else new_ralentir();
     if (action.gauche) tourner_g(dt);
     if (action.droite) tourner_d(dt);
+
     calculPosition_precis(dt);
     calculVitesse(dt);
 }
