@@ -49,7 +49,7 @@ class Jeu
          /** \brief Charge un terrain \param nom_fichier Nom du fichier à charger, passé par référence */
         void ChargerTerrain(string const & nom_fichier);
          /** \brief Ajoute une voiture \param V Voiture à ajouter, passé par référence */
-        void AjouterVoiture(Voiture const & V);
+        void ajouterVoiture(Voiture const & V);
         
 
         //retirer le bool a terme ?

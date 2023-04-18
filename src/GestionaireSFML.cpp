@@ -10,15 +10,24 @@ GestionSFML::GestionSFML()
     ChargerTerrain("data/circuits/test.json");
     float l, h;
 
+    
     for (int i = 0; i < 1; i++)
-    {   
+    {   //génération de sprite
         if(!text_voiture.loadFromFile("data/cars/F1.png")){
             cout << "Problème de chargement de texture" << endl;
         }
         text_voiture.setSmooth(true);
+        Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
+        float proportion = taille.y/taille.x;
+        taille=Vecteur(5/taille.y,5/taille.y);
+        
+        Vecteur Hitbox(proportion,1);   
         voiture.setTexture(text_voiture);
-        voiture.setScale(Vector2f(0.01,0.01));
+        voiture.setScale(taille.x,taille.y);
         voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
+        //ajoute une voiture de la classe voiture
+        ajouterVoiture(Voiture(Moteur(),Roues(),796,0.14,Hitbox.x,Hitbox.y,0,0,0,0,0));
+        cout<<"Hitbox : "<<Hitbox.x<<" "<<Hitbox.y<<endl;
         cout << "Chargement voiture ok" << endl;
     }
     Vecteur hitbox;
@@ -140,21 +149,12 @@ void GestionSFML::boucleJeuSFML()
                         window.close();
                         break;
                     default:
-                        getActionClavier(event, action, temps_au_tour);
                         break;
                 }
             }
-            else if (event.type == Event::KeyReleased){
-
-                switch (event.key.code){
-                    default:
-                        getActionClavier(event, action, temps_au_tour);
-                        break;
-                }
-            }
-
-            
+            getActionClavier(event, action, temps_au_tour);            
         }
+
         //fait tout le bouleau d'update du jeu
         update(action);
 
@@ -178,8 +178,13 @@ void GestionSFML::boucleJeuSFML()
         
         // On affiche le jeu
         afficherJeuSFML(window);
+        
+        View vue(voiture.getPosition(), Vector2f(64.f, 32.f));
+        vue.move(cos(getVoiture(0).getAngle()) * 7,7*sin(getVoiture(0).getAngle()));
+        //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
+        //vue.setRotation(voiture.getRotation()+180);
+        window.setView(vue);
         afficherDebug(window, text, texte_chrono);
-        window.setView(View(voiture.getPosition(), Vector2f(128.f, 72.f)));
         window.display();
     }
     cout << "nb frames : " << nb_frames << endl;
@@ -205,6 +210,16 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
     
     window.draw(fond);
     window.draw(voiture);
+    
+    RectangleShape hit_box(Vector2f(getVoiture(0).getHitbox().x*2, getVoiture(0).getHitbox().y*2));
+    
+    hit_box.setOrigin(getVoiture(0).getHitbox().x, getVoiture(0).getHitbox().y);
+    
+    hit_box.setRotation(getVoiture(0).getAngle()*180/M_PI);
+    hit_box.setFillColor(Color(255,0,0,150));
+    //RectangleShape hit_box(Vector2f(10,10));
+    hit_box.setPosition(voiture.getPosition());
+    window.draw(hit_box);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
         window.draw(obstacles[i]);

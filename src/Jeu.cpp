@@ -8,8 +8,7 @@
 Jeu::Jeu()
 {   
     terrain=Terrain(100,30);
-    nb_voit = 1;
-    tab_voit = vector<Voiture>(nb_voit);
+    nb_voit = 0;
     frame_time = 0.0167;
 }
 
@@ -18,8 +17,7 @@ Jeu::Jeu()
 Jeu::Jeu(string const & nom_fichier)
 {   
     ChargerTerrain(nom_fichier);
-    nb_voit = 1;
-    tab_voit = vector<Voiture>(nb_voit);
+    nb_voit = 0;
     frame_time = 0.0167;
 }
 
@@ -36,7 +34,7 @@ Jeu::~Jeu() {
 
 Terrain & Jeu::getTerrain() { return terrain; }
 
-void Jeu::AjouterVoiture(Voiture const & V)
+void Jeu::ajouterVoiture(Voiture const & V)
 {   //on créé une voiture identique à V et on l'ajoute au tableau
     tab_voit.push_back(Voiture(V));
     nb_voit++;

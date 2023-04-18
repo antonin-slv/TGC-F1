@@ -170,8 +170,9 @@ void Voiture::avancer(float portion)
 
 
 void Voiture::new_freiner(float proportion)
-{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/50;
+{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/100;
     if (vitesse > 0)  acceleration *= 2;
+   
 
 }
 
