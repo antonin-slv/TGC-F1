@@ -100,6 +100,7 @@ void getActionClavier(Event event, ActionClavier & action)
 
 void GestionSFML::boucleJeuSFML()
 {   RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
+    window.setFramerateLimit(120);
     //centre la vue sur (0,0) avec un carré de 640*360 px
     Clock clock;
     clock.restart();
@@ -181,7 +182,7 @@ void GestionSFML::boucleJeuSFML()
         
         
         // Clear en noir
-        window.clear(Color::Black);
+        window.clear(Color::Green);
         text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
         
         window.draw(fond);
