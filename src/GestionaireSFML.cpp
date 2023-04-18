@@ -15,15 +15,24 @@ GestionSFML::GestionSFML()
     setframe_time(0);
     float l, h;
 
+    
     for (int i = 0; i < 1; i++)
-    {   
+    {   //génération de sprite
         if(!text_voiture.loadFromFile("data/cars/F1.png")){
             cout << "Problème de chargement de texture" << endl;
         }
         text_voiture.setSmooth(true);
+        Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
+        float proportion = taille.x/taille.y;
+        taille=Vecteur(10/taille.y,10/taille.y);
+        
+        Vecteur Hitbox(proportion,1);   
         voiture.setTexture(text_voiture);
-        voiture.setScale(Vector2f(0.01,0.01));
+        voiture.setScale(taille.x,taille.y);
         voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
+        //ajoute une voiture de la classe voiture
+        ajouterVoiture(Voiture(Moteur(),Roues(),796,0.14,Hitbox.x,Hitbox.y,0,0,0,0,0));
+        cout<<"Hitbox : "<<Hitbox.x<<" "<<Hitbox.y<<endl;
         cout << "Chargement voiture ok" << endl;
     }
     Vecteur hitbox;

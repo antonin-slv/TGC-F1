@@ -77,6 +77,8 @@ class Voiture {
                 float y=0, float acc=0);
         /** \brief Constructeur par copie \param V Voiture à copier, passée par référence \return Voiture */
         Voiture(const Voiture & V);
+
+        
          /** \brief Destructeur de Voiture */
         ~Voiture();
 
