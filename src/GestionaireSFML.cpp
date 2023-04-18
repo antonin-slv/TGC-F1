@@ -210,6 +210,3 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
         window.draw(obstacles[i]);
     }
 }
-
-
-
