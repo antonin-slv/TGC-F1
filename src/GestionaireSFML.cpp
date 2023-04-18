@@ -57,7 +57,7 @@ GestionSFML::~GestionSFML()
     obstacles.clear();
 }
 
-void getActionClavier(Event event, ActionClavier & action)
+void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
 {   if (event.type == Event::KeyPressed){
         switch (event.key.code){
             case Keyboard::Z :
@@ -91,6 +91,9 @@ void getActionClavier(Event event, ActionClavier & action)
             case Keyboard::D :
                 action.droite=false;
                 break;
+            case Keyboard::R :
+                _temps_au_tour.restart();
+                break;
             default:
                 break;
         }
@@ -108,9 +111,7 @@ void GestionSFML::boucleJeuSFML()
     Clock frames;
 
     Font font;
-    if (!font.loadFromFile("data/fonts/Papyrus.ttf")){
-        cout << "Souci de police" << endl;
-    }
+    font.loadFromFile("data/fonts/Consolas.ttf");
 
     Text text;
 
@@ -122,10 +123,15 @@ void GestionSFML::boucleJeuSFML()
     // set the color
     text.setFillColor(Color::White);
     
-    long int nb_frames=0;
-    float temps=0;
+    long int nb_frames = 0;
+    float temps = 0;
     cout << "debut ok" << endl;
     ActionClavier action;
+    Clock temps_au_tour;
+    Text texte_chrono;
+    texte_chrono.setFont(font);
+    texte_chrono.setCharacterSize(50);
+    texte_chrono.setScale(0.025,0.025);
 
     while (window.isOpen()){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
@@ -146,7 +152,7 @@ void GestionSFML::boucleJeuSFML()
                         window.close();
                         break;
                     default:
-                        getActionClavier(event,action);
+                        getActionClavier(event, action, temps_au_tour);
                         break;
                 }
             }
@@ -154,7 +160,7 @@ void GestionSFML::boucleJeuSFML()
 
                 switch (event.key.code){
                     default:
-                        getActionClavier(event,action);
+                        getActionClavier(event, action, temps_au_tour);
                         break;
                 }
             }
@@ -176,23 +182,26 @@ void GestionSFML::boucleJeuSFML()
         text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
                         "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +
                         "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n" +
-                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s réelles\n"
+                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s IRL\n"
                         "frame time : " + to_string(frame_time) + "\n"
                         "fps : " + to_string(1/frame_time) + "\n");
         
+        texte_chrono.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()) + "secondes");
         
         // Clear en noir
         window.clear(Color::Green);
         text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
+        texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1000, 10)));
         
         window.draw(fond);
         window.draw(text);
+        window.draw(texte_chrono);
         // On affiche le jeu
         afficherJeuSFML(window);
     }
-    cout<<"nb frames : "<<nb_frames<<endl;
-    cout<<"temps : "<<temps<<endl;
-    cout<<"fps_moy : "<<nb_frames/temps<<endl;
+    cout << "nb frames : " << nb_frames << endl;
+    cout << "temps : " << temps << endl;
+    cout << "fps_moy : " << nb_frames/temps << endl;
 }
 
 
