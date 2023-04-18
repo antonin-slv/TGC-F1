@@ -36,8 +36,8 @@ class GestionSFML : public Jeu
 
         ~GestionSFML();
 
-        void initWindow(int width, int height, std::string title);
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
+        void afficherDebug(RenderWindow &Window, Text & texte1, Text & texte2);
         void afficherJeuSFML(sf::RenderWindow & window);
         void boucleJeuSFML();
 

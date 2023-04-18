@@ -7,12 +7,7 @@ using namespace sf;
 
 GestionSFML::GestionSFML()
 {   
-    
     ChargerTerrain("data/circuits/test.json");
-
-    //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
-
-    setframe_time(0);
     float l, h;
 
     
@@ -41,8 +36,8 @@ GestionSFML::GestionSFML()
     {   l=terrain.getProp(i).getLong();
         h=terrain.getProp(i).getLarg();
         obstacles.push_back(RectangleShape(Vector2f(l,h)));
-        cout<<obstacles[i].getOrigin().x<<" "<<obstacles[i].getOrigin().y<<endl;
-        cout<<"vers"<<l/2<<" "<<h/2<<endl;
+        cout << obstacles[i].getOrigin().x << " " << obstacles[i].getOrigin().y << endl;
+        cout << "vers "<< l/2 << " " << h/2 << endl;
         obstacles[i].setOrigin(l/2,h/2);
         obstacles[i].setPosition(terrain.getProp(i).getX(),terrain.getProp(i).getY());
         obstacles[i].setRotation(terrain.getProp(i).getRotation()*180/M_PI);
@@ -55,10 +50,6 @@ GestionSFML::GestionSFML()
 
     zoom = 1;
     rotation = 0;
-}
-
-void GestionSFML::initWindow(int width, int height, string title)
-{   //RenderWindow window(VideoMode(width,height),title); 
 }
 
 GestionSFML::~GestionSFML()
@@ -113,7 +104,6 @@ void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tou
 void GestionSFML::boucleJeuSFML()
 {   RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
     window.setFramerateLimit(120);
-    //centre la vue sur (0,0) avec un carré de 640*360 px
     Clock clock;
     clock.restart();
     
@@ -129,8 +119,6 @@ void GestionSFML::boucleJeuSFML()
     // set the character size
     text.setCharacterSize(50); // in pixels, not points!
     text.setScale(0.025,0.025);
-    // set the color
-    text.setFillColor(Color::White);
     
     long int nb_frames = 0;
     float temps = 0;
@@ -195,41 +183,41 @@ void GestionSFML::boucleJeuSFML()
                         "frame time : " + to_string(frame_time) + "\n"
                         "fps : " + to_string(1/frame_time) + "\n");
         
-        texte_chrono.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()) + "secondes");
+        texte_chrono.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()) + " secondes");
         
-        // Clear en noir
-        window.clear(Color::Green);
-        text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
-        texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1000, 10)));
-        
-        window.draw(fond);
-        window.draw(text);
-        window.draw(texte_chrono);
         // On affiche le jeu
         afficherJeuSFML(window);
+        afficherDebug(window, text, texte_chrono);
+        window.setView(View(voiture.getPosition(), Vector2f(128.f, 72.f)));
+        window.display();
     }
     cout << "nb frames : " << nb_frames << endl;
     cout << "temps : " << temps << endl;
     cout << "fps_moy : " << nb_frames/temps << endl;
 }
 
+void GestionSFML::afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
+{   
+    // Dessins
+    text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
+    texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1750, 10)));
+    
+    window.draw(text);
+    window.draw(texte_chrono);
+
+}
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     // Dessins
+    window.clear(Color(0,200,0));
     
+    window.draw(fond);
     window.draw(voiture);
     for (int i = 0; i < terrain.getNbProps(); i++)
     {
         window.draw(obstacles[i]);
     }
-    
-    
-    // Affichage
-    
-    window.setView(View(voiture.getPosition(), Vector2f(128.f, 72.f)));
-    window.display();
-
 }
 
 
