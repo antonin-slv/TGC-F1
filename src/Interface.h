@@ -1,10 +1,10 @@
 #ifndef _INTERFACE_
 #define _INTERFACE_
 
-#include "jeu.h"
-#include "terrain.h"
-#include "Voiture/voiture.h"
-#include "editeur.h"
+#include "Jeu.h"
+#include "Terrain.h"
+#include "Voiture/Voiture.h"
+#include "Editeur.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
