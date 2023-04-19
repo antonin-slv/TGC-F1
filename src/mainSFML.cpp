@@ -24,8 +24,9 @@ using namespace std;
 int main(){
   GestionSFML G1;
   Editeur E1;
+  E1.charger("data/circuits/test.json");
   bool quitter = false;
-  string choix="1";
+  string choix="2";
   //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
   do{
     RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);

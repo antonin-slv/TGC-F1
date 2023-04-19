@@ -1,8 +1,29 @@
 #include "Interface.h"
-
+#include "Editeur.h"
+#include "Jeu.h"
 Interface::Interface()
 {
     //ctor
+}
+
+void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
+{   
+    // Dessins
+    text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
+    texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1750, 10)));
+    
+    window.draw(text);
+    window.draw(texte_chrono);
+
+}
+
+void Interface::loadProp(Props & prop, string texture_path)
+{   Vecteur hitbox=prop.getHitbox();
+    props.push_back(RectangleShape(Vector2f(hitbox.x,hitbox.y)));
+    props[props.size()-1].setOrigin(hitbox.x/2,hitbox.y/2);
+    Vecteur pos = prop.getPos();
+    props[props.size()-1].setPosition(pos.x,pos.y);
+    props[props.size()-1].setRotation(90+prop.getRotation()*180/M_PI);
 }
 
 void Interface::loadTerrain(Terrain & terrain,string texture_path)

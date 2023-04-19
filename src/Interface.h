@@ -4,7 +4,9 @@
 #include "Jeu.h"
 #include "Terrain.h"
 #include "Voiture/Voiture.h"
-#include "Editeur.h"
+
+struct Editeur;
+
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -15,6 +17,8 @@
 
 using namespace std;
 using namespace sf;
+
+void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono);
 
 class Interface
 { private :
@@ -29,6 +33,7 @@ class Interface
     Interface();
 
 
+    void loadProp(Props & prop, string texture_path);
     void loadTerrain(Terrain & terrain,string texture_path);
     void loadVoiture(Voiture & voiture_, string texture_path);
     void loadJeu(Jeu & jeu, string texture_path);

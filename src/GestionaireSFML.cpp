@@ -121,23 +121,14 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
     cout << "fps_moy : " << nb_frames/temps << endl;
 }
 
-void GestionSFML::afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
-{   
-    // Dessins
-    text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
-    texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1750, 10)));
-    
-    window.draw(text);
-    window.draw(texte_chrono);
 
-}
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     window.clear();
     window.draw(fond);
     
-    sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse(), 0.5));
+    sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
     line.setPosition(tab_voit[0].getPos().x, tab_voit[0].getPos().y);
     line.rotate(tab_voit[0].getAngle()*180/M_PI);
     window.draw(line);
