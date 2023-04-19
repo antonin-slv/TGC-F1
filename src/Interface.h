@@ -35,6 +35,7 @@ class Interface
 
     void drawTerrain(RenderWindow & window);
     void drawVoiture(RenderWindow & window,Voiture & voiture_);
+    void drawVoitureHitbox(RenderWindow & window,Voiture & voiture_);
     void drawJeu(Jeu const & jeu,RenderWindow & window);
     void drawEditeur(RenderWindow & window);
 };

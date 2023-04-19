@@ -42,16 +42,6 @@ class GestionSFML : public Jeu
 
 };
 
-
-void initWindow(sf::RenderWindow & window, int width, int height, std::string title);
-
-/** \brief Affiche le terrain en mode graphique (non fait) */
-void afficherterrain(sf::RenderWindow & window,Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
-
- /** \brief Affiche le jeu en mode graphique SFML (non fait) */
-//void afficherJeuSFML(Jeu & jeu);
-
- /** \brief Affiche l'éditeur en mode graphique (non fait) */
-void afficher(Editeur & editeur);
+void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour);
 
 #endif

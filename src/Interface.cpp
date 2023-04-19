@@ -31,16 +31,19 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     text_voiture.setSmooth(true);
     Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
     float proportion = taille.y/taille.x;
-    taille=Vecteur(5/taille.y,5/taille.y);
+    //voiture.setScale(taille.x,taille.y);
+
+    //taille=Vecteur(1/taille.y,1/taille.y);
     
-    Vecteur hitbox(proportion,1);   
+    Vecteur hitbox(1.25*proportion,1.25);
     voiture.setTexture(text_voiture);
-    voiture.setScale(taille.x,taille.y);
+    voiture.scale(2.2*hitbox.y/taille.x,2.2*hitbox.y/taille.x);//inversés par rapport au reste...
     voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
     
     //ajoute une voiture de la classe voiture
     voiture_=Voiture(Moteur(),Roues(),796,0.14,hitbox.x,hitbox.y,0,0,0,0,0);
     cout<<"Hitbox : "<<hitbox.x<<" "<<hitbox.y<<endl;
+    cout<<"Scale : "<<voiture.getLocalBounds().width<<" "<<voiture.getLocalBounds().height<<endl;
     cout << "Chargement voiture ok" << endl;
     
  }
@@ -50,16 +53,18 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     voiture.setRotation(-90+voiture_.getAngle()*180/M_PI);
     window.draw(voiture);
     
-    RectangleShape hit_box(Vector2f(voiture_.getHitbox().x*2, voiture_.getHitbox().y*2));
-    
+
+ }
+ void Interface::drawVoitureHitbox(RenderWindow & window, Voiture & voiture_)
+ {  RectangleShape hit_box(Vector2f(voiture_.getHitbox().x*2, voiture_.getHitbox().y*2));
     hit_box.setOrigin(voiture_.getHitbox().x, voiture_.getHitbox().y);
-    
     hit_box.setRotation(voiture_.getAngle()*180/M_PI);
     hit_box.setFillColor(Color(255,0,0,150));
     //RectangleShape hit_box(Vector2f(10,10));
-    hit_box.setPosition(voiture.getPosition());
+    hit_box.setPosition(voiture_.getPos().x,voiture_.getPos().y);
     window.draw(hit_box);
  }
+ 
 
 void Interface::drawTerrain(RenderWindow & window)
 {  for (int i = 0; i < props.size(); i++) window.draw(props[i]);
