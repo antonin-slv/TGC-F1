@@ -10,12 +10,25 @@ Editeur::Editeur()
 
 void Editeur::boucleEditeur(RenderWindow & window)
 {   window.setFramerateLimit(60);
+    Font font;
+    font.loadFromFile("data/fonts/Consolas.ttf");
+    Text text;
+     // select the font
+    text.setFont(font); // font is a Font
+    // set the character size
+    text.setCharacterSize(50); // in pixels, not points!
+    bool deplacer_vue = false;
+    Vector2i pos_mouse_init;
+    Vecteur depl_mouse;
+
+    bool quitter = false;
     do {
+        
         Event event;
         while (window.pollEvent(event))
-        {   if (event.type == Event::Closed) return;
+        {   if (event.type == Event::Closed) quitter = true;
             if (event.type == Event::KeyPressed)
-            {   if (event.key.code == Keyboard::Escape) return;
+            {   if (event.key.code == Keyboard::Escape) quitter = true;
                 if (event.key.code == Keyboard::Z)
                     deplacer(0, -100/zoom);
                 if (event.key.code == Keyboard::S)
@@ -38,32 +51,42 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 zoom_(delta);
             }
         }
+        //déplacement de la caméra
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {   Vector2i posf = Mouse::getPosition(window);
-
-            centre.x = -posf.x/2-vue.getCenter().x;
-            centre.y = -posf.y/2-vue.getCenter().y;
-            vue.setCenter(centre.x, centre.y);
+        {   if (!deplacer_vue)
+            {   pos_mouse_init = Mouse::getPosition(window);
+                deplacer_vue = true;
+            }
+            Vector2i posf = Mouse::getPosition(window);
+            depl_mouse = Vecteur(posf.x-pos_mouse_init.x, posf.y-pos_mouse_init.y);
+            depl_mouse = depl_mouse * (-1/(float)zoom);
+            vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
         }
-        //on fait en sorte de pouvoir zoomer en tournant la roue de la molette
+        else
+        {   deplacer_vue = false;
+            centre= depl_mouse+centre;
+            depl_mouse = Vecteur(0,0);
+        }
+
+
 
         lier_window(window);
-        Text text;
+        text.setScale(0.3/(float)zoom,0.3/(float)zoom);
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
         Text balek;
-        afficherDebug(window, text,balek);
+        afficherDebug(window, text, balek);
         window.draw(text);
         window.draw(RectangleShape(Vector2f(1,1)));
         window.display();
 
 
-    } while (true);
+    } while (!quitter);
 
 }
 
 void Editeur::zoom_(float zoom_)
 {   zoom += zoom_;
-    if (zoom < 0.1) zoom = 0.1;
+    if (zoom < 1) zoom = 1;
     vue.setSize(Vector2f(1280.f/zoom, 720.f/zoom));
 }
 

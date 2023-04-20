@@ -25,7 +25,7 @@ class Editeur : public Terrain
 {   
     private :
         Vecteur centre;
-        int zoom;//10 par def
+        float zoom;//10 par def
         int prop_selectionne;
         vector<Props> ref_props;
         Interface interface;
