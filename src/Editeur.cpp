@@ -103,7 +103,7 @@ bool Editeur::charger(string path)
     //charrge les props
     if (succes)
     {  for (int i = 0;i < nb_props; i++)
-        {   interface.loadProp(tab_props[i],"");
+        {   interface.loadProp(tab_props[i]);
         }
     }
     return succes;

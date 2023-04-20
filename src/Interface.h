@@ -22,18 +22,21 @@ void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono);
 
 class Interface
 { private :
-    vector<RectangleShape> props;//charger depuis un terrain
+    vector<Sprite> props;//charger depuis un terrain
     vector<Sprite> voitures;//charger depuis un jeu
     
-    vector<Texture> text_props;
-    
+    Texture finish;
+    Texture grass;
+    Texture road;
+    Texture turn1;
+
     Texture text_voiture;//temporaire en attente de multiple voitures
     public :
     Sprite voiture;
     Interface();
 
 
-    void loadProp(Props & prop, string texture_path);
+    void loadProp(Props & prop);
     void loadTerrain(Terrain & terrain,string texture_path);
     void loadVoiture(Voiture & voiture_, string texture_path);
     void loadJeu(Jeu & jeu, string texture_path);

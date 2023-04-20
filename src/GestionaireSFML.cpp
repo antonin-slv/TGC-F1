@@ -8,7 +8,7 @@ using namespace sf;
 GestionSFML::GestionSFML()
 {   
     ChargerTerrain("data/circuits/test.json");
-    interface.loadTerrain(terrain,"");
+    interface.loadTerrain(terrain,"data/props/road.png");
     Voiture Voit_temp;
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");
     ajouterVoiture(Voit_temp);
@@ -129,17 +129,18 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     window.clear();
     window.draw(fond);
-    
+    interface.drawTerrain(window);
+
     sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
     line.setPosition(tab_voit[0].getPos().x, tab_voit[0].getPos().y);
     line.rotate(tab_voit[0].getAngle()*180/M_PI);
     window.draw(line);
 
-    
-    interface.drawVoiture(window, tab_voit[0]);
     interface.drawVoitureHitbox(window,tab_voit[0]);
+    interface.drawVoiture(window, tab_voit[0]);
+    
 
-    interface.drawTerrain(window);
+   
  
 }
 

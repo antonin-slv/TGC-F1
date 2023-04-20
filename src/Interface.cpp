@@ -2,7 +2,10 @@
 #include "Editeur.h"
 #include "Jeu.h"
 Interface::Interface()
-{
+{   finish.loadFromFile("data/props/finish.png");
+    grass.loadFromFile("data/props/grass.png");
+    road.loadFromFile("data/props/road.png");
+    turn1.loadFromFile("data/props/turn1.png");
     //ctor
 }
 
@@ -17,9 +20,12 @@ void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
 
 }
 
-void Interface::loadProp(Props & prop, string texture_path)
-{   Vecteur hitbox=prop.getHitbox();
-    props.push_back(RectangleShape(Vector2f(hitbox.x,hitbox.y)));
+void Interface::loadProp(Props & prop)
+{   
+    Vecteur hitbox=prop.getHitbox();
+    props.push_back(Sprite(road));
+    props[props.size()-1].setColor(Color(255,255,255,255));
+    props[props.size()-1].setScale(hitbox.x,hitbox.y);
     props[props.size()-1].setOrigin(hitbox.x/2,hitbox.y/2);
     Vecteur pos = prop.getPos();
     props[props.size()-1].setPosition(pos.x,pos.y);
@@ -30,9 +36,12 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
 {
     Vecteur hitbox;
     Vecteur pos;
+
     for (int i = 0; i < terrain.getNbProps(); i++)
     {   hitbox=terrain.getProp(i).getHitbox()*2;
-        props.push_back(RectangleShape(Vector2f(hitbox.x,hitbox.y)));
+        props.push_back(Sprite(road));
+        props[i].setColor(Color(255,255,255,255));
+        props[i].setScale(hitbox.x,hitbox.y);
         hitbox.x=hitbox.x/2;
         hitbox.y=hitbox.y/2;
         props[i].setOrigin(hitbox.x,hitbox.y);
