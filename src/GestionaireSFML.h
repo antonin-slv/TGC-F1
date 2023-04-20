@@ -21,6 +21,7 @@ using namespace sf;
 class GestionSFML : public Jeu
 {   private :
         float zoom;
+        float decalage;
 
         Sprite fond;
         Texture text_fond;

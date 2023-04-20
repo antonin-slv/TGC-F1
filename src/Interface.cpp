@@ -88,5 +88,5 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
  
 
 void Interface::drawTerrain(RenderWindow & window)
-{  for (int i = 0; i < props.size(); i++) window.draw(props[i]);
+{  for (long unsigned int i = 0; i < props.size(); i++) window.draw(props[i]);
 }
