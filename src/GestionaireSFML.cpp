@@ -18,6 +18,8 @@ GestionSFML::GestionSFML()
     fond.setScale(0.1,0.1);
 
     zoom = 1;
+    cout << "Plutôt réaliste (0) ou arcade (5) ? Choissisez au milieu des deux : ";
+    cin >> decalage;
 }
 
 GestionSFML::~GestionSFML()
@@ -193,7 +195,7 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
         afficherJeuSFML(window);
         
         View vue(interface.voiture.getPosition(), Vector2f(96.f, 48.f));
-        vue.move(cos(getVoiture(0).getAngle()) * 7,7*sin(getVoiture(0).getAngle()));
+        vue.move(cos(getVoiture(0).getAngle()) * decalage,decalage*sin(getVoiture(0).getAngle()));
         //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
         //vue.setRotation(voiture.getRotation()+180);
         window.setView(vue);
