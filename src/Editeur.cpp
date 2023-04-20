@@ -25,7 +25,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 if (event.key.code == Keyboard::D)
                     deplacer(100/zoom, 0);
                 if (event.key.code == Keyboard::A)
-                    select_prop();
+                    select_prop();        
                 /*
                 if (event.key.code == Keyboard::E)
                     ajouter_prop();
@@ -33,14 +33,27 @@ void Editeur::boucleEditeur(RenderWindow & window)
                     supprimer_props();
                 */
             }
+            if (event.type == sf::Event::MouseWheelScrolled)
+            {   int delta = event.mouseWheelScroll.delta;
+                zoom_(delta);
+            }
         }
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {   Vector2i posf = Mouse::getPosition(window);
+
+            centre.x = -posf.x/2-vue.getCenter().x;
+            centre.y = -posf.y/2-vue.getCenter().y;
+            vue.setCenter(centre.x, centre.y);
+        }
+        //on fait en sorte de pouvoir zoomer en tournant la roue de la molette
+
         lier_window(window);
         Text text;
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
         Text balek;
         afficherDebug(window, text,balek);
         window.draw(text);
-        window.draw(RectangleShape(Vector2f(10,10)));
+        window.draw(RectangleShape(Vector2f(1,1)));
         window.display();
 
 
@@ -48,13 +61,10 @@ void Editeur::boucleEditeur(RenderWindow & window)
 
 }
 
-void Editeur::zoom_in()
-{   
-    zoom++;
-}
-
-void Editeur::zoom_out()
-{   if(zoom > 1) zoom--;
+void Editeur::zoom_(float zoom_)
+{   zoom += zoom_;
+    if (zoom < 0.1) zoom = 0.1;
+    vue.setSize(Vector2f(1280.f/zoom, 720.f/zoom));
 }
 
 void Editeur::deplacer(float dx, float dy)

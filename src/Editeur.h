@@ -7,6 +7,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
+
 
 #include <vector>
 #include <iostream>
@@ -32,8 +34,7 @@ class Editeur : public Terrain
     public :
         Editeur();
         void lier_window(RenderWindow & window);
-        void zoom_in();
-        void zoom_out();
+        void zoom_(float z);
         void deplacer(float dx=0, float dy=0);
 
         void boucleEditeur(RenderWindow & window);
