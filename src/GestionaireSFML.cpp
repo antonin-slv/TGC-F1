@@ -15,7 +15,7 @@ GestionSFML::GestionSFML()
 
     text_fond.loadFromFile("data/circuits/circuit.png");
     fond.setTexture(text_fond);
-    fond.setScale(0.1,0.1);
+    fond.setScale(0.15,0.15);
 
     zoom = 1;
     cout << "Plutôt réaliste (0) ou arcade (5) ? Choissisez au milieu des deux : ";
@@ -24,90 +24,6 @@ GestionSFML::GestionSFML()
 
 GestionSFML::~GestionSFML()
 {   
-}
-
-void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
-{   if (event.type == Event::KeyPressed){
-        switch (event.key.code){
-            case Keyboard::Z :
-                action.accelere=true;
-                break;
-
-            case Keyboard::S :
-                action.freine=true;
-                break;
-
-            case Keyboard::Q :
-                action.gauche=true;
-                break;
-
-            case Keyboard::D :
-                action.droite=true;
-                break;
-            
-            case Keyboard::Up :
-                action.accelere=true;
-                break;
-            
-            case Keyboard::Down :
-                action.freine=true;
-                break;
-            
-            case Keyboard::Left :
-                action.gauche=true;
-                break;
-            
-            case Keyboard::Right :
-                action.droite=true;
-                break;
-
-            default:
-                break;
-        }
-    }
-    else if (event.type == Event::KeyReleased){
-
-        switch (event.key.code){
-            case Keyboard::Z :
-                action.accelere=false;
-                break;
-
-            case Keyboard::S :
-                action.freine=false;
-                break;
-            
-            case Keyboard::Q :
-                action.gauche=false;
-                break;
-
-            case Keyboard::D :
-                action.droite=false;
-                break;
-            
-            case Keyboard::Up :
-                action.accelere=false;
-                break;
-            
-            case Keyboard::Down :
-                action.freine=false;
-                break;
-            
-            case Keyboard::Left :
-                action.gauche=false;
-                break;
-            
-            case Keyboard::Right :
-                action.droite=false;
-                break;
-
-            case Keyboard::R :
-                _temps_au_tour.restart();
-                break;
-
-            default:
-                break;
-        }
-    }
 }
 
 string affiche_temps(float t){
@@ -207,21 +123,108 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
     cout << "fps_moy : " << nb_frames/temps << endl;
 }
 
-void GestionSFML::afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
-{   
-    // Dessins
-    text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
-    texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1750, 10)));
-    
-    window.draw(text);
-    window.draw(texte_chrono);
 
-}
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     window.clear();
     window.draw(fond);
+    
+    sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
+    line.setPosition(tab_voit[0].getPos().x, tab_voit[0].getPos().y);
+    line.rotate(tab_voit[0].getAngle()*180/M_PI);
+    window.draw(line);
+
+    
     interface.drawVoiture(window, tab_voit[0]);
+    interface.drawVoitureHitbox(window,tab_voit[0]);
+
     interface.drawTerrain(window);
+ 
+}
+
+
+
+void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
+{   if (event.type == Event::KeyPressed){
+        switch (event.key.code){
+            case Keyboard::Z :
+                action.accelere=true;
+                break;
+
+            case Keyboard::S :
+                action.freine=true;
+                break;
+
+            case Keyboard::Q :
+                action.gauche=true;
+                break;
+
+            case Keyboard::D :
+                action.droite=true;
+                break;
+            
+            case Keyboard::Up :
+                action.accelere=true;
+                break;
+            
+            case Keyboard::Down :
+                action.freine=true;
+                break;
+            
+            case Keyboard::Left :
+                action.gauche=true;
+                break;
+            
+            case Keyboard::Right :
+                action.droite=true;
+                break;
+
+            default:
+                break;
+        }
+    }
+    else if (event.type == Event::KeyReleased){
+
+        switch (event.key.code){
+            case Keyboard::Z :
+                action.accelere=false;
+                break;
+
+            case Keyboard::S :
+                action.freine=false;
+                break;
+            
+            case Keyboard::Q :
+                action.gauche=false;
+                break;
+
+            case Keyboard::D :
+                action.droite=false;
+                break;
+            
+            case Keyboard::Up :
+                action.accelere=false;
+                break;
+            
+            case Keyboard::Down :
+                action.freine=false;
+                break;
+            
+            case Keyboard::Left :
+                action.gauche=false;
+                break;
+            
+            case Keyboard::Right :
+                action.droite=false;
+                break;
+
+            case Keyboard::R :
+                _temps_au_tour.restart();
+                break;
+
+            default:
+                break;
+        }
+    }
 }

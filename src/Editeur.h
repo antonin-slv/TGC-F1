@@ -2,7 +2,7 @@
 #define _Editeur_H_
 
 #include "Terrain.h"
-
+#include "Interface.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -26,9 +26,12 @@ class Editeur : public Terrain
         int zoom;//10 par def
         int prop_selectionne;
         vector<Props> ref_props;
+        Interface interface;
+        View vue;
+        
     public :
         Editeur();
-        void afficher();
+        void lier_window(RenderWindow & window);
         void zoom_in();
         void zoom_out();
         void deplacer(float dx=0, float dy=0);
@@ -43,7 +46,7 @@ class Editeur : public Terrain
 
         void Init_props();
         void sauvegarder();
-        bool charger();
+        bool charger(string path = "data/circuits/test1.json");
 
         bool test_regression();
 };

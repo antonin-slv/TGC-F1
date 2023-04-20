@@ -51,10 +51,10 @@ obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
 obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o
 
-obj/Interface.o: src/Interface.cpp src/Interface.h obj/Jeu.o obj/Editeur.o obj/GestionaireSFML.o obj/Terrain.o
+obj/Interface.o: src/Interface.cpp src/Interface.h obj/Jeu.o obj/GestionaireSFML.o obj/Terrain.o
 	$(CC) $(CFLAGS) -c src/Interface.cpp $(ISFML) -o obj/Interface.o
 
-obj/Editeur.o: src/Editeur.cpp $(HEDITEUR)
+obj/Editeur.o: src/Editeur.cpp $(HEDITEUR) obj/Interface.o
 	$(CC) $(CFLAGS) -c src/Editeur.cpp $(ISFML) -o obj/Editeur.o
 
 obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h 
