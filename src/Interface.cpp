@@ -20,13 +20,33 @@ void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
 
 }
 
-void Interface::loadProp(Props & prop)
-{   
-    Vecteur hitbox=prop.getHitbox();
-    props.push_back(Sprite(road));
-    props[props.size()-1].setColor(Color(255,255,255,255));
-    props[props.size()-1].setScale(hitbox.x,hitbox.y);
-    props[props.size()-1].setOrigin(hitbox.x/2,hitbox.y/2);
+void Interface::loadProp(Props const &  prop)
+{   switch (prop.getType())
+    {   case Tip::Route:
+            props.push_back(Sprite(road));
+            break;
+        case Tip::Herbe:
+            props.push_back(Sprite(grass));
+            break;
+        case Tip::Droite:
+            props.push_back(Sprite(turn1));
+            break;
+        case Tip::Gauche:
+            props.push_back(Sprite(turn1));
+            break;
+        case Tip::Arrivee:
+            props.push_back(Sprite(finish));
+            break;
+        default:
+            props.push_back(Sprite(road));
+            break;
+    }
+
+    Vecteur taille(2.2/road.getSize().x,2.2/road.getSize().y);
+    props[props.size()-1].scale(taille.x,taille.y);
+    
+    props[props.size()-1].setOrigin(1.1,1.1);
+    
     Vecteur pos = prop.getPos();
     props[props.size()-1].setPosition(pos.x,pos.y);
     props[props.size()-1].setRotation(90+prop.getRotation()*180/M_PI);
@@ -37,19 +57,8 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     Vecteur hitbox;
     Vecteur pos;
 
-    for (int i = 0; i < terrain.getNbProps(); i++)
-    {   hitbox=terrain.getProp(i).getHitbox()*2;
-        props.push_back(Sprite(road));
-        props[i].setColor(Color(255,255,255,255));
-        props[i].setScale(hitbox.x,hitbox.y);
-        hitbox.x=hitbox.x/2;
-        hitbox.y=hitbox.y/2;
-        props[i].setOrigin(hitbox.x,hitbox.y);
-
-        pos=terrain.getProp(i).getPos();
-        props[i].setPosition(pos.x,pos.y);
-        props[i].setRotation(90+terrain.getProp(i).getRotation()*180/M_PI);
-        cout << "props ok" << endl;
+    for (auto & prop : terrain.getTabProps())
+    {   loadProp(prop);
     }
 }
 

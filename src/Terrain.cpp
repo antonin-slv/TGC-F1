@@ -130,3 +130,8 @@ Props const & Terrain::getProp(int i)
     assert(i < nb_props);
     return tab_props[i];
 }
+
+vector <Props> const Terrain::getTabProps() const
+{
+    return tab_props;
+}

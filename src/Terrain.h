@@ -24,7 +24,11 @@ enum Tip : int
     route_h_d=7,
     route_g_d=8,
     route_h_b=9,
-    end_of_class=10   
+    Herbe=10,
+    Droite=11,
+    Gauche=12,
+    Arrivee=13,
+    end_of_class=14,   
 };
 
 /** 
@@ -124,6 +128,8 @@ class Terrain
         bool chargerJSON(string const & path);
         /** \brief Affiche le terrain en TXT */
         void afficher_txt();
+
+        vector<Props> const getTabProps() const;
     
 };
 
