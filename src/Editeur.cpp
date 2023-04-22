@@ -4,12 +4,15 @@
 
 Editeur::Editeur()
 {   centre = Vecteur(0,0);
-    zoom = 1;
-    vue = View(Vector2f(0.f,0.f), Vector2f(1280.f/zoom, 720.f/zoom));
+    zoom = 10;
+    interface.vue = View(Vector2f(0.f,0.f), Vector2f(1280.f/zoom, 720.f/zoom));
 }
 
 void Editeur::boucleEditeur(RenderWindow & window)
-{   window.setFramerateLimit(60);
+{   
+    interface.loadRefProps();
+    
+    window.setFramerateLimit(60);
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
     Text text;
@@ -60,7 +63,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
             Vector2i posf = Mouse::getPosition(window);
             depl_mouse = Vecteur(posf.x-pos_mouse_init.x, posf.y-pos_mouse_init.y);
             depl_mouse = depl_mouse * (-1/(float)zoom);
-            vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
+            interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
         }
         else
         {   deplacer_vue = false;
@@ -77,6 +80,8 @@ void Editeur::boucleEditeur(RenderWindow & window)
         afficherDebug(window, text, balek);
         window.draw(text);
         window.draw(RectangleShape(Vector2f(1,1)));
+
+
         window.display();
 
 
@@ -87,14 +92,14 @@ void Editeur::boucleEditeur(RenderWindow & window)
 void Editeur::zoom_(float zoom_)
 {   zoom += zoom_;
     if (zoom < 1) zoom = 1;
-    vue.setSize(Vector2f(1280.f/zoom, 720.f/zoom));
+    interface.vue.setSize(Vector2f(1280.f/zoom, 720.f/zoom));
 }
 
 void Editeur::deplacer(float dx, float dy)
 {
     centre.x += dx;
     centre.y += dy;
-    vue.move(dx, dy);
+    interface.vue.move(dx, dy);
 }
 
 bool Editeur::charger(string path)
@@ -154,7 +159,7 @@ void Editeur::select_prop()
         prop_selectionne++;
         if(prop_selectionne >= nb_props) prop_selectionne = 0;
         centre=tab_props[prop_selectionne].getPos();
-        vue.setCenter(centre.x, centre.y);
+        interface.vue.setCenter(centre.x, centre.y);
     }
 }
 
@@ -180,7 +185,8 @@ void Editeur::lier_window(RenderWindow & window)
      window.clear(Color::Black);
     afficherDebug(window, text,balek);
     interface.drawTerrain(window);
-    window.setView(vue);
+    window.setView(interface.vue);
+    interface.drawRefProps(window);
 
 }
 

@@ -144,34 +144,44 @@ void Interface::drawTerrain(RenderWindow & window)
 
 void Interface::loadRefProps()
 {   
-    ref_props.push_back(Sprite(finish));
-    ref_props.push_back(Sprite(grass));
-    ref_props.push_back(Sprite(checkpoint));
-    ref_props.push_back(Sprite(road));
-    ref_props.push_back(Sprite(road_kerb_a));
-    ref_props.push_back(Sprite(road_kerb_m));
-    ref_props.push_back(Sprite(road_kerb_z));
-    ref_props.push_back(Sprite(turn1));
-    ref_props.push_back(Sprite(turn2));
-    ref_props.push_back(Sprite(turn3));
-    ref_props.push_back(Sprite(turn4));
-    ref_props.push_back(Sprite(text_voiture));
-    for (auto & prop : ref_props)
-    {   prop.scale(0.1,0.1);
-        prop.setOrigin(prop.getLocalBounds().width/2,prop.getLocalBounds().height/2);
+    if (ref_props.size()==0)
+    {    ref_props.push_back(Sprite(finish));
+        ref_props.push_back(Sprite(grass));
+        ref_props.push_back(Sprite(checkpoint));
+        ref_props.push_back(Sprite(road));
+        ref_props.push_back(Sprite(road_kerb_a));
+        ref_props.push_back(Sprite(road_kerb_m));
+        ref_props.push_back(Sprite(road_kerb_z));
+        ref_props.push_back(Sprite(turn1));
+        ref_props.push_back(Sprite(turn2));
+        ref_props.push_back(Sprite(turn3));
+        ref_props.push_back(Sprite(turn4));
+        ref_props.push_back(Sprite(text_voiture));
+        
+        for (auto & prop : ref_props)
+        {   Vecteur taille(2.2/prop.getTexture()->getSize().x,2.2/prop.getTexture()->getSize().y);
+            prop.scale(taille.x,taille.y);
+            prop.setOrigin(prop.getLocalBounds().width/2,prop.getLocalBounds().height/2);
+            
+        }
     }
-
 }
 
 void Interface::drawRefProps(RenderWindow & window)
-{   int i = 0;
+{   
+    View temp_view(vue);
+    temp_view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
+    window.setView(temp_view);
     RectangleShape menu(Vector2f(100, 1000));
+    int i = 0;
     menu.setFillColor(Color(20,0,0,150));
     menu.setPosition(window.mapPixelToCoords(Vector2i(0, 0)));
     window.draw(menu);
     for (auto & prop : ref_props)
-    {   prop.setPosition(window.mapPixelToCoords(Vector2i(10, 10+50*i)));
-        window.draw(prop);
+    {   prop.setPosition(window.mapPixelToCoords(Vector2i(30, 30+60*i)));
         i++;
+        window.draw(prop);
+
     }
+    window.setView(vue);
 }

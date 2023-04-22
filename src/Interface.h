@@ -41,6 +41,9 @@ class Interface
 
     Texture text_voiture;//temporaire en attente de multiple voitures
     public :
+
+    View vue;
+
     Sprite voiture;
     Interface();
 
