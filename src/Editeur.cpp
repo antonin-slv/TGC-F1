@@ -79,8 +79,8 @@ void Editeur::boucleEditeur(RenderWindow & window)
             if (deplacer_vue) interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
             else if (ajout_prop)
             {   Vecteur new_pos= depl_mouse * -1;
-                new_pos.x += pos_mouse_init.x;
-                new_pos.y += pos_mouse_init.y;
+                new_pos.x += pos_mouse_init.x-vue.getCenter().x;
+                new_pos.y += pos_mouse_init.y-vue.getCenter().y;
                 //update de la position du dernier prop ajouté
                 tab_props[prop_selectionne].setPos(new_pos);
                 //update graphique
@@ -175,6 +175,7 @@ void Editeur::ajouter_prop(Tip t)
 {   
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
+    interface.loadProp(tab_props[nb_props]);
     nb_props++;
     prop_selectionne = nb_props-1;
 }
