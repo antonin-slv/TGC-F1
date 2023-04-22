@@ -54,6 +54,7 @@ class Interface
     void loadJeu(Jeu & jeu, string texture_path);
     void loadRefProps();
 
+
     void drawTerrain(RenderWindow & window);
     void drawVoiture(RenderWindow & window,Voiture & voiture_);
     void drawVoitureHitbox(RenderWindow & window,Voiture & voiture_);
@@ -61,6 +62,10 @@ class Interface
     void drawEditeur(RenderWindow & window);
 
     void drawRefProps(RenderWindow & window);
+
+    Tip refPropSelected(RenderWindow & window);
+
+    Sprite & dernierProp();
 };
 
 #endif

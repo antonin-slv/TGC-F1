@@ -76,13 +76,12 @@ class Props
         Tip getType() const; 
         
         /** \brief Donne le type \param t Type \return void */
-        void prop_set_type(Tip t); 
+        void set_type(Tip t); 
 
-        /** \brief Donne la position
-         * \param px Position en x
-         * \param py Position en y
-         */
-        void setProp(int px, int py, float rot=0, float nl=0, float nL=0);
+        void setHitbox(Vecteur const & hitbox);
+        void setRot(float rot=0);
+        void setPos(Vecteur const & pos);
+
         /** \brief Charge les données depuis un fichier JSON \param obj Objet JSON \return bool */
         bool chargerJSON(json const & obj); 
 };

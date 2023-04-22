@@ -44,12 +44,13 @@ Vecteur Props::getPos() const { return pos; }
 
 Vecteur Props::getHitbox() const { return hitbox; }
 
-void Props::setProp(int px, int py, float rot, float lo, float La)
-{   pos.setVecteur(px,py);
-    hitbox.setVecteur(lo,La);
-    rotation = rot;
-}
-void Props::prop_set_type(Tip t) { type = t; }
+void  Props::setHitbox(Vecteur const & hitbox_) { hitbox=hitbox_; }
+
+void  Props::setRot(float rot) { rotation = rot; }
+
+void  Props::setPos(Vecteur const & pos_) { pos= pos_; }
+
+void Props::set_type(Tip t) { type = t; }
 
 bool Props::chargerJSON(json const & obj)
 {   if (obj.type() != json::value_t::object)

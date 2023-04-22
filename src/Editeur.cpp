@@ -25,6 +25,8 @@ void Editeur::boucleEditeur(RenderWindow & window)
     Vecteur depl_mouse;
 
     bool quitter = false;
+    bool ajout_prop = false;
+
     do {
         
         Event event;
@@ -54,20 +56,42 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 zoom_(delta);
             }
         }
-        //déplacement de la caméra
+        //gestion des actions souris
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {   if (!deplacer_vue)
-            {   pos_mouse_init = Mouse::getPosition(window);
-                deplacer_vue = true;
+        {   
+            if (!deplacer_vue && !ajout_prop)
+            {   Tip nouveau_prop = interface.refPropSelected(window);
+                pos_mouse_init = Mouse::getPosition(window);
+                
+                if (nouveau_prop != Tip::nondef)
+                {   ajouter_prop(nouveau_prop);
+                    ajout_prop = true;
+                }
+                else
+                {   
+                    deplacer_vue = true;
+                }
+
             }
             Vector2i posf = Mouse::getPosition(window);
             depl_mouse = Vecteur(posf.x-pos_mouse_init.x, posf.y-pos_mouse_init.y);
             depl_mouse = depl_mouse * (-1/(float)zoom);
-            interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
+            if (deplacer_vue) interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
+            else if (ajout_prop)
+            {   Vecteur new_pos= depl_mouse * -1;
+                new_pos.x += pos_mouse_init.x;
+                new_pos.y += pos_mouse_init.y;
+                //update de la position du dernier prop ajouté
+                tab_props[prop_selectionne].setPos(new_pos);
+                //update graphique
+                interface.dernierProp().setPosition(new_pos.x, new_pos.y);
+            }
         }
         else
         {   deplacer_vue = false;
-            centre= depl_mouse+centre;
+            
+            if (!ajout_prop) centre= depl_mouse+centre;
+            ajout_prop = false;
             depl_mouse = Vecteur(0,0);
         }
 
@@ -80,8 +104,19 @@ void Editeur::boucleEditeur(RenderWindow & window)
         afficherDebug(window, text, balek);
         window.draw(text);
         window.draw(RectangleShape(Vector2f(1,1)));
+        RectangleShape rectangle_selectionne(Vector2f(12,12));
+        rectangle_selectionne.setOutlineColor(Color::Red);
+        rectangle_selectionne.setFillColor(Color::Transparent);
+        rectangle_selectionne.setOutlineThickness(0.3);
+        //fait en sorte de lier le rectangle à la vue
+        Vector2f pos = window.mapPixelToCoords(Mouse::getPosition(window));
+        if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 12;
+        else pos.x = (int)pos.x - (int)pos.x % 12 - 12;
+        if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 12;
+        else pos.y = (int)pos.y - (int)pos.y % 12 -12;
 
-
+        rectangle_selectionne.setPosition(pos.x, pos.y);
+        window.draw(rectangle_selectionne);
         window.display();
 
 
@@ -136,21 +171,12 @@ void Editeur::sauvegarder()
     fichier.close();
 }
 
-void Editeur::Init_ref_props()
-{   int i=0;
-    while (i++ != Tip::end_of_class)
-    {   ref_props.push_back(Props());
-        ref_props[i].prop_set_type((Tip) i);
-    }
-    
-}
-
-
 void Editeur::ajouter_prop(Tip t)
-{   tab_props.push_back(ref_props[t]);
+{   
+    tab_props.push_back(Props());
+    tab_props[nb_props].set_type(t);
     nb_props++;
     prop_selectionne = nb_props-1;
-    //TODO
 }
 
 void Editeur::select_prop()

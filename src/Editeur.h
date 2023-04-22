@@ -27,7 +27,7 @@ class Editeur : public Terrain
         Vecteur centre;
         float zoom;//10 par def
         int prop_selectionne;
-        vector<Props> ref_props;
+        
         Interface interface;
         View vue;
         
