@@ -22,6 +22,8 @@ Interface::Interface()
 
     cout<<"Interface loaded"<<endl;
 
+    text_voiture.loadFromFile("data/voitures/F1.png");
+
     //ctor
 }
 
