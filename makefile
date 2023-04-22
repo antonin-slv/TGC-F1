@@ -41,7 +41,7 @@ obj/mainSFML.o: src/mainSFML.cpp $(HVOITURE) $(HEDITEUR) $(HINTERFACE) src/Jeu.h
 obj/AffichageTXT.o: src/AffichageTXT.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c src/AffichageTXT.cpp -o obj/AffichageTXT.o
 
-obj/GestionaireSFML.o: src/GestionaireSFML.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h src/Jeu.h
+obj/GestionaireSFML.o: src/GestionaireSFML.cpp $(HINTERFACE) $(HVOITURE) src/Jeu.h
 	$(CC) $(CFLAGS) -c src/GestionaireSFML.cpp $(ISFML) -o obj/GestionaireSFML.o
 
 

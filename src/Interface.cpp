@@ -4,8 +4,24 @@
 Interface::Interface()
 {   finish.loadFromFile("data/props/finish.png");
     grass.loadFromFile("data/props/grass.png");
+    checkpoint.loadFromFile("data/props/checkpoint.png");
+
+    cout<<"base props loaded"<<endl;
+
     road.loadFromFile("data/props/road.png");
+    road_kerb_a.loadFromFile("data/props/road_kerb_a.png");
+    road_kerb_m.loadFromFile("data/props/road_kerb_m.png");
+    road_kerb_z.loadFromFile("data/props/road_kerb_z.png");
+
+    cout<<"roads loaded"<<endl;
+
     turn1.loadFromFile("data/props/turn1.png");
+    turn2.loadFromFile("data/props/turn2.png");
+    turn3.loadFromFile("data/props/turn3.png");
+    turn4.loadFromFile("data/props/turn4.png");
+
+    cout<<"Interface loaded"<<endl;
+
     //ctor
 }
 
@@ -22,23 +38,40 @@ void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
 
 void Interface::loadProp(Props const &  prop)
 {   switch (prop.getType())
-    {   case Tip::Route:
+    {   case Tip::road:
             props.push_back(Sprite(road));
             break;
-        case Tip::Herbe:
+        case Tip::road_kerb_a:
+            props.push_back(Sprite(road_kerb_a));
+            break;
+        case Tip::road_kerb_m:
+            props.push_back(Sprite(road_kerb_m));
+            break;
+        case Tip::road_kerb_z:
+            props.push_back(Sprite(road_kerb_z));
+            break;
+        case Tip::turn1:
+            props.push_back(Sprite(turn1));
+            break;
+        case Tip::turn2:
+            props.push_back(Sprite(turn2));
+            break;
+        case Tip::turn3:
+            props.push_back(Sprite(turn3));
+            break;
+        case Tip::turn4:
+            props.push_back(Sprite(turn4));
+            break;
+        case Tip::grass:
             props.push_back(Sprite(grass));
             break;
-        case Tip::Droite:
-            props.push_back(Sprite(turn1));
-            break;
-        case Tip::Gauche:
-            props.push_back(Sprite(turn1));
-            break;
-        case Tip::Arrivee:
+        case Tip::finish:
             props.push_back(Sprite(finish));
             break;
+        case Tip::checkpoint:
+            props.push_back(Sprite(checkpoint));
+            break;
         default:
-            props.push_back(Sprite(road));
             break;
     }
 
@@ -56,19 +89,16 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
 {
     Vecteur hitbox;
     Vecteur pos;
-
+    int i=0;
     for (auto & prop : terrain.getTabProps())
-    {   loadProp(prop);
+    {   cout<<"Prop "<<i<<" aff ok"<<endl;
+        loadProp(prop);
     }
+    cout << "Chargement terrain ok" << endl;
 }
 
  void Interface::loadVoiture(Voiture & voiture_, string texture_path)
- {  //génération de sprite
-    if(!text_voiture.loadFromFile(texture_path)){
-        cout << "Problème de chargement de texture" << endl;
-    }
-    text_voiture.setSmooth(true);
-    Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
+ {  Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
     float proportion = taille.y/taille.x;
     //voiture.setScale(taille.x,taille.y);
 
@@ -107,4 +137,39 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
 
 void Interface::drawTerrain(RenderWindow & window)
 {  for (long unsigned int i = 0; i < props.size(); i++) window.draw(props[i]);
+}
+
+
+void Interface::loadRefProps()
+{   
+    ref_props.push_back(Sprite(finish));
+    ref_props.push_back(Sprite(grass));
+    ref_props.push_back(Sprite(checkpoint));
+    ref_props.push_back(Sprite(road));
+    ref_props.push_back(Sprite(road_kerb_a));
+    ref_props.push_back(Sprite(road_kerb_m));
+    ref_props.push_back(Sprite(road_kerb_z));
+    ref_props.push_back(Sprite(turn1));
+    ref_props.push_back(Sprite(turn2));
+    ref_props.push_back(Sprite(turn3));
+    ref_props.push_back(Sprite(turn4));
+    ref_props.push_back(Sprite(text_voiture));
+    for (auto & prop : ref_props)
+    {   prop.scale(0.1,0.1);
+        prop.setOrigin(prop.getLocalBounds().width/2,prop.getLocalBounds().height/2);
+    }
+
+}
+
+void Interface::drawRefProps(RenderWindow & window)
+{   int i = 0;
+    RectangleShape menu(Vector2f(100, 1000));
+    menu.setFillColor(Color(20,0,0,150));
+    menu.setPosition(window.mapPixelToCoords(Vector2i(0, 0)));
+    window.draw(menu);
+    for (auto & prop : ref_props)
+    {   prop.setPosition(window.mapPixelToCoords(Vector2i(10, 10+50*i)));
+        window.draw(prop);
+        i++;
+    }
 }
