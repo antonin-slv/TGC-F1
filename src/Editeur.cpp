@@ -8,6 +8,14 @@ Editeur::Editeur()
     interface.vue = View(Vector2f(0.f,0.f), Vector2f(1280.f/zoom, 720.f/zoom));
 }
 
+
+void map_pos_to_grid(Vecteur & pos)
+{   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 12;
+    else pos.x = (int)pos.x - (int)pos.x % 12 - 12;
+    if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 12;
+    else pos.y = (int)pos.y - (int)pos.y % 12 -12;
+}
+
 void Editeur::boucleEditeur(RenderWindow & window)
 {   
     interface.loadRefProps();
@@ -79,8 +87,10 @@ void Editeur::boucleEditeur(RenderWindow & window)
             if (deplacer_vue) interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
             else if (ajout_prop)
             {   Vecteur new_pos= depl_mouse * -1;
-                new_pos.x += pos_mouse_init.x-vue.getCenter().x;
-                new_pos.y += pos_mouse_init.y-vue.getCenter().y;
+                new_pos.x += interface.vue.getCenter().x - interface.vue.getSize().x/2 + 6;
+                new_pos.y += interface.vue.getCenter().y - interface.vue.getSize().y/2 + 6;
+
+                map_pos_to_grid(new_pos);
                 //update de la position du dernier prop ajouté
                 tab_props[prop_selectionne].setPos(new_pos);
                 //update graphique
@@ -108,13 +118,10 @@ void Editeur::boucleEditeur(RenderWindow & window)
         rectangle_selectionne.setOutlineColor(Color::Red);
         rectangle_selectionne.setFillColor(Color::Transparent);
         rectangle_selectionne.setOutlineThickness(0.3);
-        //fait en sorte de lier le rectangle à la vue
-        Vector2f pos = window.mapPixelToCoords(Mouse::getPosition(window));
-        if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 12;
-        else pos.x = (int)pos.x - (int)pos.x % 12 - 12;
-        if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 12;
-        else pos.y = (int)pos.y - (int)pos.y % 12 -12;
-
+        //fait en sorte de lier le rectangle à la interface.vue
+        Vector2f pos2 = window.mapPixelToCoords(Mouse::getPosition(window));
+        Vecteur pos(pos2.x, pos2.y);
+        map_pos_to_grid(pos);
         rectangle_selectionne.setPosition(pos.x, pos.y);
         window.draw(rectangle_selectionne);
         window.display();

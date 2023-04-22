@@ -29,7 +29,6 @@ class Editeur : public Terrain
         int prop_selectionne;
         
         Interface interface;
-        View vue;
         
     public :
         Editeur();
@@ -55,6 +54,8 @@ class Editeur : public Terrain
         bool test_regression();
 };
 
+
+void map_pos_to_grid(Vecteur & pos);
 
 
 #endif
