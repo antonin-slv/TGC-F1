@@ -164,15 +164,24 @@ void Voiture::tourner_d(float dt) { tourner_var(1.5,dt); }
 
 void Voiture::avancer(float portion)
 {
-    acceleration = mot.getPuissance()*portion/poids-coef_aero*vitesse*vitesse/100;
-    if (vitesse < 0)  acceleration *= 2;
+    
+    if (vitesse < 0)
+    {   new_ralentir();
+        acceleration *= 2;
+        acceleration += 3 * portion * mot.getPuissance()/poids;
+    }
+    else acceleration = mot.getPuissance()*portion/poids-coef_aero*vitesse*vitesse/100;
 }
 
 
 void Voiture::new_freiner(float proportion)
-{   acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/100;
-    if (vitesse > 0)  acceleration *= 2;
+{   
    
+    if (vitesse > 0)
+    {   new_ralentir();
+        acceleration -= 3*proportion * mot.getPuissance()/poids;
+    }
+    else acceleration = -proportion*mot.getPuissance()/poids-coef_aero*abs(vitesse)*vitesse/25;
 
 }
 
