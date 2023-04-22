@@ -36,7 +36,7 @@ string affiche_temps(float t){
 
 
 void GestionSFML::boucleJeuSFML(RenderWindow & window)
-{   window.setFramerateLimit(120);
+{   //window.setFramerateLimit(120);
     Clock clock;
     clock.restart();
     
