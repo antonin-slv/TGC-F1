@@ -41,13 +41,16 @@ class Editeur : public Terrain
         
 
 
-        void ajouter_prop(Tip t = Tip::Route);
+        void ajouter_prop(Tip t = Tip::road);
         void select_prop();
         void supprimer_props();
 
         void Init_props();
         void sauvegarder();
         bool charger(string path = "data/circuits/test1.json");
+
+        void Init_ref_props();
+
 
         bool test_regression();
 };

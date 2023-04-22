@@ -15,20 +15,18 @@ using json = nlohmann::json;
 /** @brief Les "tip" (types) de props */
 enum Tip : int
 {   nondef=0,
-    arbre=1,
-    gradin=2,
-    Route=3,
-    route_b_g=4,
-    route_b_d=5,
-    route_h_g=6,
-    route_h_d=7,
-    route_g_d=8,
-    route_h_b=9,
-    Herbe=10,
-    Droite=11,
-    Gauche=12,
-    Arrivee=13,
-    end_of_class=14,   
+    finish=1,
+    grass=2,
+    road=3,
+    road_kerb_a=4,
+    road_kerb_m=5,
+    road_kerb_z=6,
+    turn1=7,
+    turn2=8,
+    turn3=9,
+    turn4=10,
+    checkpoint=11,
+    end_of_class=12,   
 };
 
 /** 

@@ -131,13 +131,13 @@ void Editeur::sauvegarder()
     fichier.close();
 }
 
-void Editeur::Init_props()
+void Editeur::Init_ref_props()
 {   int i=0;
     while (i++ != Tip::end_of_class)
     {   ref_props.push_back(Props());
         ref_props[i].prop_set_type((Tip) i);
     }
-    //TODO
+    
 }
 
 
@@ -159,14 +159,14 @@ void Editeur::select_prop()
 }
 
 void Editeur::supprimer_props()
-{   //tab_props.erase(prop_selectionne);
+{   tab_props.erase(tab_props.begin()+prop_selectionne);
     nb_props--;
-    prop_selectionne--;
+    select_prop();
 }
 
 bool Editeur::test_regression()
 {   charger();
-    Init_props();
+    //Init_props();
     sauvegarder();
     //TODO
     return true;
