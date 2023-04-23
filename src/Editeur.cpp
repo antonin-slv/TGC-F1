@@ -38,6 +38,8 @@ void Editeur::boucleEditeur(RenderWindow & window)
     bool quitter = false;
     bool ajout_prop = false;
 
+    select_prop();
+    select_prop(false);
     do {
         
         Event event;
@@ -54,7 +56,9 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 if (event.key.code == Keyboard::D)
                     deplacer_prop(12, 0);
                 if (event.key.code == Keyboard::A)
-                    select_prop();        
+                    select_prop();
+                if (event.key.code == Keyboard::E)
+                    select_prop(false);
                 if (event.key.code == Keyboard::R)
                     supprimer_prop();
             }
@@ -92,7 +96,6 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 tab_props[prop_selectionne].setPos(true_new_pos);
                 //update graphique
                 interface.dernierProp().setPosition(true_new_pos.x, true_new_pos.y);
-
             }
         }
         else
@@ -132,6 +135,7 @@ void Editeur::deplacer(float dx, float dy)
     centre.y += dy;
     interface.vue.move(dx, dy);
 }
+
 void Editeur::deplacer_prop(float dx, float dy)
 {   if (prop_selectionne != -1)
     {   Vecteur newpos = tab_props[prop_selectionne].getPos() + Vecteur(dx, dy);
