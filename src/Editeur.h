@@ -28,6 +28,12 @@ class Editeur : public Terrain
         float zoom;//10 par def
         int prop_selectionne;
         
+
+        //varibles pour la gestion des évènements
+        bool deplacer_vue = false;
+        bool ajout_prop = false;
+        Vector2i mouse_prev_pos;
+
         Interface interface;
         
     public :
@@ -51,6 +57,11 @@ class Editeur : public Terrain
         bool charger(string path = "data/circuits/test1.json");
 
         void Init_ref_props();
+
+
+
+        bool gestionEvent(Event & event);
+        void gestionSouris(RenderWindow const & window);
 
 
         bool test_regression();

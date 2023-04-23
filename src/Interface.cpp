@@ -168,7 +168,7 @@ void Interface::drawRefProps(RenderWindow & window)
     window.setView(vue);
 }
 
-Tip Interface::refPropSelected(RenderWindow & window)
+Tip Interface::refPropSelected(RenderWindow const & window)
 {   Vector2i mouse_pos = Mouse::getPosition(window);
    
     if (mouse_pos.x<95 && mouse_pos.y>30 && mouse_pos.x>10)

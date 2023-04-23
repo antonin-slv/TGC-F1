@@ -68,7 +68,7 @@ class Interface
     Texture * getTexture(Tip t);
     void drawRefProps(RenderWindow & window);
 
-    Tip refPropSelected(RenderWindow & window);
+    Tip refPropSelected(RenderWindow const & window);
 
     Sprite & dernierProp();
     Sprite & getProp(int i);

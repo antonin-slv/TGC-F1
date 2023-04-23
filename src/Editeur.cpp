@@ -29,88 +29,22 @@ void Editeur::boucleEditeur(RenderWindow & window)
     // set the character size
     text.setCharacterSize(50); // in pixels, not points!
     
-    bool deplacer_vue = false;
     Vector2i pos_mouse_init;
     Vecteur depl_mouse;
 
-    Vector2i mouse_prev_pos;
-
     bool quitter = false;
-    bool ajout_prop = false;
+
 
     select_prop();
     select_prop(false);
     do {
         
         Event event;
-        while (window.pollEvent(event))
-        {   if (event.type == Event::Closed) quitter = true;
-            if (event.type == Event::KeyPressed)
-            {   if (event.key.code == Keyboard::Escape) quitter = true;
-                if (event.key.code == Keyboard::Z)
-                    deplacer_prop(0, -12);
-                if (event.key.code == Keyboard::S)
-                    deplacer_prop(0, 12);
-                if (event.key.code == Keyboard::Q)
-                    deplacer_prop(-12, 0);
-                if (event.key.code == Keyboard::D)
-                    deplacer_prop(12, 0);
-                if (event.key.code == Keyboard::A)
-                    select_prop();
-                if (event.key.code == Keyboard::E)
-                    select_prop(false);
-                if (event.key.code == Keyboard::G)
-                    supprimer_prop();
-                if (event.key.code == Keyboard::R)
-                    rotate_prop();
-            }
-            if (event.type == sf::Event::MouseWheelScrolled)
-            {   int delta = event.mouseWheelScroll.delta;
-                zoom_(delta);
-            }
-        }
-        //gestion des actions souris
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {   
-            Vector2i mouse_position = Mouse::getPosition(window);
-            Vector2f local_mouse_pos = window.mapPixelToCoords(mouse_position);
-            const auto delta = 
-                    local_mouse_pos -
-                    window.mapPixelToCoords(mouse_prev_pos);
+        while (window.pollEvent(event)) if(gestionEvent(event)) quitter=true;
 
-            if (!deplacer_vue && !ajout_prop)
-            {   
-                Tip nouveau_prop = interface.refPropSelected(window);
-                if (nouveau_prop != Tip::nondef)
-                {   
-                    ajouter_prop(nouveau_prop,window.mapPixelToCoords(mouse_position));
-
-                    ajout_prop = true;
-                }
-                else deplacer_vue = true;
-            }
-            if (deplacer_vue) deplacer(-delta.x, -delta.y);
-            else if (ajout_prop)
-            {   
-                Vecteur true_new_pos(local_mouse_pos.x+12, local_mouse_pos.y);
-                map_pos_to_grid(true_new_pos);
-                //update de la position du dernier prop ajouté
-                tab_props[prop_selectionne].setPos(true_new_pos);
-                //update graphique
-                interface.dernierProp().setPosition(true_new_pos.x-6, true_new_pos.y+6);
-            }
-        }
-        else
-        {   if (ajout_prop)
-            {   //on supprime les autres props possédant la même position
-                int autre_prop = getProp(tab_props[prop_selectionne].getPos());
-                if (autre_prop != -1 && autre_prop != prop_selectionne && tab_props[prop_selectionne].getType() != checkpoint) supprimer_prop(autre_prop);
-                ajout_prop = false;
-            }
-            deplacer_vue = false;
-            
-        }
-       mouse_prev_pos = Mouse::getPosition(window);
+        //gestion des actions souris et de ce qui en dépend
+        gestionSouris(window);
+       
 
         lier_window(window);
         text.setScale(0.3/(float)zoom,0.3/(float)zoom);
@@ -122,6 +56,85 @@ void Editeur::boucleEditeur(RenderWindow & window)
         window.display();
 
     } while (!quitter);
+
+}
+
+
+bool Editeur::gestionEvent(Event & event)
+{
+    if (event.type == Event::Closed) return true;
+    else if (event.type == Event::KeyPressed)
+    {   if (event.key.code == Keyboard::Escape) return true;
+        if (event.key.code == Keyboard::Z)
+            deplacer_prop(0, -12);
+        else if (event.key.code == Keyboard::S)
+            deplacer_prop(0, 12);
+        if (event.key.code == Keyboard::Q)
+            deplacer_prop(-12, 0);
+        else if (event.key.code == Keyboard::D)
+            deplacer_prop(12, 0);
+        if (event.key.code == Keyboard::R)
+            rotate_prop();
+        
+        if (!ajout_prop && !deplacer_vue)
+        {   if (event.key.code == Keyboard::A)
+                select_prop();
+            else if (event.key.code == Keyboard::E)
+                select_prop(false);
+            else if (event.key.code == Keyboard::G)
+                supprimer_prop();
+        }
+    }
+    else if (event.type == sf::Event::MouseWheelScrolled)
+    {   int delta = event.mouseWheelScroll.delta;
+        zoom_(delta);
+    }
+    return false;
+
+}
+
+void Editeur::gestionSouris(RenderWindow const & window)
+{   //gestion des actions souris
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {   
+        Vector2i mouse_position = Mouse::getPosition(window);
+        Vector2f local_mouse_pos = window.mapPixelToCoords(mouse_position);
+        const auto delta = 
+                local_mouse_pos -
+                window.mapPixelToCoords(mouse_prev_pos);
+
+        if (!deplacer_vue && !ajout_prop)
+        {   
+            Tip nouveau_prop = interface.refPropSelected(window);
+            if (nouveau_prop != Tip::nondef)
+            {   
+                ajouter_prop(nouveau_prop,window.mapPixelToCoords(mouse_position));
+
+                ajout_prop = true;
+            }
+            else deplacer_vue = true;
+        }
+        if (deplacer_vue) deplacer(-delta.x, -delta.y);
+        else if (ajout_prop)
+        {   
+            Vecteur true_new_pos(local_mouse_pos.x+12, local_mouse_pos.y);
+            map_pos_to_grid(true_new_pos);
+            //update de la position du dernier prop ajouté
+            tab_props[prop_selectionne].setPos(true_new_pos);
+            //update graphique
+            interface.dernierProp().setPosition(true_new_pos.x-6, true_new_pos.y+6);
+        }
+    }
+    else
+    {   if (ajout_prop)
+        {   //on supprime les autres props possédant la même position
+            int autre_prop = getProp(tab_props[prop_selectionne].getPos());
+            if (autre_prop != -1 && autre_prop != prop_selectionne && tab_props[prop_selectionne].getType() != checkpoint) supprimer_prop(autre_prop);
+            ajout_prop = false;
+        }
+        deplacer_vue = false;
+    }
+    mouse_prev_pos = Mouse::getPosition(window);
 
 }
 
