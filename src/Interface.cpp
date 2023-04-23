@@ -61,15 +61,18 @@ Texture * Interface::getTexture(Tip type)
 void Interface::loadProp(Props const &  prop)
 {   Texture * texture=getTexture(prop.getType());
 
-    props.push_back(Sprite(*texture));
+   
+    Sprite prop_(*texture);
     Vecteur taille(12.0/texture->getSize().x,12.0/texture->getSize().y);
-    props[props.size()-1].scale(taille.x,taille.y);
+    prop_.scale(taille.x,taille.y);
     
-    props[props.size()-1].setOrigin(1.1,1.1);
+    prop_.setOrigin(prop_.getLocalBounds().width/2,prop_.getLocalBounds().height/2);
     
     Vecteur pos = prop.getPos();
-    props[props.size()-1].setPosition(pos.x,pos.y);
-    props[props.size()-1].setRotation(90+prop.getRotation()*180/M_PI);
+    prop_.setPosition(pos.x-6,pos.y+6);
+    prop_.setRotation(90+prop.getRotation()*180/M_PI);
+
+    props.push_back(prop_);
 
 }
 

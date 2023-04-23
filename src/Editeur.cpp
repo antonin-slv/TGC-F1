@@ -59,8 +59,10 @@ void Editeur::boucleEditeur(RenderWindow & window)
                     select_prop();
                 if (event.key.code == Keyboard::E)
                     select_prop(false);
-                if (event.key.code == Keyboard::R)
+                if (event.key.code == Keyboard::G)
                     supprimer_prop();
+                if (event.key.code == Keyboard::R)
+                    rotate_prop();
             }
             if (event.type == sf::Event::MouseWheelScrolled)
             {   int delta = event.mouseWheelScroll.delta;
@@ -95,7 +97,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
                 //update de la position du dernier prop ajouté
                 tab_props[prop_selectionne].setPos(true_new_pos);
                 //update graphique
-                interface.dernierProp().setPosition(true_new_pos.x, true_new_pos.y);
+                interface.dernierProp().setPosition(true_new_pos.x-6, true_new_pos.y+6);
             }
         }
         else
@@ -123,6 +125,14 @@ void Editeur::boucleEditeur(RenderWindow & window)
 
 }
 
+
+void Editeur::rotate_prop(float angle)
+{   if (prop_selectionne != -1)
+    {   tab_props[prop_selectionne].setRot(tab_props[prop_selectionne].getRotation() + angle * M_PI / 180);
+        interface.getProp(prop_selectionne).rotate(angle);
+    }
+}
+
 void Editeur::zoom_(float zoom_)
 {   zoom += zoom_;
     if (zoom < 1) zoom = 1;
@@ -140,7 +150,7 @@ void Editeur::deplacer_prop(float dx, float dy)
 {   if (prop_selectionne != -1)
     {   Vecteur newpos = tab_props[prop_selectionne].getPos() + Vecteur(dx, dy);
         tab_props[prop_selectionne].setPos(newpos);
-        interface.getProp(prop_selectionne).setPosition(newpos.x, newpos.y);
+        interface.getProp(prop_selectionne).move(dx,dy);
     }
 }
 
@@ -182,9 +192,8 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
 {   
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
-    tab_props[nb_props].setPos(Vecteur(pos.x, pos.y));
+    tab_props[nb_props].setPos(Vecteur(pos.x+20, pos.y-6));
     interface.loadProp(tab_props[nb_props]);
-    interface.dernierProp().setPosition(pos.x, pos.y);
     nb_props++;
     prop_selectionne = nb_props-1;
 }

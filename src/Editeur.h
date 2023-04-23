@@ -44,6 +44,7 @@ class Editeur : public Terrain
         void select_prop(bool plus_recent = true);
         void supprimer_prop(int i=-1);
         void deplacer_prop(float dx, float dy);
+        void rotate_prop(float angle=90);
 
         void Init_props();
         void sauvegarder();
