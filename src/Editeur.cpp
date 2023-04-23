@@ -68,51 +68,6 @@ void Editeur::boucleEditeur(RenderWindow & window)
             }
         }
         //gestion des actions souris
-        /*
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {   
-            if (!deplacer_vue && !ajout_prop)
-            {   Tip nouveau_prop = interface.refPropSelected(window);
-                pos_mouse_init = Mouse::getPosition(window);
-                
-                if (nouveau_prop != Tip::nondef)
-                {   ajouter_prop(nouveau_prop);
-                    ajout_prop = true;
-                }
-                else
-                {   
-                    deplacer_vue = true;
-                }
-
-            }
-            Vector2i posf = Mouse::getPosition(window);
-            depl_mouse = Vecteur(posf.x-pos_mouse_init.x, posf.y-pos_mouse_init.y);
-            depl_mouse = depl_mouse * (-1/(float)(zoom));
-            if (deplacer_vue)
-            {   
-                interface.vue.setCenter(depl_mouse.x+centre.x,depl_mouse.y+centre.y);
-            }
-            else if (ajout_prop)
-            {   Vecteur new_pos= depl_mouse * -1;
-                new_pos.x += interface.vue.getCenter().x/zoom - interface.vue.getSize().x/2.0 + 6;
-                new_pos.y += interface.vue.getCenter().y/zoom - interface.vue.getSize().y/2.0 + 6 + pos_mouse_init.y/zoom;
-
-                map_pos_to_grid(new_pos);
-                //update de la position du dernier prop ajouté
-                tab_props[prop_selectionne].setPos(new_pos);
-                //update graphique
-                interface.dernierProp().setPosition(new_pos.x, new_pos.y);
-            }
-        }
-        else
-        {   deplacer_vue = false;
-            
-            if (!ajout_prop) centre= depl_mouse+centre;
-            ajout_prop = false;
-            depl_mouse = Vecteur(0,0);
-        }
-        */  
-       //gestion de la souris 2
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {   
             Vector2i mouse_position = Mouse::getPosition(window);
@@ -162,17 +117,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
         Text balek;
         afficherDebug(window, text, balek);
         window.draw(text);
-        window.draw(RectangleShape(Vector2f(1,1)));
-        RectangleShape rectangle_selectionne(Vector2f(12,12));
-        rectangle_selectionne.setOutlineColor(Color::Red);
-        rectangle_selectionne.setFillColor(Color::Transparent);
-        rectangle_selectionne.setOutlineThickness(0.3);
-        //fait en sorte de lier le rectangle à la interface.vue
-        Vector2f pos2 = window.mapPixelToCoords(Mouse::getPosition(window));
-        Vecteur pos(pos2.x, pos2.y);
-        map_pos_to_grid(pos);
-        rectangle_selectionne.setPosition(pos.x, pos.y);
-        window.draw(rectangle_selectionne);
+
         window.display();
 
     } while (!quitter);
@@ -283,6 +228,18 @@ void Editeur::lier_window(RenderWindow & window)
     afficherDebug(window, text,balek);
     interface.drawTerrain(window);
     window.setView(interface.vue);
+
+    RectangleShape rectangle_selectionne(Vector2f(12,12));
+    rectangle_selectionne.setOutlineColor(Color::Red);
+    rectangle_selectionne.setFillColor(Color::Transparent);
+    rectangle_selectionne.setOutlineThickness(0.3);
+    //fait en sorte de lier le rectangle à la interface.vue
+    Vector2f pos2 = window.mapPixelToCoords(Mouse::getPosition(window));
+    Vecteur pos(pos2.x, pos2.y);
+    map_pos_to_grid(pos);
+    rectangle_selectionne.setPosition(pos.x, pos.y);
+    window.draw(rectangle_selectionne);
+
     interface.drawRefProps(window);
 
 }
