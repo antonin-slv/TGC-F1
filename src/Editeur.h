@@ -41,8 +41,9 @@ class Editeur : public Terrain
 
 
         void ajouter_prop(Tip t = Tip::road, Vector2f pos = Vector2f(0,0));
-        void select_prop();
+        void select_prop(bool plus_recent = true);
         void supprimer_prop(int i=-1);
+        void deplacer_prop(float dx, float dy);
 
         void Init_props();
         void sauvegarder();

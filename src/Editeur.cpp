@@ -46,21 +46,17 @@ void Editeur::boucleEditeur(RenderWindow & window)
             if (event.type == Event::KeyPressed)
             {   if (event.key.code == Keyboard::Escape) quitter = true;
                 if (event.key.code == Keyboard::Z)
-                    deplacer(0, -100/zoom);
+                    deplacer_prop(0, -12);
                 if (event.key.code == Keyboard::S)
-                    deplacer(0, 100/zoom);
+                    deplacer_prop(0, 12);
                 if (event.key.code == Keyboard::Q)
-                    deplacer(-100/zoom, 0);
+                    deplacer_prop(-12, 0);
                 if (event.key.code == Keyboard::D)
-                    deplacer(100/zoom, 0);
+                    deplacer_prop(12, 0);
                 if (event.key.code == Keyboard::A)
                     select_prop();        
-                /*
-                if (event.key.code == Keyboard::E)
-                    ajouter_prop();
                 if (event.key.code == Keyboard::R)
-                    supprimer_props();
-                */
+                    supprimer_prop();
             }
             if (event.type == sf::Event::MouseWheelScrolled)
             {   int delta = event.mouseWheelScroll.delta;
@@ -136,6 +132,13 @@ void Editeur::deplacer(float dx, float dy)
     centre.y += dy;
     interface.vue.move(dx, dy);
 }
+void Editeur::deplacer_prop(float dx, float dy)
+{   if (prop_selectionne != -1)
+    {   Vecteur newpos = tab_props[prop_selectionne].getPos() + Vecteur(dx, dy);
+        tab_props[prop_selectionne].setPos(newpos);
+        interface.getProp(prop_selectionne).setPosition(newpos.x, newpos.y);
+    }
+}
 
 bool Editeur::charger(string path)
 {   //charge le terrain en lui même
@@ -182,31 +185,37 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
     prop_selectionne = nb_props-1;
 }
 
-void Editeur::select_prop()
+void Editeur::select_prop(bool plus_recent)
 {   if (nb_props != 0)
-    {
-        prop_selectionne++;
-        if(prop_selectionne >= nb_props) prop_selectionne = 0;
+    {   if (!plus_recent)
+        {   prop_selectionne--;
+            if(prop_selectionne < 0) prop_selectionne = nb_props-1;
+        }
+        else
+        {   prop_selectionne++;
+            if(prop_selectionne >= nb_props) prop_selectionne = 0;
+        }
         Vecteur ctemp;
         ctemp=tab_props[prop_selectionne].getPos();
         centre.x = ctemp.x;
         centre.y = ctemp.y;
         interface.vue.setCenter(centre.x, centre.y);
     }
+    else prop_selectionne = -1;
 }
 
 void Editeur::supprimer_prop(int i)
-{   
-    nb_props--;
-    if (i == -1)
-    {   tab_props.erase(tab_props.begin()+prop_selectionne);
-        i=prop_selectionne;
+{   if (nb_props != 0)
+    {   nb_props--;
+        if (i == -1)
+        {   tab_props.erase(tab_props.begin()+prop_selectionne);
+            i=prop_selectionne;
+        }
+        else tab_props.erase(tab_props.begin()+i);
+        
+        interface.supprimerProp(i);
+        select_prop(false);
     }
-    else tab_props.erase(tab_props.begin()+i);
-    
-    if(nb_props != 0) prop_selectionne--;
-    else prop_selectionne = -1;
-    interface.supprimerProp(i);
     
 
 }
@@ -238,7 +247,13 @@ void Editeur::lier_window(RenderWindow & window)
     Vecteur pos(pos2.x, pos2.y);
     map_pos_to_grid(pos);
     rectangle_selectionne.setPosition(pos.x, pos.y);
-    window.draw(rectangle_selectionne);
+    window.draw(rectangle_selectionne);//celui de la souris
+    rectangle_selectionne.setOutlineColor(Color::Blue);
+    rectangle_selectionne.setOrigin(12,0);
+    pos=tab_props[prop_selectionne].getPos();
+    rectangle_selectionne.setPosition(pos.x,pos.y);
+    window.draw(rectangle_selectionne);//celui selectionné
+    
 
     interface.drawRefProps(window);
 

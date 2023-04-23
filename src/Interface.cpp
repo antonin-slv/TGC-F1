@@ -183,6 +183,11 @@ Sprite & Interface::dernierProp()
 {   return props[props.size()-1];
 }
 
+Sprite & Interface::getProp(int i)
+{   return props[i];
+}
+
+
 void Interface::supprimerProp(int i)
 {   if (i == -1) props.pop_back();
     else props.erase(props.begin()+i);
