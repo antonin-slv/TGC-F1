@@ -24,7 +24,7 @@ using namespace sf;
 class Editeur : public Terrain
 {   
     private :
-        Vecteur centre;
+        Vector2f centre;
         float zoom;//10 par def
         int prop_selectionne;
         
@@ -40,9 +40,9 @@ class Editeur : public Terrain
         
 
 
-        void ajouter_prop(Tip t = Tip::road);
+        void ajouter_prop(Tip t = Tip::road, Vector2f pos = Vector2f(0,0));
         void select_prop();
-        void supprimer_props();
+        void supprimer_prop(int i=-1);
 
         void Init_props();
         void sauvegarder();

@@ -114,15 +114,14 @@ bool Terrain::chargerJSON(string const & path){
     Props temp;
     for (int i=0; i<nb_props; i++)
     {  
-        if (temp.chargerJSON(tab["Props"][i]))
-        {   tab_props.push_back(temp);
-            cout<<"prop "<<i-j<<" chargé"<<endl;
-        }
+        if (temp.chargerJSON(tab["Props"][i])) tab_props.push_back(temp);
         else j++;
     }
+
     nb_props-=j;
     if (j> 0)cout<<j<<" props corrompus"<<endl;
     fichier.close();
+    cout<<"Terrain chargé"<<endl;
     return 1;
 }
 
@@ -135,4 +134,14 @@ Props const & Terrain::getProp(int i)
 vector <Props> const Terrain::getTabProps() const
 {
     return tab_props;
+}
+
+int Terrain::getProp(Vecteur const & pos)
+{
+    for (int i=0; i<nb_props; i++)
+    {   if (pos == tab_props[i].getPos())
+        {   return i;
+        }
+    }
+    return -1;
 }

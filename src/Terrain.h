@@ -126,6 +126,9 @@ class Terrain
         /** \brief Affiche le terrain en TXT */
         void afficher_txt();
 
+
+        int getProp(Vecteur const & pos);
+        
         vector<Props> const getTabProps() const;
     
 };

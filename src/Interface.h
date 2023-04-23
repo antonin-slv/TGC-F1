@@ -48,6 +48,8 @@ class Interface
     Interface();
 
 
+    void supprimerProp(int i=-1);
+
     void loadProp(Props const & prop);
     void loadTerrain(Terrain & terrain,string texture_path);
     void loadVoiture(Voiture & voiture_, string texture_path);
@@ -61,6 +63,7 @@ class Interface
     void drawJeu(Jeu const & jeu,RenderWindow & window);
     void drawEditeur(RenderWindow & window);
 
+    Texture * getTexture(Tip t);
     void drawRefProps(RenderWindow & window);
 
     Tip refPropSelected(RenderWindow & window);

@@ -19,6 +19,8 @@ class Vecteur
         /** \brief Opérateur d'affectation \param v Vecteur à copier, passé par référence \return Vecteur */
         Vecteur &operator=(const Vecteur & v); 
         
+        bool operator==(const Vecteur a) const;
+
         /** \brief modifie un vecteur à partir d'une norme et d'un angle
          * \param norme Norme du vecteur
          * \param rotation Rotation du vecteur
@@ -42,6 +44,7 @@ Vecteur operator+(Vecteur a, Vecteur b);
 Vecteur operator-(Vecteur a, Vecteur b);
 /** \brief Opérateur de multiplication \param a Premier vecteur \param b Second vecteur \return Vecteur */
 Vecteur operator*(Vecteur a, float b);  
+
 
 
 

@@ -19,6 +19,10 @@ Vecteur &Vecteur::operator=(const Vecteur & v)
     y = v.y;
     return *this;
 }
+bool Vecteur::operator==(const Vecteur a) const
+{
+    return (x == a.x && y == a.y);
+}
 void Vecteur::setVecteur(float norme, float rotation)
 {
     x = norme * cos(rotation);
