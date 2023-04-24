@@ -18,28 +18,40 @@
 #include "External/json.hpp"
 
 using namespace sf;
-using json = nlohmann::json; //pour le json
+using json = nlohmann::json; // pour le json
 using namespace std;
 
 int main(){
-  GestionSFML G1;
-  Editeur E1;
-  E1.charger("data/circuits/test.json");
-  bool quitter = false;
-  string choix="2";
-  //RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
-  do{
-    RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
-    if (choix == "2") E1.boucleEditeur(window);
-    else if (choix == "1") G1.boucleJeuSFML(window);
-    else quitter = true;
-    window.close();
-    if (!quitter) {  
-      cout<<"entrer 1 pour jouer, 2 pour editer, 3 pour quitter :"<<endl;
-      cin>>choix;
-  
-    }
+    Menu M1;
+    GestionSFML G1;
+    Editeur E1;
+    E1.charger("data/circuits/test.json");
+    bool quitter = false;
+    // RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
+    while (!quitter){
+        RenderWindow window(VideoMode(1280, 720), "Vroum", Style::Fullscreen);
+        switch (M1.boucleMenu(window)){
+            case 1:
+                G1.boucleJeuSFML(window);
+                break;
 
-  }while(!quitter);
-  return 0;
+            case 2:
+                E1.boucleEditeur(window);
+                break;
+
+            case 3:
+                quitter = true;
+                break;
+
+            case 4:
+                M1.boucleMenu(window);
+
+            default:
+                break;
+        };
+        if (quitter){
+            window.close();
+        }
+    }
+    return 0;
 }
