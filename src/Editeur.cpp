@@ -16,7 +16,7 @@ void map_pos_to_grid(Vecteur & pos)
 void Editeur::boucleEditeur(RenderWindow & window)
 {   
     interface.loadRefProps();
-    
+    cout<<"chargement des textures"<<endl;
     window.setFramerateLimit(60);
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
@@ -34,6 +34,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
 
     select_prop();
     select_prop(false);
+    cout<<"boucle editeur"<<endl;
     do {
         
         //gestion des actions clavier et de ce qui en dépend + mollette souris
@@ -206,12 +207,12 @@ void Editeur::sauvegarder(string path)
     
     json j;
     for (int i = 0; i < nb_props; i++)
-    {   j["props"][i]["x"] = tab_props[i].getX();
-        j["props"][i]["y"] = tab_props[i].getY();
-        j["props"][i]["rotation"] = tab_props[i].getRotation();
-        j["props"][i]["type"] = tab_props[i].getType();
-        j["props"][i]["l"] = tab_props[i].getLong();
-        j["props"][i]["L"] = tab_props[i].getLarg();
+    {   j["Props"][i]["x"] = tab_props[i].getX();
+        j["Props"][i]["y"] = tab_props[i].getY();
+        j["Props"][i]["rotation"] = tab_props[i].getRotation();
+        j["Props"][i]["Type"] = tab_props[i].getType();
+        j["Props"][i]["l"] = tab_props[i].getLong();
+        j["Props"][i]["L"] = tab_props[i].getLarg();
     }
 
     fichier << j.dump(4);

@@ -24,6 +24,7 @@ using namespace std;
 int main(){
   GestionSFML G1;
   Editeur E1;
+  cout<<"decalarations ok"<<endl;
   E1.charger("data/circuits/test.json");
   bool quitter = false;
   string choix="2";
