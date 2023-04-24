@@ -1,13 +1,10 @@
 #include "Editeur.h"
 
-
-
 Editeur::Editeur()
 {   centre = Vector2f(0,0);
     zoom = 10;
     interface.vue = View(Vector2f(0.f,0.f), Vector2f(1280.f/zoom, 720.f/zoom));
 }
-
 
 void map_pos_to_grid(Vecteur & pos)
 {   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 12;
@@ -39,8 +36,8 @@ void Editeur::boucleEditeur(RenderWindow & window)
     select_prop(false);
     do {
         
-        Event event;
-        while (window.pollEvent(event)) if(gestionEvent(event)) quitter=true;
+        //gestion des actions clavier et de ce qui en dépend + mollette souris
+        if(gestionEvent(window)) quitter=true;
 
         //gestion des actions souris et de ce qui en dépend
         gestionSouris(window);
@@ -60,37 +57,61 @@ void Editeur::boucleEditeur(RenderWindow & window)
 }
 
 
-bool Editeur::gestionEvent(Event & event)
-{
-    if (event.type == Event::Closed) return true;
-    else if (event.type == Event::KeyPressed)
-    {   if (event.key.code == Keyboard::Escape) return true;
-        if (event.key.code == Keyboard::Z)
-            deplacer_prop(0, -12);
-        else if (event.key.code == Keyboard::S)
-            deplacer_prop(0, 12);
-        if (event.key.code == Keyboard::Q)
-            deplacer_prop(-12, 0);
-        else if (event.key.code == Keyboard::D)
-            deplacer_prop(12, 0);
-        if (event.key.code == Keyboard::R)
-            rotate_prop();
-        
-        if (!ajout_prop && !deplacer_vue)
-        {   if (event.key.code == Keyboard::A)
-                select_prop();
-            else if (event.key.code == Keyboard::E)
-                select_prop(false);
-            else if (event.key.code == Keyboard::G)
-                supprimer_prop();
+bool Editeur::gestionEvent(RenderWindow & window)
+{   Event event;
+    while(window.pollEvent(event))
+    {   if (event.type == Event::Closed) return true;
+        else if (event.type == Event::KeyPressed)
+        {   if (event.key.code == Keyboard::Escape) return true;
+            if (event.key.code == Keyboard::Z)
+                deplacer_prop(0, -12);
+            else if (event.key.code == Keyboard::S)
+                deplacer_prop(0, 12);
+            if (event.key.code == Keyboard::Q)
+                deplacer_prop(-12, 0);
+            else if (event.key.code == Keyboard::D)
+                deplacer_prop(12, 0);
+            if (event.key.code == Keyboard::R)
+                rotate_prop();
+            
+            if (!ajout_prop && !deplacer_vue)
+            {   if (event.key.code == Keyboard::A)
+                    select_prop();
+                else if (event.key.code == Keyboard::E)
+                    select_prop(false);
+                else if (event.key.code == Keyboard::G)
+                    supprimer_prop();
+                else if (event.key.code == Keyboard::C)
+                {   window.setVisible(false);
+                    cout<<"Sauvegarder ? (y/n) : ";
+                    string nom;
+                    cin>>nom;
+                    if (nom != "y") break;
+                    
+                    string path = "data/circuits/";
+                    ofstream fichier;
+                    cout<<"entrer nom du circuit : ";
+                    cin>>nom;
+                    path += nom + ".json";
+                    sauvegarder(path);
+                    window.setVisible(true);
+                }
+                else if (event.key.code == Keyboard::L)
+                {   window.setVisible(false);
+                    cout<<"Charger :";
+
+                    //charger();
+                    window.setVisible(true);
+                }
+
+            }       
+        }
+        else if (event.type == sf::Event::MouseWheelScrolled)
+        {   int delta = event.mouseWheelScroll.delta;
+            zoom_(delta);
         }
     }
-    else if (event.type == sf::Event::MouseWheelScrolled)
-    {   int delta = event.mouseWheelScroll.delta;
-        zoom_(delta);
-    }
     return false;
-
 }
 
 void Editeur::gestionSouris(RenderWindow const & window)
@@ -179,11 +200,10 @@ bool Editeur::charger(string path)
     return succes;
 }   
 
-void Editeur::sauvegarder()
-{   string path = "data/circuits/test1.json";
-
-    ofstream fichier;
-
+void Editeur::sauvegarder(string path)
+{   ofstream fichier;
+    fichier.open(path);
+    
     json j;
     for (int i = 0; i < nb_props; i++)
     {   j["props"][i]["x"] = tab_props[i].getX();
@@ -193,8 +213,6 @@ void Editeur::sauvegarder()
         j["props"][i]["l"] = tab_props[i].getLong();
         j["props"][i]["L"] = tab_props[i].getLarg();
     }
-
-    fichier.open(path);
 
     fichier << j.dump(4);
 
@@ -249,7 +267,7 @@ void Editeur::supprimer_prop(int i)
 bool Editeur::test_regression()
 {   charger();
     //Init_props();
-    sauvegarder();
+    sauvegarder("data/circuit/test_regression.json");
     //TODO
     return true;
 }

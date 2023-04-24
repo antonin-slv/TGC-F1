@@ -14,11 +14,9 @@
 #include <iostream>
 
 using namespace std;
-using namespace sf;
-
 
 /**
- * @brief Classe de l'éditeur de terrain (non fait)
+ * @brief Classe de l'éditeur de terrain (non finie)
  * 
  */
 class Editeur : public Terrain
@@ -53,14 +51,14 @@ class Editeur : public Terrain
         void rotate_prop(float angle=90);
 
         void Init_props();
-        void sauvegarder();
+        void sauvegarder(string path);
         bool charger(string path = "data/circuits/test1.json");
 
         void Init_ref_props();
 
 
 
-        bool gestionEvent(Event & event);
+        bool gestionEvent(RenderWindow & window);
         void gestionSouris(RenderWindow const & window);
 
 
