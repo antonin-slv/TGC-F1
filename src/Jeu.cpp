@@ -59,11 +59,8 @@ void Jeu::update(ActionClavier const & Action)
                 if (testColPropVoit(prop, tab_voit[0])) on_grass = true;
                 break;
             default :
-                if (prop.getType()>=Tip::road || prop.getType()<=Tip::turn4)
-                {if (testColPropVoit(prop, tab_voit[0]))
-                    {   cout<<"route ! "<<endl;
-                        on_road = true;}
-                }
+                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 2*prop.getHitbox().getNorme2())
+                {   on_road = true;}
                 break;
         }  
     }
