@@ -45,6 +45,7 @@ Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 void Jeu::update(ActionClavier const & Action)
 {   tab_voit[0].action=Action;
     bool on_road = false;
+    bool on_grass = false;
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
         switch(prop.getType())
@@ -55,15 +56,18 @@ void Jeu::update(ActionClavier const & Action)
                  if (testColPropVoit(prop, tab_voit[0])) cout<<"finish"<<endl;
                 break;
             case Tip::grass :
-                if (testColPropVoit(prop, tab_voit[0])) tab_voit[0].on_grass(frame_time);
+                if (testColPropVoit(prop, tab_voit[0])) on_grass = true;
                 break;
             default :
                 if (prop.getType()>=Tip::road || prop.getType()<=Tip::turn4)
-                {if (testColPropVoit(prop, tab_voit[0])) on_road = true;}
+                {if (testColPropVoit(prop, tab_voit[0]))
+                    {   cout<<"route ! "<<endl;
+                        on_road = true;}
+                }
                 break;
         }  
     }
-    if (!on_road) tab_voit[0].on_grass(frame_time);
+    if (!on_road||on_grass) tab_voit[0].on_grass(frame_time);
 
     tab_voit[0].update(frame_time);
 }   

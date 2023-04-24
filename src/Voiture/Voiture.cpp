@@ -212,5 +212,5 @@ void Voiture::update(float dt)
 
 void Voiture::on_grass(float dt)
 {
-    vitesse = vitesse / (1+dt);
+    vitesse /= 1+dt;
 }
