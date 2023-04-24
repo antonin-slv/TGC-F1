@@ -43,11 +43,12 @@ int Menu::boucleMenu(RenderWindow & window){
     texteSousTitre.setFillColor(Color::Red);
     texteSousTitre.setString("Fast One");
     texteSousTitre.setPosition((1920-texteSousTitre.getGlobalBounds().width)/2,175);
+
     Text texteJeu;
     texteJeu.setFont(font);
     texteJeu.setCharacterSize(50);
     texteJeu.setString("Jeu");
-    texteJeu.setPosition((1920-texteJeu.getGlobalBounds().width)/2,515);
+    texteJeu.setPosition((1920-texteJeu.getGlobalBounds().width)/2-5,515);
 
     Text texteEditeur;
     texteEditeur.setFont(font);
