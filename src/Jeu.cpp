@@ -43,13 +43,27 @@ void Jeu::ajouterVoiture(Voiture const & V)
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 void Jeu::update(ActionClavier const & Action)
-{    tab_voit[0].action=Action;
+{   tab_voit[0].action=Action;
+    bool on_road = false;
+    for (int i=0; i<terrain.getNbProps(); i++)
+    {   Props const & prop = terrain.getProp(i);
+        switch(prop.getType())
+        {   case Tip::checkpoint :
+                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 36) cout<<"checkpoint"<<endl;
+                break;
+            case Tip::finish :
+                 if (testColPropVoit(prop, tab_voit[0])) cout<<"finish"<<endl;
+                break;
+            case Tip::grass :
+                if (testColPropVoit(prop, tab_voit[0])) tab_voit[0].on_grass(frame_time);
+                break;
+            default :
+                if (prop.getType()>=Tip::road || prop.getType()<=Tip::turn4)
+                {if (testColPropVoit(prop, tab_voit[0])) on_road = true;}
+                break;
+        }  
+    }
+    if (!on_road) tab_voit[0].on_grass(frame_time);
 
     tab_voit[0].update(frame_time);
-
-    for (int i=0; i<terrain.getNbProps(); i++)
-    {   if (testColPropVoit(terrain.getProp(i), tab_voit[0]))
-        {   collisionPropVoit(terrain.getProp(i), tab_voit[0]);
-        }
-    }
 }   

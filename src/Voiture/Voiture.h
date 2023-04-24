@@ -119,15 +119,17 @@ class Voiture {
          */
         void tourner_var(float angle_roue_rad,float dt=1);
         /** \brief Tourne la voiture vers la gauche \param dt Temps durant lequel la voiture est tournée */
-        void tourner_g(float dt=1);
+        void tourner_g(float dt=1/60);
         /** \brief Tourne la voiture vers la droite \param dt Temps durant lequel la voiture est tournée */ 
-        void tourner_d(float dt=1); 
+        void tourner_d(float dt=1/60); 
 
         /** \brief Gère les collisions avec les murs
          * \param diff Vecteur de différence entre la voiture et le mur
          * \param anglemur Angle du mur
          */
         void crash(Vecteur diff, float anglemur);
+
+        void on_grass(float dt=1/60);
 
 };
 

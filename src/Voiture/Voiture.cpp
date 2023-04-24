@@ -209,3 +209,8 @@ void Voiture::update(float dt)
     calculPosition_precis(dt);
     calculVitesse(dt);
 }
+
+void Voiture::on_grass(float dt)
+{
+    vitesse = vitesse / (1+dt);
+}
