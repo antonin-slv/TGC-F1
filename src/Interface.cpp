@@ -27,6 +27,11 @@ Interface::Interface()
     //ctor
 }
 
+void Interface::clearProps()
+{   props.clear();
+}
+
+
 void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
 {   
     // Dessins
