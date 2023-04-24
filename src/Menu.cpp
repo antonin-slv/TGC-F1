@@ -6,46 +6,61 @@ using namespace std;
 
 int Menu::boucleMenu(RenderWindow & window){
 
-    int choix = 0;
-
     RectangleShape boutonJeu;
     boutonJeu.setFillColor(Color::Transparent);
     boutonJeu.setOutlineThickness(5);
     boutonJeu.setOutlineColor(Color::White);
-    boutonJeu.setSize(Vector2f(250,100));
-    boutonJeu.setPosition(100,100);
+    boutonJeu.setSize(Vector2f(300,100));
+    boutonJeu.setPosition(810,500);
 
     RectangleShape boutonEditeur;
     boutonEditeur.setFillColor(Color::Transparent);
     boutonEditeur.setOutlineThickness(5);
     boutonEditeur.setOutlineColor(Color::White);
-    boutonEditeur.setSize(Vector2f(250,100));
-    boutonEditeur.setPosition(100,300);
+    boutonEditeur.setSize(Vector2f(300,100));
+    boutonEditeur.setPosition(810,700);
 
     RectangleShape boutonQuitter;
     boutonQuitter.setFillColor(Color::Transparent);
     boutonQuitter.setOutlineThickness(5);
     boutonQuitter.setOutlineColor(Color::White);
-    boutonQuitter.setSize(Vector2f(250,100));
-    boutonQuitter.setPosition(100,500);
+    boutonQuitter.setSize(Vector2f(300,100));
+    boutonQuitter.setPosition(810,900);
 
     Font font;
-    font.loadFromFile("data/fonts/Consolas.ttf");
+    font.loadFromFile("data/fonts/F1.ttf");
+
+    Text texteTitre;
+    texteTitre.setFont(font);
+    texteTitre.setCharacterSize(100);
+    texteTitre.setFillColor(Color::Red);
+    texteTitre.setString("The Great Competition :");
+    texteTitre.setPosition(300,0);
+
+    Text texteSousTitre;
+    texteSousTitre.setFont(font);
+    texteSousTitre.setCharacterSize(100);
+    texteSousTitre.setFillColor(Color::Red);
+    texteSousTitre.setString("Fast One");
+    texteSousTitre.setPosition(600,100);
+
     Text texteJeu;
     texteJeu.setFont(font);
     texteJeu.setCharacterSize(50);
     texteJeu.setString("Jeu");
-    texteJeu.setPosition(110,110);
+    texteJeu.setPosition(905,515);
+
     Text texteEditeur;
     texteEditeur.setFont(font);
     texteEditeur.setCharacterSize(50);
     texteEditeur.setString("Editeur");
-    texteEditeur.setPosition(110,310);
+    texteEditeur.setPosition(858,715);
+
     Text texteQuitter;
     texteQuitter.setFont(font);
     texteQuitter.setCharacterSize(50);
     texteQuitter.setString("Quitter");
-    texteQuitter.setPosition(110,510);
+    texteQuitter.setPosition(858,915);
 
     while (window.isOpen()){
         Event event;
@@ -94,6 +109,8 @@ int Menu::boucleMenu(RenderWindow & window){
         }
 
         window.clear();
+        window.draw(texteTitre);
+        window.draw(texteSousTitre);
         window.draw(boutonJeu);
         window.draw(boutonEditeur);
         window.draw(boutonQuitter);
@@ -102,7 +119,7 @@ int Menu::boucleMenu(RenderWindow & window){
         window.draw(texteQuitter);
         window.display();
     }
-    return choix;
+    return 0;
 }
 
 /*

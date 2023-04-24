@@ -18,8 +18,9 @@ GestionSFML::GestionSFML()
     fond.setScale(0.15,0.15);
 
     zoom = 1;
-    cout << "Plutôt réaliste (0) ou arcade (5) ? Choissisez au milieu des deux : ";
-    cin >> decalage;
+    //cout << "Plutôt réaliste (0) ou arcade (5) ? Choissisez au milieu des deux : ";
+    //cin >> decalage;
+    decalage = 0;
     decalage /=20;
 }
 
