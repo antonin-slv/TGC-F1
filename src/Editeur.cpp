@@ -16,7 +16,7 @@ void map_pos_to_grid(Vecteur & pos)
 void Editeur::boucleEditeur(RenderWindow & window)
 {   
     interface.loadRefProps();
-    
+    cout<<"chargement des textures"<<endl;
     window.setFramerateLimit(60);
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
@@ -31,11 +31,10 @@ void Editeur::boucleEditeur(RenderWindow & window)
 
     bool quitter = false;
 
-
     select_prop();
     select_prop(false);
+    cout<<"boucle editeur"<<endl;
     do {
-        
         //gestion des actions clavier et de ce qui en dépend + mollette souris
         if(gestionEvent(window)) quitter=true;
 
@@ -53,9 +52,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
         window.display();
 
     } while (!quitter);
-
 }
-
 
 bool Editeur::gestionEvent(RenderWindow & window)
 {   Event event;
@@ -86,24 +83,31 @@ bool Editeur::gestionEvent(RenderWindow & window)
                     cout<<"Sauvegarder ? (y/n) : ";
                     string nom;
                     cin>>nom;
-                    if (nom != "y") break;
-                    
-                    string path = "data/circuits/";
-                    ofstream fichier;
-                    cout<<"entrer nom du circuit : ";
-                    cin>>nom;
-                    path += nom + ".json";
-                    sauvegarder(path);
+                    if (nom == "y" || nom == "Y")
+                    {   
+                        string path = "data/circuits/";
+                        ofstream fichier;
+                        cout<<"entrer nom du circuit : ";
+                        cin>>nom;
+                        path += nom + ".json";
+                        sauvegarder(path);
+                    }
                     window.setVisible(true);
                 }
                 else if (event.key.code == Keyboard::L)
                 {   window.setVisible(false);
-                    cout<<"Charger :";
-
-                    //charger();
+                    string path;
+                    cout<<"Charger un nouveau circuit ? (y/n) : ";
+                    cin>>path;
+                    if (path=="y"||path=="Y")
+                    {
+                        cout<<"Charger citcuit (nom) :";   
+                        cin>>path;
+                        path = "data/circuits/" + path + ".json";
+                        charger(path);
+                    }
                     window.setVisible(true);
                 }
-
             }       
         }
         else if (event.type == sf::Event::MouseWheelScrolled)
@@ -156,9 +160,7 @@ void Editeur::gestionSouris(RenderWindow const & window)
         deplacer_vue = false;
     }
     mouse_prev_pos = Mouse::getPosition(window);
-
 }
-
 
 void Editeur::rotate_prop(float angle)
 {   if (prop_selectionne != -1)
@@ -193,9 +195,9 @@ bool Editeur::charger(string path)
     bool succes = chargerJSON(path);
     //charrge les props
     if (succes)
-    {  for (int i = 0;i < nb_props; i++)
-        {   interface.loadProp(tab_props[i]);
-        }
+    {   interface.clearProps();
+        for (int i = 0;i < nb_props; i++) interface.loadProp(tab_props[i]);
+        prop_selectionne = -1;
     }
     return succes;
 }   
@@ -206,12 +208,12 @@ void Editeur::sauvegarder(string path)
     
     json j;
     for (int i = 0; i < nb_props; i++)
-    {   j["props"][i]["x"] = tab_props[i].getX();
-        j["props"][i]["y"] = tab_props[i].getY();
-        j["props"][i]["rotation"] = tab_props[i].getRotation();
-        j["props"][i]["type"] = tab_props[i].getType();
-        j["props"][i]["l"] = tab_props[i].getLong();
-        j["props"][i]["L"] = tab_props[i].getLarg();
+    {   j["Props"][i]["x"] = tab_props[i].getX();
+        j["Props"][i]["y"] = tab_props[i].getY();
+        j["Props"][i]["rotation"] = tab_props[i].getRotation();
+        j["Props"][i]["Type"] = tab_props[i].getType();
+        j["Props"][i]["l"] = tab_props[i].getLong();
+        j["Props"][i]["L"] = tab_props[i].getLarg();
     }
 
     fichier << j.dump(4);
@@ -260,8 +262,6 @@ void Editeur::supprimer_prop(int i)
         interface.supprimerProp(i);
         select_prop(false);
     }
-    
-
 }
 
 bool Editeur::test_regression()
@@ -297,9 +297,7 @@ void Editeur::lier_window(RenderWindow & window)
     pos=tab_props[prop_selectionne].getPos();
     rectangle_selectionne.setPosition(pos.x,pos.y);
     window.draw(rectangle_selectionne);//celui selectionné
-    
 
     interface.drawRefProps(window);
-
 }
 

@@ -49,7 +49,7 @@ class Interface
 
 
     void supprimerProp(int i=-1);
-
+    void clearProps();
 
 
     void loadProp(Props const & prop);

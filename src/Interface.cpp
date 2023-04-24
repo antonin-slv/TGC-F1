@@ -23,9 +23,14 @@ Interface::Interface()
     cout<<"Interface loaded"<<endl;
 
     text_voiture.loadFromFile("data/voitures/F1.png");
-
+    cout<<"Cars loaded"<<endl;
     //ctor
 }
+
+void Interface::clearProps()
+{   props.clear();
+}
+
 
 void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
 {   
@@ -61,9 +66,15 @@ Texture * Interface::getTexture(Tip type)
 void Interface::loadProp(Props const &  prop)
 {   Texture * texture=getTexture(prop.getType());
 
-   
     Sprite prop_(*texture);
     Vecteur taille(12.0/texture->getSize().x,12.0/texture->getSize().y);
+    
+    switch(prop.getType())
+    {   case Tip::turn2:        taille = taille * 2; break;
+        case Tip::turn3:        taille = taille * 3; break;
+        case Tip::turn4:        taille = taille * 4; break;
+        default:                break;
+    }
     prop_.scale(taille.x,taille.y);
     
     prop_.setOrigin(prop_.getLocalBounds().width/2,prop_.getLocalBounds().height/2);
