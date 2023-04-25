@@ -6,6 +6,17 @@
 using namespace std;
 using namespace sf;
 
+Bouton::Bouton(string txt, Font font, int char_size, int y, int width, int height){
+    rectangle.setFillColor(Color::Transparent);
+    rectangle.setOutlineThickness(3);
+    rectangle.setOutlineColor(Color::White);
+    rectangle.setSize(Vector2f(width,height));
+    rectangle.setPosition(1920-width/2, y);
+    texte.setFont(font);
+    texte.setCharacterSize(char_size);
+    texte.setString(txt);
+}
+
 int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     //INITIALISATION===============================================================================
