@@ -67,20 +67,25 @@ void Interface::loadProp(Props const &  prop)
 {   Texture * texture=getTexture(prop.getType());
 
     Sprite prop_(*texture);
-    Vecteur taille(13.0/texture->getSize().x,13.0/texture->getSize().y);
-    
+    Vecteur taille(14.0/texture->getSize().x,14.0/texture->getSize().y);
+    Vecteur origin(prop_.getLocalBounds().width/2,prop_.getLocalBounds().height/2);
     switch(prop.getType())
-    {   case Tip::turn2:        taille = taille * 2; break;
-        case Tip::turn3:        taille = taille * 3; break;
-        case Tip::turn4:        taille = taille * 4; break;
+    {   case Tip::turn2:        
+            taille = taille * 2;
+            break;
+        case Tip::turn3:
+            taille = taille * 3; break;
+        case Tip::turn4:
+            taille = taille * 4;
+            break;
         default:                break;
     }
     prop_.scale(taille.x,taille.y);
     
-    prop_.setOrigin(prop_.getLocalBounds().width/2,prop_.getLocalBounds().height/2);
+    prop_.setOrigin(origin.x,origin.y);
     
     Vecteur pos = prop.getPos();
-    prop_.setPosition(pos.x-6.5,pos.y+6.5);
+    prop_.setPosition(pos.x-7,pos.y+7);
     prop_.setRotation(90+prop.getRotation()*180/M_PI);
 
     props.push_back(prop_);

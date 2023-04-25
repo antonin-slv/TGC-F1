@@ -7,10 +7,10 @@ Editeur::Editeur()
 }
 
 void map_pos_to_grid(Vecteur & pos)
-{   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 13;
-    else pos.x = (int)pos.x - (int)pos.x % 13 - 13;
-    if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 13;
-    else pos.y = (int)pos.y - (int)pos.y % 13 -13;
+{   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 7;
+    else pos.x = (int)pos.x - (int)pos.x % 7 - 7;
+    if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 7;
+    else pos.y = (int)pos.y - (int)pos.y % 7 -7;
 }
 
 void Editeur::boucleEditeur(RenderWindow & window)
@@ -61,13 +61,13 @@ bool Editeur::gestionEvent(RenderWindow & window)
         else if (event.type == Event::KeyPressed)
         {   if (event.key.code == Keyboard::Escape) return true;
             if (event.key.code == Keyboard::Z)
-                deplacer_prop(0, -13);
+                deplacer_prop(0, -7);
             else if (event.key.code == Keyboard::S)
-                deplacer_prop(0, 13);
+                deplacer_prop(0, 7);
             if (event.key.code == Keyboard::Q)
-                deplacer_prop(-13, 0);
+                deplacer_prop(-7, 0);
             else if (event.key.code == Keyboard::D)
-                deplacer_prop(13, 0);
+                deplacer_prop(7, 0);
             if (event.key.code == Keyboard::R)
                 rotate_prop();
             
@@ -142,7 +142,7 @@ void Editeur::gestionSouris(RenderWindow const & window)
         if (deplacer_vue) deplacer(-delta.x, -delta.y);
         else if (ajout_prop)
         {   
-            Vecteur true_new_pos(local_mouse_pos.x+13, local_mouse_pos.y);
+            Vecteur true_new_pos(local_mouse_pos.x+14, local_mouse_pos.y);
             map_pos_to_grid(true_new_pos);
             //update de la position du dernier prop ajouté
             tab_props[prop_selectionne].setPos(true_new_pos);
@@ -285,7 +285,7 @@ void Editeur::lier_window(RenderWindow & window)
     interface.drawTerrain(window);
     window.setView(interface.vue);
 
-    RectangleShape rectangle_selectionne(Vector2f(13,13));
+    RectangleShape rectangle_selectionne(Vector2f(14,14));
     rectangle_selectionne.setOutlineColor(Color::Red);
     rectangle_selectionne.setFillColor(Color::Transparent);
     rectangle_selectionne.setOutlineThickness(0.3);
@@ -296,7 +296,7 @@ void Editeur::lier_window(RenderWindow & window)
     rectangle_selectionne.setPosition(pos.x, pos.y);
     window.draw(rectangle_selectionne);//celui de la souris
     rectangle_selectionne.setOutlineColor(Color::Blue);
-    rectangle_selectionne.setOrigin(13,0);
+    rectangle_selectionne.setOrigin(14,0);
     pos=tab_props[prop_selectionne].getPos();
     rectangle_selectionne.setPosition(pos.x,pos.y);
     window.draw(rectangle_selectionne);//celui selectionné
