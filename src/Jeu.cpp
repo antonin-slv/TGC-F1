@@ -51,7 +51,7 @@ void Jeu::update(ActionClavier const & Action)
     {   Props const & prop = terrain.getProp(i);
         switch(prop.getType())
         {   case Tip::checkpoint :
-                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 36) cout<<"checkpoint"<<endl;
+                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < prop.getHitbox().getNorme2()) cout<<"checkpoint"<<endl;
                 break;
             case Tip::finish :
                  if (testColPropVoit(prop, tab_voit[0])) cout<<"finish"<<endl;
