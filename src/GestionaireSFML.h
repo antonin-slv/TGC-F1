@@ -34,7 +34,7 @@ class GestionSFML : public Jeu
 
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
         void afficherJeuSFML(sf::RenderWindow & window);
-        void boucleJeuSFML(sf::RenderWindow & window);
+        void boucleJeuSFML(sf::RenderWindow & window, float & decalage);
 
         bool test_regression();
 

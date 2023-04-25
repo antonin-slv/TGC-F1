@@ -22,30 +22,32 @@ using json = nlohmann::json; // pour le json
 using namespace std;
 
 int main(){
+
+    int volume = 10;
+    float decalage = 0;
+    
     Menu M1;
     GestionSFML G1;
     Editeur E1;
+
     E1.charger("data/circuits/test.json");
     bool quitter = false;
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     while (!quitter){
-        switch (M1.boucleMenu(window)){
+        switch (M1.boucleMenu(window, volume, decalage)){
             case 1:
-                G1.boucleJeuSFML(window);
+                G1.boucleJeuSFML(window, decalage);
                 break;
 
             case 2:
                 E1.boucleEditeur(window);
                 break;
-
+            
             case 3:
                 quitter = true;
                 break;
-
-            case 4:
-                M1.boucleMenu(window);
-
+            
             default:
                 break;
         };

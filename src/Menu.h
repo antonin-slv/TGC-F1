@@ -10,12 +10,7 @@ class Menu{
     private:
         
     public:
-        int boucleMenu(RenderWindow & window);
+        int boucleMenu(RenderWindow & window, int & volume, float & decalage);
 };
-
- /** \brief Si le jeu est en pause ou non \return bool */
-//bool Menu_Pause(void);
- /** \brief Si le jeu est au menu principal ou non \return bool*/
-//bool Menu_Principal(void);
 
 #endif
