@@ -9,9 +9,15 @@ GestionSFML::GestionSFML()
 {   
     ChargerTerrain("data/circuits/test.json");
     interface.loadTerrain(terrain,"data/props/road.png");
-    Voiture Voit_temp;
+    
+    Voiture Voit_temp = Voiture(Moteur(),Roues(),796,0.14,0,0,0,0,0,0,0);
+    Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
+    Voit_temp.setPos(terrain.getLigneArrivee().getPos());
+    cout<<"type :"<<terrain.getLigneArrivee().getType()<<endl;
+    cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");
     ajouterVoiture(Voit_temp);
+    cout<<"création gestionnaire ok"<<endl;
 
     zoom = 1;
     decalage = 0;
@@ -135,10 +141,6 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
 
     interface.drawVoitureHitbox(window,tab_voit[0]);
     interface.drawVoiture(window, tab_voit[0]);
-    
-
-   
- 
 }
 
 void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)

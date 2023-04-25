@@ -85,7 +85,7 @@ void Interface::loadProp(Props const &  prop)
     prop_.setOrigin(origin.x,origin.y);
     
     Vecteur pos = prop.getPos();
-    prop_.setPosition(pos.x-7,pos.y+7);
+    prop_.setPosition(pos.x,pos.y);
     prop_.setRotation(90+prop.getRotation()*180/M_PI);
 
     props.push_back(prop_);
@@ -98,8 +98,10 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     Vecteur pos;
     int i=0;
     for (auto & prop : terrain.getTabProps())
-    {   cout<<"Prop "<<i<<" aff ok"<<endl;
-        loadProp(prop);
+    {   if (prop.getType() != Tip::nondef)
+        {   cout<<"Prop "<<i++<<" aff ok"<<endl;
+            loadProp(prop);
+        }
     }
     cout << "Chargement terrain ok" << endl;
 }
@@ -117,7 +119,7 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
     
     //ajoute une voiture de la classe voiture
-    voiture_=Voiture(Moteur(),Roues(),796,0.14,hitbox.x,hitbox.y,0,0,0,45,0);
+    voiture_.setHitbox(hitbox);
     cout<<"Hitbox : "<<hitbox.x<<" "<<hitbox.y<<endl;
     cout<<"Scale : "<<voiture.getLocalBounds().width<<" "<<voiture.getLocalBounds().height<<endl;
     cout << "Chargement voiture ok" << endl;

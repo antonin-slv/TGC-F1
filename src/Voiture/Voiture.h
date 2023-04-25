@@ -56,6 +56,10 @@ class Voiture {
         void update(float dt=1/60);
 
 
+        void setRotation(float angle_);
+        void setPos(Vecteur pos_);
+        void setHitbox(Vecteur hitbox_);
+
         /** \brief Constructeur par défaut \return Voiture */
         Voiture(); 
         

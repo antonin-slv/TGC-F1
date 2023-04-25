@@ -97,6 +97,7 @@ class Terrain
         
         int nb_props;
         vector<Props> tab_props;
+        Props prop_undef;
 
     public:
         /** \brief Constructeur par défaut \return Terrain */
@@ -128,6 +129,7 @@ class Terrain
 
 
         int getProp(Vecteur const & pos);
+        Props const & getLigneArrivee();
         
         vector<Props> const getTabProps() const;
     

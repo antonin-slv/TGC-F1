@@ -133,7 +133,7 @@ void Editeur::gestionSouris(RenderWindow const & window)
             Tip nouveau_prop = interface.refPropSelected(window);
             if (nouveau_prop != Tip::nondef)
             {   
-                ajouter_prop(nouveau_prop,window.mapPixelToCoords(mouse_position));
+                ajouter_prop(nouveau_prop,window.mapPixelToCoords(mouse_position) + Vector2f(7,7));
 
                 ajout_prop = true;
             }
@@ -142,12 +142,12 @@ void Editeur::gestionSouris(RenderWindow const & window)
         if (deplacer_vue) deplacer(-delta.x, -delta.y);
         else if (ajout_prop)
         {   
-            Vecteur true_new_pos(local_mouse_pos.x+14, local_mouse_pos.y);
+            Vecteur true_new_pos(local_mouse_pos.x+7, local_mouse_pos.y+7);
             map_pos_to_grid(true_new_pos);
             //update de la position du dernier prop ajouté
             tab_props[prop_selectionne].setPos(true_new_pos);
             //update graphique
-            interface.dernierProp().setPosition(true_new_pos.x-6.5, true_new_pos.y+6.5);
+            interface.dernierProp().setPosition(true_new_pos.x, true_new_pos.y);
         }
     }
     else
@@ -197,7 +197,7 @@ bool Editeur::charger(string path)
     if (succes)
     {   interface.clearProps();
         for (int i = 0;i < nb_props; i++)
-        {   tab_props[i].setHitbox(Vecteur(6.5,6.5));
+        {   tab_props[i].setHitbox(Vecteur(7,7));
             interface.loadProp(tab_props[i]);
         }
         prop_selectionne = -1;
@@ -228,7 +228,7 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
 {   
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
-    tab_props[nb_props].setPos(Vecteur(pos.x+20, pos.y-6.5));
+    tab_props[nb_props].setPos(Vecteur(pos.x, pos.y));
     interface.loadProp(tab_props[nb_props]);
     nb_props++;
     prop_selectionne = nb_props-1;
@@ -296,7 +296,7 @@ void Editeur::lier_window(RenderWindow & window)
     rectangle_selectionne.setPosition(pos.x, pos.y);
     window.draw(rectangle_selectionne);//celui de la souris
     rectangle_selectionne.setOutlineColor(Color::Blue);
-    rectangle_selectionne.setOrigin(14,0);
+    rectangle_selectionne.setOrigin(7,7);
     pos=tab_props[prop_selectionne].getPos();
     rectangle_selectionne.setPosition(pos.x,pos.y);
     window.draw(rectangle_selectionne);//celui selectionné

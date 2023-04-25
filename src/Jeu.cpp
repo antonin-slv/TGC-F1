@@ -17,6 +17,7 @@ Jeu::Jeu()
 Jeu::Jeu(string const & nom_fichier)
 {   
     ChargerTerrain(nom_fichier);
+    
     nb_voit = 0;
     frame_time = 0.0167;
 }
