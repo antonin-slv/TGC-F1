@@ -27,9 +27,9 @@ int main(){
     Editeur E1;
     E1.charger("data/circuits/test.json");
     bool quitter = false;
-    // RenderWindow window(VideoMode(1280,720),"Vroum",Style::Fullscreen);
+    RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
+    window.setFramerateLimit(120);
     while (!quitter){
-        RenderWindow window(VideoMode(1280, 720), "Vroum", Style::Fullscreen);
         switch (M1.boucleMenu(window)){
             case 1:
                 G1.boucleJeuSFML(window);

@@ -65,7 +65,9 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
     texte_chrono.setCharacterSize(50);
     texte_chrono.setScale(0.025,0.025);
 
-    while (window.isOpen()){
+    bool quitter = false;
+
+    while (!quitter){
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
         nb_frames++;
@@ -78,10 +80,10 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
 
                 switch (event.key.code){
                     case Keyboard::Escape :
-                        window.close();
+                        quitter = true;
                         break;
                     case Keyboard::A :
-                        window.close();
+                        quitter = true;
                         break;
                     default:
                         break;

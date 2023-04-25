@@ -16,8 +16,8 @@ class Menu{
 };
 
  /** \brief Si le jeu est en pause ou non \return bool */
-bool Menu_Pause(void);
+//bool Menu_Pause(void);
  /** \brief Si le jeu est au menu principal ou non \return bool*/
-bool Menu_Principal(void);
+//bool Menu_Principal(void);
 
 #endif

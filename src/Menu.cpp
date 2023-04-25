@@ -6,23 +6,25 @@ using namespace std;
 
 int Menu::boucleMenu(RenderWindow & window){
 
+    window.setView(window.getDefaultView());
+
     RectangleShape boutonJeu;
     boutonJeu.setFillColor(Color::Transparent);
-    boutonJeu.setOutlineThickness(5);
+    boutonJeu.setOutlineThickness(3);
     boutonJeu.setOutlineColor(Color::White);
     boutonJeu.setSize(Vector2f(300,100));
     boutonJeu.setPosition((1920-boutonJeu.getSize().x)/2, 500);
 
     RectangleShape boutonEditeur;
     boutonEditeur.setFillColor(Color::Transparent);
-    boutonEditeur.setOutlineThickness(5);
+    boutonEditeur.setOutlineThickness(3);
     boutonEditeur.setOutlineColor(Color::White);
     boutonEditeur.setSize(Vector2f(300,100));
     boutonEditeur.setPosition((1920-boutonEditeur.getSize().x)/2, 700);
 
     RectangleShape boutonQuitter;
     boutonQuitter.setFillColor(Color::Transparent);
-    boutonQuitter.setOutlineThickness(5);
+    boutonQuitter.setOutlineThickness(3);
     boutonQuitter.setOutlineColor(Color::White);
     boutonQuitter.setSize(Vector2f(300,100));
     boutonQuitter.setPosition((1920-boutonQuitter.getSize().x)/2, 900);
@@ -89,23 +91,29 @@ int Menu::boucleMenu(RenderWindow & window){
 
         if(boutonJeu.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
             boutonJeu.setOutlineColor(Color::Red);
+            boutonJeu.setFillColor(Color(32,32,32));
         }
         else{
             boutonJeu.setOutlineColor(Color::White);
+            boutonJeu.setFillColor(Color::Transparent);
         }
 
         if(boutonEditeur.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
             boutonEditeur.setOutlineColor(Color::Red);
+            boutonEditeur.setFillColor(Color(32,32,32));
         }
         else{
             boutonEditeur.setOutlineColor(Color::White);
+            boutonEditeur.setFillColor(Color::Transparent);
         }
 
         if(boutonQuitter.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
             boutonQuitter.setOutlineColor(Color::Red);
+            boutonQuitter.setFillColor(Color(32,32,32));
         }
         else{
             boutonQuitter.setOutlineColor(Color::White);
+            boutonQuitter.setFillColor(Color::Transparent);
         }
 
         window.clear();
