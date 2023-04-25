@@ -1,12 +1,17 @@
 #include "Menu.h"
 #include <iostream>
 #include <string>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
 int Menu::boucleMenu(RenderWindow & window){
 
     window.setView(window.getDefaultView());
+    Music music;
+    music.openFromFile("data/sounds/menu.wav");
+    music.setLoop(true);
+    music.play();
 
     RectangleShape boutonJeu;
     boutonJeu.setFillColor(Color::Transparent);
@@ -63,6 +68,18 @@ int Menu::boucleMenu(RenderWindow & window){
     texteQuitter.setCharacterSize(50);
     texteQuitter.setString("Quitter");
     texteQuitter.setPosition((1920-texteQuitter.getGlobalBounds().width)/2,915);
+
+    Text credits;
+    credits.setFont(font);
+    credits.setCharacterSize(25);
+    credits.setString("version alpha");
+    credits.setPosition(5*window.getSize().x/6,window.getSize().y*0.90); 
+
+    Text credits2;
+    credits2.setFont(font);
+    credits2.setCharacterSize(25);
+    credits2.setString("by : Ninotnas & Sipior");
+    credits2.setPosition(5*window.getSize().x/6,window.getSize().y*0.95);
 
     while (window.isOpen()){
         Event event;
@@ -125,8 +142,11 @@ int Menu::boucleMenu(RenderWindow & window){
         window.draw(texteJeu);
         window.draw(texteEditeur);
         window.draw(texteQuitter);
+        window.draw(credits);
+        window.draw(credits2);
         window.display();
     }
+    music.stop();
     return 0;
 }
 
