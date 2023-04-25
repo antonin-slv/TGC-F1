@@ -112,7 +112,7 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
     
     //ajoute une voiture de la classe voiture
-    voiture_=Voiture(Moteur(),Roues(),796,0.14,hitbox.x,hitbox.y,0,0,0,0,0);
+    voiture_=Voiture(Moteur(),Roues(),796,0.14,hitbox.x,hitbox.y,0,0,0,45,0);
     cout<<"Hitbox : "<<hitbox.x<<" "<<hitbox.y<<endl;
     cout<<"Scale : "<<voiture.getLocalBounds().width<<" "<<voiture.getLocalBounds().height<<endl;
     cout << "Chargement voiture ok" << endl;
