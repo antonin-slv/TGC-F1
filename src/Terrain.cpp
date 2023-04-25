@@ -145,3 +145,11 @@ int Terrain::getProp(Vecteur const & pos)
     }
     return -1;
 }
+Props const & Terrain::getLigneArrivee()
+{
+    
+    for (int j=0; j<nb_props; j++)
+    {   if (tab_props[j].getType() == Tip::finish) return tab_props[j];
+    }
+    return prop_undef;
+}

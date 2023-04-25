@@ -214,3 +214,17 @@ void Voiture::on_grass(float dt)
 {
     vitesse /= 1+dt;
 }
+
+void Voiture::setRotation(float angle_)
+{
+    angle = angle_;
+}
+
+void Voiture::setPos(Vecteur pos_)
+{
+    position = pos_;
+}
+void Voiture::setHitbox(Vecteur hitbox_)
+{
+    hitbox = hitbox_;
+}

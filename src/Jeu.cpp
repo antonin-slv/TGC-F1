@@ -17,6 +17,7 @@ Jeu::Jeu()
 Jeu::Jeu(string const & nom_fichier)
 {   
     ChargerTerrain(nom_fichier);
+    
     nb_voit = 0;
     frame_time = 0.0167;
 }
@@ -59,7 +60,7 @@ void Jeu::update(ActionClavier const & Action)
                 if (testColPropVoit(prop, tab_voit[0])) on_grass = true;
                 break;
             default :
-                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 2*prop.getHitbox().getNorme2())
+                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 4*prop.getHitbox().getNorme2())
                 {   on_road = true;}
                 break;
         }  
@@ -67,4 +68,4 @@ void Jeu::update(ActionClavier const & Action)
     if (!on_road||on_grass) tab_voit[0].on_grass(frame_time);
 
     tab_voit[0].update(frame_time);
-}   
+}

@@ -20,7 +20,7 @@ OINTERFACE= obj/GestionaireSFML.o obj/Menu.o obj/Interface.o
 EXECUTABLETXT = bin/VroumTXT
 EXECUTABLESFML = bin/VroumSFML
 
-all: $(EXECUTABLETXT) $(EXECUTABLESFML)
+all: $(EXECUTABLESFML)
 
 SFML : $(EXECUTABLESFML)
 
