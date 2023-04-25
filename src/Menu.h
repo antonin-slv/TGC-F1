@@ -8,9 +8,7 @@ using namespace std;
 
 class Menu{
     private:
-        Interface interface;
-        string chemin;
-
+        
     public:
         int boucleMenu(RenderWindow & window);
 };

@@ -23,8 +23,6 @@ class GestionSFML : public Jeu
         float zoom;
         float decalage;
 
-        Sprite fond;
-        Texture text_fond;
         Interface interface;
         
         

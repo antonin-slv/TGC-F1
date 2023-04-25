@@ -13,10 +13,6 @@ GestionSFML::GestionSFML()
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");
     ajouterVoiture(Voit_temp);
 
-    text_fond.loadFromFile("data/circuits/circuit.png");
-    fond.setTexture(text_fond);
-    fond.setScale(0.15,0.15);
-
     zoom = 1;
     //cout << "Plutôt réaliste (0) ou arcade (5) ? Choissisez au milieu des deux : ";
     //cin >> decalage;
@@ -38,7 +34,7 @@ string affiche_temps(float t){
 
 
 void GestionSFML::boucleJeuSFML(RenderWindow & window)
-{   window.setFramerateLimit(120);
+{
     Clock clock;
     clock.restart();
     
@@ -132,7 +128,6 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window)
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
     window.clear();
-    window.draw(fond);
     interface.drawTerrain(window);
 
     sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
@@ -147,8 +142,6 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
    
  
 }
-
-
 
 void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
 {   if (event.type == Event::KeyPressed){
