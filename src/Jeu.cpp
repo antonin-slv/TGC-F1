@@ -60,7 +60,7 @@ void Jeu::update(ActionClavier const & Action)
                 if (testColPropVoit(prop, tab_voit[0])) on_grass = true;
                 break;
             default :
-                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < 4*prop.getHitbox().getNorme2())
+                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < prop.getHitbox().getNorme2())
                 {   on_road = true;}
                 break;
         }  

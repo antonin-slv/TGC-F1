@@ -196,8 +196,16 @@ bool Editeur::charger(string path)
     //charrge les props
     if (succes)
     {   interface.clearProps();
+        Vecteur hitbox(7,7);
         for (int i = 0;i < nb_props; i++)
-        {   tab_props[i].setHitbox(Vecteur(7,7));
+        {   switch (tab_props[i].getType())
+            {
+                case Tip::turn2:    hitbox = Vecteur(14,14);    break;
+                case Tip::turn3:    hitbox = Vecteur(21,21);    break;
+                case Tip::turn4:    hitbox = Vecteur(28,28);    break;
+                default:            hitbox = Vecteur(7,7);      break;
+            }
+            tab_props[i].setHitbox(hitbox);
             interface.loadProp(tab_props[i]);
         }
         prop_selectionne = -1;
