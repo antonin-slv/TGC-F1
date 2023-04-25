@@ -7,10 +7,10 @@ Editeur::Editeur()
 }
 
 void map_pos_to_grid(Vecteur & pos)
-{   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 12;
-    else pos.x = (int)pos.x - (int)pos.x % 12 - 12;
-    if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 12;
-    else pos.y = (int)pos.y - (int)pos.y % 12 -12;
+{   if (pos.x > 0) pos.x = (int)pos.x - (int)pos.x % 13;
+    else pos.x = (int)pos.x - (int)pos.x % 13 - 13;
+    if (pos.y > 0) pos.y = (int)pos.y - (int)pos.y % 13;
+    else pos.y = (int)pos.y - (int)pos.y % 13 -13;
 }
 
 void Editeur::boucleEditeur(RenderWindow & window)
@@ -61,13 +61,13 @@ bool Editeur::gestionEvent(RenderWindow & window)
         else if (event.type == Event::KeyPressed)
         {   if (event.key.code == Keyboard::Escape) return true;
             if (event.key.code == Keyboard::Z)
-                deplacer_prop(0, -12);
+                deplacer_prop(0, -13);
             else if (event.key.code == Keyboard::S)
-                deplacer_prop(0, 12);
+                deplacer_prop(0, 13);
             if (event.key.code == Keyboard::Q)
-                deplacer_prop(-12, 0);
+                deplacer_prop(-13, 0);
             else if (event.key.code == Keyboard::D)
-                deplacer_prop(12, 0);
+                deplacer_prop(13, 0);
             if (event.key.code == Keyboard::R)
                 rotate_prop();
             
@@ -142,12 +142,12 @@ void Editeur::gestionSouris(RenderWindow const & window)
         if (deplacer_vue) deplacer(-delta.x, -delta.y);
         else if (ajout_prop)
         {   
-            Vecteur true_new_pos(local_mouse_pos.x+12, local_mouse_pos.y);
+            Vecteur true_new_pos(local_mouse_pos.x+13, local_mouse_pos.y);
             map_pos_to_grid(true_new_pos);
             //update de la position du dernier prop ajouté
             tab_props[prop_selectionne].setPos(true_new_pos);
             //update graphique
-            interface.dernierProp().setPosition(true_new_pos.x-6, true_new_pos.y+6);
+            interface.dernierProp().setPosition(true_new_pos.x-6.5, true_new_pos.y+6.5);
         }
     }
     else
@@ -196,7 +196,10 @@ bool Editeur::charger(string path)
     //charrge les props
     if (succes)
     {   interface.clearProps();
-        for (int i = 0;i < nb_props; i++) interface.loadProp(tab_props[i]);
+        for (int i = 0;i < nb_props; i++)
+        {   tab_props[i].setHitbox(Vecteur(6.5,6.5));
+            interface.loadProp(tab_props[i]);
+        }
         prop_selectionne = -1;
     }
     return succes;
@@ -225,7 +228,7 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
 {   
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
-    tab_props[nb_props].setPos(Vecteur(pos.x+20, pos.y-6));
+    tab_props[nb_props].setPos(Vecteur(pos.x+20, pos.y-6.5));
     interface.loadProp(tab_props[nb_props]);
     nb_props++;
     prop_selectionne = nb_props-1;
@@ -282,7 +285,7 @@ void Editeur::lier_window(RenderWindow & window)
     interface.drawTerrain(window);
     window.setView(interface.vue);
 
-    RectangleShape rectangle_selectionne(Vector2f(12,12));
+    RectangleShape rectangle_selectionne(Vector2f(13,13));
     rectangle_selectionne.setOutlineColor(Color::Red);
     rectangle_selectionne.setFillColor(Color::Transparent);
     rectangle_selectionne.setOutlineThickness(0.3);
@@ -293,7 +296,7 @@ void Editeur::lier_window(RenderWindow & window)
     rectangle_selectionne.setPosition(pos.x, pos.y);
     window.draw(rectangle_selectionne);//celui de la souris
     rectangle_selectionne.setOutlineColor(Color::Blue);
-    rectangle_selectionne.setOrigin(12,0);
+    rectangle_selectionne.setOrigin(13,0);
     pos=tab_props[prop_selectionne].getPos();
     rectangle_selectionne.setPosition(pos.x,pos.y);
     window.draw(rectangle_selectionne);//celui selectionné

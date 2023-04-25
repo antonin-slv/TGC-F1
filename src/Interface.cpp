@@ -67,7 +67,7 @@ void Interface::loadProp(Props const &  prop)
 {   Texture * texture=getTexture(prop.getType());
 
     Sprite prop_(*texture);
-    Vecteur taille(12.0/texture->getSize().x,12.0/texture->getSize().y);
+    Vecteur taille(13.0/texture->getSize().x,13.0/texture->getSize().y);
     
     switch(prop.getType())
     {   case Tip::turn2:        taille = taille * 2; break;
@@ -80,7 +80,7 @@ void Interface::loadProp(Props const &  prop)
     prop_.setOrigin(prop_.getLocalBounds().width/2,prop_.getLocalBounds().height/2);
     
     Vecteur pos = prop.getPos();
-    prop_.setPosition(pos.x-6,pos.y+6);
+    prop_.setPosition(pos.x-6.5,pos.y+6.5);
     prop_.setRotation(90+prop.getRotation()*180/M_PI);
 
     props.push_back(prop_);
@@ -140,7 +140,6 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
 void Interface::drawTerrain(RenderWindow & window)
 {  for (long unsigned int i = 0; i < props.size(); i++) window.draw(props[i]);
 }
-
 
 void Interface::loadRefProps()
 {   
