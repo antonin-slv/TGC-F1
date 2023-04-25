@@ -47,6 +47,13 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     boutonQuitter.setSize(Vector2f(400,100));
     boutonQuitter.setPosition((1920-boutonQuitter.getSize().x)/2, 900);
 
+    RectangleShape barreVolume;
+    barreVolume.setFillColor(Color::Transparent);
+    barreVolume.setOutlineThickness(3);
+    barreVolume.setOutlineColor(Color::White);
+    barreVolume.setSize(Vector2f(800,10));
+    barreVolume.setPosition((1920-barreVolume.getSize().x)/2, 600);
+
     RectangleShape boutonRetour;
     boutonRetour.setFillColor(Color::Transparent);
     boutonRetour.setOutlineThickness(3);
@@ -255,6 +262,7 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
             texteDecalage.setPosition((1920-texteDecalage.getGlobalBounds().width)/2,400);
 
             window.draw(texteVolume);
+            window.draw(barreVolume);
             window.draw(texteDecalage);
             window.draw(boutonRetour);
             window.draw(texteRetour);
