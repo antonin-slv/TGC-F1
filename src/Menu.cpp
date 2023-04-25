@@ -9,6 +9,7 @@ using namespace sf;
 int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     //INITIALISATION===============================================================================
+
     window.setView(window.getDefaultView());
 
     bool parametre = false;
@@ -18,6 +19,8 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     music.setVolume(volume);
     music.setLoop(true);
     music.play();
+
+    //RECTANGLEs===================================================================================
 
     RectangleShape boutonJeu;
     boutonJeu.setFillColor(Color::Transparent);
@@ -51,8 +54,41 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     barreVolume.setFillColor(Color::Transparent);
     barreVolume.setOutlineThickness(3);
     barreVolume.setOutlineColor(Color::White);
-    barreVolume.setSize(Vector2f(800,10));
-    barreVolume.setPosition((1920-barreVolume.getSize().x)/2, 600);
+    barreVolume.setSize(Vector2f(600,10));
+    barreVolume.setPosition((1920-barreVolume.getSize().x)/2, 300);
+
+    RectangleShape barreVolume2;
+    barreVolume2.setFillColor(Color::White);
+    barreVolume2.setOutlineThickness(3);
+    barreVolume2.setOutlineColor(Color::White);
+    barreVolume2.setSize(Vector2f(600,10));
+    barreVolume2.setPosition((1920-barreVolume2.getSize().x)/2, 300);
+
+    RectangleShape curseurVolume;
+    curseurVolume.setFillColor(Color::White);
+    curseurVolume.setOutlineThickness(3);
+    curseurVolume.setOutlineColor(Color::White);
+    curseurVolume.setSize(Vector2f(10,30));
+
+    RectangleShape barreDecalage;
+    barreDecalage.setFillColor(Color::Transparent);
+    barreDecalage.setOutlineThickness(3);
+    barreDecalage.setOutlineColor(Color::White);
+    barreDecalage.setSize(Vector2f(600,10));
+    barreDecalage.setPosition((1920-barreDecalage.getSize().x)/2, 500);
+
+    RectangleShape barreDecalage2;
+    barreDecalage2.setFillColor(Color::White);
+    barreDecalage2.setOutlineThickness(3);
+    barreDecalage2.setOutlineColor(Color::White);
+    barreDecalage2.setSize(Vector2f(600,10));
+    barreDecalage2.setPosition((1920-barreDecalage2.getSize().x)/2, 500);
+
+    RectangleShape curseurDecalage;
+    curseurDecalage.setFillColor(Color::White);
+    curseurDecalage.setOutlineThickness(3);
+    curseurDecalage.setOutlineColor(Color::White);
+    curseurDecalage.setSize(Vector2f(10,30));
 
     RectangleShape boutonRetour;
     boutonRetour.setFillColor(Color::Transparent);
@@ -61,7 +97,7 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     boutonRetour.setSize(Vector2f(400,100));
     boutonRetour.setPosition((1920-boutonRetour.getSize().x)/2, 900);
 
-    
+    //TEXTES=======================================================================================
 
     Font font;
     font.loadFromFile("data/fonts/F1.ttf");
@@ -104,17 +140,17 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     texteQuitter.setString("Quitter");
     texteQuitter.setPosition((1920-texteQuitter.getGlobalBounds().width)/2,915);
 
-    Text credits;
-    credits.setFont(font);
-    credits.setCharacterSize(25);
-    credits.setString("version alpha");
-    credits.setPosition(5*window.getSize().x/6,window.getSize().y*0.90); 
+    Text texteCredits;
+    texteCredits.setFont(font);
+    texteCredits.setCharacterSize(25);
+    texteCredits.setString("version alpha");
+    texteCredits.setPosition(5*window.getSize().x/6,window.getSize().y*0.90); 
 
-    Text credits2;
-    credits2.setFont(font);
-    credits2.setCharacterSize(25);
-    credits2.setString("by : Ninotnas & Sipior");
-    credits2.setPosition(5*window.getSize().x/6,window.getSize().y*0.95);
+    Text texteCredits2;
+    texteCredits2.setFont(font);
+    texteCredits2.setCharacterSize(25);
+    texteCredits2.setString("by : Ninotnas & Sipior");
+    texteCredits2.setPosition(5*window.getSize().x/6,window.getSize().y*0.95);
 
     Text texteVolume;
     texteVolume.setFont(font);
@@ -126,7 +162,19 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     texteDecalage.setFont(font);
     texteDecalage.setCharacterSize(50);
     texteDecalage.setString("Decalage : " + to_string(decalage));
-    texteDecalage.setPosition((1920-texteDecalage.getGlobalBounds().width)/2,500);
+    texteDecalage.setPosition((1920-texteDecalage.getGlobalBounds().width)/2,600);
+
+    Text texteConseil;
+    texteConseil.setFont(font);
+    texteConseil.setCharacterSize(25);
+    texteConseil.setString("Pour regler le volume, utilisez les fleches HAUT et BAS");
+    texteConseil.setPosition((1920-texteConseil.getGlobalBounds().width)/2,700);
+
+    Text texteConseil2;
+    texteConseil2.setFont(font);
+    texteConseil2.setCharacterSize(25);
+    texteConseil2.setString("Pour regler le decalage, utilisez les fleches GAUCHE et DROITE");
+    texteConseil2.setPosition((1920-texteConseil2.getGlobalBounds().width)/2,750);
 
     Text texteRetour;
     texteRetour.setFont(font);
@@ -251,19 +299,32 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
             window.draw(texteEditeur);
             window.draw(texteParametre);
             window.draw(texteQuitter);
-            window.draw(credits);
-            window.draw(credits2);
+            window.draw(texteCredits);
+            window.draw(texteCredits2);
         }
         else{
             texteVolume.setString("Volume : " + to_string(volume) + "%");
             texteVolume.setPosition((1920-texteVolume.getGlobalBounds().width)/2,200);
 
+            barreVolume2.setSize(Vector2f(6*volume,10));
+            curseurVolume.setPosition((1320-curseurVolume.getGlobalBounds().width)/2+6*volume,290);
+
             texteDecalage.setString("Decalage : " + to_string(decalage));
             texteDecalage.setPosition((1920-texteDecalage.getGlobalBounds().width)/2,400);
 
+            barreDecalage2.setSize(Vector2f(120*decalage,10));
+            curseurDecalage.setPosition((1320-curseurDecalage.getGlobalBounds().width)/2+120*decalage,490);
+
             window.draw(texteVolume);
             window.draw(barreVolume);
+            window.draw(barreVolume2);
+            window.draw(curseurVolume);
             window.draw(texteDecalage);
+            window.draw(barreDecalage);
+            window.draw(barreDecalage2);
+            window.draw(curseurDecalage);
+            window.draw(texteConseil);
+            window.draw(texteConseil2);
             window.draw(boutonRetour);
             window.draw(texteRetour);
         }
