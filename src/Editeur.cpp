@@ -16,8 +16,7 @@ void map_pos_to_grid(Vecteur & pos)
 void Editeur::boucleEditeur(RenderWindow & window)
 {   
     interface.loadRefProps();
-    cout<<"chargement des textures"<<endl;
-    window.setFramerateLimit(60);
+    cout << "chargement des textures" << endl;
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
     Text text;
