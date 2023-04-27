@@ -8,6 +8,15 @@ using namespace sf;
 
 //DEFINITION DES FONCTIONS=========================================================================
 
+/**
+ * @brief Genere un rectangle au centre de l'ecran pour servir de corps au bouton
+ * 
+ * @param window La fenêtre de jeu
+ * @param rectangle Le rectangle à initialiser
+ * @param y La hauteur sur l'ecran
+ * @param largeur Largeur du bouton
+ * @param hauteur Hauteur du bouton
+ */
 void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     rectangle.setFillColor(Color::Transparent);
     rectangle.setOutlineThickness(3);
@@ -16,16 +25,44 @@ void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, 
     rectangle.setPosition((window.getSize().x-largeur)/2, y);
 }
 
+/**
+ * @brief Genere un rectangle sur la partie gauche de l'ecran pour servir de corps au bouton
+ * 
+ * @param window La fenêtre de jeu
+ * @param rectangle Le rectangle à initialiser
+ * @param y La hauteur sur l'ecran
+ * @param largeur Largeur du bouton
+ * @param hauteur Hauteur du bouton
+ */
 void initBoutonGauche(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     initBoutonCentre(window, rectangle, y, largeur, hauteur);
     rectangle.setPosition((window.getSize().x*2/3-largeur)/2, y);
 }
 
+/**
+ * @brief Genere un rectangle au centre de l'ecran pour servir de curseur
+ * 
+ * @param window La fenêtre de jeu
+ * @param rectangle Le rectangle à initialiser
+ * @param y La hauteur sur l'ecran
+ * @param largeur Largeur du bouton
+ * @param hauteur Hauteur du bouton
+ */
 void initCurseur(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     initBoutonCentre(window, rectangle, y, largeur, hauteur);
     rectangle.setFillColor(Color::White);
 }
 
+/**
+ * @brief Genere un texte au centre de l'ecran à la hauteur y
+ * 
+ * @param window La fenêtre de jeu
+ * @param texte L'objet texte à initialiser
+ * @param font La police à utiliser
+ * @param taille la taille du texte 
+ * @param txt Le texte à écrire
+ * @param y la hauteur sur l'ecran
+ */
 void initTexteCentre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     texte.setFont(font);
     texte.setCharacterSize(taille);
@@ -34,30 +71,81 @@ void initTexteCentre(RenderWindow & window, Text & texte, Font & font, int taill
     texte.setPosition((window.getSize().x-texte.getLocalBounds().width)/2, y+15);
 }
 
+/**
+ * @brief Genere un texte sur la partie gauche de l'ecran à la hauteur y
+ * 
+ * @param window La fenêtre de jeu
+ * @param texte L'objet texte à initialiser
+ * @param font La police à utiliser
+ * @param taille la taille du texte 
+ * @param txt Le texte à écrire
+ * @param y La hauteur sur l'ecran
+ */
 void initTexteGauche(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     initTexteCentre(window, texte, font, taille, txt, y);
     texte.setPosition((window.getSize().x*2/3 - texte.getGlobalBounds().width)/2, y+15);
 }
 
+/**
+ * @brief Genere un titre
+ * 
+ * @param window La fenêtre de jeu
+ * @param texte L'objet texte à initialiser
+ * @param font La police à utiliser
+ * @param taille la taille du texte 
+ * @param txt Le texte à écrire
+ * @param y La hauteur sur l'ecran
+ */
 void initTitre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     initTexteCentre(window, texte, font, taille, txt, y);
     texte.setFillColor(Color::Red);
 }
 
+/**
+ * @brief Retourne si la souris est sur un bouton
+ * 
+ * @param window La fenêtre de jeu
+ * @param texte L'objet texte à initialiser
+ * @param font La police à utiliser
+ * @param taille la taille du texte 
+ * @param txt Le texte à écrire
+ * @param y La hauteur sur l'ecran
+ * @return bool Si la souris est sur le bouton
+ */
 bool estSelectionne(RenderWindow & window, RectangleShape & rectangle){
     return rectangle.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
 }
 
+/**
+ * @brief Colore le bouton selectionne
+ * 
+ * @param window 
+ * @param rectangle 
+ */
 void colorerSelectione(RenderWindow & window, RectangleShape & rectangle){
     rectangle.setFillColor(Color(32,32,32));
     rectangle.setOutlineColor(Color::Red);
 }
 
+/**
+ * @brief Colore le bouton non selectionne
+ * 
+ * @param window 
+ * @param rectangle 
+ */
 void colorerNonSelectione(RenderWindow & window, RectangleShape & rectangle){
     rectangle.setFillColor(Color::Transparent);
     rectangle.setOutlineColor(Color::White);
 }
 
+/**
+ * @brief Affiche le menu
+ * 
+ * @param window La fenêtre de jeu
+ * @param volume Le volume de la musique
+ * @param decalage Le decalage de la caméra
+ * @return int Le choix du joueur
+ */
 int boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     //INITIALISATION===============================================================================
@@ -283,13 +371,19 @@ int boucleMenu(RenderWindow & window, int & volume, float & decalage){
                     }
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Right)){
-                    if(decalage < 5){
+                    if(decalage < 4.5){
                         decalage += 0.5;
+                    }
+                    else{
+                        decalage = 5;
                     }
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Left)){
                     if(decalage > 0){
                         decalage -= 0.5;
+                    }
+                    else{
+                        decalage = 0;
                     }
                 }
             }
