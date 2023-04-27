@@ -6,33 +6,59 @@
 using namespace std;
 using namespace sf;
 
-void initBouton(RectangleShape & rectangle, int y, int largeur, int hauteur){
+//DEFINITION DES FONCTIONS=========================================================================
+
+void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     rectangle.setFillColor(Color::Transparent);
     rectangle.setOutlineThickness(3);
     rectangle.setOutlineColor(Color::White);
     rectangle.setSize(Vector2f(largeur,hauteur));
-    rectangle.setPosition((1920-largeur)/2, y);
+    rectangle.setPosition((window.getSize().x-largeur)/2, y);
 }
 
-void initCurseur(RectangleShape & rectangle, int y, int largeur, int hauteur){
-    initBouton(rectangle, y, largeur, hauteur);
+void initBoutonGauche(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
+    initBoutonCentre(window, rectangle, y, largeur, hauteur);
+    rectangle.setPosition((window.getSize().x*2/3-largeur)/2, y);
+}
+
+void initCurseur(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
+    initBoutonCentre(window, rectangle, y, largeur, hauteur);
     rectangle.setFillColor(Color::White);
 }
 
-void initTexte(Text & texte, Font & font, int taille, string txt, int y){
+void initTexteCentre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     texte.setFont(font);
     texte.setCharacterSize(taille);
     texte.setString(txt);
     texte.setFillColor(Color::White);
-    texte.setPosition((1920-texte.getLocalBounds().width)/2, y+15);
+    texte.setPosition((window.getSize().x-texte.getLocalBounds().width)/2, y+15);
 }
 
-void initTitre(Text & texte, Font & font, int taille, string txt, int y){
-    initTexte(texte, font, taille, txt, y);
+void initTexteGauche(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
+    initTexteCentre(window, texte, font, taille, txt, y);
+    texte.setPosition((window.getSize().x*2/3 - texte.getGlobalBounds().width)/2, y+15);
+}
+
+void initTitre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
+    initTexteCentre(window, texte, font, taille, txt, y);
     texte.setFillColor(Color::Red);
 }
 
-int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
+bool estSelectionne(RenderWindow & window, RectangleShape & rectangle){
+    return rectangle.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
+}
+
+void colorerSelectione(RenderWindow & window, RectangleShape & rectangle){
+    rectangle.setFillColor(Color(32,32,32));
+    rectangle.setOutlineColor(Color::Red);
+}
+
+void colorerNonSelectione(RenderWindow & window, RectangleShape & rectangle){
+    rectangle.setFillColor(Color::Transparent);
+    rectangle.setOutlineColor(Color::White);
+}
+
+int boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     //INITIALISATION===============================================================================
 
@@ -50,37 +76,42 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     //RECTANGLES===================================================================================
 
     RectangleShape boutonJouer;
-    initBouton(boutonJouer, 450, 400, 100);
+    initBoutonCentre(window, boutonJouer, 450, 400, 100);
 
     RectangleShape boutonEditeur;
-    initBouton(boutonEditeur, 600, 400, 100);
+    initBoutonCentre(window, boutonEditeur, 600, 400, 100);
 
     RectangleShape boutonParametre;
-    initBouton(boutonParametre, 750, 400, 100);
+    initBoutonCentre(window, boutonParametre, 750, 400, 100);
 
     RectangleShape boutonQuitter;
-    initBouton(boutonQuitter, 900, 400, 100);
+    initBoutonCentre(window, boutonQuitter, 900, 400, 100);
 
     RectangleShape barreVolume;
-    initBouton(barreVolume, 300, 600, 10);
+    initBoutonCentre(window, barreVolume, 300, 600, 10);
 
     RectangleShape barreVolume2;
-    initCurseur(barreVolume2, 300, 600, 10);
+    initCurseur(window, barreVolume2, 300, 600, 10);
 
     RectangleShape curseurVolume;
-    initCurseur(curseurVolume, 300, 10, 30);
+    initCurseur(window, curseurVolume, 300, 10, 30);
 
     RectangleShape barreDecalage;
-    initBouton(barreDecalage, 500, 600, 10);
+    initBoutonCentre(window, barreDecalage, 500, 600, 10);
 
     RectangleShape barreDecalage2;
-    initCurseur(barreDecalage2, 500, 600, 10);
+    initCurseur(window, barreDecalage2, 500, 600, 10);
 
     RectangleShape curseurDecalage;
-    initCurseur(curseurDecalage, 500, 10, 30);
+    initCurseur(window, curseurDecalage, 500, 10, 30);
 
     RectangleShape boutonRetour;
-    initBouton(boutonRetour, 900, 400, 100);
+    initBoutonCentre(window, boutonRetour, 900, 400, 100);
+
+    vector<RectangleShape> boutonsNiveaux(5);
+    for(int i=0; i<5; i++){
+        initBoutonGauche(window, boutonsNiveaux[i], 150*(i+1), 300, 75);
+    }
 
     //TEXTES=======================================================================================
 
@@ -88,45 +119,50 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
     font.loadFromFile("data/fonts/F1.ttf");
 
     Text texteTitre;
-    initTitre(texteTitre, font, 100, "The Great Competition :", 50);
+    initTitre(window, texteTitre, font, 100, "The Great Competition :", 50);
 
     Text texteSousTitre;
-    initTitre(texteSousTitre, font, 100, "Fast One", 175);
+    initTitre(window, texteSousTitre, font, 100, "Fast One", 175);
 
     Text texteJouer;
-    initTexte(texteJouer, font, 50, "Jouer", 450);
+    initTexteCentre(window, texteJouer, font, 50, "Jouer", 450);
 
     Text texteEditeur;
-    initTexte(texteEditeur, font, 50, "Editeur", 600);
+    initTexteCentre(window, texteEditeur, font, 50, "Editeur", 600);
 
     Text texteParametre;
-    initTexte(texteParametre, font, 50, "Parametres", 750);
+    initTexteCentre(window, texteParametre, font, 50, "Parametres", 750);
 
     Text texteQuitter;
-    initTexte(texteQuitter, font, 50, "Quitter", 900);
+    initTexteCentre(window, texteQuitter, font, 50, "Quitter", 900);
 
     Text texteCredits;
-    initTexte(texteCredits, font, 25, "version alpha", 0);
+    initTexteCentre(window, texteCredits, font, 25, "version alpha", 0);
     texteCredits.setPosition(window.getSize().x*0.84, window.getSize().y*0.9); 
 
     Text texteCredits2;
-    initTexte(texteCredits2, font, 25, "by Ninotnas & Sipior", 0);
+    initTexteCentre(window, texteCredits2, font, 25, "by Ninotnas & Sipior", 0);
     texteCredits2.setPosition(window.getSize().x*0.84, window.getSize().y*0.95);
 
     Text texteVolume;
-    initTexte(texteVolume, font, 50, "Volume : " + to_string(volume), 200);
+    initTexteCentre(window, texteVolume, font, 50, "Volume : " + to_string(volume), 200);
 
     Text texteDecalage;
-    initTexte(texteDecalage, font, 50, "Decalage : " + to_string(decalage), 600);
+    initTexteCentre(window, texteDecalage, font, 50, "Decalage : " + to_string(decalage), 600);
 
     Text texteConseil;
-    initTexte(texteConseil, font, 25, "Pour regler le volume, utilisez les fleches HAUT et BAS", 700);
+    initTexteCentre(window, texteConseil, font, 25, "Pour regler le volume, utilisez les fleches HAUT et BAS", 700);
 
     Text texteConseil2;
-    initTexte(texteConseil2, font, 25, "Pour regler le decalage, utilisez les fleches GAUCHE et DROITE", 750);
+    initTexteCentre(window, texteConseil2, font, 25, "Pour regler le decalage, utilisez les fleches GAUCHE et DROITE", 750);
 
     Text texteRetour;
-    initTexte(texteRetour, font, 50, "Retour", 900);
+    initTexteCentre(window, texteRetour, font, 50, "Retour", 900);
+
+    vector<Text> textesNiveaux(5);
+    for(int i=0; i<5; i++){
+        initTexteGauche(window, textesNiveaux[i], font, 35, "Niveau " + to_string(i+1), (i+1)*150);
+    }
 
 
     //BOUCLE PRINCIPALE============================================================================
@@ -139,57 +175,77 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
             if(!parametre and !choix_niveau){ //Menu principal ======================================================
                 if (event.type == Event::MouseButtonPressed){
                     if (event.mouseButton.button == Mouse::Left){
-                        if (boutonJouer.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)){
+                        if (estSelectionne(window, boutonJouer)){
                             choix_niveau = true;
                         }
-                        if (boutonEditeur.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)){
+                        if (estSelectionne(window, boutonEditeur)){
                             return 2;
                         }
-                        if (boutonParametre.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)){
+                        if (estSelectionne(window, boutonParametre)){
                             parametre = true;
                         }
-                        if (boutonQuitter.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)){
+                        if (estSelectionne(window, boutonQuitter)){
                             return 3;
                         }
                     }
                 }
-                if(boutonJouer.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
-                    boutonJouer.setOutlineColor(Color::Red);
-                    boutonJouer.setFillColor(Color(32,32,32));
+                if(estSelectionne(window, boutonJouer)){
+                    colorerSelectione(window, boutonJouer);
                 }
                 else{
-                    boutonJouer.setOutlineColor(Color::White);
-                    boutonJouer.setFillColor(Color::Transparent);
+                    colorerNonSelectione(window, boutonJouer);
                 }
 
-                if(boutonEditeur.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
-                    boutonEditeur.setOutlineColor(Color::Red);
-                    boutonEditeur.setFillColor(Color(32,32,32));
+                if(estSelectionne(window, boutonEditeur)){
+                    colorerSelectione(window, boutonEditeur);
                 }
                 else{
-                    boutonEditeur.setOutlineColor(Color::White);
-                    boutonEditeur.setFillColor(Color::Transparent);
-                }
-
-                if(boutonParametre.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
-                    boutonParametre.setOutlineColor(Color::Red);
-                    boutonParametre.setFillColor(Color(32,32,32));
-                }
-                else{
-                    boutonParametre.setOutlineColor(Color::White);
-                    boutonParametre.setFillColor(Color::Transparent);
+                    colorerNonSelectione(window, boutonEditeur);
                 }
                 
-                if(boutonQuitter.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
-                    boutonQuitter.setOutlineColor(Color::Red);
-                    boutonQuitter.setFillColor(Color(32,32,32));
+                if(estSelectionne(window, boutonParametre)){
+                    colorerSelectione(window, boutonParametre);
                 }
                 else{
-                    boutonQuitter.setOutlineColor(Color::White);
-                    boutonQuitter.setFillColor(Color::Transparent);
+                    colorerNonSelectione(window, boutonParametre);
+                }
+
+                if(estSelectionne(window, boutonQuitter)){
+                    colorerSelectione(window, boutonQuitter);
+                }
+                else{
+                    colorerNonSelectione(window, boutonQuitter);
                 }
             }
-            else{ //Menu parametre ================================================================
+            if(choix_niveau){
+                if (event.type == Event::MouseButtonPressed){
+                    if (event.mouseButton.button == Mouse::Left){
+                        for(int i=0; i<5; i++){
+                            if (estSelectionne(window, boutonsNiveaux[i])){
+                                return i+4;
+                            }
+                        }
+                        if(estSelectionne(window, boutonRetour)){
+                            choix_niveau = false;
+                        }
+                    }
+                }
+                for(int i=0; i<5; i++){
+                    if(estSelectionne(window, boutonsNiveaux[i])){
+                        colorerSelectione(window, boutonsNiveaux[i]);
+                    }
+                    else{
+                        colorerNonSelectione(window, boutonsNiveaux[i]);
+                    }
+                }
+                if(estSelectionne(window, boutonRetour)){
+                    colorerSelectione(window, boutonRetour);
+                }
+                else{
+                    colorerNonSelectione(window, boutonRetour);
+                }
+            }
+            if(parametre){ //Menu parametre ================================================================
                 if(event.type == Event::KeyPressed){
                     if(event.key.code == Keyboard::Escape){
                         choix_niveau = false;
@@ -198,19 +254,17 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
                 }
                 if (event.type == Event::MouseButtonPressed){
                     if (event.mouseButton.button == Mouse::Left){
-                        if (boutonRetour.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)){
+                        if (estSelectionne(window, boutonRetour)){
                             choix_niveau = false;
                             parametre = false;
                         }
                     }
                 }
-                if(boutonRetour.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y)){
-                    boutonRetour.setOutlineColor(Color::Red);
-                    boutonRetour.setFillColor(Color(32,32,32));
+                if(estSelectionne(window, boutonRetour)){
+                    colorerSelectione(window, boutonRetour);
                 }
                 else{
-                    boutonRetour.setOutlineColor(Color::White);
-                    boutonRetour.setFillColor(Color::Transparent);
+                    colorerNonSelectione(window, boutonRetour);
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Up)){
                     if(volume < 96){
@@ -257,18 +311,22 @@ int Menu::boucleMenu(RenderWindow & window, int & volume, float & decalage){
             window.draw(texteCredits2);
         }
         if(choix_niveau){
+            for(int i = 0; i < 5; i++){
+                window.draw(boutonsNiveaux[i]);
+                window.draw(textesNiveaux[i]);
+            }
             window.draw(boutonRetour);
             window.draw(texteRetour);
         }
         if(parametre){
             texteVolume.setString("Volume : " + to_string(volume) + "%");
-            texteVolume.setPosition((1920-texteVolume.getGlobalBounds().width)/2,200);
+            texteVolume.setPosition((window.getSize().x-texteVolume.getGlobalBounds().width)/2,200);
 
             barreVolume2.setSize(Vector2f(6*volume,10));
             curseurVolume.setPosition((1320-curseurVolume.getGlobalBounds().width)/2+6*volume,290);
 
             texteDecalage.setString("Decalage : " + to_string(decalage));
-            texteDecalage.setPosition((1920-texteDecalage.getGlobalBounds().width)/2,400);
+            texteDecalage.setPosition((window.getSize().x-texteDecalage.getGlobalBounds().width)/2,400);
 
             barreDecalage2.setSize(Vector2f(120*decalage,10));
             curseurDecalage.setPosition((1320-curseurDecalage.getGlobalBounds().width)/2+120*decalage,490);

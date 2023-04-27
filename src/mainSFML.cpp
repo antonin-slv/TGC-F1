@@ -26,7 +26,6 @@ int main(){
     int volume = 5;
     float decalage = 0;
     
-    Menu M1;
     GestionSFML G1;
     Editeur E1;
 
@@ -35,7 +34,7 @@ int main(){
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     while (!quitter){
-        switch (M1.boucleMenu(window, volume, decalage)){
+        switch (boucleMenu(window, volume, decalage)){
             case 1:
                 G1.boucleJeuSFML(window, decalage);
                 break;
