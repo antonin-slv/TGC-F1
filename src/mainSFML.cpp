@@ -47,6 +47,9 @@ int main(){
                 quitter = true;
                 break;
             
+            case 4:
+                G1.boucleJeuSFML(window, decalage);
+            
             default:
                 break;
         };
