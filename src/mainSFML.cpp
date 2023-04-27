@@ -23,7 +23,7 @@ using namespace std;
 
 int main(){
 
-    int volume = 10;
+    int volume = 5;
     float decalage = 0;
     
     Menu M1;
