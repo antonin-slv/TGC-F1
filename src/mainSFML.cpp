@@ -34,26 +34,15 @@ int main(){
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     while (!quitter){
-        switch (boucleMenu(window, volume, decalage)){
-            case 1:
-                G1.boucleJeuSFML(window, decalage);
-                break;
-
-            case 2:
-                E1.boucleEditeur(window, volume);
-                break;
-            
-            case 3:
-                quitter = true;
-                break;
-            
-            case 4:
-                G1.boucleJeuSFML(window, decalage);
-            
-            default:
-                break;
-        };
-        if (quitter){
+        string action = boucleMenu(window, volume, decalage);
+        if (action == "niveau_1"){
+            G1.boucleJeuSFML(window, decalage);
+        }
+        else if (action == "editeur"){
+            E1.boucleEditeur(window, volume);
+        }
+        else if (action == "quitter"){
+            quitter = true;
             window.close();
         }
     }

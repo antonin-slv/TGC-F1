@@ -17,6 +17,6 @@ bool estSelectionne(RenderWindow & window, RectangleShape & rectangle);
 void colorerSelectione(RenderWindow & window, RectangleShape & rectangle);
 void colorerNonSelectione(RenderWindow & window, RectangleShape & rectangle);
 
-int boucleMenu(RenderWindow & window, int & volume, float & decalage);
+string boucleMenu(RenderWindow & window, int & volume, float & decalage);
 
 #endif

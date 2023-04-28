@@ -163,7 +163,7 @@ void colorerNonSelectionne(RectangleShape & rectangle){
  * @param decalage Le decalage de la caméra
  * @return int Le choix du joueur
  */
-int boucleMenu(RenderWindow & window, int & volume, float & decalage){
+string boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     //INITIALISATION===============================================================================
 
@@ -290,13 +290,13 @@ int boucleMenu(RenderWindow & window, int & volume, float & decalage){
                             choix_niveau = true;
                         }
                         if (estSelectionne(window, boutonEditeur)){
-                            return 2;
+                            return "editeur";
                         }
                         if (estSelectionne(window, boutonParametre)){
                             parametre = true;
                         }
                         if (estSelectionne(window, boutonQuitter)){
-                            return 3;
+                            return "quitter";
                         }
                     }
                 }
@@ -333,7 +333,7 @@ int boucleMenu(RenderWindow & window, int & volume, float & decalage){
                     if (event.mouseButton.button == Mouse::Left){
                         for(int i=0; i<5; i++){
                             if (estSelectionne(window, boutonsNiveaux[i])){
-                                return i+4;
+                                return "niveau_"+to_string(i+1);
                             }
                         }
                         if(estSelectionne(window, boutonRetour)){
