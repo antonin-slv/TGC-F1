@@ -29,6 +29,8 @@ int main(){
     GestionSFML G1;
     Editeur E1;
 
+    Clock temps_au_tour;
+
     E1.charger("data/circuits/test.json");
     bool quitter = false;
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
@@ -36,7 +38,7 @@ int main(){
     while (!quitter){
         string action = boucleMenu(window, volume, decalage);
         if (action == "niveau_1"){
-            G1.boucleJeuSFML(window, decalage);
+            G1.boucleJeuSFML(window, temps_au_tour, decalage);
         }
         else if (action == "editeur"){
             E1.boucleEditeur(window, volume);

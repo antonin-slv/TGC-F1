@@ -50,8 +50,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         lier_window(window);
         text.setScale(0.3/(float)zoom,0.3/(float)zoom);
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
-        Text balek;
-        afficherDebug(window, text, balek);
+        afficherDebug(window, text);
         window.draw(text);
 
         window.display();
@@ -248,6 +247,8 @@ void Editeur::sauvegarder(string path, string nom)
     fichier.open("data/liste_niveaux.json");
     json liste_niveaux;
     liste_niveaux[nom] = path;
+    fichier << liste_niveaux.dump(4);
+    fichier.close();
 }
 
 void Editeur::ajouter_prop(Tip t, Vector2f pos)
@@ -310,7 +311,7 @@ void Editeur::lier_window(RenderWindow & window)
     text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
     Text balek;
      window.clear(Color::Black);
-    afficherDebug(window, text,balek);
+    afficherDebug(window, text);
     interface.drawTerrain(window);
     window.setView(interface.vue);
 

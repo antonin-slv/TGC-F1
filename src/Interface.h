@@ -18,7 +18,9 @@ struct Editeur;
 using namespace std;
 using namespace sf;
 
-void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono);
+void afficherDebug(RenderWindow & window, Text & text);
+
+void afficherDebug2(RenderWindow & window, Text & text);
 
 class Interface
 {   private :

@@ -34,12 +34,12 @@ class GestionSFML : public Jeu
 
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
         void afficherJeuSFML(sf::RenderWindow & window);
-        void boucleJeuSFML(sf::RenderWindow & window, float & decalage);
+        void boucleJeuSFML(sf::RenderWindow & window, Clock & temps_au_tour, float decalage);
 
         bool test_regression();
 
 };
 
-void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour);
+void getActionClavier(Event event, ActionClavier & action);
 
 #endif
