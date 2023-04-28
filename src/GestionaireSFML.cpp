@@ -35,7 +35,7 @@ string affiche_temps(float t){
 }
 
 
-void GestionSFML::boucleJeuSFML(RenderWindow & window, float & decalage)
+void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
 {
     Clock clock;
     clock.restart();
@@ -57,11 +57,11 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, float & decalage)
     float temps = 0;
     cout << "debut ok" << endl;
     ActionClavier action;
-    Clock temps_au_tour;
-    Text texte_chrono;
-    texte_chrono.setFont(font);
-    texte_chrono.setCharacterSize(50);
-    texte_chrono.setScale(0.025,0.025);
+
+    Text test;
+    test.setFont(font);
+    test.setCharacterSize(50);
+    test.setScale(0.025,0.025);
 
     bool quitter = false;
 
@@ -87,11 +87,11 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, float & decalage)
                         break;
                 }
             }
-            getActionClavier(event, action, temps_au_tour);            
+            getActionClavier(event, action);            
         }
 
         //fait tout le bouleau d'update du jeu
-        update(action);
+        update(action, temps_au_tour);
 
         //actualise position des voitures du jeu
         Vecteur pos=getVoiture(0).getPos();
@@ -107,17 +107,16 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, float & decalage)
                         "frame time : " + to_string(frame_time) + "\n"
                         "fps : " + to_string(1/frame_time) + "\n");
         
-        texte_chrono.setString(affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
+        test.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()));
         
         // On affiche le jeu
         afficherJeuSFML(window);
         
         View vue(interface.voiture.getPosition(), Vector2f(96.f, 54.f));
         vue.move(cos(getVoiture(0).getAngle()) * getVoiture(0).getVitesse() * decalage/24 ,decalage/24 * sin(getVoiture(0).getAngle())*getVoiture(0).getVitesse());
-        //vue.move(sin(getVoiture(0).getAngle()) * 15,15*cos(getVoiture(0).getAngle()));
-        //vue.setRotation(voiture.getRotation()+180);
         window.setView(vue);
-        afficherDebug(window, text, texte_chrono);
+        afficherDebug(window, text);
+        afficherDebug2(window, test);
         window.display();
     }
     cout << "nb frames : " << nb_frames << endl;
@@ -141,7 +140,7 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
     interface.drawVoiture(window, tab_voit[0]);
 }
 
-void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tour)
+void getActionClavier(Event event, ActionClavier & action)
 {   if (event.type == Event::KeyPressed){
         switch (event.key.code){
             case Keyboard::Z :
@@ -213,10 +212,6 @@ void getActionClavier(Event event, ActionClavier & action, Clock & _temps_au_tou
             
             case Keyboard::Right :
                 action.droite=false;
-                break;
-
-            case Keyboard::R :
-                _temps_au_tour.restart();
                 break;
 
             default:

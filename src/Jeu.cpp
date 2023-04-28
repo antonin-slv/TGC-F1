@@ -3,6 +3,12 @@
 #include "Collision.h"
 #include "Voiture/Physique.h"
 #include "Voiture/Vecteur.h"
+#include "SFML/Graphics.hpp"
+#include "SFML/Window.hpp"
+#include "SFML/System.hpp"
+
+using namespace std;
+using namespace sf;
 
 
 Jeu::Jeu()
@@ -43,7 +49,7 @@ void Jeu::ajouterVoiture(Voiture const & V)
 
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
-void Jeu::update(ActionClavier const & Action)
+void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
 {   Voiture & Voit = tab_voit[0];
     Voit.action=Action;
     bool on_road = false;
@@ -60,6 +66,7 @@ void Jeu::update(ActionClavier const & Action)
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
                     cout<<"fini"<<endl;
+                    temps_au_tour.restart();
                  }
                 break;
             case Tip::grass :

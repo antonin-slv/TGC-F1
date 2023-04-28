@@ -32,14 +32,21 @@ void Interface::clearProps()
 }
 
 
-void afficherDebug(RenderWindow & window, Text & text, Text & texte_chrono)
+void afficherDebug(RenderWindow & window, Text & text)
 {   
     // Dessins
     text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
-    texte_chrono.setPosition(window.mapPixelToCoords(Vector2i(1750, 10)));
     
     window.draw(text);
-    window.draw(texte_chrono);
+
+}
+
+void afficherDebug2(RenderWindow & window, Text & text)
+{   
+    // Dessins
+    text.setPosition(window.mapPixelToCoords(Vector2i(1600, 10)));
+    
+    window.draw(text);
 
 }
 

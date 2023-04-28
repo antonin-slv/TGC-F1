@@ -50,8 +50,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         lier_window(window);
         text.setScale(0.3/(float)zoom,0.3/(float)zoom);
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
-        Text balek;
-        afficherDebug(window, text, balek);
+        afficherDebug(window, text);
         window.draw(text);
 
         window.display();
@@ -96,7 +95,7 @@ bool Editeur::gestionEvent(RenderWindow & window)
                         cout<<"entrer nom du circuit : ";
                         cin>>nom;
                         path += nom + ".json";
-                        sauvegarder(path);
+                        sauvegarder(path, nom);
                     }
                     window.setVisible(true);
                 }
@@ -219,7 +218,7 @@ bool Editeur::charger(string path)
     return succes;
 }   
 
-void Editeur::sauvegarder(string path)
+void Editeur::sauvegarder(string path, string nom)
 {   ofstream fichier;
     fichier.open(path);
     
@@ -244,6 +243,11 @@ void Editeur::sauvegarder(string path)
 
     fichier << j.dump(4);
 
+    fichier.close();
+    fichier.open("data/liste_niveaux.json");
+    json liste_niveaux;
+    liste_niveaux[nom] = path;
+    fichier << liste_niveaux.dump(4);
     fichier.close();
 }
 
@@ -296,7 +300,7 @@ void Editeur::supprimer_prop(int i)
 bool Editeur::test_regression()
 {   charger();
     //Init_props();
-    sauvegarder("data/circuit/test_regression.json");
+    sauvegarder("data/circuit/test_regression.json", "test_regression");
     //TODO
     return true;
 }
@@ -307,7 +311,7 @@ void Editeur::lier_window(RenderWindow & window)
     text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
     Text balek;
      window.clear(Color::Black);
-    afficherDebug(window, text,balek);
+    afficherDebug(window, text);
     interface.drawTerrain(window);
     window.setView(interface.vue);
 

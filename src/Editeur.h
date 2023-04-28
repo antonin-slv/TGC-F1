@@ -51,7 +51,7 @@ class Editeur : public Terrain
         void rotate_prop(float angle=90);
 
         void Init_props();
-        void sauvegarder(string path);
+        void sauvegarder(string path, string nom);
         bool charger(string path = "data/circuits/test1.json");
 
         void Init_ref_props();
