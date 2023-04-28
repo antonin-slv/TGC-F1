@@ -99,6 +99,10 @@ Terrain::~Terrain(){
 
 bool Terrain::chargerJSON(string const & path){
     
+    tab_props.clear();
+    ordre_checkpoint.clear();
+    nb_props=0;
+
     ifstream fichier(path);
     if (!fichier.good())
     {   nb_props = 0;

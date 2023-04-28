@@ -14,12 +14,12 @@ void map_pos_to_grid(Vecteur & pos)
 }
 
 void Editeur::boucleEditeur(RenderWindow & window, int volume)
-{   
+{   /*
     Music music;
     music.openFromFile("data/sounds/editeur.wav");
     music.setVolume(volume*2);
     music.setLoop(true);
-    music.play();
+    music.play();*/
 
     interface.loadRefProps();
     cout << "chargement des textures" << endl;
@@ -56,7 +56,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         window.display();
 
     } while (!quitter);
-    music.stop();
+    //music.stop();
 }
 
 bool Editeur::gestionEvent(RenderWindow & window)
@@ -88,28 +88,93 @@ bool Editeur::gestionEvent(RenderWindow & window)
                     cout<<"Sauvegarder ? (y/n) : ";
                     string nom;
                     cin>>nom;
-                    if (nom == "y" || nom == "Y")
-                    {   
-                        string path = "data/circuits/";
-                        ofstream fichier;
+                    if (nom == "y" || nom == "Y") {
+
                         cout<<"entrer nom du circuit : ";
                         cin>>nom;
-                        path += nom + ".json";
-                        sauvegarder(path, nom);
+                        
+                        //on ouvre le fichier dans lequel on a le tableau des niveaux
+                        ifstream fich_liste;
+                        fich_liste.open("data/liste_niveaux.json");
+                        //on charge la liste des niveaux dans un objet json
+                        json liste_niveaux;
+                        fich_liste >> liste_niveaux;
+                        fich_liste.close();
+
+                        //on vérifie que le nom n'est pas déjà pris, si il l'est, on demande confirmation
+                        bool existe = false;
+                        int rang = 0;
+                        for (auto niveau : liste_niveaux)
+                        {   if (niveau["nom"] == nom)
+                            {   existe = true;
+                                break;
+                            }
+                            rang++;
+                        }
+                        bool abandon = false;
+                        if (existe)
+                        {   cout<<"Ce nom est déjà pris, voulez vous l'écraser ? (y/n) : ";
+                            string reponse;
+                            cin>>reponse;
+                            if (reponse != "y" && reponse != "Y")
+                            {   cout<<"Sauvegarde annulée"<<endl;
+                                abandon = true;
+                            }
+                        }
+
+                        if (!abandon) {
+                            string path = "data/circuits/"+nom+".json";
+                            //on ajoute le nouveau niveau à la liste
+                            if (!existe) liste_niveaux.push_back(json::object());
+                            liste_niveaux[rang]["nom"] = nom;
+                            liste_niveaux[rang]["path"] = path;
+                            
+                            //on ouvre le fichier dans lequel on a le tableau des niveaux
+                            ofstream fichier;
+                            fichier.open("data/liste_niveaux.json");
+
+                            //on sauvegarde la liste des niveaux
+                            fichier << liste_niveaux.dump(4);
+                            fichier.close();
+
+                            //on sauvegarde le niveau
+                            sauvegarder(path);
+                        }
                     }
                     window.setVisible(true);
                 }
                 else if (event.key.code == Keyboard::L)
                 {   window.setVisible(false);
-                    string path;
                     cout<<"Charger un nouveau circuit ? (y/n) : ";
+                    string path;
                     cin>>path;
                     if (path=="y"||path=="Y")
                     {
                         cout<<"Charger citcuit (nom) :";   
+                        ifstream fichier;
+                        fichier.open("data/liste_niveaux.json");
+                        json liste_niveaux;
+                        fichier >> liste_niveaux;
+
+                        for (int i=0; i< (int) liste_niveaux.size(); i++)
+                        {   cout<<i<<" : "<<liste_niveaux[i]["nom"]<<endl;
+                        }
+                        cout<<"entrer le nom du circuit :";
                         cin>>path;
-                        path = "data/circuits/" + path + ".json";
-                        charger(path);
+                        bool existe = false;
+                        int numero=0;
+                        for (int i=0; i< (int)liste_niveaux.size(); i++)
+                        {   if (liste_niveaux[i]["nom"] == path)
+                            {   existe = true;
+                                numero = i;
+                                break;
+                            }
+                        }
+                        if (existe) {
+                            path = liste_niveaux[numero]["path"];
+                            charger(path);
+                        }
+                        else cout<<"circuit inexistant"<<endl;
                     }
                     window.setVisible(true);
                 }
@@ -218,8 +283,9 @@ bool Editeur::charger(string path)
     return succes;
 }   
 
-void Editeur::sauvegarder(string path, string nom)
-{   ofstream fichier;
+void Editeur::sauvegarder(string path)
+{   
+    ofstream fichier;
     fichier.open(path);
     
     json j;
@@ -242,21 +308,6 @@ void Editeur::sauvegarder(string path, string nom)
     }
 
     fichier << j.dump(4);
-
-    fichier.close();
-    ifstream fichier2;
-
-    fichier2.open("data/liste_niveaux.json");
-    //on charge la liste des niveaux
-    json liste_niveaux;
-    fichier2 >> liste_niveaux;
-    fichier2.close();
-
-    //on ajoute la ligne dans la liste des niveaux
-    fichier.open("data/liste_niveaux.json");
-    liste_niveaux[nom] = path;
-    //on sauvegarde la liste des niveaux
-    fichier << liste_niveaux.dump(4);
     fichier.close();
 }
 
@@ -318,7 +369,7 @@ void Editeur::supprimer_prop(int i)
 bool Editeur::test_regression()
 {   charger();
     //Init_props();
-    sauvegarder("data/circuit/test_regression.json", "test_regression");
+    sauvegarder("data/circuit/test_regression.json");
     //TODO
     return true;
 }
@@ -351,4 +402,3 @@ void Editeur::lier_window(RenderWindow & window)
 
     interface.drawRefProps(window);
 }
-

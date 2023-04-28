@@ -171,12 +171,12 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     bool parametre = false;
     bool choix_niveau = false;
-
+/*
     Music music;
     music.openFromFile("data/sounds/menu.wav");
     music.setVolume(volume/2);
     music.setLoop(true);
-    music.play();
+    music.play();*/
 
     //RECTANGLES===================================================================================
 
@@ -470,9 +470,9 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
             window.draw(texteRetour);
         }
         
-        music.setVolume(volume);
+        //music.setVolume(volume);
         window.display();
     }
-    music.stop();
+    //music.stop();
     return 0;
 }

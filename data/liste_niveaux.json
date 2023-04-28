@@ -1,4 +1,10 @@
-{
-    "test": "data/circuits/test.json",
-    "testjson2": "data/circuits/testjson2.json"
-}
+[
+    {
+        "nom": "test",
+        "path": "data/circuits/test.json"
+    },
+    {
+        "nom": "testjson2",
+        "path": "data/circuits/testjson2.json"
+    }
+]
