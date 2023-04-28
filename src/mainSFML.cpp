@@ -23,7 +23,7 @@ using namespace std;
 
 int main(){
 
-    int volume = 50;
+    int volume = 5;
     float decalage = 0;
     
     GestionSFML G1;
