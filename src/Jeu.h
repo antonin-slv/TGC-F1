@@ -26,6 +26,8 @@ class Jeu
         vector<Voiture> tab_voit;
         float frame_time;
         int nb_voit;
+        unsigned int nb_tour;
+        int num_checkpoint=-1;
 
     public:
          /** \brief Constructeur par défaut \return Jeu */
@@ -56,6 +58,10 @@ class Jeu
          /** \brief Met à jour le jeu \param action actions du joueur \return void */
         
         void update(ActionClavier const & action);
+
+        int getNbTours() const { return (int)nb_tour; }
+
+        
 };
 
 

@@ -58,6 +58,7 @@ void Jeu::update(ActionClavier const & Action)
             case Tip::finish :
                  if ((Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1)&&testColPropVoit(prop, Voit))
                  {  Voit.passer_checkpoint(true);
+                    nb_tour++;
                     cout<<"fini"<<endl;
                  }
                 break;
@@ -71,14 +72,14 @@ void Jeu::update(ActionClavier const & Action)
         }  
     }
     //gestion des checkpoints
-    for (int i=0; i< terrain.getOrdreCheckpoint().size(); i++)
-    {   if (Voit.getCheckpoint() == i-1)
-        {   if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[i]), Voit))
-            {   Voit.passer_checkpoint();
-                cout<<"checkpoint "<<i<<endl;
-            }
-        }
+    num_checkpoint = Voit.getCheckpoint();
+    if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[i]), Voit)) {
+        Voit.passer_checkpoint();
+        num_checkpoint = Voit.getCheckpoint();
+        cout<<"checkpoint "<<i<<endl;
     }
+
+    //si la voiture n'est pas sur la route/a une roue sur l'herbe, on la ralenti
     if (!on_road||on_grass) Voit.on_grass(frame_time);
 
     Voit.update(frame_time);
