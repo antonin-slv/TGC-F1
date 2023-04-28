@@ -55,14 +55,15 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
     bool on_road = false;
     bool on_grass = false;
     //gestion des collisions avec les props
-
+    bool arrivee = (Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1);
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
+        
         switch(prop.getType())
         {   case Tip::checkpoint :
                 break;
             case Tip::finish :
-                 if ((Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1)&&testColPropVoit(prop, Voit))
+                 if (arrivee && testColPropVoit(prop, Voit))
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
                     cout<<"fini"<<endl;
@@ -79,11 +80,13 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
         }  
     }
     //gestion des checkpoints
-    num_checkpoint = Voit.getCheckpoint();
-    if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[num_checkpoint+1]), Voit)) {
-        Voit.passer_checkpoint();
+    if (!arrivee) {
         num_checkpoint = Voit.getCheckpoint();
-        cout<<"checkpoint "<<num_checkpoint<<endl;
+        if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[num_checkpoint]), Voit)) {
+            Voit.passer_checkpoint();
+            num_checkpoint = Voit.getCheckpoint();
+            cout<<"checkpoint "<<num_checkpoint<<endl;
+        }
     }
 
     //si la voiture n'est pas sur la route/a une roue sur l'herbe, on la ralenti

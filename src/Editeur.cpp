@@ -201,7 +201,7 @@ bool Editeur::charger(string path)
     //charrge les props
     if (succes)
     {   interface.clearProps();
-        Vecteur hitbox(7,7);
+        Vecteur hitbox;
         for (int i = 0;i < nb_props; i++)
         {   switch (tab_props[i].getType())
             {
@@ -256,6 +256,15 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
     tab_props[nb_props].setPos(Vecteur(pos.x, pos.y));
+    Vecteur hitbox;
+    switch (tab_props[nb_props].getType())
+    {
+        case Tip::turn2:    hitbox = Vecteur(14,14);    break;
+        case Tip::turn3:    hitbox = Vecteur(21,21);    break;
+        case Tip::turn4:    hitbox = Vecteur(28,28);    break;
+        default:            hitbox = Vecteur(7,7);      break;
+    }
+    tab_props[nb_props].setHitbox(hitbox);
 
     interface.loadProp(tab_props[nb_props]);
     nb_props++;
