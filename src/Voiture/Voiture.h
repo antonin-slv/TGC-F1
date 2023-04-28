@@ -39,6 +39,8 @@ class Voiture {
         float vitesse;
         float angle;
         
+        int numero_checkpoint=-1;
+
         float poids, coef_aero;
 
         /** \brief Actualise l'accélération de la voiture \param dt Delta temps \param theta Angle de la voiture */
@@ -135,6 +137,8 @@ class Voiture {
 
         void on_grass(float dt=1/60);
 
+        void passer_checkpoint(bool arrivée=false);
+        int getCheckpoint() const;//numéro du dernier checkpoint passé (-1 si aucun/le dernier)
 };
 
 #endif

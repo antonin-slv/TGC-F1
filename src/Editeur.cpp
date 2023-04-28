@@ -252,10 +252,12 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
     tab_props[nb_props].setPos(Vecteur(pos.x, pos.y));
-    if (t == Tip::checkpoint) tab_checkpoints.push_back(&tab_props[nb_props]);
+
     interface.loadProp(tab_props[nb_props]);
     nb_props++;
     prop_selectionne = nb_props-1;
+    
+    if (t == Tip::checkpoint) ordre_checkpoint.push_back(prop_selectionne);
 }
 
 void Editeur::select_prop(bool plus_recent)
