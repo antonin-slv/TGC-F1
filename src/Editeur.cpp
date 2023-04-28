@@ -96,7 +96,7 @@ bool Editeur::gestionEvent(RenderWindow & window)
                         cout<<"entrer nom du circuit : ";
                         cin>>nom;
                         path += nom + ".json";
-                        sauvegarder(path);
+                        sauvegarder(path, nom);
                     }
                     window.setVisible(true);
                 }
@@ -219,7 +219,7 @@ bool Editeur::charger(string path)
     return succes;
 }   
 
-void Editeur::sauvegarder(string path)
+void Editeur::sauvegarder(string path, string nom)
 {   ofstream fichier;
     fichier.open(path);
     
@@ -245,6 +245,9 @@ void Editeur::sauvegarder(string path)
     fichier << j.dump(4);
 
     fichier.close();
+    fichier.open("data/liste_niveaux.json");
+    json liste_niveaux;
+    liste_niveaux[nom] = path;
 }
 
 void Editeur::ajouter_prop(Tip t, Vector2f pos)
@@ -296,7 +299,7 @@ void Editeur::supprimer_prop(int i)
 bool Editeur::test_regression()
 {   charger();
     //Init_props();
-    sauvegarder("data/circuit/test_regression.json");
+    sauvegarder("data/circuit/test_regression.json", "test_regression");
     //TODO
     return true;
 }
