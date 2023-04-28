@@ -80,10 +80,10 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
     }
     //gestion des checkpoints
     num_checkpoint = Voit.getCheckpoint();
-    if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[i]), Voit)) {
+    if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[num_checkpoint+1]), Voit)) {
         Voit.passer_checkpoint();
         num_checkpoint = Voit.getCheckpoint();
-        cout<<"checkpoint "<<i<<endl;
+        cout<<"checkpoint "<<num_checkpoint<<endl;
     }
 
     //si la voiture n'est pas sur la route/a une roue sur l'herbe, on la ralenti
