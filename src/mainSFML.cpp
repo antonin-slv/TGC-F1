@@ -23,7 +23,7 @@ using namespace std;
 
 int main(){
 
-    int volume = 5;
+    int volume = 50;
     float decalage = 0;
     
     GestionSFML G1;
@@ -40,7 +40,7 @@ int main(){
                 break;
 
             case 2:
-                E1.boucleEditeur(window);
+                E1.boucleEditeur(window, volume);
                 break;
             
             case 3:

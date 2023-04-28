@@ -13,8 +13,14 @@ void map_pos_to_grid(Vecteur & pos)
     else pos.y = (int)pos.y - (int)pos.y % 7 -7;
 }
 
-void Editeur::boucleEditeur(RenderWindow & window)
+void Editeur::boucleEditeur(RenderWindow & window, int volume)
 {   
+    Music music;
+    music.openFromFile("data/sounds/editeur.wav");
+    music.setVolume(volume*2);
+    music.setLoop(true);
+    music.play();
+
     interface.loadRefProps();
     cout << "chargement des textures" << endl;
     Font font;
@@ -51,6 +57,7 @@ void Editeur::boucleEditeur(RenderWindow & window)
         window.display();
 
     } while (!quitter);
+    music.stop();
 }
 
 bool Editeur::gestionEvent(RenderWindow & window)
