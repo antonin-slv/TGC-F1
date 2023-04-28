@@ -40,7 +40,7 @@ class Editeur : public Terrain
         void zoom_(float z);
         void deplacer(float dx=0, float dy=0);
 
-        void boucleEditeur(RenderWindow & window);
+        void boucleEditeur(RenderWindow & window, int volume);
         
 
 

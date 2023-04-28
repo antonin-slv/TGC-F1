@@ -174,7 +174,7 @@ int boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     Music music;
     music.openFromFile("data/sounds/menu.wav");
-    music.setVolume(volume);
+    music.setVolume(volume/2);
     music.setLoop(true);
     music.play();
 
