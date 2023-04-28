@@ -96,7 +96,8 @@ class Terrain
         int longueur;//en m
         
         int nb_props;
-        vector<Props> tab_props;
+        vector<Props> tab_props;//tableaux de props
+        vector<Props*> tab_checkpoints;//pointeurs vers les props checkpoint, dans 'ordre de passage'
         Props prop_undef;
 
     public:

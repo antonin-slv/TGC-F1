@@ -92,8 +92,9 @@ int Terrain::getLargeur() const { return largeur; }
 int Terrain::getLongueur() const { return longueur; }
 int Terrain::getNbProps() const { return nb_props; }
 
-Terrain::~Terrain()
-{  tab_props.clear();
+Terrain::~Terrain(){
+    tab_checkpoints.clear();
+    tab_props.clear();
 }
 
 bool Terrain::chargerJSON(string const & path){
@@ -114,8 +115,17 @@ bool Terrain::chargerJSON(string const & path){
     Props temp;
     for (int i=0; i<nb_props; i++)
     {  
-        if (temp.chargerJSON(tab["Props"][i])) tab_props.push_back(temp);
-        else j++;
+        if (temp.chargerJSON(tab["Props"][i])) {
+            tab_props.push_back(temp);
+        } else j++;
+    }
+
+    //parcour le tableau d'ordre des checkpoints du Json(l'élément 1 => le ième prop est un le 'it[i]' ème checkpoint 
+    //et ajoute les pointeurs vers les props correspondants dans le tableau de pointeurs vers les checkpoints
+    if (tab["ordre_checkpoints"].size() != 0){
+        for (auto it = tab["ordre_checkpoints"].begin(); it != tab["ordre_checkpoints"].end(); it++)
+        {       tab_checkpoints.push_back(&tab_props[*it]);
+        }
     }
 
     nb_props-=j;
