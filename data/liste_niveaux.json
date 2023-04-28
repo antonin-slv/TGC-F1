@@ -1,3 +1,4 @@
 {
+    "test": "data/circuits/test.json",
     "testjson2": "data/circuits/testjson2.json"
 }

@@ -244,9 +244,18 @@ void Editeur::sauvegarder(string path, string nom)
     fichier << j.dump(4);
 
     fichier.close();
-    fichier.open("data/liste_niveaux.json");
+    ifstream fichier2;
+
+    fichier2.open("data/liste_niveaux.json");
+    //on charge la liste des niveaux
     json liste_niveaux;
+    fichier2 >> liste_niveaux;
+    fichier2.close();
+
+    //on ajoute la ligne dans la liste des niveaux
+    fichier.open("data/liste_niveaux.json");
     liste_niveaux[nom] = path;
+    //on sauvegarde la liste des niveaux
     fichier << liste_niveaux.dump(4);
     fichier.close();
 }
