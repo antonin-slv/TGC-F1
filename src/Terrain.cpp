@@ -93,7 +93,7 @@ int Terrain::getLongueur() const { return longueur; }
 int Terrain::getNbProps() const { return nb_props; }
 
 Terrain::~Terrain(){
-    tab_checkpoints.clear();
+
     tab_props.clear();
 }
 
@@ -122,11 +122,11 @@ bool Terrain::chargerJSON(string const & path){
 
     //parcour le tableau d'ordre des checkpoints du Json(l'élément 1 => le ième prop est un le 'it[i]' ème checkpoint 
     //et ajoute les pointeurs vers les props correspondants dans le tableau de pointeurs vers les checkpoints
-    if (tab["ordre_checkpoints"].size() != 0){
-        for (auto it = tab["ordre_checkpoints"].begin(); it != tab["ordre_checkpoints"].end(); it++)
-        {       tab_checkpoints.push_back(&tab_props[*it]);
-        }
+ 
+    for (auto it = tab["ordre_checkpoints"].begin(); it != tab["ordre_checkpoints"].end(); it++)
+    {       ordre_checkpoint.push_back(*it);
     }
+    
 
     nb_props-=j;
     if (j> 0)cout<<j<<" props corrompus"<<endl;
@@ -162,4 +162,9 @@ Props const & Terrain::getLigneArrivee()
     {   if (tab_props[j].getType() == Tip::finish) return tab_props[j];
     }
     return prop_undef;
+}
+
+vector <int> const & Terrain::getOrdreCheckpoint() const
+{
+    return ordre_checkpoint;
 }

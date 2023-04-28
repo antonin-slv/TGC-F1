@@ -44,28 +44,42 @@ void Jeu::ajouterVoiture(Voiture const & V)
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 void Jeu::update(ActionClavier const & Action)
-{   tab_voit[0].action=Action;
+{   Voiture & Voit = tab_voit[0];
+    Voit.action=Action;
     bool on_road = false;
     bool on_grass = false;
+    //gestion des collisions avec les props
+
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
         switch(prop.getType())
         {   case Tip::checkpoint :
-                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < prop.getHitbox().getNorme2()) cout<<"checkpoint"<<endl;
                 break;
             case Tip::finish :
-                 if (testColPropVoit(prop, tab_voit[0])) cout<<"finish"<<endl;
+                 if ((Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1)&&testColPropVoit(prop, Voit))
+                 {  Voit.passer_checkpoint(true);
+                    cout<<"fini"<<endl;
+                 }
                 break;
             case Tip::grass :
-                if (testColPropVoit(prop, tab_voit[0])) on_grass = true;
+                if (testColPropVoit(prop, Voit)) on_grass = true;
                 break;
             default :
-                if ((prop.getPos() - tab_voit[0].getPos()).getNorme2() < prop.getHitbox().getNorme2())
+                if ((prop.getPos() - Voit.getPos()).getNorme2() < prop.getHitbox().getNorme2())
                 {   on_road = true;}
                 break;
         }  
     }
-    if (!on_road||on_grass) tab_voit[0].on_grass(frame_time);
+    //gestion des checkpoints
+    for (int i=0; i< terrain.getOrdreCheckpoint().size(); i++)
+    {   if (Voit.getCheckpoint() == i-1)
+        {   if (testColPropVoit(terrain.getProp(terrain.getOrdreCheckpoint()[i]), Voit))
+            {   Voit.passer_checkpoint();
+                cout<<"checkpoint "<<i<<endl;
+            }
+        }
+    }
+    if (!on_road||on_grass) Voit.on_grass(frame_time);
 
-    tab_voit[0].update(frame_time);
+    Voit.update(frame_time);
 }

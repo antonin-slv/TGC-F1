@@ -97,7 +97,7 @@ class Terrain
         
         int nb_props;
         vector<Props> tab_props;//tableaux de props
-        vector<Props*> tab_checkpoints;//pointeurs vers les props checkpoint, dans 'ordre de passage'
+        vector<int> ordre_checkpoint;//le ième élément est le numéro du props qui est le ième checkpoint
         Props prop_undef;
 
     public:
@@ -133,6 +133,7 @@ class Terrain
         Props const & getLigneArrivee();
         
         vector<Props> const getTabProps() const;
+        vector<int> const &getOrdreCheckpoint() const;
     
 };
 
