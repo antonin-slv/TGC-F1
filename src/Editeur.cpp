@@ -224,13 +224,22 @@ void Editeur::sauvegarder(string path)
     fichier.open(path);
     
     json j;
-    for (int i = 0; i < nb_props; i++)
-    {   j["Props"][i]["x"] = tab_props[i].getX();
-        j["Props"][i]["y"] = tab_props[i].getY();
-        j["Props"][i]["rotation"] = tab_props[i].getRotation();
-        j["Props"][i]["Type"] = tab_props[i].getType();
-        j["Props"][i]["l"] = tab_props[i].getLong();
-        j["Props"][i]["L"] = tab_props[i].getLarg();
+    int i=0;
+    int ordre=0;
+    for (auto prop : tab_props) {
+        
+        j["Props"][i]["x"] = prop.getX();
+        j["Props"][i]["y"] = prop.getY();
+        j["Props"][i]["rotation"] = prop.getRotation();
+        j["Props"][i]["Type"] = prop.getType();
+        j["Props"][i]["l"] = prop.getLong();
+        j["Props"][i]["L"] = prop.getLarg();
+        if (prop.getType() == Tip::checkpoint) {
+            //le ordre ième checkpoint est le i ème prop
+            j["ordre_checkpoints"][ordre] = i;
+            ordre++;
+        }
+        i++;
     }
 
     fichier << j.dump(4);
@@ -243,6 +252,7 @@ void Editeur::ajouter_prop(Tip t, Vector2f pos)
     tab_props.push_back(Props());
     tab_props[nb_props].set_type(t);
     tab_props[nb_props].setPos(Vecteur(pos.x, pos.y));
+    if (t == Tip::checkpoint) tab_checkpoints.push_back(&tab_props[nb_props]);
     interface.loadProp(tab_props[nb_props]);
     nb_props++;
     prop_selectionne = nb_props-1;
