@@ -129,7 +129,7 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, float & decalage)
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window)
 {   
-    window.clear();
+    window.clear(Color(0,200,0));
     interface.drawTerrain(window);
 
     sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
