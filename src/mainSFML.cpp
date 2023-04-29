@@ -38,6 +38,8 @@ int main(){
     while (!quitter){
         string action = boucleMenu(window, volume, decalage);
         if (action == "niveau_1"){
+            G1.restart();
+            temps_au_tour.restart();
             G1.boucleJeuSFML(window, temps_au_tour, decalage);
         }
         else if (action == "editeur"){

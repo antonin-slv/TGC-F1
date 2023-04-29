@@ -239,3 +239,12 @@ int Voiture::getCheckpoint() const
 {
     return numero_checkpoint;
 }
+
+void Voiture::restart(Vecteur pos_, float angle_)
+{
+    position = pos_;
+    angle = angle_;
+    vitesse = 0;
+    acceleration = 0;
+    numero_checkpoint = -1;
+}

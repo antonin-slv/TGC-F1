@@ -43,6 +43,7 @@ class Jeu
          /** \brief Debug pour tenter de charger une voiture (non fait) \return Voiture */
         Voiture & getVoiture(int i=0);
         
+        void restart();
 
          /** \brief Définit le temps d'une frame \param tps Temps d'une frame */
         void setframe_time(float const & tps);

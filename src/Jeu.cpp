@@ -43,6 +43,15 @@ void Jeu::ajouterVoiture(Voiture const & V)
     nb_voit++;
 }
 
+void Jeu::restart()
+{   Voiture & voit = tab_voit[0];
+    Props const & Ligne = terrain.getLigneArrivee();
+
+    voit.restart(Ligne.getPos(), Ligne.getRotation()+M_PI/2);
+    nb_tour = 0;
+    num_checkpoint = -1;
+}
+
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
 int Jeu::update(ActionClavier const & Action)
@@ -53,7 +62,7 @@ int Jeu::update(ActionClavier const & Action)
     //gestion des collisions avec les props
     bool arrivee = (Voit.getCheckpoint()==(int)terrain.getOrdreCheckpoint().size() -1);
 
-    int code_sortit = 0;
+    int code_sortie = 0;
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
         
@@ -65,7 +74,7 @@ int Jeu::update(ActionClavier const & Action)
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
                     cout<<"fini"<<endl;
-                    code_sortit = -1;
+                    code_sortie = -1;
                  }
                 break;
             case Tip::grass :
@@ -91,5 +100,5 @@ int Jeu::update(ActionClavier const & Action)
     if (!on_road||on_grass) Voit.on_grass(frame_time);
 
     Voit.update(frame_time);
-    return code_sortit;
+    return code_sortie;
 }
