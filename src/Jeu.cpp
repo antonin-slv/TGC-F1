@@ -14,28 +14,32 @@ Jeu::Jeu()
     frame_time = 0.0167;
 }
 
-
-//ajouter dans le stockage un paramétrage de la voiture
-Jeu::Jeu(string const & nom_fichier)
-{   
-    ChargerTerrain(nom_fichier);
-    
-    nb_voit = 0;
-    frame_time = 0.0167;
+Jeu::Jeu(string path) {
+    ChargerTerrain(path);
 }
 
 void Jeu::setframe_time(float const & tps) { frame_time = tps; }
 
 
-void Jeu::ChargerTerrain(string const & nom_fichier) { terrain.chargerJSON(nom_fichier); }
+void Jeu::ChargerTerrain(string path, int nb_tours) {
+    terrain.chargerJSON(path);
+    nb_tour = 0;
+    num_checkpoint = -1;
+    nb_tour_max = nb_tours;
+    Props const & Ligne = terrain.getLigneArrivee();
+    for (auto & V : tab_voit) {
+        V.restart(Ligne.getPos(),Ligne.getRotation()+M_PI/2);
+    }
+}
 
 Jeu::~Jeu() { 
     cout<<"debut destruction jeu"<<endl;
-    //tab_voit.clear();
+    tab_voit.clear();
     cout<<"fin destruction jeu"<<endl;
 }
 
 Terrain & Jeu::getTerrain() { return terrain; }
+
 
 void Jeu::ajouterVoiture(Voiture const & V)
 {   //on créé une voiture identique à V et on l'ajoute au tableau
@@ -73,8 +77,14 @@ int Jeu::update(ActionClavier const & Action)
                  if (arrivee && testColPropVoit(prop, Voit))
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
-                    cout<<"fini"<<endl;
-                    code_sortie = -1;
+                    if (nb_tour == nb_tour_max)
+                    {   cout<<"GAGNE"<<endl;
+                        code_sortie = 1;
+                    }
+                    else {
+                        cout<<"nouveau tour"<<endl;
+                        code_sortie = -1;
+                    }
                  }
                 break;
             case Tip::grass :

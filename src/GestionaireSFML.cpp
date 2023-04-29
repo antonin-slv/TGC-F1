@@ -5,25 +5,33 @@
 using namespace std;
 using namespace sf;
 
-GestionSFML::GestionSFML()
-{   
-    ChargerTerrain("data/circuits/testjson2.json");
-    interface.loadTerrain(terrain,"data/props/road.png");
-    
-    Voiture Voit_temp = Voiture(Moteur(),Roues(),796,0.14,0,0,0,0,0,0,0);
-    Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
-    Voit_temp.setPos(terrain.getLigneArrivee().getPos());
-    cout<<"type :"<<terrain.getLigneArrivee().getType()<<endl;
-    cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
-    interface.loadVoiture(Voit_temp,"data/cars/F1.png");
-    ajouterVoiture(Voit_temp);
-    cout<<"création gestionnaire ok"<<endl;
-
+GestionSFML::GestionSFML() {       
     zoom = 1;
 }
 
+void GestionSFML::chargerNiveau(string path, int nb_tours) {
+    
+    ChargerTerrain(path);//réinitialise le jeu en Entier, et charge le terrain    
+    interface.clearProps();//les props de l'interface, mais garde ses textures
+    zoom = 1;
+
+    interface.loadTerrain(terrain,"data/props/road.png");//charge le terrain dans l'interface (2e argument : inutlie pour le moment)
+
+
+    tab_voit.clear();//on supprime les voitures du jeu
+    //on crée une voiture temporaire pour l'interface et on la charge dans l'interface et le jeu
+    Voiture Voit_temp = Voiture(Moteur(),Roues(),796,0.14,0,0,0,0,0,0,0);
+    Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
+    Voit_temp.setPos(terrain.getLigneArrivee().getPos());
+    cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
+    interface.loadVoiture(Voit_temp,"data/cars/F1.png");//attribue une hitbox à la voiture et la charge dans l'interface
+    ajouterVoiture(Voit_temp);
+}
+
+
 GestionSFML::~GestionSFML()
-{   
+{   tab_voit.clear();
+    cout<<"fin destruction gestionnaire"<<endl;
 }
 
 string affiche_temps(float t){
@@ -55,6 +63,8 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     
     long int nb_frames = 0;
     float temps = 0;
+
+    float temps_circuit = 0;
     cout << "debut ok" << endl;
     ActionClavier action;
 
@@ -64,16 +74,15 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     test.setScale(0.025,0.025);
 
     bool quitter = false;
-
-    while (!quitter){
+    bool gagne = false;
+    do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
         nb_frames++;
         temps+=frame_time;
         frame_time=frames.restart().asSeconds();
         while (window.pollEvent(event)){
-            // Partie physique
-            //1-> on fait tout accélérer/tourner.
+            //actions hors jeu ("globales"")
             if (event.type == Event::KeyPressed){
 
                 switch (event.key.code){
@@ -87,12 +96,24 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
                         break;
                 }
             }
+            //actions dans le jeu
             getActionClavier(event, action);            
         }
 
         //fait tout le bouleau d'update du jeu
-        if (update(action) == -1) temps_au_tour.restart();
-
+        int rslt = update(action);
+        if (!gagne)
+        {
+                if (rslt == -1)
+            {   temps_circuit += temps_au_tour.getElapsedTime().asSeconds();
+                temps_au_tour.restart();
+            }
+            else if (rslt == 1)
+            {   temps_circuit += temps_au_tour.getElapsedTime().asSeconds();
+                gagne = true;
+            }
+        }
+        
         //actualise position des voitures du jeu
         Vecteur pos=getVoiture(0).getPos();
         
@@ -100,12 +121,21 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         if (event.type == Event::Closed){
             window.close();
         }
-        text.setString("Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
+        string affichage;
+        
+        if (!gagne){
+            affichage=  "Tour : " + to_string(nb_tour) + " / " +to_string(nb_tour_max) + "\n" +
+                        "Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
                         "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +
-                        "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n" +
-                        "temps in game :" + to_string(temps) + "\n s contre : " + to_string(clock.getElapsedTime().asSeconds()) + "s IRL\n"
-                        "frame time : " + to_string(frame_time) + "\n"
-                        "fps : " + to_string(1/frame_time) + "\n");
+                        "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n";
+        }
+        else affichage=  "Victoire ! \nTemps : " + to_string(temps_circuit) + "\n";
+        
+        affichage+= "temps in game :" + to_string(temps) + " s\ncontre : " + to_string(clock.getElapsedTime().asSeconds()) + " s IRL\n";
+        affichage+= "frame time : " + to_string(frame_time) + "\n"
+                    "fps : " + to_string(1/frame_time) + "\n";
+        
+        text.setString(affichage);
         
         test.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()));
         
@@ -117,11 +147,12 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         window.setView(vue);
         afficherDebug(window, text);
         afficherDebug2(window, test);
+
         window.display();
-    }
+    } while (!quitter);
     cout << "nb frames : " << nb_frames << endl;
     cout << "temps : " << temps << endl;
-    cout << "fps_moy : " << nb_frames/temps << endl;
+    cout << "fps_moy : " << nb_frames/temps << endl<<endl;
 }
 
 
