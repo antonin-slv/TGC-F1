@@ -41,7 +41,7 @@ int main(){
     while (!quitter){
         boucleMenu(window, action);
         if (action.choix == "niveau_1"){
-            G1.chargerNiveau("data/circuits/barhain.json",2);
+            G1.chargerNiveau("data/circuits/monza.json",2);
             temps_au_tour.restart();
             temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }

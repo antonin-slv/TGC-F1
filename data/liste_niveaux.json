@@ -38,5 +38,10 @@
         "nom": "barhain",
         "nombreTour": 2,
         "path": "data/circuits/barhain.json"
+    },
+    {
+        "nom": "monza",
+        "nombreTour": 2,
+        "path": "data/circuits/monza.json"
     }
 ]
