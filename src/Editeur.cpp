@@ -59,6 +59,112 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
     music.stop();
 }
 
+bool Sauvegarder_Niveau_txtGlobal(string & path) {
+    //on valide la demande
+    cout<<"Sauvegarder ? (y/n) : ";
+    string nom;
+    cin>>nom;
+    if (nom != "y" && nom != "Y") return false;
+
+    //on demande le nom que l'on veut donner au circuit
+    cout<<"entrer nom du circuit : ";
+    cin>>nom;   
+    //on ouvre le fichier dans lequel on a le tableau des niveaux
+    ifstream fich_liste;
+    fich_liste.open("data/liste_niveaux.json");
+    //on charge la liste des niveaux dans un objet json
+    json liste_niveaux;
+    fich_liste >> liste_niveaux;
+    fich_liste.close();//le fichier, ouvert en lecture, n'est plus utile
+
+    //on vérifie que le nom n'est pas déjà pris
+    bool existe = false;
+    int rang = 0;
+    for (auto niveau : liste_niveaux)
+    {   if (niveau["nom"] == nom)
+        {   existe = true;//si il l'est, existe passe à true
+            break;
+        }
+        rang++;//on incrémente le rang pour savoir à quel endroit on doit ajouter le nouveau niveau. créé un nouveau niveau si == taille de l'objet
+    }
+
+    if (existe) // si le fichier existe déjà, on demande si on veut l'écraser
+    {   cout<<"Ce nom est déjà pris, voulez vous l'écraser ? (y/n) : ";
+        string reponse;
+        cin>>reponse;
+        if (reponse != "y" && reponse != "Y")
+        {   cout<<"Sauvegarde annulée"<<endl;
+            return false;//sortie de la fonction
+        }
+    }
+
+    path = "data/circuits/"+nom+".json";//on donne le nom du fichier à path
+    
+    //boucle de saisie du nombre de tours
+    bool is_number=true;
+    string nb_tours;
+    do {
+        if(!is_number) cout << "ENTRER UN NOMBRE SUPERIEUR OU EGAL A 1 ! ";
+        else cout << "entrer nombre de tours : ";
+        is_number = true;
+        cin >> nb_tours;
+        cout<<endl;
+        //test si nb_tour est un nombre
+        for (char c : nb_tours) if (c < '0' || c > '9') {
+            is_number = false;
+        }
+        if (nb_tours.size() == 0) is_number = false;
+        else if (nb_tours.size() == 1) if (nb_tours[0] == '0') is_number = false;
+    } while (!is_number);
+
+    //on ajoute le nouveau niveau à la liste si il n'existe pas déjà
+    if (!existe) liste_niveaux.push_back(json::object());
+    //dans tous les cas, on met à jour les informations du niveau
+    liste_niveaux[rang]["nom"] = nom;
+    liste_niveaux[rang]["path"] = path;
+    liste_niveaux[rang]["nombreTour"] = stoi(nb_tours);//on convertit le nombre de tours en int
+    
+    //on ouvre le fichier dans lequel on a le tableau des niveaux
+    ofstream fichier;
+    fichier.open("data/liste_niveaux.json");
+
+    //on sauvegarde la liste des niveaux
+    fichier << liste_niveaux.dump(4);
+    fichier.close();
+
+    //si on arrive ici, c'est que la liste des niveaux a été mise à jour
+    return true;//on retourne true pour indiquer qu'il faut sauvegarder le niveau en lui même
+}
+
+bool Selection_niveau(string & path)
+{   string nom;
+    cout<<"Charger un nouveau circuit ? (y/n) : ";
+    cin>>nom;
+    if (nom=="y"||nom=="Y")
+    {
+        cout<<"Charger citcuit (nom) :";   
+        ifstream fichier;
+        fichier.open("data/liste_niveaux.json");
+        json liste_niveaux;
+        fichier >> liste_niveaux;
+        cout<<endl;
+        for (int i=0; i< (int) liste_niveaux.size(); i++)
+        {   cout<<i<<" : "<<liste_niveaux[i]["nom"];
+            cout<<" ( "<<liste_niveaux[i]["nombreTour"]<<" tours )"<<endl;
+        }
+        cout<<"entrer le nom du circuit :";
+        cin>>nom;
+        for (int i=0; i< (int)liste_niveaux.size(); i++) {
+           if (liste_niveaux[i]["nom"] == nom) {
+                path = liste_niveaux[i]["path"];
+                return true;
+            }
+        }
+    }
+    path="data/circuits/vide.json";
+    return false;
+}
+
 bool Editeur::gestionEvent(RenderWindow & window)
 {   Event event;
     while(window.pollEvent(event))
@@ -85,97 +191,15 @@ bool Editeur::gestionEvent(RenderWindow & window)
                     supprimer_prop();
                 else if (event.key.code == Keyboard::C)
                 {   window.setVisible(false);
-                    cout<<"Sauvegarder ? (y/n) : ";
-                    string nom;
-                    cin>>nom;
-                    if (nom == "y" || nom == "Y") {
-
-                        cout<<"entrer nom du circuit : ";
-                        cin>>nom;
-                        
-                        //on ouvre le fichier dans lequel on a le tableau des niveaux
-                        ifstream fich_liste;
-                        fich_liste.open("data/liste_niveaux.json");
-                        //on charge la liste des niveaux dans un objet json
-                        json liste_niveaux;
-                        fich_liste >> liste_niveaux;
-                        fich_liste.close();
-
-                        //on vérifie que le nom n'est pas déjà pris, si il l'est, on demande confirmation
-                        bool existe = false;
-                        int rang = 0;
-                        for (auto niveau : liste_niveaux)
-                        {   if (niveau["nom"] == nom)
-                            {   existe = true;
-                                break;
-                            }
-                            rang++;
-                        }
-                        bool abandon = false;
-                        if (existe)
-                        {   cout<<"Ce nom est déjà pris, voulez vous l'écraser ? (y/n) : ";
-                            string reponse;
-                            cin>>reponse;
-                            if (reponse != "y" && reponse != "Y")
-                            {   cout<<"Sauvegarde annulée"<<endl;
-                                abandon = true;
-                            }
-                        }
-
-                        if (!abandon) {
-                            string path = "data/circuits/"+nom+".json";
-                            //on ajoute le nouveau niveau à la liste
-                            if (!existe) liste_niveaux.push_back(json::object());
-                            liste_niveaux[rang]["nom"] = nom;
-                            liste_niveaux[rang]["path"] = path;
-                            
-                            //on ouvre le fichier dans lequel on a le tableau des niveaux
-                            ofstream fichier;
-                            fichier.open("data/liste_niveaux.json");
-
-                            //on sauvegarde la liste des niveaux
-                            fichier << liste_niveaux.dump(4);
-                            fichier.close();
-
-                            //on sauvegarde le niveau
-                            sauvegarder(path);
-                        }
-                    }
+                    string path;
+                    if (Sauvegarder_Niveau_txtGlobal(path)) sauvegarder(path);
                     window.setVisible(true);
                 }
                 else if (event.key.code == Keyboard::L)
                 {   window.setVisible(false);
-                    cout<<"Charger un nouveau circuit ? (y/n) : ";
                     string path;
-                    cin>>path;
-                    if (path=="y"||path=="Y")
-                    {
-                        cout<<"Charger citcuit (nom) :";   
-                        ifstream fichier;
-                        fichier.open("data/liste_niveaux.json");
-                        json liste_niveaux;
-                        fichier >> liste_niveaux;
-
-                        for (int i=0; i< (int) liste_niveaux.size(); i++)
-                        {   cout<<i<<" : "<<liste_niveaux[i]["nom"]<<endl;
-                        }
-                        cout<<"entrer le nom du circuit :";
-                        cin>>path;
-                        bool existe = false;
-                        int numero=0;
-                        for (int i=0; i< (int)liste_niveaux.size(); i++)
-                        {   if (liste_niveaux[i]["nom"] == path)
-                            {   existe = true;
-                                numero = i;
-                                break;
-                            }
-                        }
-                        if (existe) {
-                            path = liste_niveaux[numero]["path"];
-                            charger(path);
-                        }
-                        else cout<<"circuit inexistant"<<endl;
-                    }
+                    if (Selection_niveau(path)) charger(path);
+                    else cout<<"Ce niveau n'existe pas"<<endl;
                     window.setVisible(true);
                 }
             }       

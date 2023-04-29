@@ -3,12 +3,8 @@
 #include "Collision.h"
 #include "Voiture/Physique.h"
 #include "Voiture/Vecteur.h"
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
 
 using namespace std;
-using namespace sf;
 
 
 Jeu::Jeu()
@@ -18,28 +14,32 @@ Jeu::Jeu()
     frame_time = 0.0167;
 }
 
-
-//ajouter dans le stockage un paramétrage de la voiture
-Jeu::Jeu(string const & nom_fichier)
-{   
-    ChargerTerrain(nom_fichier);
-    
-    nb_voit = 0;
-    frame_time = 0.0167;
+Jeu::Jeu(string path) {
+    ChargerTerrain(path);
 }
 
 void Jeu::setframe_time(float const & tps) { frame_time = tps; }
 
 
-void Jeu::ChargerTerrain(string const & nom_fichier) { terrain.chargerJSON(nom_fichier); }
+void Jeu::ChargerTerrain(string path, int nb_tours) {
+    terrain.chargerJSON(path);
+    nb_tour = 0;
+    num_checkpoint = -1;
+    nb_tour_max = nb_tours;
+    Props const & Ligne = terrain.getLigneArrivee();
+    for (auto & V : tab_voit) {
+        V.restart(Ligne.getPos(),Ligne.getRotation()+M_PI/2);
+    }
+}
 
 Jeu::~Jeu() { 
     cout<<"debut destruction jeu"<<endl;
-    //tab_voit.clear();
+    tab_voit.clear();
     cout<<"fin destruction jeu"<<endl;
 }
 
 Terrain & Jeu::getTerrain() { return terrain; }
+
 
 void Jeu::ajouterVoiture(Voiture const & V)
 {   //on créé une voiture identique à V et on l'ajoute au tableau
@@ -47,15 +47,26 @@ void Jeu::ajouterVoiture(Voiture const & V)
     nb_voit++;
 }
 
+void Jeu::restart()
+{   Voiture & voit = tab_voit[0];
+    Props const & Ligne = terrain.getLigneArrivee();
+
+    voit.restart(Ligne.getPos(), Ligne.getRotation()+M_PI/2);
+    nb_tour = 0;
+    num_checkpoint = -1;
+}
+
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
-void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
+int Jeu::update(ActionClavier const & Action)
 {   Voiture & Voit = tab_voit[0];
     Voit.action=Action;
     bool on_road = false;
     bool on_grass = false;
     //gestion des collisions avec les props
-    bool arrivee = (Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1);
+    bool arrivee = (Voit.getCheckpoint()==(int)terrain.getOrdreCheckpoint().size() -1);
+
+    int code_sortie = 0;
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
         
@@ -66,8 +77,14 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
                  if (arrivee && testColPropVoit(prop, Voit))
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
-                    cout<<"fini"<<endl;
-                    temps_au_tour.restart();
+                    if (nb_tour == nb_tour_max)
+                    {   cout<<"GAGNE"<<endl;
+                        code_sortie = 1;
+                    }
+                    else {
+                        cout<<"nouveau tour"<<endl;
+                        code_sortie = -1;
+                    }
                  }
                 break;
             case Tip::grass :
@@ -93,4 +110,5 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
     if (!on_road||on_grass) Voit.on_grass(frame_time);
 
     Voit.update(frame_time);
+    return code_sortie;
 }

@@ -25,8 +25,7 @@ void afficherDebug2(RenderWindow & window, Text & text);
 class Interface
 {   private :
     vector<Sprite> props;//charger depuis un terrain
-    vector<Sprite> ref_props;
-    vector<Sprite> voitures;//charger depuis un jeu
+    vector<Sprite> ref_props;//chargés quand on ouvre un editeur
     
     Texture checkpoint;
     Texture finish;

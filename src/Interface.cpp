@@ -31,7 +31,6 @@ void Interface::clearProps()
 {   props.clear();
 }
 
-
 void afficherDebug(RenderWindow & window, Text & text)
 {   
     // Dessins

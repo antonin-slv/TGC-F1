@@ -1,14 +1,43 @@
 [
     {
+        "listeTemps": [
+            {
+                "nom": "test",
+                "temps": 0.0
+            },
+            {
+                "nom": "test2",
+                "temps": 0.0
+            }
+        ],
         "nom": "test",
+        "nombreTour": 10,
         "path": "data/circuits/test.json"
     },
     {
+        "listeTemps": [
+            {
+                "nom": "test",
+                "temps": 0.0
+            },
+            {
+                "nom": "test2",
+                "temps": 0.0
+            }
+        ],
         "nom": "testjson2",
+        "nombreTour": 2,
         "path": "data/circuits/testjson2.json"
     },
     {
+<<<<<<< HEAD
         "nom": "niveau_1",
         "path": "data/circuits/niveau_1.json"
+=======
+        "listeTemps": [],
+        "nom": "monza",
+        "nombreTour": 2,
+        "path": "data/circuits/monza.json"
+>>>>>>> e4a05af093f1eb08f65e20761f46c69949b095f4
     }
 ]

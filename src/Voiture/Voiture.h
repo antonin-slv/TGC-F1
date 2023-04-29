@@ -139,6 +139,8 @@ class Voiture {
 
         void passer_checkpoint(bool arrivée=false);
         int getCheckpoint() const;//numéro du dernier checkpoint passé (-1 si aucun/le dernier)
+
+        void restart(Vecteur pos=Vecteur(0,0), float angle=0);
 };
 
 #endif
