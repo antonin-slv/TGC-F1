@@ -147,6 +147,7 @@ bool Selection_niveau(string & path)
         fichier.open("data/liste_niveaux.json");
         json liste_niveaux;
         fichier >> liste_niveaux;
+        fichier.close();
         cout<<endl;
         for (int i=0; i< (int) liste_niveaux.size(); i++)
         {   cout<<i<<" : "<<liste_niveaux[i]["nom"];

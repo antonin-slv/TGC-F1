@@ -42,22 +42,10 @@ int main(){
     
     while (!quitter){
         boucleMenu(window, action);
-        if (action.choix == "niveau_1"){
+        if (action.choix == "Jouer"){
             G1.chargerNiveau(action.chemin_circuit,action.nb_tours);
             temps_au_tour.restart();
             temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
-        }
-        else if (action.choix == "niveau_2"){
-            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
-        }
-        else if (action.choix == "niveau_3"){
-            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
-        }
-        else if (action.choix == "niveau_4"){
-            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
-        }
-        else if (action.choix == "niveau_5"){
-            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
         else if (action.choix == "editeur"){
             E1.boucleEditeur(window, action.volume);

@@ -155,6 +155,22 @@ void colorerNonSelectionne(RectangleShape & rectangle){
     rectangle.setOutlineColor(Color::White);
 }
 
+
+string get_path_circuit(string & nom) {
+    ifstream fich_liste;
+    fich_liste.open("data/liste_niveaux.json");
+    //on charge la liste des niveaux dans un objet json
+    json liste_niveaux;
+    fich_liste >> liste_niveaux;
+    fich_liste.close();//le fichier, ouvert en lecture, n'est plus utile
+
+    //si le circuit existe dans la liste, on renvoie son path
+    for (auto niveau : liste_niveaux) {
+        if (niveau["nom"] == nom) return niveau["path"];
+    }
+    return "";//sinon on renvoie une chaine vide
+}
+
 /**
  * @brief Affiche le menu
  * 
@@ -338,8 +354,10 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                     if (event.mouseButton.button == Mouse::Left){
                         for(int i=0; i<5; i++){
                             if (estSelectionne(window, boutonsNiveaux[i])){
-                                parametre_jeu.choix= "niveau_"+to_string(i+1);
-                                return;
+                                parametre_jeu.choix= "Jouer";
+                                parametre_jeu.nom_circuit="niveau_"+to_string(i+1);
+                                parametre_jeu.chemin_circuit=get_path_circuit(parametre_jeu.nom_circuit);
+                                if ( parametre_jeu.chemin_circuit  != "" ) return;
                             }
                         }
                         if(estSelectionne(window, boutonRetour)){
