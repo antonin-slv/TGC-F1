@@ -48,7 +48,7 @@ int main(){
             temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
             window.setVisible(false);
             //on enregistre le temps dans la liste des temps du circuit
-            if ( sauvegarderTemp(action, temps)) cout<<"Temps enregistré"<<endl;
+            if ( sauvegarderTemp(action, temps.asSeconds())) cout<<"Temps enregistré"<<endl;
             else cout<<"Temps non enregistré"<<endl;
             window.setVisible(true);
 

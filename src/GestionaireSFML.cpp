@@ -11,10 +11,9 @@ GestionSFML::GestionSFML() {
 
 void GestionSFML::chargerNiveau(string path, int nb_tours) {
     
-    ChargerTerrain(path);//réinitialise le jeu en Entier, et charge le terrain    
+    ChargerTerrain(path,nb_tours);//réinitialise le jeu en Entier, et charge le terrain    
     interface.clearProps();//les props de l'interface, mais garde ses textures
     zoom = 1;
-
     interface.loadTerrain(terrain,"data/props/road.png");//charge le terrain dans l'interface (2e argument : inutlie pour le moment)
 
 

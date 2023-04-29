@@ -23,7 +23,7 @@ struct Selection
 
 
 bool get_parametre_circuit(Selection & parametre_jeu);
-bool sauvegarderTemp(Selection const & param, sf::Time temps);
+bool sauvegarderTemp(Selection const & param, float temps);
 
 void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur);
 void initBoutonGauche(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur);
