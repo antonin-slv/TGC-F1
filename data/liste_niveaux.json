@@ -6,5 +6,9 @@
     {
         "nom": "testjson2",
         "path": "data/circuits/testjson2.json"
+    },
+    {
+        "nom": "niveau_1",
+        "path": "data/circuits/niveau_1.json"
     }
 ]

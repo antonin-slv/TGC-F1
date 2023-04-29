@@ -40,6 +40,18 @@ int main(){
         if (action == "niveau_1"){
             G1.boucleJeuSFML(window, temps_au_tour, decalage);
         }
+        else if (action == "niveau_2"){
+            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        }
+        else if (action == "niveau_3"){
+            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        }
+        else if (action == "niveau_4"){
+            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        }
+        else if (action == "niveau_5"){
+            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        }
         else if (action == "editeur"){
             E1.boucleEditeur(window, volume);
         }
