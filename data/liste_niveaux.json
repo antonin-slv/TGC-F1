@@ -33,5 +33,10 @@
         "nom": "niveau_1",
         "nombreTour": 2,
         "path": "data/circuits/niveau_1.json"
+    },
+    {
+        "nom": "barhain",
+        "nombreTour": 2,
+        "path": "data/circuits/barhain.json"
     }
 ]
