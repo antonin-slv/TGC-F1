@@ -43,7 +43,7 @@ void afficherDebug(RenderWindow & window, Text & text)
 void afficherDebug2(RenderWindow & window, Text & text)
 {   
     // Dessins
-    text.setPosition(window.mapPixelToCoords(Vector2i(1600, 10)));
+    text.setPosition(window.mapPixelToCoords(Vector2i(window.getSize().x*0.82, 10)));
     
     window.draw(text);
 

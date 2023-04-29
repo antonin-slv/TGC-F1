@@ -215,11 +215,11 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     vector<RectangleShape> boutonsNiveaux(5);
     for(int i=0; i<5; i++){
-        initBoutonGauche(window, boutonsNiveaux[i], 150*(i+1), 300, 75);
+        initBoutonCentre(window, boutonsNiveaux[i], i*150+100, 300, 75);
     }
 
-    RectangleShape boutonCharger;
-    initBoutonDroite(window, boutonCharger, 450, 300, 75);
+    //RectangleShape boutonCharger;
+    //initBoutonDroite(window, boutonCharger, 450, 300, 75);
 
     //TEXTES=======================================================================================
 
@@ -269,11 +269,11 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     vector<Text> textesNiveaux(5);
     for(int i=0; i<5; i++){
-        initTexteGauche(window, textesNiveaux[i], font, 35, "Niveau " + to_string(i+1), (i+1)*150);
+        initTexteCentre(window, textesNiveaux[i], font, 35, "Niveau " + to_string(i+1), i*150+100);
     }
 
-    Text texteCharger;
-    initTexteDroite(window, texteCharger, font, 35, "Charger", 450);
+    //Text texteCharger;
+    //initTexteDroite(window, texteCharger, font, 35, "Charger", 450);
 
 
     //BOUCLE PRINCIPALE============================================================================
@@ -348,18 +348,20 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
                     else{
                         colorerNonSelectionne(boutonsNiveaux[i]);
                     }
-                }
-                if(estSelectionne(window, boutonCharger)){
-                    colorerSelectionne(boutonCharger);
-                }
-                else{
-                    colorerNonSelectionne(boutonCharger);
-                }
-                if(estSelectionne(window, boutonRetour)){
-                    colorerSelectionne(boutonRetour);
-                }
-                else{
-                    colorerNonSelectionne(boutonRetour);
+                    /*
+                    if(estSelectionne(window, boutonCharger)){
+                        colorerSelectionne(boutonCharger);
+                    }
+                    else{
+                        colorerNonSelectionne(boutonCharger);
+                    }
+                    */
+                    if(estSelectionne(window, boutonRetour)){
+                        colorerSelectionne(boutonRetour);
+                    }
+                    else{
+                        colorerNonSelectionne(boutonRetour);
+                    }
                 }
             }
             if(parametre){ //Menu parametre ================================================================
@@ -438,8 +440,8 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
                 window.draw(boutonsNiveaux[i]);
                 window.draw(textesNiveaux[i]);
             }
-            window.draw(boutonCharger);
-            window.draw(texteCharger);
+            //window.draw(boutonCharger);
+            //window.draw(texteCharger);
             window.draw(boutonRetour);
             window.draw(texteRetour);
         }
@@ -473,6 +475,7 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
         music.setVolume(volume/2);
         window.display();
     }
+
     music.stop();
     return 0;
 }

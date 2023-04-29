@@ -39,12 +39,14 @@ string affiche_temps(float t){
     t-=minutes*60;
     int secondes = floor(t);
     t-=secondes;
-    return to_string(minutes) + "'" + to_string(secondes) + "\"" + to_string(int(t*1000));
+    return to_string(minutes) + "\'" + to_string(secondes) + "\"" + to_string(int(t*1000));
 }
 
 
 sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
 {
+    temps_au_tour.restart();
+
     Clock clock;
     clock.restart();
     
@@ -68,10 +70,10 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
     cout << "debut ok" << endl;
     ActionClavier action;
 
-    Text test;
-    test.setFont(font);
-    test.setCharacterSize(50);
-    test.setScale(0.025,0.025);
+    Text texte_temps_au_tour;
+    texte_temps_au_tour.setFont(font);
+    texte_temps_au_tour.setCharacterSize(50);
+    texte_temps_au_tour.setScale(0.025,0.025);
 
     bool quitter = false;
     bool gagne = false;
@@ -136,7 +138,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         
         text.setString(affichage);
         
-        test.setString(to_string(temps_au_tour.getElapsedTime().asSeconds()));
+        texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
         
         // On affiche le jeu
         afficherJeuSFML(window);
@@ -145,8 +147,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         vue.move(cos(getVoiture(0).getAngle()) * getVoiture(0).getVitesse() * decalage/24 ,decalage/24 * sin(getVoiture(0).getAngle())*getVoiture(0).getVitesse());
         window.setView(vue);
         afficherDebug(window, text);
-        afficherDebug2(window, test);
-
+        afficherDebug2(window, texte_temps_au_tour);
         window.display();
     } while (!quitter);
     cout << "nb frames : " << nb_frames << endl;

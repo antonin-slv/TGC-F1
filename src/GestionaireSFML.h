@@ -36,6 +36,8 @@ class GestionSFML : public Jeu
         void afficherJeuSFML(sf::RenderWindow & window);
         sf::Time boucleJeuSFML(sf::RenderWindow & window, Clock & temps_au_tour, float decalage);
 
+        float afficheTemps(float t);
+
         bool test_regression();
 
 };
