@@ -1,10 +1,33 @@
 [
     {
+        "listeTemps": [
+            {
+                "nom": "test",
+                "temps": 0.0
+            },
+            {
+                "nom": "test2",
+                "temps": 0.0
+            }
+        ],
+        "nb_tours": 10,
         "nom": "test",
+        "nombreTour": 10,
         "path": "data/circuits/test.json"
     },
     {
+        "listeTemps": [
+            {
+                "nom": "test",
+                "temps": 0.0
+            },
+            {
+                "nom": "test2",
+                "temps": 0.0
+            }
+        ],
         "nom": "testjson2",
+        "nombreTour": 3,
         "path": "data/circuits/testjson2.json"
     }
 ]
