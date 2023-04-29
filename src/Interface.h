@@ -56,7 +56,6 @@ class Interface
     void loadProp(Props const & prop);
     void loadTerrain(Terrain & terrain,string texture_path);
     void loadVoiture(Voiture & voiture_, string texture_path);
-    void loadJeu(Jeu & jeu, string texture_path);
     void loadRefProps();
 
 

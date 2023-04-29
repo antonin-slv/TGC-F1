@@ -43,7 +43,7 @@ string affiche_temps(float t){
 }
 
 
-void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
+sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
 {
     temps_au_tour.restart();
 
@@ -65,8 +65,8 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     
     long int nb_frames = 0;
     float temps = 0;
+    sf::Time temps_circuit = sf::seconds(0);
 
-    float temps_circuit = 0;
     cout << "debut ok" << endl;
     ActionClavier action;
 
@@ -106,18 +106,12 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         int rslt = update(action);
         if (!gagne)
         {
-                if (rslt == -1)
-            {   temps_circuit += temps_au_tour.getElapsedTime().asSeconds();
-                temps_au_tour.restart();
-            }
+            if (rslt == -1) temps_circuit += temps_au_tour.restart();
             else if (rslt == 1)
-            {   temps_circuit += temps_au_tour.getElapsedTime().asSeconds();
+            {   temps_circuit += temps_au_tour.restart();
                 gagne = true;
             }
         }
-        
-        //actualise position des voitures du jeu
-        Vecteur pos=getVoiture(0).getPos();
         
         // Fermeture de la fenêtre avec la croix (inutile pour le moment)
         if (event.type == Event::Closed){
@@ -125,13 +119,18 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         }
         string affichage;
         
+        
+        //actualise position des voitures du jeu pour le texte
+        Voiture & voit = getVoiture(0);
+        Vecteur pos=voit.getPos();
         if (!gagne){
             affichage=  "Tour : " + to_string(nb_tour) + " / " +to_string(nb_tour_max) + "\n" +
-                        "Vitesse : " + to_string(getVoiture(0).getVitesse()*3.6) + " km/h \n" +
+                        "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size()) + "\n" +
+                        "Vitesse : " + to_string(voit.getVitesse()*3.6) + " km/h \n" +
                         "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +
-                        "Orientation : " + to_string(getVoiture(0).getAngle()*180/M_PI) + "\n";
+                        "Orientation : " + to_string(voit.getAngle()*180/M_PI) + "\n";
         }
-        else affichage=  "Victoire ! \nTemps : " + to_string(temps_circuit) + "\n";
+        else affichage=  "Victoire ! \nTemps : " + to_string(temps_circuit.asSeconds()) + "\n";
         
         affichage+= "temps in game :" + to_string(temps) + " s\ncontre : " + to_string(clock.getElapsedTime().asSeconds()) + " s IRL\n";
         affichage+= "frame time : " + to_string(frame_time) + "\n"
@@ -154,6 +153,7 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     cout << "nb frames : " << nb_frames << endl;
     cout << "temps : " << temps << endl;
     cout << "fps_moy : " << nb_frames/temps << endl<<endl;
+    return temps_circuit;
 }
 
 
