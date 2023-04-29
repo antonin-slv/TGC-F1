@@ -11,7 +11,7 @@
             }
         ],
         "nom": "test",
-        "nombreTour": 2,
+        "nombreTour": 3,
         "path": "data/circuits/test.json"
     },
     {

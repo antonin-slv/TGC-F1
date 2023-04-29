@@ -133,34 +133,56 @@ bool Sauvegarder_Niveau_txtGlobal(string & path) {
     return true;//on retourne true pour indiquer qu'il faut sauvegarder le niveau en lui même
 }
 
-bool Selection_niveau(string & path)
-{   string nom;
+bool Selection_niveau(string & path) {
+    //demande si on veut charger un nouveau circuit
+    string nom;
     cout<<"Charger un nouveau circuit ? (y/n) : ";
     cin>>nom;
-    if (nom=="y"||nom=="Y")
-    {
-        cout<<"Charger citcuit (nom) :";   
-        ifstream fichier;
-        fichier.open("data/liste_niveaux.json");
-        json liste_niveaux;
-        fichier >> liste_niveaux;
-        fichier.close();
-        cout<<endl;
-        for (int i=0; i< (int) liste_niveaux.size(); i++)
-        {   cout<<i<<" : "<<liste_niveaux[i]["nom"];
-            cout<<" ( "<<liste_niveaux[i]["nombreTour"]<<" tours )"<<endl;
-        }
-        cout<<"entrer le nom du circuit :";
-        cin>>nom;
-        for (int i=0; i< (int)liste_niveaux.size(); i++) {
-           if (liste_niveaux[i]["nom"] == nom) {
-                path = liste_niveaux[i]["path"];
-                return true;
-            }
-        }
+
+    if (nom!="y"&&nom!="Y") return false;
+
+    //affiche la liste des circuits
+    cout<<"Charger citcuit (nom) :";   
+    ifstream fichier;
+    fichier.open("data/liste_niveaux.json");
+    json liste_niveaux;
+    fichier >> liste_niveaux;
+    fichier.close();
+    cout<<endl;
+    for (int i=0; i< (int) liste_niveaux.size(); i++)
+    {   cout<<i<<" : "<<liste_niveaux[i]["nom"];
+        cout<<" ( "<<liste_niveaux[i]["nombreTour"]<<" tours )"<<endl;
     }
-    path="data/circuits/vide.json";
-    return false;
+    //demande le nom du circuit à charger
+    cout<<"entrer le nom du circuit :";
+    cin>>nom;
+    for (int i=0; i< (int)liste_niveaux.size(); i++) {
+        if (liste_niveaux[i]["nom"] == nom) {
+            path = liste_niveaux[i]["path"];
+            return true;
+        }
+    } //si on arrive ici, c'est que le circuit n'a pas été trouvé
+
+    //si le circuit n'a pas été trouvé, on demande si on veut charger un lien custom
+    cout<<"Entrer un lien vers un circuit non déclaré (à vos risques et périls) : ";
+    cin>> path;
+    
+    if (path.find(".json") != path.size()-5)
+    {   cout<<"Le fichier doit être au format json"<<endl;
+        return false;
+    }
+    fichier.open(path);//on tente d'ouvrir le fichier en lecture
+    bool good=true;
+    if(!fichier.is_open()) {
+        cout<<"Le fichier n'a pas pu être ouvert"<<endl;
+        good = false;
+    }
+    else if (!fichier.good()) {
+        cout<<"Le fichier a un problème"<<endl;
+        good = false;
+    }
+    fichier.close();
+    return good;
 }
 
 bool Editeur::gestionEvent(RenderWindow & window)
@@ -197,7 +219,6 @@ bool Editeur::gestionEvent(RenderWindow & window)
                 {   window.setVisible(false);
                     string path;
                     if (Selection_niveau(path)) charger(path);
-                    else cout<<"Ce niveau n'existe pas"<<endl;
                     window.setVisible(true);
                 }
             }       
