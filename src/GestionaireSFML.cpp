@@ -7,7 +7,7 @@ using namespace sf;
 
 GestionSFML::GestionSFML()
 {   
-    ChargerTerrain("data/circuits/test.json");
+    ChargerTerrain("data/circuits/testjson2.json");
     interface.loadTerrain(terrain,"data/props/road.png");
     
     Voiture Voit_temp = Voiture(Moteur(),Roues(),796,0.14,0,0,0,0,0,0,0);

@@ -10,7 +10,6 @@
                 "temps": 0.0
             }
         ],
-        "nb_tours": 10,
         "nom": "test",
         "nombreTour": 10,
         "path": "data/circuits/test.json"
@@ -27,7 +26,13 @@
             }
         ],
         "nom": "testjson2",
-        "nombreTour": 3,
+        "nombreTour": 2,
         "path": "data/circuits/testjson2.json"
+    },
+    {
+        "listeTemps": [],
+        "nom": "monza",
+        "nombreTour": 2,
+        "path": "data/circuits/monza.json"
     }
 ]
