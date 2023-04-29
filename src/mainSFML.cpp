@@ -35,13 +35,14 @@ int main(){
     bool quitter = false;
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
+    Time temps;
     while (!quitter){
         string action = boucleMenu(window, volume, decalage);
         if (action == "niveau_1"){
             
             G1.chargerNiveau("data/circuits/testjson2.json",2);
             temps_au_tour.restart();
-            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+            temps=G1.boucleJeuSFML(window, temps_au_tour, decalage);
         }
         else if (action == "editeur"){
             E1.boucleEditeur(window, volume);
