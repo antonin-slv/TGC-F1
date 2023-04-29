@@ -22,9 +22,9 @@ using json = nlohmann::json; // pour le json
 using namespace std;
 
 int main(){
-
-    int volume = 50;
-    float decalage = 0;
+    Selection action;
+    action.volume = 50;
+    action.decalage = 0;
     
     GestionSFML G1;
     Editeur E1;
@@ -36,29 +36,31 @@ int main(){
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     Time temps;
+
+    
     while (!quitter){
-        string action = boucleMenu(window, volume, decalage);
-        if (action == "niveau_1"){
+        boucleMenu(window, action);
+        if (action.choix == "niveau_1"){
             G1.chargerNiveau("data/circuits/barhain.json",2);
             temps_au_tour.restart();
-            temps=G1.boucleJeuSFML(window, temps_au_tour, decalage);
+            temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
-        else if (action == "niveau_2"){
-            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        else if (action.choix == "niveau_2"){
+            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
-        else if (action == "niveau_3"){
-            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        else if (action.choix == "niveau_3"){
+            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
-        else if (action == "niveau_4"){
-            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        else if (action.choix == "niveau_4"){
+            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
-        else if (action == "niveau_5"){
-            G1.boucleJeuSFML(window, temps_au_tour, decalage);
+        else if (action.choix == "niveau_5"){
+            G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
-        else if (action == "editeur"){
-            E1.boucleEditeur(window, volume);
+        else if (action.choix == "editeur"){
+            E1.boucleEditeur(window, action.volume);
         }
-        else if (action == "quitter"){
+        else if (action.choix == "quitter"){
             quitter = true;
             window.close();
         }

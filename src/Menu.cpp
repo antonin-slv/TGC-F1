@@ -159,11 +159,10 @@ void colorerNonSelectionne(RectangleShape & rectangle){
  * @brief Affiche le menu
  * 
  * @param window La fenêtre de jeu
- * @param volume Le volume de la musique
- * @param decalage Le decalage de la caméra
- * @return int Le choix du joueur
+ * @param parametre_jeu Stocke les paramètres du jeu, notamment le volume et le niveau
+
  */
-string boucleMenu(RenderWindow & window, int & volume, float & decalage){
+void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 
     //INITIALISATION===============================================================================
 
@@ -174,12 +173,13 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
 
     Music music;
     music.openFromFile("data/sounds/menu.wav");
-    music.setVolume(volume/2);
+    music.setVolume(parametre_jeu.volume/2);
     music.setLoop(true);
     music.play();
 
     //RECTANGLES===================================================================================
 
+    //section menu principal
     RectangleShape boutonJouer;
     initBoutonCentre(window, boutonJouer, 450, 400, 100);
 
@@ -192,6 +192,7 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
     RectangleShape boutonQuitter;
     initBoutonCentre(window, boutonQuitter, 900, 400, 100);
 
+    //section parametre
     RectangleShape barreVolume;
     initBoutonCentre(window, barreVolume, 300, 600, 10);
 
@@ -210,9 +211,11 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
     RectangleShape curseurDecalage;
     initCurseur(window, curseurDecalage, 500, 10, 30);
 
+    //commun aux sous menus
     RectangleShape boutonRetour;
     initBoutonCentre(window, boutonRetour, 900, 400, 100);
 
+    //section choix niveau
     vector<RectangleShape> boutonsNiveaux(5);
     for(int i=0; i<5; i++){
         initBoutonCentre(window, boutonsNiveaux[i], i*150+100, 300, 75);
@@ -253,10 +256,10 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
     texteCredits2.setPosition(window.getSize().x*0.84, window.getSize().y*0.95);
 
     Text texteVolume;
-    initTexteCentre(window, texteVolume, font, 50, "Volume : " + to_string(volume), 200);
+    initTexteCentre(window, texteVolume, font, 50, "Volume : " + to_string(parametre_jeu.volume), 200);
 
     Text texteDecalage;
-    initTexteCentre(window, texteDecalage, font, 50, "Decalage : " + to_string(decalage), 600);
+    initTexteCentre(window, texteDecalage, font, 50, "Decalage : " + to_string(parametre_jeu.decalage), 600);
 
     Text texteConseil;
     initTexteCentre(window, texteConseil, font, 25, "Pour regler le volume, utilisez les fleches HAUT et BAS", 700);
@@ -290,13 +293,15 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
                             choix_niveau = true;
                         }
                         if (estSelectionne(window, boutonEditeur)){
-                            return "editeur";
+                            parametre_jeu.choix="editeur";
+                            return;
                         }
                         if (estSelectionne(window, boutonParametre)){
                             parametre = true;
                         }
                         if (estSelectionne(window, boutonQuitter)){
-                            return "quitter";
+                            parametre_jeu.choix="quitter";
+                            return;
                         }
                     }
                 }
@@ -333,7 +338,8 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
                     if (event.mouseButton.button == Mouse::Left){
                         for(int i=0; i<5; i++){
                             if (estSelectionne(window, boutonsNiveaux[i])){
-                                return "niveau_"+to_string(i+1);
+                                parametre_jeu.choix= "niveau_"+to_string(i+1);
+                                return;
                             }
                         }
                         if(estSelectionne(window, boutonRetour)){
@@ -386,35 +392,35 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
                     colorerNonSelectionne(boutonRetour);
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Up)){
-                    if(volume < 96){
-                        volume += 5;
+                    if(parametre_jeu.volume < 96){
+                        parametre_jeu.volume += 5;
                     }
                     else{
-                        volume = 100;
+                        parametre_jeu.volume = 100;
                     }
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Down)){
-                    if(volume > 4){
-                        volume -= 5;
+                    if(parametre_jeu.volume > 4){
+                        parametre_jeu.volume -= 5;
                     }
                     else{
-                        volume = 0;
+                        parametre_jeu.volume = 0;
                     }
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Right)){
-                    if(decalage < 4.5){
-                        decalage += 0.5;
+                    if(parametre_jeu.decalage < 4.5){
+                        parametre_jeu.decalage += 0.5;
                     }
                     else{
-                        decalage = 5;
+                        parametre_jeu.decalage = 5;
                     }
                 }
                 if(Keyboard::isKeyPressed(Keyboard::Left)){
-                    if(decalage > 0){
-                        decalage -= 0.5;
+                    if(parametre_jeu.decalage > 0){
+                        parametre_jeu.decalage -= 0.5;
                     }
                     else{
-                        decalage = 0;
+                        parametre_jeu.decalage = 0;
                     }
                 }
             }
@@ -446,17 +452,17 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
             window.draw(texteRetour);
         }
         if(parametre){
-            texteVolume.setString("Volume : " + to_string(volume) + "%");
+            texteVolume.setString("Volume : " + to_string(parametre_jeu.volume) + "%");
             texteVolume.setPosition((window.getSize().x-texteVolume.getGlobalBounds().width)/2,200);
 
-            barreVolume2.setSize(Vector2f(6*volume,10));
-            curseurVolume.setPosition((1320-curseurVolume.getGlobalBounds().width)/2+6*volume,290);
+            barreVolume2.setSize(Vector2f(6*parametre_jeu.volume,10));
+            curseurVolume.setPosition((1320-curseurVolume.getGlobalBounds().width)/2+6*parametre_jeu.volume,290);
 
-            texteDecalage.setString("Decalage : " + to_string(decalage));
+            texteDecalage.setString("Decalage : " + to_string(parametre_jeu.decalage));
             texteDecalage.setPosition((window.getSize().x-texteDecalage.getGlobalBounds().width)/2,400);
 
-            barreDecalage2.setSize(Vector2f(120*decalage,10));
-            curseurDecalage.setPosition((1320-curseurDecalage.getGlobalBounds().width)/2+120*decalage,490);
+            barreDecalage2.setSize(Vector2f(120*parametre_jeu.decalage,10));
+            curseurDecalage.setPosition((1320-curseurDecalage.getGlobalBounds().width)/2+120*parametre_jeu.decalage,490);
 
             window.draw(texteVolume);
             window.draw(barreVolume);
@@ -472,10 +478,10 @@ string boucleMenu(RenderWindow & window, int & volume, float & decalage){
             window.draw(texteRetour);
         }
         
-        music.setVolume(volume/2);
+        music.setVolume(parametre_jeu.volume/2);
         window.display();
     }
 
     music.stop();
-    return 0;
+    return;
 }
