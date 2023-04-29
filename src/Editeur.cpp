@@ -61,72 +61,69 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
 
 bool Sauvegarder_Niveau_txtGlobal(string & path) {
     //on valide la demande
+    Selection param;
     cout<<"Sauvegarder ? (y/n) : ";
-    string nom;
-    cin>>nom;
-    if (nom != "y" && nom != "Y") return false;
+    cin>>param.nom_circuit;
+    if (param.nom_circuit != "y" && param.nom_circuit != "Y") return false;
 
     //on demande le nom que l'on veut donner au circuit
     cout<<"entrer nom du circuit : ";
-    cin>>nom;   
+    cin>>param.nom_circuit;   
     //on ouvre le fichier dans lequel on a le tableau des niveaux
-    ifstream fich_liste;
-    fich_liste.open("data/liste_niveaux.json");
-    //on charge la liste des niveaux dans un objet json
-    json liste_niveaux;
-    fich_liste >> liste_niveaux;
-    fich_liste.close();//le fichier, ouvert en lecture, n'est plus utile
-
-    //on vérifie que le nom n'est pas déjà pris
-    bool existe = false;
-    int rang = 0;
-    for (auto niveau : liste_niveaux)
-    {   if (niveau["nom"] == nom)
-        {   existe = true;//si il l'est, existe passe à true
-            break;
-        }
-        rang++;//on incrémente le rang pour savoir à quel endroit on doit ajouter le nouveau niveau. créé un nouveau niveau si == taille de l'objet
-    }
-
-    if (existe) // si le fichier existe déjà, on demande si on veut l'écraser
-    {   cout<<"Ce nom est déjà pris, voulez vous l'écraser ? (y/n) : ";
-        string reponse;
-        cin>>reponse;
-        if (reponse != "y" && reponse != "Y")
+    bool existe = true;
+    if (get_parametre_circuit(param)) {// si le fichier existe déjà, on demande si on veut l'écraser
+        cout<<"Ce nom est déjà pris, voulez vous l'écraser ? (y/n) : ";
+        cin>>param.choix;
+        if (param.choix != "y" && param.choix != "Y")
         {   cout<<"Sauvegarde annulée"<<endl;
             return false;//sortie de la fonction
         }
+        
+    }
+    //sinon, on définit ainsi le chemin du fichier
+    else {
+        existe = false;
+        param.chemin_circuit = "data/circuits/"+param.nom_circuit+".json";
     }
 
-    path = "data/circuits/"+nom+".json";//on donne le nom du fichier à path
+    
     
     //boucle de saisie du nombre de tours
     bool is_number=true;
-    string nb_tours;
     do {
         if(!is_number) cout << "ENTRER UN NOMBRE SUPERIEUR OU EGAL A 1 ! ";
         else cout << "entrer nombre de tours : ";
         is_number = true;
-        cin >> nb_tours;
+        cin >> param.choix;
         cout<<endl;
         //test si nb_tour est un nombre
-        for (char c : nb_tours) if (c < '0' || c > '9') {
+        for (char c : param.choix) if (c < '0' || c > '9') {
             is_number = false;
         }
-        if (nb_tours.size() == 0) is_number = false;
-        else if (nb_tours.size() == 1) if (nb_tours[0] == '0') is_number = false;
+        if (param.choix.size() == 0) is_number = false;
+        else if (param.choix.size() == 1) if (param.choix[0] == '0') is_number = false;
     } while (!is_number);
+    param.nb_tours = stoi(param.choix);//on convertit le nombre de tours en int
+
+    
+    //on ouvre le fichier dans lequel on a le tableau des niveaux en lecture
+    ifstream fichier1;
+    fichier1.open("data/liste_niveaux.json");
+    json liste_niveaux;
+    fichier1 >> liste_niveaux;
+    fichier1.close();
+
+    // le même en écriture
+    ofstream fichier;
+    fichier.open("data/liste_niveaux.json");
 
     //on ajoute le nouveau niveau à la liste si il n'existe pas déjà
     if (!existe) liste_niveaux.push_back(json::object());
+    unsigned int rang = param.indice_circuit;
     //dans tous les cas, on met à jour les informations du niveau
-    liste_niveaux[rang]["nom"] = nom;
-    liste_niveaux[rang]["path"] = path;
-    liste_niveaux[rang]["nombreTour"] = stoi(nb_tours);//on convertit le nombre de tours en int
-    
-    //on ouvre le fichier dans lequel on a le tableau des niveaux
-    ofstream fichier;
-    fichier.open("data/liste_niveaux.json");
+    liste_niveaux[rang]["nom"] = param.nom_circuit;
+    liste_niveaux[rang]["path"] = param.chemin_circuit;
+    liste_niveaux[rang]["nombreTour"] = param.nb_tours;
 
     //on sauvegarde la liste des niveaux
     fichier << liste_niveaux.dump(4);
