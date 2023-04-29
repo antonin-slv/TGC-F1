@@ -129,6 +129,7 @@ bool Sauvegarder_Niveau_txtGlobal(string & path) {
     fichier << liste_niveaux.dump(4);
     fichier.close();
 
+    path = param.chemin_circuit;
     //si on arrive ici, c'est que la liste des niveaux a été mise à jour
     return true;//on retourne true pour indiquer qu'il faut sauvegarder le niveau en lui même
 }
