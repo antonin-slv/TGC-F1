@@ -91,7 +91,7 @@ void GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         }
 
         //fait tout le bouleau d'update du jeu
-        update(action, temps_au_tour);
+        if (update(action) == -1) temps_au_tour.restart();
 
         //actualise position des voitures du jeu
         Vecteur pos=getVoiture(0).getPos();

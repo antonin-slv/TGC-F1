@@ -3,12 +3,8 @@
 #include "Collision.h"
 #include "Voiture/Physique.h"
 #include "Voiture/Vecteur.h"
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
 
 using namespace std;
-using namespace sf;
 
 
 Jeu::Jeu()
@@ -49,13 +45,15 @@ void Jeu::ajouterVoiture(Voiture const & V)
 
 Voiture & Jeu::getVoiture(int i) { return tab_voit[i]; }
 
-void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
+int Jeu::update(ActionClavier const & Action)
 {   Voiture & Voit = tab_voit[0];
     Voit.action=Action;
     bool on_road = false;
     bool on_grass = false;
     //gestion des collisions avec les props
-    bool arrivee = (Voit.getCheckpoint()==terrain.getOrdreCheckpoint().size()-1);
+    bool arrivee = (Voit.getCheckpoint()==(int)terrain.getOrdreCheckpoint().size() -1);
+
+    int code_sortit = 0;
     for (int i=0; i<terrain.getNbProps(); i++)
     {   Props const & prop = terrain.getProp(i);
         
@@ -67,7 +65,7 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
                  {  Voit.passer_checkpoint(true);
                     nb_tour++;
                     cout<<"fini"<<endl;
-                    temps_au_tour.restart();
+                    code_sortit = -1;
                  }
                 break;
             case Tip::grass :
@@ -93,4 +91,5 @@ void Jeu::update(ActionClavier const & Action, Clock & temps_au_tour)
     if (!on_road||on_grass) Voit.on_grass(frame_time);
 
     Voit.update(frame_time);
+    return code_sortit;
 }

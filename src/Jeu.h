@@ -7,19 +7,12 @@
 #include "Voiture/Physique.h"
 #include "Collision.h"
 #include "External/json.hpp"
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
 using json = nlohmann::json; // pour le json
-using namespace sf;
-
-
-
 
 /**
  * @brief Classe du jeu
@@ -62,7 +55,7 @@ class Jeu
         //retirer le bool a terme ?
          /** \brief Met à jour le jeu \param action actions du joueur \return void */
         
-        void update(ActionClavier const & action, Clock & temps_au_tour);
+        int update(ActionClavier const & action);
 
         int getNbTours() const { return (int)nb_tour; }
 
