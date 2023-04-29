@@ -3,6 +3,7 @@
 
 #include "Terrain.h"
 #include "Interface.h"
+#include "Menu.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>

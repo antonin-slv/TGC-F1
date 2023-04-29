@@ -10,8 +10,8 @@ LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 HVOITURE = $(PATH_VOIT)Voiture.h $(PATH_VOIT)Moteur.h $(PATH_VOIT)Roues.h $(PATH_VOIT)Physique.h $(PATH_VOIT)Vecteur.h
-HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h
-HINTERFACE = src/GestionaireSFML.h src/Menu.h src/Interface.h
+HEDITEUR = src/Editeur.h src/Terrain.h $(PATH_VOIT)Vecteur.h src/Menu.h
+HINTERFACE = src/GestionaireSFML.h src/Menu.h src/Interface.h 
 
 OVOITURE= obj/Voiture.o obj/Moteur.o obj/Roues.o obj/Physique.o obj/Vecteur.o
 OEDITEUR= obj/Editeur.o obj/Terrain.o
@@ -44,7 +44,6 @@ obj/AffichageTXT.o: src/AffichageTXT.cpp $(HINTERFACE) $(HVOITURE) src/Editeur.h
 obj/GestionaireSFML.o: src/GestionaireSFML.cpp $(HINTERFACE) $(HVOITURE) src/Jeu.h
 	$(CC) $(CFLAGS) -c src/GestionaireSFML.cpp $(ISFML) -o obj/GestionaireSFML.o
 
-
 obj/winTxt.o: $(EXTERNAL)winTxt.cpp $(EXTERNAL)winTxt.h
 	$(CC) $(CFLAGS) -c $(EXTERNAL)winTxt.cpp -o obj/winTxt.o
 
@@ -54,7 +53,7 @@ obj/Jeu.o: src/Jeu.cpp src/Jeu.h src/Terrain.h $(HVOITURE) src/Collision.h
 obj/Interface.o: src/Interface.cpp src/Interface.h obj/Jeu.o obj/GestionaireSFML.o obj/Terrain.o
 	$(CC) $(CFLAGS) -c src/Interface.cpp $(ISFML) -o obj/Interface.o
 
-obj/Editeur.o: src/Editeur.cpp $(HEDITEUR) obj/Interface.o
+obj/Editeur.o: src/Editeur.cpp $(HEDITEUR) obj/Interface.o 
 	$(CC) $(CFLAGS) -c src/Editeur.cpp $(ISFML) -o obj/Editeur.o
 
 obj/Terrain.o: src/Terrain.cpp src/Terrain.h $(PATH_VOIT)Vecteur.h 

@@ -13,12 +13,16 @@ struct Selection
     string chemin_circuit;
     int nb_tours;
     
+    unsigned int indice_circuit;
 
     int volume;
     float decalage;
 
     string choix;
 };
+
+
+bool get_parametre_circuit(Selection & parametre_jeu);
 
 void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur);
 void initBoutonGauche(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur);

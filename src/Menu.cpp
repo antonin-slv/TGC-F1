@@ -156,7 +156,7 @@ void colorerNonSelectionne(RectangleShape & rectangle){
 }
 
 
-string get_path_circuit(string & nom) {
+bool get_parametre_circuit(Selection & parametre_jeu) {
     ifstream fich_liste;
     fich_liste.open("data/liste_niveaux.json");
     //on charge la liste des niveaux dans un objet json
@@ -164,11 +164,18 @@ string get_path_circuit(string & nom) {
     fich_liste >> liste_niveaux;
     fich_liste.close();//le fichier, ouvert en lecture, n'est plus utile
 
-    //si le circuit existe dans la liste, on renvoie son path
+    //si le circuit existe dans la liste, on actualise le chemin du circuit et le nombre de tours
+    unsigned int i = 0;
     for (auto niveau : liste_niveaux) {
-        if (niveau["nom"] == nom) return niveau["path"];
+        if (niveau["nom"] == parametre_jeu.nom_circuit) {
+            parametre_jeu.chemin_circuit = niveau["path"];
+            parametre_jeu.nb_tours = niveau["nombreTour"];
+            return true;
+        }
+        i++;
+        parametre_jeu.indice_circuit=i;//si le circuit n'existe pas, indice = nombre de circuits dans la liste
     }
-    return "";//sinon on renvoie une chaine vide
+    return false;//sinon on signal que le circuit n'existe pas
 }
 
 /**
@@ -354,10 +361,11 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                     if (event.mouseButton.button == Mouse::Left){
                         for(int i=0; i<5; i++){
                             if (estSelectionne(window, boutonsNiveaux[i])){
-                                parametre_jeu.choix= "Jouer";
-                                parametre_jeu.nom_circuit="niveau_"+to_string(i+1);
-                                parametre_jeu.chemin_circuit=get_path_circuit(parametre_jeu.nom_circuit);
-                                if ( parametre_jeu.chemin_circuit  != "" ) return;
+                                parametre_jeu.nom_circuit = "niveau_" + to_string(i+1);
+                                if ( get_parametre_circuit(parametre_jeu) ) {
+                                    parametre_jeu.choix="Jouer";
+                                    return;
+                                }
                             }
                         }
                         if(estSelectionne(window, boutonRetour)){
@@ -366,7 +374,7 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                     }
                 }
                 for(int i=0; i<5; i++){
-                    if(estSelectionne(window, boutonsNiveaux[i])){
+                    if(estSelectionne(window, boutonsNiveaux[i])) {
                         colorerSelectionne(boutonsNiveaux[i]);
                     }
                     else{
