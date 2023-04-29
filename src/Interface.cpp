@@ -105,11 +105,11 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     int i=0;
     for (auto & prop : terrain.getTabProps())
     {   if (prop.getType() != Tip::nondef)
-        {   cout<<"Prop "<<i++<<" aff ok"<<endl;
-            loadProp(prop);
+        {      loadProp(prop);
+                cout << "p" << i++ << " ";
         }
     }
-    cout << "Chargement terrain ok" << endl;
+    cout << endl << "Chargement terrain ok" << endl;
 }
 
  void Interface::loadVoiture(Voiture & voiture_, string texture_path)
