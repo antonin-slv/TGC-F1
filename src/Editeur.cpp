@@ -14,12 +14,12 @@ void map_pos_to_grid(Vecteur & pos)
 }
 
 void Editeur::boucleEditeur(RenderWindow & window, int volume)
-{   /*
+{
     Music music;
     music.openFromFile("data/sounds/editeur.wav");
-    music.setVolume(volume*2);
+    music.setVolume(volume*4);
     music.setLoop(true);
-    music.play();*/
+    music.play();
 
     interface.loadRefProps();
     cout << "chargement des textures" << endl;
@@ -56,7 +56,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         window.display();
 
     } while (!quitter);
-    //music.stop();
+    music.stop();
 }
 
 bool Editeur::gestionEvent(RenderWindow & window)
