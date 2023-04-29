@@ -523,9 +523,12 @@ bool sauvegarderTemp(Selection const & param, sf::Time temps) {
     // affiche les temps
     cout<<endl<<"Vous avez fait : "<<temps_float<<" secondes"<<endl;
     cout<<"liste des temps :"<<endl;
-    for (auto temps : liste_niveaux[param.indice_circuit]["listeTemps"]) {
-        cout << "   "<<temps["nom"] << " : " << temps["temps"] << endl;
+    if (liste_niveaux[param.indice_circuit].contains("listeTemps"))
+    {   for (auto temps : liste_niveaux[param.indice_circuit]["listeTemps"]) {
+            cout << "   "<<temps["nom"] << " : " << temps["temps"] << endl;
+        }
     }
+    else cout << "   aucun temps enregistré" << endl;
     string pseudo;
     //validation enregistrement du temps
     cout << "Enregistrer votre temps ? (y/n) :";
