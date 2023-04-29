@@ -40,7 +40,7 @@ int main(){
         string action = boucleMenu(window, volume, decalage);
         if (action == "niveau_1"){
             
-            G1.chargerNiveau("data/circuits/testjson2.json",2);
+            G1.chargerNiveau("data/circuits/niveau_1.json",2);
             temps_au_tour.restart();
             temps=G1.boucleJeuSFML(window, temps_au_tour, decalage);
         }

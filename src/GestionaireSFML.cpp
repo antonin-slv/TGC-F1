@@ -21,7 +21,7 @@ void GestionSFML::chargerNiveau(string path, int nb_tours) {
     tab_voit.clear();//on supprime les voitures du jeu
     //on crée une voiture temporaire pour l'interface et on la charge dans l'interface et le jeu
     Voiture Voit_temp = Voiture(Moteur(),Roues(),796,0.14,0,0,0,0,0,0,0);
-    Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
+    Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()-M_PI/2);
     Voit_temp.setPos(terrain.getLigneArrivee().getPos());
     cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");//attribue une hitbox à la voiture et la charge dans l'interface
