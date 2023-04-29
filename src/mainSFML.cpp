@@ -25,6 +25,8 @@ int main(){
     Selection action;
     action.volume = 50;
     action.decalage = 0;
+    action.choix = "menu";
+    action.nb_tours = 3;
     
     GestionSFML G1;
     Editeur E1;
@@ -41,7 +43,7 @@ int main(){
     while (!quitter){
         boucleMenu(window, action);
         if (action.choix == "niveau_1"){
-            G1.chargerNiveau("data/circuits/monza.json",2);
+            G1.chargerNiveau(action.chemin_circuit,action.nb_tours);
             temps_au_tour.restart();
             temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
         }
@@ -67,3 +69,12 @@ int main(){
     }
     return 0;
 }
+
+/* 
+void (*pointeur_fct)(int) = &fonction;
+ou
+void (*pointeur_fct)(int) = fonction;
+
+--> génère un pointeur sur la fonction fonction(int)
+alors, pointeur_fct peut s'utiliser exactement comme fonction(int)
+*/
