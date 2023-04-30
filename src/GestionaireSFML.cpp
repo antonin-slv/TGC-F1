@@ -23,6 +23,7 @@ void GestionSFML::chargerNiveau(string path, int nb_tours) {
     Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
     Voit_temp.setPos(terrain.getLigneArrivee().getPos());
     cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
+    interface.clearVoitures();//on supprime les voitures de l'interface
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");//attribue une hitbox à la voiture et la charge dans l'interface
     ajouterVoiture(Voit_temp);
 }
@@ -41,16 +42,54 @@ string affiche_temps(float t){
     return to_string(minutes) + "\'" + to_string(secondes) + "\"" + to_string(int(t*1000));
 }
 
+//fonction qu'on appelle dans la boucle de jeu
+bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
+    
+    float temps_attente = 3.0f;
+    
+    Clock temps;
+    temps.restart();
+    
+    string timer;
+    Font font;
+    font.loadFromFile("data/fonts/Consolas.ttf");
+    Text texte_sf;
+    initTexteCentre(window,texte_sf, font, 50,"", 150);
+    
+    do {
+        Event event;
+        while (window.pollEvent(event)) {
+            //actions hors jeu ("globales"")
+            if (event.type == Event::KeyPressed){
+                switch (event.key.code){
+                    case Keyboard::Escape :
+                        return false;
+                    case Keyboard::A :
+                        return false;
+                    default:
+                        break;
+                }
+            }          
+        }
+        //on affiche le jeu
+        afficherJeuSFML(window);
+
+        //on affiche le temps d'attente
+        window.setView(window.getDefaultView());
+        timer = affiche_temps(temps_attente-temps.getElapsedTime().asSeconds());
+        initTexteCentre(window,texte_sf, font, 50,timer.substr(2,4), 150);
+        window.draw(texte_sf);
+        //on prépare la caméra pour afficher le circuit
+        View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
+        window.setView(vue);
+        window.display();
+    } while (temps.getElapsedTime().asSeconds() < temps_attente);
+    return true;
+}
+
 
 sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
 {
-    temps_au_tour.restart();
-
-    Clock clock;
-    clock.restart();
-    
-    Clock frames;
-
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
 
@@ -76,6 +115,30 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
 
     bool quitter = false;
     bool gagne = false;
+
+    Color couleur_bouton(255,30,5,200);
+    RectangleShape VICTOIRE;
+    initBoutonCentre(window, VICTOIRE, 100, 600, 100);
+    VICTOIRE.setFillColor(couleur_bouton);
+
+    Text texteVictoire;
+    initTexteCentre(window, texteVictoire, font, 50, "VICTOIRE", 100);
+
+    Text texteTempsCircuit;
+    initTexteCentre(window, texteTempsCircuit, font, 40, "", 200);
+
+    Text infos_sorties;
+    initTexteCentre(window, infos_sorties, font, 30, "Appuyez sur A pour quitter", 250);
+    infos_sorties.setFillColor(Color::White);
+
+    if (!demarageJeuSFML(window)) return sf::seconds(-1);
+    
+    Clock clock;
+    clock.restart();
+    
+    Clock frames;
+    temps_au_tour.restart();
+
     do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
@@ -141,7 +204,17 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         
         // On affiche le jeu
         afficherJeuSFML(window);
-        
+        if (gagne)
+        {   window.setView(window.getDefaultView());
+            window.draw(VICTOIRE);
+            window.draw(texteVictoire);
+            Text & TTT=texteTempsCircuit;
+            TTT.setString("Temps total : "+affiche_temps(temps_circuit.asSeconds()));
+            TTT.setPosition((window.getSize().x-TTT.getLocalBounds().width)/2, TTT.getPosition().y);
+
+            window.draw(TTT);
+            window.draw(infos_sorties);
+        }
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);

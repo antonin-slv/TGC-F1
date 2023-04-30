@@ -16,6 +16,10 @@
                 "temps": 59.671138763427734
             },
             {
+                "nom": "nino",
+                "temps": 54.80261993408203
+            },
+            {
                 "nom": "sipior",
                 "temps": 53.38109588623047
             },
@@ -25,7 +29,7 @@
             }
         ],
         "nom": "niveau_1",
-        "nombreTour": 2,
+        "nombreTour": 1,
         "path": "data/circuits/niveau_1.json"
     },
     {

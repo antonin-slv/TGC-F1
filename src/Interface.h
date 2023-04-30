@@ -51,7 +51,7 @@ class Interface
 
     void supprimerProp(int i=-1);
     void clearProps();
-
+    void clearVoitures();
 
     void loadProp(Props const & prop);
     void loadTerrain(Terrain & terrain,string texture_path);

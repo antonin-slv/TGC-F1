@@ -113,7 +113,12 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
 }
 
  void Interface::loadVoiture(Voiture & voiture_, string texture_path)
- {  Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
+{   
+    if (voiture.getTexture() != nullptr) {
+        cout << "voiture déjà chargée" << endl;
+        return;
+    }
+    Vecteur taille(text_voiture.getSize().x,text_voiture.getSize().y);
     float proportion = taille.y/taille.x;
     //voiture.setScale(taille.x,taille.y);
 
@@ -217,4 +222,14 @@ Sprite & Interface::getProp(int i)
 void Interface::supprimerProp(int i)
 {   if (i == -1) props.pop_back();
     else props.erase(props.begin()+i);
+}
+
+void Interface::clearVoitures() {   
+    /*
+    voiture.rotate(-voiture.getRotation());
+    voiture.setPosition(0,0);
+    voiture.setOrigin(0,0);
+    voiture.scale(1/voiture.getScale().x,1/voiture.getScale().y);
+    //voiture.setTexture(Texture(nullptr));
+    */
 }
