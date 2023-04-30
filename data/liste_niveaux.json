@@ -1,30 +1,10 @@
 [
     {
-        "listeTemps": [
-            {
-                "nom": "test",
-                "temps": 0.0
-            },
-            {
-                "nom": "test2",
-                "temps": 0.0
-            }
-        ],
         "nom": "test",
         "nombreTour": 3,
         "path": "data/circuits/test.json"
     },
     {
-        "listeTemps": [
-            {
-                "nom": "test",
-                "temps": 0.0
-            },
-            {
-                "nom": "test2",
-                "temps": 0.0
-            }
-        ],
         "nom": "testjson2",
         "nombreTour": 2,
         "path": "data/circuits/testjson2.json"
@@ -38,6 +18,10 @@
             {
                 "nom": "sipior",
                 "temps": 53.38109588623047
+            },
+            {
+                "nom": "sipior",
+                "temps": 49.59535217285156
             }
         ],
         "nom": "niveau_1",
