@@ -77,6 +77,22 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
 
     bool quitter = false;
     bool gagne = false;
+
+    Color couleur_bouton(255,30,5,200);
+    RectangleShape VICTOIRE;
+    initBoutonCentre(window, VICTOIRE, 100, 600, 100);
+    VICTOIRE.setFillColor(couleur_bouton);
+
+    Text texteVictoire;
+    initTexteCentre(window, texteVictoire, font, 50, "VICTOIRE", 100);
+
+    Text texteTempsCircuit;
+    initTexteCentre(window, texteTempsCircuit, font, 40, "", 200);
+
+    Text infos_sorties;
+    initTexteCentre(window, infos_sorties, font, 30, "Appuyez sur A pour quitter", 250);
+    infos_sorties.setFillColor(Color::White);
+
     do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
         Event event;
@@ -142,7 +158,17 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         
         // On affiche le jeu
         afficherJeuSFML(window);
-        
+        if (gagne)
+        {   window.setView(window.getDefaultView());
+            window.draw(VICTOIRE);
+            window.draw(texteVictoire);
+            Text & TTT=texteTempsCircuit;
+            TTT.setString("Temps total : "+affiche_temps(temps_circuit.asSeconds()));
+            TTT.setPosition((window.getSize().x-TTT.getLocalBounds().width)/2, TTT.getPosition().y);
+
+            window.draw(TTT);
+            window.draw(infos_sorties);
+        }
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);

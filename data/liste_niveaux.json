@@ -29,7 +29,7 @@
             }
         ],
         "nom": "niveau_1",
-        "nombreTour": 2,
+        "nombreTour": 1,
         "path": "data/circuits/niveau_1.json"
     },
     {
