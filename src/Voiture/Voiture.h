@@ -43,8 +43,6 @@ class Voiture {
 
         float poids, coef_aero;
 
-        /** \brief Actualise l'accélération de la voiture \param dt Delta temps \param theta Angle de la voiture */
-        void calculAcc(float dt=1,float theta=1);
         /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
         void calculVitesse(float dt=1); 
         /** \brief Actualise la position de la voiture (plus précis) \param dt Delta temps */
