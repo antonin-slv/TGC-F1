@@ -1,5 +1,5 @@
-#include "Menu.h"
 #include <iostream>
+#include "Menu.h"
 #include <string>
 #include <SFML/Audio.hpp>
 
@@ -252,7 +252,7 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
     font.loadFromFile("data/fonts/F1.ttf");
 
     Text texteTitre;
-    initTitre(window, texteTitre, font, 100, "The Great Competition :", 50);
+    initTitre(window, texteTitre, font, 100, "The Great Competition", 50);
 
     Text texteSousTitre;
     initTitre(window, texteSousTitre, font, 100, "Fast One", 175);
@@ -442,7 +442,27 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
             }
         }
 
-        window.clear();
+        window.clear(Color::Black);
+
+        Texture fond;
+        fond.loadFromFile("data/images/fond.png");
+        fond.setSmooth(true);
+
+        Texture fond2;
+        fond2.loadFromFile("data/images/fond2.png");
+        fond2.setSmooth(true);
+        
+        Sprite spriteFond(fond);
+        spriteFond.setScale(0.4, 0.4);
+        spriteFond.setPosition(window.getSize().x-spriteFond.getGlobalBounds().width, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
+        
+        Sprite spriteFond2(fond2);
+        spriteFond2.setScale(0.4, 0.4);
+        spriteFond2.setPosition(0, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
+
+        window.draw(spriteFond);
+        window.draw(spriteFond2);
+
         if(!parametre and !choix_niveau){
             window.draw(texteTitre);
             window.draw(texteSousTitre);
@@ -462,8 +482,6 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                 window.draw(boutonsNiveaux[i]);
                 window.draw(textesNiveaux[i]);
             }
-            //window.draw(boutonCharger);
-            //window.draw(texteCharger);
             window.draw(boutonRetour);
             window.draw(texteRetour);
         }

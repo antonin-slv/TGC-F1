@@ -23,7 +23,7 @@ using namespace std;
 
 int main() {
     Selection action;
-    action.volume = 5;
+    action.volume = 50;
     action.decalage = 0;
     action.choix = "menu";
     action.nb_tours = 3;
