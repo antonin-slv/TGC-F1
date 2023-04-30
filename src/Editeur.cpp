@@ -170,7 +170,24 @@ bool Selection_niveau(string & path) {
         
         if (liste_niveaux[i]["nom"] == nom) {
             path = liste_niveaux[i]["path"];
-            return true;
+            //propose de supprimer le circuit
+            cout<<"Supprimer le circuit ? (y/n) : ";
+            cin >> nom;
+            if (nom != "y" && nom != "Y") return true;//on retourne true pour indiquer qu'il faut charger le niveau en lui même
+            cout<<"êtes vous sur ? (y/n) : ";
+            cin >> nom;
+            if (nom != "y" && nom != "Y") return false;//on ne charge pas le circuit
+        
+
+            std::remove(path.c_str());//si on a supprime le fichier, et on continue même si ça n'a pas marché
+            //delete p_path;
+            //on supprime le circuit de la liste
+            liste_niveaux.erase(i);
+            ofstream fichier2;
+            fichier2.open("data/liste_niveaux.json");
+            fichier2 << liste_niveaux.dump(4);
+            fichier2.close();
+            return false;//on ne charge pas le circuit
         }
     } //si on arrive ici, c'est que le circuit n'a pas été trouvé
 
@@ -178,6 +195,7 @@ bool Selection_niveau(string & path) {
     cout<<"Entrer un lien vers un circuit non déclaré (à vos risques et périls) : ";
     cin>> path;
     
+    //on vérifie le chemin
     if (path.find(".json") != path.size()-5)
     {   cout<<"Le fichier doit être au format json"<<endl;
         return false;
