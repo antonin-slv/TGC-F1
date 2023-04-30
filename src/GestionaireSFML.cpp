@@ -42,16 +42,54 @@ string affiche_temps(float t){
     return to_string(minutes) + "\'" + to_string(secondes) + "\"" + to_string(int(t*1000));
 }
 
+//fonction qu'on appelle dans la boucle de jeu
+bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
+    
+    float temps_attente = 3.0f;
+    
+    Clock temps;
+    temps.restart();
+    
+    string timer;
+    Font font;
+    font.loadFromFile("data/fonts/Consolas.ttf");
+    Text texte_sf;
+    initTexteCentre(window,texte_sf, font, 50,"", 150);
+    
+    do {
+        Event event;
+        while (window.pollEvent(event)) {
+            //actions hors jeu ("globales"")
+            if (event.type == Event::KeyPressed){
+                switch (event.key.code){
+                    case Keyboard::Escape :
+                        return false;
+                    case Keyboard::A :
+                        return false;
+                    default:
+                        break;
+                }
+            }          
+        }
+        //on affiche le jeu
+        afficherJeuSFML(window);
+
+        //on affiche le temps d'attente
+        window.setView(window.getDefaultView());
+        timer = affiche_temps(temps_attente-temps.getElapsedTime().asSeconds());
+        initTexteCentre(window,texte_sf, font, 50,timer.substr(2,4), 150);
+        window.draw(texte_sf);
+        //on prépare la caméra pour afficher le circuit
+        View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
+        window.setView(vue);
+        window.display();
+    } while (temps.getElapsedTime().asSeconds() < temps_attente);
+    return true;
+}
+
 
 sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
 {
-    temps_au_tour.restart();
-
-    Clock clock;
-    clock.restart();
-    
-    Clock frames;
-
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
 
@@ -92,6 +130,14 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
     Text infos_sorties;
     initTexteCentre(window, infos_sorties, font, 30, "Appuyez sur A pour quitter", 250);
     infos_sorties.setFillColor(Color::White);
+
+    if (!demarageJeuSFML(window)) return sf::seconds(-1);
+    
+    Clock clock;
+    clock.restart();
+    
+    Clock frames;
+    temps_au_tour.restart();
 
     do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle

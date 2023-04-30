@@ -31,6 +31,8 @@ class GestionSFML : public Jeu
         GestionSFML(int width, int height, std::string title);
 
         ~GestionSFML();
+
+        bool demarageJeuSFML(RenderWindow & window);//!appeller dans la boucle de jeu
         void chargerNiveau(string path, int nb_tours=3);
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
         void afficherJeuSFML(sf::RenderWindow & window);
