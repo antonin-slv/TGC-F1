@@ -123,7 +123,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         Voiture & voit = getVoiture(0);
         Vecteur pos=voit.getPos();
         if (!gagne){
-            affichage=  "Tour : " + to_string(nb_tour+1) + " / " +to_string(nb_tour_max) + "\n" +
+            affichage=  "Tour : " + to_string(nb_tour) + " / " +to_string(nb_tour_max) + "\n" +
                         "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size()) + "\n" +
                         "Vitesse : " + to_string(voit.getVitesse()*3.6) + " km/h \n" +
                         "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +

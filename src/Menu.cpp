@@ -380,14 +380,6 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                     else{
                         colorerNonSelectionne(boutonsNiveaux[i]);
                     }
-                    /*
-                    if(estSelectionne(window, boutonCharger)){
-                        colorerSelectionne(boutonCharger);
-                    }
-                    else{
-                        colorerNonSelectionne(boutonCharger);
-                    }
-                    */
                     if(estSelectionne(window, boutonRetour)){
                         colorerSelectionne(boutonRetour);
                     }
