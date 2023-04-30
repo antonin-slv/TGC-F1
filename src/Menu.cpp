@@ -200,6 +200,8 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
     music.setLoop(true);
     music.play();
 
+    Clock buttonPressed;
+
     //RECTANGLES===================================================================================
 
     //section menu principal
@@ -243,9 +245,6 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
     for(int i=0; i<5; i++){
         initBoutonCentre(window, boutonsNiveaux[i], i*150+100, 300, 75);
     }
-
-    //RectangleShape boutonCharger;
-    //initBoutonDroite(window, boutonCharger, 450, 300, 75);
 
     //TEXTES=======================================================================================
 
@@ -298,10 +297,6 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
         initTexteCentre(window, textesNiveaux[i], font, 35, "Niveau " + to_string(i+1), i*150+100);
     }
 
-    //Text texteCharger;
-    //initTexteDroite(window, texteCharger, font, 35, "Charger", 450);
-
-
     //BOUCLE PRINCIPALE============================================================================
     while (window.isOpen()){
         Event event;
@@ -310,8 +305,9 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                 window.close();
             }
             if(!parametre and !choix_niveau){ //Menu principal ======================================================
-                if (event.type == Event::MouseButtonPressed){
+                if (event.type == Event::MouseButtonPressed && buttonPressed.getElapsedTime().asMilliseconds() > 200){
                     if (event.mouseButton.button == Mouse::Left){
+                        buttonPressed.restart();
                         if (estSelectionne(window, boutonJouer)){
                             choix_niveau = true;
                         }
@@ -357,8 +353,9 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                 }
             }
             if(choix_niveau){
-                if (event.type == Event::MouseButtonPressed){
+                if (event.type == Event::MouseButtonPressed && buttonPressed.getElapsedTime().asMilliseconds() > 200){
                     if (event.mouseButton.button == Mouse::Left){
+                        buttonPressed.restart();
                         for(int i=0; i<5; i++){
                             if (estSelectionne(window, boutonsNiveaux[i])){
                                 parametre_jeu.nom_circuit = "niveau_" + to_string(i+1);
@@ -395,8 +392,9 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                         parametre = false;
                     }
                 }
-                if (event.type == Event::MouseButtonPressed){
+                if (event.type == Event::MouseButtonPressed && buttonPressed.getElapsedTime().asMilliseconds() > 200){
                     if (event.mouseButton.button == Mouse::Left){
+                        buttonPressed.restart();
                         if (estSelectionne(window, boutonRetour)){
                             choix_niveau = false;
                             parametre = false;
