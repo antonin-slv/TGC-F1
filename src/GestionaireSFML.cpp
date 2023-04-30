@@ -93,8 +93,9 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     Font font;//charge la police
     font.loadFromFile("data/fonts/Consolas.ttf");
 
-    Text text;//text pour le coin en haut à gauche (affiché par une fct de l'interface)    text.setFont(font);
-    text.setScale(0.25,0.25);
+    Text text;//text pour le coin en haut à gauche (affiché par une fct de l'interface)
+    text.setFont(font);
+    text.setScale(0.025,0.025);
     
     long int nb_frames = 0;
     float temps = 0;
@@ -219,7 +220,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);
-        afficherDebug(window, text, 75, 0.1, 0.1);
+        afficherDebug(window, text, 75, 0.01, 0.01);
         afficherDebug(window, texte_temps_au_tour, 75, 0.8, 0.01);
         afficherDebug(window, vitesse, 200, 0.8, 0.8);
         window.display();
@@ -232,10 +233,12 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window) {
     window.clear(Color(0,200,0));
     interface.drawTerrain(window);
 
+    /*
     RectangleShape line(Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
     line.setPosition(tab_voit[0].getPos().x, tab_voit[0].getPos().y);
     line.rotate(tab_voit[0].getAngle()*180/M_PI);
     window.draw(line);
+    */
 
     //interface.drawVoitureHitbox(window,tab_voit[0]);
     interface.drawVoiture(window, tab_voit[0]);
