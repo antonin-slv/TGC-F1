@@ -64,7 +64,7 @@ int Jeu::update(ActionClavier const & Action)
     bool on_road = false;
     bool on_grass = false;
     //gestion des collisions avec les props
-    bool arrivee = (Voit.getCheckpoint()==(int)terrain.getOrdreCheckpoint().size()-1);
+    bool arrivee = (Voit.getCheckpoint()==(int)terrain.getOrdreCheckpoint().size());
 
     int code_sortie = 0;
     for (int i=0; i<terrain.getNbProps(); i++)

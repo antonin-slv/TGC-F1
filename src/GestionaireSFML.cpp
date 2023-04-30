@@ -152,7 +152,8 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
     cout << "nb frames : " << nb_frames << endl;
     cout << "temps : " << temps << endl;
     cout << "fps_moy : " << nb_frames/temps << endl<<endl;
-    return temps_circuit;
+    if (gagne) return temps_circuit;
+    else return sf::seconds(-1);
 }
 
 

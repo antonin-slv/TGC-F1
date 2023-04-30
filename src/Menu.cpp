@@ -506,6 +506,8 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 
 
 bool sauvegarderTemp(Selection const & param, float temps) {
+    
+    if (temps < 0.5) return false;
     ifstream fich_liste("data/liste_niveaux.json");
     json liste_niveaux;
     fich_liste >> liste_niveaux;
