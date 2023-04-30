@@ -28,6 +28,12 @@ Interface::Interface()
     //ctor
 }
 
+Interface::~Interface()
+{   props.clear();
+    ref_props.clear();
+    //dtor
+}
+
 void Interface::clearProps()
 {   props.clear();
 }
@@ -91,6 +97,7 @@ void Interface::loadProp(Props const &  prop)
 
 void Interface::loadTerrain(Terrain & terrain,string texture_path)
 {
+    props.clear();
     Vecteur hitbox;
     Vecteur pos;
     int i=0;

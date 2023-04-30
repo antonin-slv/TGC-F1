@@ -47,6 +47,7 @@ class Interface
 
     Sprite voiture;
     Interface();
+    ~Interface();
 
     void supprimerProp(int i=-1);
     void clearProps();
