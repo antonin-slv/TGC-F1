@@ -21,7 +21,7 @@ using namespace sf;
 using json = nlohmann::json; // pour le json
 using namespace std;
 
-int main(){
+int main() {
     Selection action;
     action.volume = 5;
     action.decalage = 0;

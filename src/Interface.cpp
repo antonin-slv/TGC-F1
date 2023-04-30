@@ -23,6 +23,7 @@ Interface::Interface()
     cout<<"Interface loaded"<<endl;
 
     text_voiture.loadFromFile("data/voitures/F1.png");
+    text_voiture_ombre.loadFromFile("data/voitures/F1_ombre.png");
     cout<<"Cars loaded"<<endl;
     //ctor
 }
@@ -129,6 +130,10 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     voiture.scale(2.2*hitbox.y/taille.x,2.2*hitbox.y/taille.x);//inversés par rapport au reste...
     voiture.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
     
+    voiture_ombre.setTexture(text_voiture_ombre);
+    voiture_ombre.scale(2.2*hitbox.y/taille.x,2.2*hitbox.y/taille.x);//inversés par rapport au reste...
+    voiture_ombre.setOrigin(text_voiture.getSize().x/2,text_voiture.getSize().y/2);
+
     //ajoute une voiture de la classe voiture
     voiture_.setHitbox(hitbox);
     cout<<"Hitbox : "<<hitbox.x<<" "<<hitbox.y<<endl;
@@ -138,9 +143,17 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
  }
 
  void Interface::drawVoiture(RenderWindow & window, Voiture & voiture_)
- {  voiture.setPosition(voiture_.getPos().x,voiture_.getPos().y);
+ {  
+    Vecteur pos = voiture_.getPos();
+    voiture.setPosition(pos.x,pos.y);
     voiture.setRotation(-90+voiture_.getAngle()*180/M_PI);
+    if (voiture_ombre.getTexture() != nullptr) {
+        voiture_ombre.setPosition(pos.x,pos.y+0.2);
+        voiture_ombre.setRotation(-90+voiture_.getAngle()*180/M_PI);
+        window.draw(voiture_ombre);
+    }
     window.draw(voiture);
+   
     
 
  }

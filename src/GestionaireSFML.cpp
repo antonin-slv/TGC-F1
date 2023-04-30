@@ -29,12 +29,12 @@ void GestionSFML::chargerNiveau(string path, int nb_tours) {
 }
 
 
-GestionSFML::~GestionSFML()
-{   tab_voit.clear();
+GestionSFML::~GestionSFML() {
+    tab_voit.clear();
     cout<<"fin destruction gestionnaire"<<endl;
 }
 
-string affiche_temps(float t){
+string affiche_temps(float t) {
     int minutes = floor(t/60);
     t-=minutes*60;
     int secondes = floor(t);
@@ -88,8 +88,7 @@ bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
 }
 
 
-sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage)
-{
+sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage) {
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
 
@@ -231,8 +230,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
 
 
 
-void GestionSFML::afficherJeuSFML(RenderWindow & window)
-{   
+void GestionSFML::afficherJeuSFML(RenderWindow & window) {   
     window.clear(Color(0,200,0));
     interface.drawTerrain(window);
 
@@ -245,80 +243,63 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window)
     interface.drawVoiture(window, tab_voit[0]);
 }
 
-void getActionClavier(Event event, ActionClavier & action)
-{   if (event.type == Event::KeyPressed){
-        switch (event.key.code){
+void getActionClavier(Event event, ActionClavier & action) {
+    if (event.type == Event::KeyPressed){
+        switch (event.key.code) {
             case Keyboard::Z :
                 action.accelere=true;
                 break;
-
             case Keyboard::S :
                 action.freine=true;
                 break;
-
             case Keyboard::Q :
                 action.gauche=true;
                 break;
-
             case Keyboard::D :
                 action.droite=true;
                 break;
-            
             case Keyboard::Up :
                 action.accelere=true;
                 break;
-            
             case Keyboard::Down :
                 action.freine=true;
                 break;
-            
             case Keyboard::Left :
                 action.gauche=true;
                 break;
-            
             case Keyboard::Right :
                 action.droite=true;
                 break;
-
             default:
                 break;
         }
     }
-    else if (event.type == Event::KeyReleased){
-
+    else if (event.type == Event::KeyReleased) {
         switch (event.key.code){
             case Keyboard::Z :
                 action.accelere=false;
                 break;
-
             case Keyboard::S :
                 action.freine=false;
                 break;
-            
             case Keyboard::Q :
                 action.gauche=false;
                 break;
-
             case Keyboard::D :
                 action.droite=false;
                 break;
-            
             case Keyboard::Up :
                 action.accelere=false;
                 break;
-            
             case Keyboard::Down :
                 action.freine=false;
                 break;
-            
             case Keyboard::Left :
                 action.gauche=false;
                 break;
-            
             case Keyboard::Right :
                 action.droite=false;
                 break;
-
             default:
                 break;
         }

@@ -41,6 +41,8 @@ class Interface
     Texture turn4;
 
     Texture text_voiture;//temporaire en attente de multiple voitures
+    Texture text_voiture_ombre;//pour l'ombre de la voiture
+    Sprite voiture_ombre;
     public :
 
     View vue;
