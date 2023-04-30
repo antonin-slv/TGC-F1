@@ -38,7 +38,6 @@ int main() {
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     Time temps;
-
     
     while (!quitter){
         boucleMenu(window, action);

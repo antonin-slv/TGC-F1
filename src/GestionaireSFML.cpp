@@ -239,7 +239,7 @@ void GestionSFML::afficherJeuSFML(RenderWindow & window) {
     line.rotate(tab_voit[0].getAngle()*180/M_PI);
     window.draw(line);
 
-    interface.drawVoitureHitbox(window,tab_voit[0]);
+    //interface.drawVoitureHitbox(window,tab_voit[0]);
     interface.drawVoiture(window, tab_voit[0]);
 }
 

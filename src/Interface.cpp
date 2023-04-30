@@ -154,11 +154,10 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
     }
     window.draw(voiture);
    
-    
-
  }
- void Interface::drawVoitureHitbox(RenderWindow & window, Voiture & voiture_)
- {  RectangleShape hit_box(Vector2f(voiture_.getHitbox().x*2, voiture_.getHitbox().y*2));
+ 
+ void Interface::drawVoitureHitbox(RenderWindow & window, Voiture & voiture_) {
+    RectangleShape hit_box(Vector2f(voiture_.getHitbox().x*2, voiture_.getHitbox().y*2));
     hit_box.setOrigin(voiture_.getHitbox().x, voiture_.getHitbox().y);
     hit_box.setRotation(voiture_.getAngle()*180/M_PI);
     hit_box.setFillColor(Color(255,0,0,150));
@@ -168,8 +167,8 @@ void Interface::loadTerrain(Terrain & terrain,string texture_path)
  }
  
 
-void Interface::drawTerrain(RenderWindow & window)
-{  for (long unsigned int i = 0; i < props.size(); i++) window.draw(props[i]);
+void Interface::drawTerrain(RenderWindow & window) {
+    for (long unsigned int i = 0; i < props.size(); i++) window.draw(props[i]);
 }
 
 void Interface::loadRefProps()
@@ -195,9 +194,7 @@ void Interface::loadRefProps()
     }
 }
 
-void Interface::drawRefProps(RenderWindow & window)
-{   
-    
+void Interface::drawRefProps(RenderWindow & window) {   
     window.setView(window.getDefaultView());
 
     RectangleShape menu(Vector2f(105, window.getSize().y));
@@ -212,10 +209,9 @@ void Interface::drawRefProps(RenderWindow & window)
 Tip Interface::refPropSelected(RenderWindow const & window)
 {   Vector2i mouse_pos = Mouse::getPosition(window);
    
-    if (mouse_pos.x<95 && mouse_pos.y>30 && mouse_pos.x>10)
-    {   
-        for (int i = 0; (Tip)i != Tip::end_of_class; i++)
-        {   if ((Tip) i == Tip::nondef) continue;
+    if (mouse_pos.x<95 && mouse_pos.y>30 && mouse_pos.x>10) {   
+        for (int i = 0; (Tip)i != Tip::end_of_class; i++) {
+            if ((Tip) i == Tip::nondef) continue;
             if (mouse_pos.y>90*i && mouse_pos.y<90*(i+1)-5) return Tip(i);
         }
     }
