@@ -52,5 +52,25 @@
         "nom": "niveau_3",
         "nombreTour": 2,
         "path": "data/circuits/niveau_3.json"
+    },
+    {
+        "nom": "silverstone",
+        "nombreTour": 2,
+        "path": "data/circuits/silverstone.json"
+    },
+    {
+        "nom": "niveau_4",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_4.json"
+    },
+    {
+        "nom": "monaco",
+        "nombreTour": 2,
+        "path": "data/circuits/monaco.json"
+    },
+    {
+        "nom": "niveau_5",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_5.json"
     }
 ]
