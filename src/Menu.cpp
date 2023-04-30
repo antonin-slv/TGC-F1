@@ -297,6 +297,23 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
         initTexteCentre(window, textesNiveaux[i], font, 35, "Niveau " + to_string(i+1), i*150+100);
     }
 
+    //IMAGES DE FOND================================================================================
+    Texture fond;
+    fond.loadFromFile("data/images/fond.png");
+    fond.setSmooth(true);
+
+    Texture fond2;
+    fond2.loadFromFile("data/images/fond2.png");
+    fond2.setSmooth(true);
+    
+    Sprite spriteFond(fond);
+    spriteFond.setScale(0.4, 0.4);
+    spriteFond.setPosition(window.getSize().x-spriteFond.getGlobalBounds().width, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
+    
+    Sprite spriteFond2(fond2);
+    spriteFond2.setScale(0.4, 0.4);
+    spriteFond2.setPosition(0, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
+
     //BOUCLE PRINCIPALE============================================================================
     while (window.isOpen()){
         Event event;
@@ -442,24 +459,9 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
             }
         }
 
+
+        //AFFICHAGE================================================================================================
         window.clear(Color::Black);
-
-        Texture fond;
-        fond.loadFromFile("data/images/fond.png");
-        fond.setSmooth(true);
-
-        Texture fond2;
-        fond2.loadFromFile("data/images/fond2.png");
-        fond2.setSmooth(true);
-        
-        Sprite spriteFond(fond);
-        spriteFond.setScale(0.4, 0.4);
-        spriteFond.setPosition(window.getSize().x-spriteFond.getGlobalBounds().width, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
-        
-        Sprite spriteFond2(fond2);
-        spriteFond2.setScale(0.4, 0.4);
-        spriteFond2.setPosition(0, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
-
         window.draw(spriteFond);
         window.draw(spriteFond2);
 

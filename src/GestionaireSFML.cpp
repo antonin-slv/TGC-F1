@@ -144,6 +144,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
 
     do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
+        //cout<<"debut boucle";
         Event event;
         nb_frames++;
         temps+=frame_time;
