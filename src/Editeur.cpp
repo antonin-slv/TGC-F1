@@ -484,5 +484,14 @@ void Editeur::lier_window(RenderWindow & window)
     rectangle_selectionne.setPosition(pos.x,pos.y);
     window.draw(rectangle_selectionne);//celui du prop selectionné
 
+    //test taille circuit
+    RectangleShape rectangle_circuit(Vector2f(2*longueur, 2*largeur));
+    rectangle_circuit.setOrigin(longueur, largeur);
+    rectangle_circuit.setOutlineColor(Color::Red);
+    rectangle_circuit.setFillColor(Color::Transparent);
+    rectangle_circuit.setOutlineThickness(10);
+    rectangle_circuit.setPosition(0,0);
+    window.draw(rectangle_circuit);
+    
     interface.drawRefProps(window);
 }

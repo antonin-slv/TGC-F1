@@ -117,13 +117,19 @@ bool Terrain::chargerJSON(string const & path){
     nb_props = tab["Props"].size();
     int j=0;
     Props temp;
-    for (int i=0; i<nb_props; i++)
+    largeur = 0;
+    longueur = 0;
+    for (int i=0; i<nb_props; i++) //charge les props dans le tableau de props
     {  
         if (temp.chargerJSON(tab["Props"][i])) {
             tab_props.push_back(temp);
+            //définit la largeur et la longueur du terrain à partir des props
+            if (abs(temp.getY()) > largeur) largeur = abs(temp.getY());
+            if (abs(temp.getX()) > longueur) longueur = abs(temp.getX());
         } else j++;
     }
-
+    largeur+=50;
+    longueur+=50;
     //parcour le tableau d'ordre des checkpoints du Json(l'élément 1 => le ième prop est un le 'it[i]' ème checkpoint 
     //et ajoute les pointeurs vers les props correspondants dans le tableau de pointeurs vers les checkpoints
  

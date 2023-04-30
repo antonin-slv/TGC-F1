@@ -47,7 +47,7 @@ bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
     
     float temps_attente = 3.0f;
     
-    Clock temps;
+    Clock temps;//temps depuis le début du démarage du jeu
     temps.restart();
     
     string timer;
@@ -89,11 +89,11 @@ bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
 
 
 Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage) {
-    Font font;
+    
+    Font font;//charge la police
     font.loadFromFile("data/fonts/Consolas.ttf");
 
-    Text text;
-    text.setFont(font);
+    Text text;//text pour le coin en haut à gauche (affiché par une fct de l'interface)    text.setFont(font);
     text.setScale(0.025,0.025);
     
     long int nb_frames = 0;
@@ -101,9 +101,9 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     Time temps_circuit = seconds(0);
 
     cout << "debut ok" << endl;
-    ActionClavier action;
+    
 
-    Text texte_temps_au_tour;
+    Text texte_temps_au_tour;//texte paramétré pour afficher le temps au tour
     texte_temps_au_tour.setFont(font);
     texte_temps_au_tour.setScale(0.025,0.025);
 
@@ -117,25 +117,37 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     Color couleur_bouton(255,30,5,200);
     RectangleShape VICTOIRE;
     initBoutonCentre(window, VICTOIRE, 100, 600, 100);
-    VICTOIRE.setFillColor(couleur_bouton);
-
+    VICTOIRE.setFillColor(couleur_bouton);//carré dans lequel on écrit "VICTOIRE"
     Text texteVictoire;
-    initTexteCentre(window, texteVictoire, font, 50, "VICTOIRE", 100);
+    initTexteCentre(window, texteVictoire, font, 50, "VICTOIRE", 100);//texte "VICTOIRE" avec le même centre que le rectangle
 
     Text texteTempsCircuit;
-    initTexteCentre(window, texteTempsCircuit, font, 40, "", 200);
+    initTexteCentre(window, texteTempsCircuit, font, 40, "", 200);//écrit le temps du circuit si on setString
 
-    Text infos_sorties;
+    Text infos_sorties;//info sur comment sortir du jeu
     initTexteCentre(window, infos_sorties, font, 30, "Appuyez sur A pour quitter", 250);
     infos_sorties.setFillColor(Color::White);
+    //fin écran de fin
 
     if (!demarageJeuSFML(window)) return seconds(-1);
     window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
-    Clock clock;
+    
+
+    bool quitter = false;
+    bool gagne = false;
+    ActionClavier action;//action à effectuer par le joueur
+
+    long int nb_frames = 0;//nombre de frames depuis le début de la boucle
+    float temps = 0;//temps écoulé dans la simultation
+    sf::Time temps_circuit = sf::seconds(0);//temps écoulé depuis le début du circuit, mais en SFML
+
+
+    //on démarre les chrono
+    Clock clock;//temps réel de la boucle
     clock.restart();
     
-    Clock frames;
-    temps_au_tour.restart();
+    Clock frames;//utilisée pour calculer le temps entre deux frames
+    temps_au_tour.restart();//chrono qui mesure le temps au tour
 
     do {
     // On traite tous les évènements de la fenêtre qui ont été générés depuis la dernière itération de la boucle
