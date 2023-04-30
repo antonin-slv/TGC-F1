@@ -34,6 +34,10 @@
             {
                 "nom": "ninotnas",
                 "temps": 59.671138763427734
+            },
+            {
+                "nom": "sipior",
+                "temps": 53.38109588623047
             }
         ],
         "nom": "niveau_1",
@@ -49,5 +53,20 @@
         "nom": "monza",
         "nombreTour": 2,
         "path": "data/circuits/monza.json"
+    },
+    {
+        "nom": "niveau_2",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_2.json"
+    },
+    {
+        "nom": "spa",
+        "nombreTour": 2,
+        "path": "data/circuits/spa.json"
+    },
+    {
+        "nom": "niveau_3",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_3.json"
     }
 ]
