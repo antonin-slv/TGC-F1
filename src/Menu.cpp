@@ -505,35 +505,37 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 }
 
 
-bool sauvegarderTemp(Selection const & param, sf::Time temps) {
+bool sauvegarderTemp(Selection const & param, float temps) {
     ifstream fich_liste("data/liste_niveaux.json");
     json liste_niveaux;
     fich_liste >> liste_niveaux;
     fich_liste.close();
     
-    float temps_float = temps.asSeconds();
     // affiche les temps
-    cout<<endl<<"Vous avez fait : "<<temps_float<<" secondes"<<endl;
+    cout<<endl<<"Vous avez fait : "<<temps<<" secondes"<<endl;
     cout<<"liste des temps :"<<endl;
-    for (auto temps : liste_niveaux[param.indice_circuit]["listeTemps"]) {
-        cout << "   "<<temps["nom"] << " : " << temps["temps"] << endl;
+    if (liste_niveaux[param.indice_circuit].contains("listeTemps"))
+    {   for (auto temps_ : liste_niveaux[param.indice_circuit]["listeTemps"]) {
+            cout << "   "<<temps_["nom"] << " : " << temps_["temps"] << endl;
+        }
     }
+    else cout << "   aucun temps enregistré" << endl;
     string pseudo;
     //validation enregistrement du temps
     cout << "Enregistrer votre temps ? (y/n) :";
     cin >> pseudo;
-    if (pseudo != "y" || pseudo != "Y") return false;
+    if (pseudo != "y" && pseudo != "Y") return false;
 
     // enregistrement du temps dans l'objet json
     cout << "Entrez votre pseudo : ";
     cin>>pseudo;
     json nouveau_temps;
     nouveau_temps["nom"] = pseudo;
-    nouveau_temps["temps"] = temps_float;
+    nouveau_temps["temps"] = temps;
     liste_niveaux[param.indice_circuit]["listeTemps"].push_back(nouveau_temps);
     // enregistrement dans le fichier lui même
     ofstream fichier("data/liste_niveaux.json");
-    fichier << liste_niveaux;
+    fichier << liste_niveaux.dump(4);
     fichier.close();
     return true;
 }
