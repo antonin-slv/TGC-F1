@@ -131,7 +131,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
     infos_sorties.setFillColor(Color::White);
 
     if (!demarageJeuSFML(window)) return sf::seconds(-1);
-    
+    window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
     Clock clock;
     clock.restart();
     

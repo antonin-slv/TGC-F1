@@ -454,8 +454,19 @@ void Editeur::lier_window(RenderWindow & window)
      window.clear(Color::Black);
     afficherDebug(window, text);
     interface.drawTerrain(window);
+    
+    //affiche un carré bleu sur chaque prop d'herbe
+    for (auto prop : tab_props) {
+        if (prop.getType() == Tip::grass) {
+            RectangleShape rectangle(Vector2f(1, 1));
+            rectangle.setFillColor(Color::Blue);
+            rectangle.setPosition(prop.getX()-0.5, prop.getY()-0.5);
+            window.draw(rectangle);
+        }
+    }
     window.setView(interface.vue);
 
+    //Rectangle autour de la case de la souris
     RectangleShape rectangle_selectionne(Vector2f(14,14));
     rectangle_selectionne.setOutlineColor(Color::Red);
     rectangle_selectionne.setFillColor(Color::Transparent);
@@ -463,14 +474,15 @@ void Editeur::lier_window(RenderWindow & window)
     //fait en sorte de lier le rectangle à la interface.vue
     Vector2f pos2 = window.mapPixelToCoords(Mouse::getPosition(window));
     Vecteur pos(pos2.x, pos2.y);
-    map_pos_to_grid(pos);
+    map_pos_to_grid(pos);//force les coordonnées à être sur la grille
     rectangle_selectionne.setPosition(pos.x, pos.y);
     window.draw(rectangle_selectionne);//celui de la souris
+    //rectangle autour du prop selectionné
     rectangle_selectionne.setOutlineColor(Color::Blue);
     rectangle_selectionne.setOrigin(7,7);
     pos=tab_props[prop_selectionne].getPos();
     rectangle_selectionne.setPosition(pos.x,pos.y);
-    window.draw(rectangle_selectionne);//celui selectionné
+    window.draw(rectangle_selectionne);//celui du prop selectionné
 
     interface.drawRefProps(window);
 }

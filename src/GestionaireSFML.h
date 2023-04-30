@@ -25,7 +25,6 @@ class GestionSFML : public Jeu
 
         Interface interface;
         
-        
     public :
         GestionSFML();
         GestionSFML(int width, int height, std::string title);
