@@ -94,7 +94,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     font.loadFromFile("data/fonts/Consolas.ttf");
 
     Text text;//text pour le coin en haut à gauche (affiché par une fct de l'interface)    text.setFont(font);
-    text.setScale(0.025,0.025);
+    text.setScale(0.25,0.25);
     
     long int nb_frames = 0;
     float temps = 0;
@@ -131,16 +131,8 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
 
     if (!demarageJeuSFML(window)) return seconds(-1);
     window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
-    
 
-    bool quitter = false;
-    bool gagne = false;
     ActionClavier action;//action à effectuer par le joueur
-
-    long int nb_frames = 0;//nombre de frames depuis le début de la boucle
-    float temps = 0;//temps écoulé dans la simultation
-    sf::Time temps_circuit = sf::seconds(0);//temps écoulé depuis le début du circuit, mais en SFML
-
 
     //on démarre les chrono
     Clock clock;//temps réel de la boucle
@@ -199,6 +191,8 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
                         "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size());
             texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
             vitesse.setString(to_string(int(voit.getVitesse()*3.6))+" km/h");
+            float v = abs(voit.getVitesse()*3.6);
+            vitesse.setFillColor(Color(255, 255-v*v/255, 255-v));
         }
         else{
             affichage = "Victoire ! \nTemps : " + to_string(temps_circuit.asSeconds()) + "\n";
@@ -224,7 +218,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);
-        afficherDebug(window, text, 75, 0.01, 0.01);
+        afficherDebug(window, text, 75, 0, 0);
         afficherDebug(window, texte_temps_au_tour, 75, 0.8, 0.01);
         afficherDebug(window, vitesse, 200, 0.8, 0.8);
         window.display();
