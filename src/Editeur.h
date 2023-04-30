@@ -16,6 +16,7 @@
 #include <fstream>
 
 using namespace std;
+using namespace sf;
 
 /**
  * @brief Classe de l'éditeur de terrain (non finie)

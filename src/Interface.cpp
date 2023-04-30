@@ -32,24 +32,14 @@ void Interface::clearProps()
 {   props.clear();
 }
 
-void afficherDebug(RenderWindow & window, Text & text)
+void afficherDebug(RenderWindow & window, Text & text, int charac_size, float _x, float _y)
 {   
     // Dessins
-    text.setPosition(window.mapPixelToCoords(Vector2i(10, 10)));
+    text.setPosition(window.mapPixelToCoords(Vector2i(window.getSize().x*_x,window.getSize().y*_y)));
+    text.setCharacterSize(charac_size);
     
     window.draw(text);
-
 }
-
-void afficherDebug2(RenderWindow & window, Text & text)
-{   
-    // Dessins
-    text.setPosition(window.mapPixelToCoords(Vector2i(window.getSize().x*0.82, 10)));
-    
-    window.draw(text);
-
-}
-
 
 Texture * Interface::getTexture(Tip type)
 {   switch (type)

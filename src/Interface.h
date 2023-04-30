@@ -18,9 +18,7 @@ struct Editeur;
 using namespace std;
 using namespace sf;
 
-void afficherDebug(RenderWindow & window, Text & text);
-
-void afficherDebug2(RenderWindow & window, Text & text);
+void afficherDebug(RenderWindow & window, Text & text, int charac_size, float _x, float _y);
 
 class Interface
 {   private :
@@ -50,7 +48,6 @@ class Interface
     Sprite voiture;
     Interface();
 
-
     void supprimerProp(int i=-1);
     void clearProps();
     void clearVoitures();
@@ -59,7 +56,6 @@ class Interface
     void loadTerrain(Terrain & terrain,string texture_path);
     void loadVoiture(Voiture & voiture_, string texture_path);
     void loadRefProps();
-
 
     void drawTerrain(RenderWindow & window);
     void drawVoiture(RenderWindow & window,Voiture & voiture_);

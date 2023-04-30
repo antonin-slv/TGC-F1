@@ -88,29 +88,28 @@ bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
 }
 
 
-sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage) {
+Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage) {
     Font font;
     font.loadFromFile("data/fonts/Consolas.ttf");
 
     Text text;
-
-    // select the font
-    text.setFont(font); // font is a Font
-    // set the character size
-    text.setCharacterSize(50); // in pixels, not points!
+    text.setFont(font);
     text.setScale(0.025,0.025);
     
     long int nb_frames = 0;
     float temps = 0;
-    sf::Time temps_circuit = sf::seconds(0);
+    Time temps_circuit = seconds(0);
 
     cout << "debut ok" << endl;
     ActionClavier action;
 
     Text texte_temps_au_tour;
     texte_temps_au_tour.setFont(font);
-    texte_temps_au_tour.setCharacterSize(50);
     texte_temps_au_tour.setScale(0.025,0.025);
+
+    Text vitesse;
+    vitesse.setFont(font);
+    vitesse.setScale(0.025,0.025);
 
     bool quitter = false;
     bool gagne = false;
@@ -130,7 +129,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
     initTexteCentre(window, infos_sorties, font, 30, "Appuyez sur A pour quitter", 250);
     infos_sorties.setFillColor(Color::White);
 
-    if (!demarageJeuSFML(window)) return sf::seconds(-1);
+    if (!demarageJeuSFML(window)) return seconds(-1);
     window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
     Clock clock;
     clock.restart();
@@ -183,23 +182,19 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         
         //actualise position des voitures du jeu pour le texte ET L'OFFSET DE LA VUE !!!
         Voiture & voit = getVoiture(0);
-        Vecteur pos=voit.getPos();
         if (!gagne){
-            affichage=  "Tour : " + to_string(nb_tour) + " / " +to_string(nb_tour_max) + "\n" +
-                        "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size()) + "\n" +
-                        "Vitesse : " + to_string(voit.getVitesse()*3.6) + " km/h \n" +
-                        "Position : " + to_string(pos.x) + " , " + to_string(pos.y) + "\n" +
-                        "Orientation : " + to_string(voit.getAngle()*180/M_PI) + "\n";
+            affichage = "Tour : " + to_string(nb_tour+1) + " / " +to_string(nb_tour_max) + "\n" +
+                        "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size());
+            texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
+            vitesse.setString(to_string(int(voit.getVitesse()*3.6))+" km/h");
         }
-        else affichage=  "Victoire ! \nTemps : " + to_string(temps_circuit.asSeconds()) + "\n";
-        
-        affichage+= "temps in game :" + to_string(temps) + " s\ncontre : " + to_string(clock.getElapsedTime().asSeconds()) + " s IRL\n";
-        affichage+= "frame time : " + to_string(frame_time) + "\n"
-                    "fps : " + to_string(1/frame_time) + "\n";
+        else{
+            affichage = "Victoire ! \nTemps : " + to_string(temps_circuit.asSeconds()) + "\n";
+            texte_temps_au_tour.setString("");
+            vitesse.setString("");
+        }
         
         text.setString(affichage);
-        
-        texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
         
         // On affiche le jeu
         afficherJeuSFML(window);
@@ -217,24 +212,20 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);
-        afficherDebug(window, text);
-        afficherDebug2(window, texte_temps_au_tour);
+        afficherDebug(window, text, 75, 0.01, 0.01);
+        afficherDebug(window, texte_temps_au_tour, 75, 0.8, 0.01);
+        afficherDebug(window, vitesse, 200, 0.8, 0.8);
         window.display();
     } while (!quitter);
-    cout << "nb frames : " << nb_frames << endl;
-    cout << "temps : " << temps << endl;
-    cout << "fps_moy : " << nb_frames/temps << endl<<endl;
     if (gagne) return temps_circuit;
-    else return sf::seconds(-1);
+    else return seconds(-1);
 }
-
-
 
 void GestionSFML::afficherJeuSFML(RenderWindow & window) {   
     window.clear(Color(0,200,0));
     interface.drawTerrain(window);
 
-    sf::RectangleShape line(sf::Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
+    RectangleShape line(Vector2f(tab_voit[0].getVitesse()/2.2/1.25, 0.5));
     line.setPosition(tab_voit[0].getPos().x, tab_voit[0].getPos().y);
     line.rotate(tab_voit[0].getAngle()*180/M_PI);
     window.draw(line);

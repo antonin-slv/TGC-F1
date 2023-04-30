@@ -50,7 +50,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         lier_window(window);
         text.setScale(0.3/(float)zoom,0.3/(float)zoom);
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
-        afficherDebug(window, text);
+        afficherDebug(window, text, 50, 0.01, 0.01);
         window.draw(text);
 
         window.display();
@@ -252,7 +252,7 @@ bool Editeur::gestionEvent(RenderWindow & window)
                 }
             }       
         }
-        else if (event.type == sf::Event::MouseWheelScrolled)
+        else if (event.type == Event::MouseWheelScrolled)
         {   int delta = event.mouseWheelScroll.delta;
             zoom_(delta);
         }
@@ -262,7 +262,7 @@ bool Editeur::gestionEvent(RenderWindow & window)
 
 void Editeur::gestionSouris(RenderWindow const & window)
 {   //gestion des actions souris
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if (Mouse::isButtonPressed(Mouse::Left))
     {   
         Vector2i mouse_position = Mouse::getPosition(window);
         Vector2f local_mouse_pos = window.mapPixelToCoords(mouse_position);
@@ -452,7 +452,7 @@ void Editeur::lier_window(RenderWindow & window)
     text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));
     Text balek;
      window.clear(Color::Black);
-    afficherDebug(window, text);
+    afficherDebug(window, text, 50, 0, 0);
     interface.drawTerrain(window);
     
     //affiche un carré bleu sur chaque prop d'herbe
