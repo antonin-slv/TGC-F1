@@ -23,6 +23,7 @@ void GestionSFML::chargerNiveau(string path, int nb_tours) {
     Voit_temp.setRotation(terrain.getLigneArrivee().getRotation()+M_PI/2);
     Voit_temp.setPos(terrain.getLigneArrivee().getPos());
     cout<<"position voiture :"<<Voit_temp.getPos().x<<" "<<Voit_temp.getPos().y<<endl;
+    interface.clearVoitures();//on supprime les voitures de l'interface
     interface.loadVoiture(Voit_temp,"data/cars/F1.png");//attribue une hitbox à la voiture et la charge dans l'interface
     ajouterVoiture(Voit_temp);
 }

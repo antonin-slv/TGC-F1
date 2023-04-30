@@ -51,7 +51,6 @@ int main(){
             if ( sauvegarderTemp(action, temps.asSeconds())) cout<<"Temps enregistré"<<endl;
             else cout<<"Temps non enregistré"<<endl;
             window.setVisible(true);
-
         }
         else if (action.choix == "editeur"){
             E1.boucleEditeur(window, action.volume);

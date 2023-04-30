@@ -507,7 +507,7 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 
 bool sauvegarderTemp(Selection const & param, float temps) {
     
-    if (temps < 0.5) return false;
+    
     ifstream fich_liste("data/liste_niveaux.json");
     json liste_niveaux;
     fich_liste >> liste_niveaux;
@@ -522,8 +522,15 @@ bool sauvegarderTemp(Selection const & param, float temps) {
         }
     }
     else cout << "   aucun temps enregistré" << endl;
+
     string pseudo;
     //validation enregistrement du temps
+    if (temps < 2.0) {
+        cout<<"Eh ben, il faut le finir le circuit !"<<endl;
+        cout<<"entrez n'importe quoi pour continuer : ";
+        cin>>pseudo;
+        return false;// si le temps est trop court, on ne l'enregistre pas
+    }
     cout << "Enregistrer votre temps ? (y/n) :";
     cin >> pseudo;
     if (pseudo != "y" && pseudo != "Y") return false;
