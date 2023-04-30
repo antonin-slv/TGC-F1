@@ -192,7 +192,8 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
             texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
             vitesse.setString(to_string(int(voit.getVitesse()*3.6))+" km/h");
             float v = abs(voit.getVitesse()*3.6);
-            vitesse.setFillColor(Color(255, 255-v*v/255, 255-v));
+            if(v>255) v=255;
+            vitesse.setFillColor(Color(255, sqrt(255*255-v*v), 255-v));
         }
         else{
             affichage = "Victoire ! \nTemps : " + to_string(temps_circuit.asSeconds()) + "\n";
