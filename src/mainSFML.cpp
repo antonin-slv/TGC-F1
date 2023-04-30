@@ -46,6 +46,11 @@ int main(){
             G1.chargerNiveau(action.chemin_circuit,action.nb_tours);
             temps_au_tour.restart();
             temps=G1.boucleJeuSFML(window, temps_au_tour, action.decalage);
+            window.setVisible(false);
+            //on enregistre le temps dans la liste des temps du circuit
+
+            window.setVisible(true);
+
         }
         else if (action.choix == "editeur"){
             E1.boucleEditeur(window, action.volume);

@@ -120,7 +120,7 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         string affichage;
         
         
-        //actualise position des voitures du jeu pour le texte
+        //actualise position des voitures du jeu pour le texte ET L'OFFSET DE LA VUE !!!
         Voiture & voit = getVoiture(0);
         Vecteur pos=voit.getPos();
         if (!gagne){
@@ -143,8 +143,8 @@ sf::Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour
         // On affiche le jeu
         afficherJeuSFML(window);
         
-        View vue(interface.voiture.getPosition(), Vector2f(96.f, 54.f));
-        vue.move(cos(getVoiture(0).getAngle()) * getVoiture(0).getVitesse() * decalage/24 ,decalage/24 * sin(getVoiture(0).getAngle())*getVoiture(0).getVitesse());
+        View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
+        vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);
         afficherDebug(window, text);
         afficherDebug2(window, texte_temps_au_tour);

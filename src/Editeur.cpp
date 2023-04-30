@@ -129,6 +129,7 @@ bool Sauvegarder_Niveau_txtGlobal(string & path) {
     fichier << liste_niveaux.dump(4);
     fichier.close();
 
+    path = param.chemin_circuit;
     //si on arrive ici, c'est que la liste des niveaux a été mise à jour
     return true;//on retourne true pour indiquer qu'il faut sauvegarder le niveau en lui même
 }
@@ -149,14 +150,24 @@ bool Selection_niveau(string & path) {
     fichier >> liste_niveaux;
     fichier.close();
     cout<<endl;
-    for (int i=0; i< (int) liste_niveaux.size(); i++)
-    {   cout<<i<<" : "<<liste_niveaux[i]["nom"];
-        cout<<" ( "<<liste_niveaux[i]["nombreTour"]<<" tours )"<<endl;
+    int i=0;
+    for (auto niveau : liste_niveaux)
+    {   cout<<i<<" : "<<niveau["nom"];
+        cout<<" ( "<<niveau["nombreTour"]<<" tours )"<<endl;
+        if (!niveau.contains("listeTemps")) cout<<"    Aucun temps enregistré"<<endl;
+        else {
+            cout<<"    Temps enregistrés :"<<endl;
+            for (auto temps : niveau["listeTemps"])
+            {   cout<<"    "<<temps["nom"]<<" : "<<temps["temps"]<<endl;
+            }
+        }
+        i++;
     }
     //demande le nom du circuit à charger
     cout<<"entrer le nom du circuit :";
     cin>>nom;
     for (int i=0; i< (int)liste_niveaux.size(); i++) {
+        
         if (liste_niveaux[i]["nom"] == nom) {
             path = liste_niveaux[i]["path"];
             return true;
