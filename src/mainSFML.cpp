@@ -35,7 +35,7 @@ int main(){
 
     E1.charger("data/circuits/test.json");
     bool quitter = false;
-    RenderWindow window(VideoMode(1920, 1080), "TGC : F1");
+    RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
     Time temps;
 
