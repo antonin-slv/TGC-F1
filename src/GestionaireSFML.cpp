@@ -219,7 +219,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         View vue(interface.voiture.getPosition(), Vector2f(128.f, 72.f));
         vue.move(cos(voit.getAngle()) * voit.getVitesse() * decalage/24 ,decalage/24 * sin(voit.getAngle())*voit.getVitesse());
         window.setView(vue);
-        afficherDebug(window, text, 75, 0, 0);
+        afficherDebug(window, text, 75, 0.1, 0.1);
         afficherDebug(window, texte_temps_au_tour, 75, 0.8, 0.01);
         afficherDebug(window, vitesse, 200, 0.8, 0.8);
         window.display();
