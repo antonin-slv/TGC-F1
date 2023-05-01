@@ -221,7 +221,8 @@ Sprite & Interface::dernierProp()
 }
 
 Sprite & Interface::getProp(int i)
-{   return props[i];
+{   if (i < 0) return props[props.size()+i];
+    return props[i];
 }
 
 

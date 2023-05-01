@@ -130,7 +130,10 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
     infos_sorties.setFillColor(Color::White);
     //fin écran de fin
 
-    if (!demarageJeuSFML(window)) return seconds(-1);
+    if (!demarageJeuSFML(window)) {   
+        cout<<"Jeu arrêté avant d'avoir commencé"<<endl;
+        return seconds(-1);
+    }
     window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
 
     ActionClavier action;//action à effectuer par le joueur

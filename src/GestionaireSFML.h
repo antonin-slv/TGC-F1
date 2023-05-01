@@ -29,25 +29,52 @@ class GestionSFML : public Jeu
 
         Interface interface;
         
+        /** \brief temporisation du début du jeu (laisse le temps à l'utilisateur de comprendre) 
+         *  \param window Fenêtre de rendu
+         * \return true si le jeu doit continuer, false si l'utilisateur a appuyé sur echap ou a pour fermer
+        */
+        bool demarageJeuSFML(RenderWindow & window);//!appeller dans la boucle de jeu
     public :
-        
+        /** \brief Constructeur par défaut
+         * ne fait que mettre le zoom à 1
+        */
         GestionSFML();
-        GestionSFML(int width, int height, std::string title);
 
+        /** \brief Destructeur par défaut
+         * purment figuratif : montre que le destructeur est appelé
+        */
         ~GestionSFML();
 
-        bool demarageJeuSFML(RenderWindow & window);//!appeller dans la boucle de jeu
+        /** \brief charge un nouveau niveau
+         * \param path chemin du fichier json contenant la liste des props
+         * \param nb_tours nombre de tours à faire pour gagner
+        */
         void chargerNiveau(string path, int nb_tours=3);
-        void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
+
+        
+        /** \brief boucle principale du jeu en SFML 
+         *  \param window Fenêtre de rendu
+         * \param temps_au_tour clock qui permet de savoir combien de temps s'est écoulé depuis le dernier tour
+         *  \param decalage point auquel la caméra est décalée par apport à la voiture
+        */
+        Time boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage=0);
+        /** \brief affiche le jeu avec SFML
+         * demande à l'interface d'afficher les éléments (Terrain et voiture)
+         * \param window Fenêtre de rendu
+        */
         void afficherJeuSFML(RenderWindow & window);
-        Time boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage);
 
-        float afficheTemps(float t);
-
+        /** \brief test certaines fonctions de la classe 
+         * \return true si les tests sont réussis, false sinon 
+        */
         bool test_regression();
 
 };
 
+/** \brief passe l'action à effectuer en fonction de l'évènement clavier
+ * \param event évènement clavier
+ * \param action action à effectuer
+*/
 void getActionClavier(Event event, ActionClavier & action);
 
 #endif
