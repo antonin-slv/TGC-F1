@@ -8,15 +8,6 @@ using namespace sf;
 
 //DEFINITION DES FONCTIONS=========================================================================
 
-/**
- * @brief Genere un rectangle au centre de l'ecran pour servir de corps au bouton
- * 
- * @param window La fenêtre de jeu
- * @param rectangle Le rectangle à initialiser
- * @param y La hauteur sur l'ecran
- * @param largeur Largeur du bouton
- * @param hauteur Hauteur du bouton
- */
 void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     rectangle.setFillColor(Color::Transparent);
     rectangle.setOutlineThickness(3);
@@ -25,58 +16,11 @@ void initBoutonCentre(RenderWindow & window, RectangleShape & rectangle, int y, 
     rectangle.setPosition((window.getSize().x-largeur)/2, y);
 }
 
-/**
- * @brief Genere un rectangle sur la partie gauche de l'ecran pour servir de corps au bouton
- * 
- * @param window La fenêtre de jeu
- * @param rectangle Le rectangle à initialiser
- * @param y La hauteur sur l'ecran
- * @param largeur Largeur du bouton
- * @param hauteur Hauteur du bouton
- */
-void initBoutonGauche(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
-    initBoutonCentre(window, rectangle, y, largeur, hauteur);
-    rectangle.setPosition((window.getSize().x*2/3-largeur)/2, y);
-}
-
-/**
- * @brief Genere un rectangle sur la partie droite de l'ecran pour servir de corps au bouton
- * 
- * @param window La fenêtre de jeu
- * @param rectangle Le rectangle à initialiser
- * @param y La hauteur sur l'ecran
- * @param largeur Largeur du bouton
- * @param hauteur Hauteur du bouton
- */
-void initBoutonDroite(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
-    initBoutonCentre(window, rectangle, y, largeur, hauteur);
-    rectangle.setPosition((window.getSize().x*4/3-largeur)/2, y);
-}
-
-/**
- * @brief Genere un rectangle au centre de l'ecran pour servir de curseur
- * 
- * @param window La fenêtre de jeu
- * @param rectangle Le rectangle à initialiser
- * @param y La hauteur sur l'ecran
- * @param largeur Largeur du bouton
- * @param hauteur Hauteur du bouton
- */
 void initCurseur(RenderWindow & window, RectangleShape & rectangle, int y, int largeur, int hauteur){
     initBoutonCentre(window, rectangle, y, largeur, hauteur);
     rectangle.setFillColor(Color::White);
 }
 
-/**
- * @brief Genere un texte au centre de l'ecran à la hauteur y
- * 
- * @param window La fenêtre de jeu
- * @param texte L'objet texte à initialiser
- * @param font La police à utiliser
- * @param taille la taille du texte 
- * @param txt Le texte à écrire
- * @param y la hauteur sur l'ecran
- */
 void initTexteCentre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     texte.setFont(font);
     texte.setCharacterSize(taille);
@@ -85,71 +29,20 @@ void initTexteCentre(RenderWindow & window, Text & texte, Font & font, int taill
     texte.setPosition((window.getSize().x-texte.getLocalBounds().width)/2, y+15);
 }
 
-/**
- * @brief Genere un texte sur la partie gauche de l'ecran à la hauteur y
- * 
- * @param window La fenêtre de jeu
- * @param texte L'objet texte à initialiser
- * @param font La police à utiliser
- * @param taille la taille du texte 
- * @param txt Le texte à écrire
- * @param y La hauteur sur l'ecran
- */
-void initTexteGauche(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
-    initTexteCentre(window, texte, font, taille, txt, y);
-    texte.setPosition((window.getSize().x*2/3 - texte.getGlobalBounds().width)/2, y+15);
-}
-
-void initTexteDroite(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
-    initTexteCentre(window, texte, font, taille, txt, y);
-    texte.setPosition((window.getSize().x*4/3 - texte.getGlobalBounds().width)/2, y+15);
-}
-
-/**
- * @brief Genere un titre
- * 
- * @param window La fenêtre de jeu
- * @param texte L'objet texte à initialiser
- * @param font La police à utiliser
- * @param taille la taille du texte 
- * @param txt Le texte à écrire
- * @param y La hauteur sur l'ecran
- */
 void initTitre(RenderWindow & window, Text & texte, Font & font, int taille, string txt, int y){
     initTexteCentre(window, texte, font, taille, txt, y);
     texte.setFillColor(Color::Red);
 }
 
-/**
- * @brief Retourne si la souris est sur un bouton
- * 
- * @param window La fenêtre de jeu
- * @param texte L'objet texte à initialiser
- * @param font La police à utiliser
- * @param taille la taille du texte 
- * @param txt Le texte à écrire
- * @param y La hauteur sur l'ecran
- * @return bool Si la souris est sur le bouton
- */
 bool estSelectionne(RenderWindow & window, RectangleShape & rectangle){
     return rectangle.getGlobalBounds().contains(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
 }
 
-/**
- * @brief Colore le bouton en selectionné
- * 
- * @param rectangle Le rectangle à colorer
- */
 void colorerSelectionne(RectangleShape & rectangle){
     rectangle.setFillColor(Color(32,32,32));
     rectangle.setOutlineColor(Color::Red);
 }
 
-/**
- * @brief Colore le bouton en non selectionné
- * 
- * @param rectangle Le rectangle à colorer
- */
 void colorerNonSelectionne(RectangleShape & rectangle){
     rectangle.setFillColor(Color::Transparent);
     rectangle.setOutlineColor(Color::White);
@@ -178,13 +71,6 @@ bool get_parametre_circuit(Selection & parametre_jeu) {
     return false;//sinon on signal que le circuit n'existe pas
 }
 
-/**
- * @brief Affiche le menu
- * 
- * @param window La fenêtre de jeu
- * @param parametre_jeu Stocke les paramètres du jeu, notamment le volume et le niveau
-
- */
 void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 
     //INITIALISATION===============================================================================
@@ -525,13 +411,11 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
 
 bool sauvegarderTemp(Selection const & param, float temps) {
     
-    
     ifstream fich_liste("data/liste_niveaux.json");
     json liste_niveaux;
     fich_liste >> liste_niveaux;
     fich_liste.close();
     
-    // affiche les temps
     cout<<endl<<"Vous avez fait : "<<temps<<" secondes"<<endl;
     cout<<"liste des temps :"<<endl;
     if (liste_niveaux[param.indice_circuit].contains("listeTemps"))
@@ -542,25 +426,23 @@ bool sauvegarderTemp(Selection const & param, float temps) {
     else cout << "   aucun temps enregistré" << endl;
 
     string pseudo;
-    //validation enregistrement du temps
     if (temps < 2.0) {
         cout<<"Eh ben, il faut le finir le circuit !"<<endl;
         cout<<"entrez n'importe quoi pour continuer : ";
         cin>>pseudo;
-        return false;// si le temps est trop court, on ne l'enregistre pas
+        return false;
     }
     cout << "Enregistrer votre temps ? (y/n) :";
     cin >> pseudo;
     if (pseudo != "y" && pseudo != "Y") return false;
 
-    // enregistrement du temps dans l'objet json
     cout << "Entrez votre pseudo : ";
     cin>>pseudo;
     json nouveau_temps;
     nouveau_temps["nom"] = pseudo;
     nouveau_temps["temps"] = temps;
     liste_niveaux[param.indice_circuit]["listeTemps"].push_back(nouveau_temps);
-    // enregistrement dans le fichier lui même
+
     ofstream fichier("data/liste_niveaux.json");
     fichier << liste_niveaux.dump(4);
     fichier.close();
