@@ -46,10 +46,11 @@ void calculCoordonnee(float & x, float & y, float angle, float vitesse, float dt
 void calculCoordonnee_precise(float & x, float & y, float angle, float vitesse, float acc, float dt);
 
 /**
- * @brief Rotation des coordonnées
+ * @brief Rotation des coordonnées x et y passées par référence, dans le sens trigonométrique
  * 
  * @param x passé par référence
  * @param y passé par référence
+ * 
  * @param angle 
  */
 void rotation_xy(float & x, float & y, float angle);

@@ -55,9 +55,11 @@ class Voiture {
         /** \brief Actualise la voiture \n !!penser à mettre a jour les action avant  \param dt Delta temps */
         void update(float dt=1/60);
 
-
+        /** \brief Remplace la rotation de la voiture par \param angle_  nouvel angle*/
         void setRotation(float angle_);
+        /** \brief Envoie la voiture en \param pos_ nouvelle position*/
         void setPos(Vecteur pos_);
+        /** \brief Remplace la hitbox de la voiture \param hitbox_ nouvelle hitbox*/
         void setHitbox(Vecteur hitbox_);
 
         /** \brief Constructeur par défaut \return Voiture */
@@ -133,11 +135,15 @@ class Voiture {
          */
         void crash(Vecteur diff, float anglemur);
 
+        /** \brief ralentit la voiture quand elle est sur l'herbe\n à utiliser dans l'update \param dt temps d'une frame */
         void on_grass(float dt=1/60);
 
-        void passer_checkpoint(bool arrivée=false);
-        int getCheckpoint() const;//numéro du dernier checkpoint passé (-1 si aucun/le dernier)
+        /** \brief fait passer le checkpoint à la voiture \param arrivee true si on est sur la ligne d'arrivée*/
+        void passer_checkpoint(bool arrivee=false);
+        /** \brief retourne le numéro du dernier checkpoint passé \return -1 si c'est la ligne d'arrivée */
+        int getCheckpoint() const;
 
+        /** \brief réinitialise la voiture \param pos nouvelle position \param angle nouvel angle */
         void restart(Vecteur pos=Vecteur(0,0), float angle=0);
 };
 

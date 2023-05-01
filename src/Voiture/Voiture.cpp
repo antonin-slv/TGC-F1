@@ -229,7 +229,7 @@ void Voiture::setHitbox(Vecteur hitbox_)
     hitbox = hitbox_;
 }
 
-void Voiture::passer_checkpoint(bool arrivée)
+void Voiture::passer_checkpoint(bool arrivee)
 {   
     if (arrivée) numero_checkpoint = -1;
     else numero_checkpoint++;
