@@ -71,13 +71,12 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classProps-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Props Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>La classe <a class="el" href="classProps.html" title="La classe Props.">Props</a>.  
+<p>La classe <a class="el" href="classProps.html" title="La classe Props Modules de base d&#39;un terrain.">Props</a> Modules de base d'un terrain.  
  <a href="classProps.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Terrain_8h_source.html">Terrain.h</a>&gt;</code></p>
@@ -114,31 +113,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc9c008375853928b54cb8de401a3d0d"><td class="memItemLeft" align="right" valign="top">Tip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#adc9c008375853928b54cb8de401a3d0d">getType</a> () const</td></tr>
 <tr class="memdesc:adc9c008375853928b54cb8de401a3d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type.  <br /></td></tr>
 <tr class="separator:adc9c008375853928b54cb8de401a3d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa04f12c90c55f281401782b6e928b8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#aa04f12c90c55f281401782b6e928b8da">prop_set_type</a> (Tip t)</td></tr>
-<tr class="memdesc:aa04f12c90c55f281401782b6e928b8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne le type.  <br /></td></tr>
-<tr class="separator:aa04f12c90c55f281401782b6e928b8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c5d1f121cb3ade19f1f3fd936c87d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#a33c5d1f121cb3ade19f1f3fd936c87d1">setProp</a> (int px, int py, float rot=0, float nl=0, float nL=0)</td></tr>
-<tr class="memdesc:a33c5d1f121cb3ade19f1f3fd936c87d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne la position.  <br /></td></tr>
-<tr class="separator:a33c5d1f121cb3ade19f1f3fd936c87d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad378ad87830ffb8f184229d396865809"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#ad378ad87830ffb8f184229d396865809">set_type</a> (Tip t)</td></tr>
+<tr class="memdesc:ad378ad87830ffb8f184229d396865809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace le type.  <br /></td></tr>
+<tr class="separator:ad378ad87830ffb8f184229d396865809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe4837b3f0553411d6cf2ebd00fde2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#a0fe4837b3f0553411d6cf2ebd00fde2f">setHitbox</a> (<a class="el" href="classVecteur.html">Vecteur</a> const &amp;hitbox)</td></tr>
+<tr class="memdesc:a0fe4837b3f0553411d6cf2ebd00fde2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de donner une nouvelle hitbox  <br /></td></tr>
+<tr class="separator:a0fe4837b3f0553411d6cf2ebd00fde2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac00fae05366209131d642fbe86b3052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#aac00fae05366209131d642fbe86b3052">setRot</a> (float rot=0)</td></tr>
+<tr class="memdesc:aac00fae05366209131d642fbe86b3052"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de donner une nouvelle rotation  <br /></td></tr>
+<tr class="separator:aac00fae05366209131d642fbe86b3052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5f706ae86afc1d20398dc5441ccfd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#a5a5f706ae86afc1d20398dc5441ccfd2">setPos</a> (<a class="el" href="classVecteur.html">Vecteur</a> const &amp;pos)</td></tr>
+<tr class="memdesc:a5a5f706ae86afc1d20398dc5441ccfd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de donner une nouvelle position  <br /></td></tr>
+<tr class="separator:a5a5f706ae86afc1d20398dc5441ccfd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a52dd2a5547f81a6f373bedde31e41a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProps.html#a2a52dd2a5547f81a6f373bedde31e41a">chargerJSON</a> (json const &amp;obj)</td></tr>
-<tr class="memdesc:a2a52dd2a5547f81a6f373bedde31e41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les données depuis un fichier JSON.  <br /></td></tr>
+<tr class="memdesc:a2a52dd2a5547f81a6f373bedde31e41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les données du prop depuis un fichier JSON.  <br /></td></tr>
 <tr class="separator:a2a52dd2a5547f81a6f373bedde31e41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a08dab30c52d9d01538d599e0c2f05911"><td class="memItemLeft" align="right" valign="top"><a id="a08dab30c52d9d01538d599e0c2f05911" name="a08dab30c52d9d01538d599e0c2f05911"></a>
-<a class="el" href="classVecteur.html">Vecteur</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b></td></tr>
-<tr class="separator:a08dab30c52d9d01538d599e0c2f05911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f90e4a189c1ba05ceb9776cc4ce0105"><td class="memItemLeft" align="right" valign="top"><a id="a4f90e4a189c1ba05ceb9776cc4ce0105" name="a4f90e4a189c1ba05ceb9776cc4ce0105"></a>
-<a class="el" href="classVecteur.html">Vecteur</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hitbox</b></td></tr>
-<tr class="memdesc:a4f90e4a189c1ba05ceb9776cc4ce0105"><td class="mdescLeft">&#160;</td><td class="mdescRight">!la largeur et longueur sont la moitié de leur taille réelle -&gt; calcul plus simple <br /></td></tr>
-<tr class="separator:a4f90e4a189c1ba05ceb9776cc4ce0105"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9588ee120973dcba9a8261b57bea872"><td class="memItemLeft" align="right" valign="top"><a id="ad9588ee120973dcba9a8261b57bea872" name="ad9588ee120973dcba9a8261b57bea872"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></tr>
-<tr class="separator:ad9588ee120973dcba9a8261b57bea872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>La classe <a class="el" href="classProps.html" title="La classe Props.">Props</a>. </p>
+<div class="textblock"><p>La classe <a class="el" href="classProps.html" title="La classe Props Modules de base d&#39;un terrain.">Props</a> Modules de base d'un terrain. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8c536a129516681899157a8293c9ae05" name="a8c536a129516681899157a8293c9ae05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c536a129516681899157a8293c9ae05">&#9670;&#160;</a></span>Props() <span class="overload">[1/2]</span></h2>
@@ -156,7 +148,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></t
 </div><div class="memdoc">
 
 <p>Constructeur par défaut. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props.">Props</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props Modules de base d&#39;un terrain.">Props</a> </dd></dl>
 
 </div>
 </div>
@@ -222,7 +214,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></t
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props.">Props</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props Modules de base d&#39;un terrain.">Props</a> </dd></dl>
 
 </div>
 </div>
@@ -243,14 +235,14 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></t
       </table>
 </div><div class="memdoc">
 
-<p>Charge les données depuis un fichier JSON. </p>
+<p>Charge les données du prop depuis un fichier JSON. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>Objet JSON </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>booléen vrai si la fonction a marchée </dd></dl>
 
 </div>
 </div>
@@ -414,14 +406,14 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></t
 
 </div>
 </div>
-<a id="aa04f12c90c55f281401782b6e928b8da" name="aa04f12c90c55f281401782b6e928b8da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa04f12c90c55f281401782b6e928b8da">&#9670;&#160;</a></span>prop_set_type()</h2>
+<a id="ad378ad87830ffb8f184229d396865809" name="ad378ad87830ffb8f184229d396865809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad378ad87830ffb8f184229d396865809">&#9670;&#160;</a></span>set_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Props::prop_set_type </td>
+          <td class="memname">void Props::set_type </td>
           <td>(</td>
           <td class="paramtype">Tip&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
@@ -430,66 +422,88 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b></td></t
       </table>
 </div><div class="memdoc">
 
-<p>Donne le type. </p>
+<p>Remplace le type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>Type </td></tr>
+    <tr><td class="paramname">t</td><td>Nouveau Type </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
-<a id="a33c5d1f121cb3ade19f1f3fd936c87d1" name="a33c5d1f121cb3ade19f1f3fd936c87d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33c5d1f121cb3ade19f1f3fd936c87d1">&#9670;&#160;</a></span>setProp()</h2>
+<a id="a0fe4837b3f0553411d6cf2ebd00fde2f" name="a0fe4837b3f0553411d6cf2ebd00fde2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe4837b3f0553411d6cf2ebd00fde2f">&#9670;&#160;</a></span>setHitbox()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Props::setProp </td>
+          <td class="memname">void Props::setHitbox </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>px</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="classVecteur.html">Vecteur</a> const &amp;&#160;</td>
+          <td class="paramname"><em>hitbox</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>py</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>rot</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>nl</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>nL</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Donne la position. </p>
+<p>permet de donner une nouvelle hitbox </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">px</td><td>Position en x </td></tr>
-    <tr><td class="paramname">py</td><td>Position en y </td></tr>
+    <tr><td class="paramname">hitbox</td><td>nouvelle hitbox </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a5f706ae86afc1d20398dc5441ccfd2" name="a5a5f706ae86afc1d20398dc5441ccfd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5f706ae86afc1d20398dc5441ccfd2">&#9670;&#160;</a></span>setPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Props::setPos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVecteur.html">Vecteur</a> const &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de donner une nouvelle position </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>nouvelle position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac00fae05366209131d642fbe86b3052" name="aac00fae05366209131d642fbe86b3052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac00fae05366209131d642fbe86b3052">&#9670;&#160;</a></span>setRot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Props::setRot </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rot</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de donner une nouvelle rotation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rot</td><td>nouvelle rotation </td></tr>
   </table>
   </dd>
 </dl>

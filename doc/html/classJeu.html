@@ -71,49 +71,97 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classJeu-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Jeu Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Classe du jeu.  
+<p>Classe du jeu sans interface graphique.  
  <a href="classJeu.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Jeu_8h_source.html">Jeu.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Jeu:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classJeu.png" usemap="#Jeu_map" alt=""/>
+  <map id="Jeu_map" name="Jeu_map">
+<area href="classGestionSFML.html" title="classe Gestion SFML, héritée de jeu" alt="GestionSFML" shape="rect" coords="0,56,88,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acc5795ee00edf75516d3dfe65be3e6d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#acc5795ee00edf75516d3dfe65be3e6d6">Jeu</a> ()</td></tr>
-<tr class="memdesc:acc5795ee00edf75516d3dfe65be3e6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
+<tr class="memdesc:acc5795ee00edf75516d3dfe65be3e6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut, figuratif.  <br /></td></tr>
 <tr class="separator:acc5795ee00edf75516d3dfe65be3e6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc67a177622f4ef264a376ef1f75ba1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#afc67a177622f4ef264a376ef1f75ba1b">Jeu</a> (string const &amp;nom_fichier)</td></tr>
-<tr class="memdesc:afc67a177622f4ef264a376ef1f75ba1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec paramètres.  <br /></td></tr>
-<tr class="separator:afc67a177622f4ef264a376ef1f75ba1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09207b0267ba358807506cb3ac66b247"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a09207b0267ba358807506cb3ac66b247">Jeu</a> (string path)</td></tr>
+<tr class="memdesc:a09207b0267ba358807506cb3ac66b247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec le lien du <a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a> à charger.  <br /></td></tr>
+<tr class="separator:a09207b0267ba358807506cb3ac66b247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cd19e73df169d7f09397be61ba8548c"><td class="memItemLeft" align="right" valign="top"><a id="a9cd19e73df169d7f09397be61ba8548c" name="a9cd19e73df169d7f09397be61ba8548c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Jeu</b> ()</td></tr>
-<tr class="memdesc:a9cd19e73df169d7f09397be61ba8548c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br /></td></tr>
+<tr class="memdesc:a9cd19e73df169d7f09397be61ba8548c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur explicite la destruction des voitures. <br /></td></tr>
 <tr class="separator:a9cd19e73df169d7f09397be61ba8548c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b5b107671761a6bb963475bf4ecc8dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTerrain.html">Terrain</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a4b5b107671761a6bb963475bf4ecc8dd">getTerrain</a> ()</td></tr>
-<tr class="memdesc:a4b5b107671761a6bb963475bf4ecc8dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug pour tenter de charger un terrain.  <br /></td></tr>
-<tr class="separator:a4b5b107671761a6bb963475bf4ecc8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb4cb30c5d7039d001b50c5b68626bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTerrain.html">Terrain</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a0fb4cb30c5d7039d001b50c5b68626bc">getTerrain</a> ()</td></tr>
+<tr class="memdesc:a0fb4cb30c5d7039d001b50c5b68626bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une référence au terrain.  <br /></td></tr>
+<tr class="separator:a0fb4cb30c5d7039d001b50c5b68626bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1348607f76e505e28c78c74a775f2723"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classVoiture.html">Voiture</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a1348607f76e505e28c78c74a775f2723">getVoiture</a> (int i=0)</td></tr>
-<tr class="memdesc:a1348607f76e505e28c78c74a775f2723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debug pour tenter de charger une voiture (non fait)  <br /></td></tr>
+<tr class="memdesc:a1348607f76e505e28c78c74a775f2723"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la ieme voiture du jeu  <br /></td></tr>
 <tr class="separator:a1348607f76e505e28c78c74a775f2723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9dbaa848dea8028c6f9f29ca805d22c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#ad9dbaa848dea8028c6f9f29ca805d22c">getNbTours</a> () const</td></tr>
+<tr class="memdesc:ad9dbaa848dea8028c6f9f29ca805d22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de tours effectués par le joueur.  <br /></td></tr>
+<tr class="separator:ad9dbaa848dea8028c6f9f29ca805d22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb0bf538fb219564204ad6b0df43224"><td class="memItemLeft" align="right" valign="top"><a id="affb0bf538fb219564204ad6b0df43224" name="affb0bf538fb219564204ad6b0df43224"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>restart</b> ()</td></tr>
+<tr class="memdesc:affb0bf538fb219564204ad6b0df43224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise le niveau (voitures, checkpoint, tours...) chaque voiture est aussi réinitialisée (position, vitesse, rotation; numéro de checkpoint) <br /></td></tr>
+<tr class="separator:affb0bf538fb219564204ad6b0df43224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a988460e745f29d87e906426398defd29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a988460e745f29d87e906426398defd29">setframe_time</a> (float const &amp;tps)</td></tr>
 <tr class="memdesc:a988460e745f29d87e906426398defd29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le temps d'une frame.  <br /></td></tr>
 <tr class="separator:a988460e745f29d87e906426398defd29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a560639838f39e1efccdbfbcc58b55c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a560639838f39e1efccdbfbcc58b55c4a">ChargerTerrain</a> (string const &amp;nom_fichier)</td></tr>
-<tr class="memdesc:a560639838f39e1efccdbfbcc58b55c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un terrain.  <br /></td></tr>
-<tr class="separator:a560639838f39e1efccdbfbcc58b55c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb2cf017710624992195dbd9555da8d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#adb2cf017710624992195dbd9555da8d3">AjouterVoiture</a> (<a class="el" href="classVoiture.html">Voiture</a> const &amp;V)</td></tr>
-<tr class="memdesc:adb2cf017710624992195dbd9555da8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une voiture.  <br /></td></tr>
-<tr class="separator:adb2cf017710624992195dbd9555da8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af495db0e53f321a43a83b3e8041b8415"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#af495db0e53f321a43a83b3e8041b8415">update</a> (char const &amp;touche)</td></tr>
-<tr class="memdesc:af495db0e53f321a43a83b3e8041b8415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le jeu.  <br /></td></tr>
-<tr class="separator:af495db0e53f321a43a83b3e8041b8415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bda73f98a2fa81c8725d0c9d5011c35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a4bda73f98a2fa81c8725d0c9d5011c35">ChargerTerrain</a> (string path, int nb_tours=3)</td></tr>
+<tr class="memdesc:a4bda73f98a2fa81c8725d0c9d5011c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un terrain, pose la voiture au bon endroit.  <br /></td></tr>
+<tr class="separator:a4bda73f98a2fa81c8725d0c9d5011c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cf0ae3906e467080f93dc231bbaac0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a34cf0ae3906e467080f93dc231bbaac0">ajouterVoiture</a> (<a class="el" href="classVoiture.html">Voiture</a> const &amp;V)</td></tr>
+<tr class="memdesc:a34cf0ae3906e467080f93dc231bbaac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une voiture.  <br /></td></tr>
+<tr class="separator:a34cf0ae3906e467080f93dc231bbaac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16dd1e8776e98e44b3d6043ed9060e82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJeu.html#a16dd1e8776e98e44b3d6043ed9060e82">update</a> (<a class="el" href="structActionClavier.html">ActionClavier</a> const &amp;action)</td></tr>
+<tr class="memdesc:a16dd1e8776e98e44b3d6043ed9060e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le jeu.  <br /></td></tr>
+<tr class="separator:a16dd1e8776e98e44b3d6043ed9060e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a280e269c42d0dc1b6358f60038fc172a"><td class="memItemLeft" align="right" valign="top"><a id="a280e269c42d0dc1b6358f60038fc172a" name="a280e269c42d0dc1b6358f60038fc172a"></a>
+<a class="el" href="classTerrain.html">Terrain</a>&#160;</td><td class="memItemRight" valign="bottom"><b>terrain</b></td></tr>
+<tr class="memdesc:a280e269c42d0dc1b6358f60038fc172a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circuit du jeu. <br /></td></tr>
+<tr class="separator:a280e269c42d0dc1b6358f60038fc172a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc5653dbace1feba8e2c9fc57df2611"><td class="memItemLeft" align="right" valign="top"><a id="a3cc5653dbace1feba8e2c9fc57df2611" name="a3cc5653dbace1feba8e2c9fc57df2611"></a>
+vector&lt; <a class="el" href="classVoiture.html">Voiture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tab_voit</b></td></tr>
+<tr class="memdesc:a3cc5653dbace1feba8e2c9fc57df2611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau dynamique des voitures. <br /></td></tr>
+<tr class="separator:a3cc5653dbace1feba8e2c9fc57df2611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad46e8f0c5406647089285ad75e5a4965"><td class="memItemLeft" align="right" valign="top"><a id="ad46e8f0c5406647089285ad75e5a4965" name="ad46e8f0c5406647089285ad75e5a4965"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>frame_time</b></td></tr>
+<tr class="memdesc:ad46e8f0c5406647089285ad75e5a4965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temps d'une frame utilisé pour la physique (s'update à chaque frame pour avoir un comportement logique) <br /></td></tr>
+<tr class="separator:ad46e8f0c5406647089285ad75e5a4965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec31746dfacb189fff6fea239acc1cab"><td class="memItemLeft" align="right" valign="top"><a id="aec31746dfacb189fff6fea239acc1cab" name="aec31746dfacb189fff6fea239acc1cab"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_voit</b></td></tr>
+<tr class="memdesc:aec31746dfacb189fff6fea239acc1cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de voitures (toujours 1 ici) <br /></td></tr>
+<tr class="separator:aec31746dfacb189fff6fea239acc1cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11fc4382cc189344b786303e0f9464a5"><td class="memItemLeft" align="right" valign="top"><a id="a11fc4382cc189344b786303e0f9464a5" name="a11fc4382cc189344b786303e0f9464a5"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_tour_max</b> =1</td></tr>
+<tr class="memdesc:a11fc4382cc189344b786303e0f9464a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de tours avant de gagner. <br /></td></tr>
+<tr class="separator:a11fc4382cc189344b786303e0f9464a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4132856ea34c3de6146ac0ffef419ff"><td class="memItemLeft" align="right" valign="top"><a id="af4132856ea34c3de6146ac0ffef419ff" name="af4132856ea34c3de6146ac0ffef419ff"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_tour</b></td></tr>
+<tr class="memdesc:af4132856ea34c3de6146ac0ffef419ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de tours effectués par le joueur. <br /></td></tr>
+<tr class="separator:af4132856ea34c3de6146ac0ffef419ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6118b1b5005137512e1521e515ce8b7c"><td class="memItemLeft" align="right" valign="top"><a id="a6118b1b5005137512e1521e515ce8b7c" name="a6118b1b5005137512e1521e515ce8b7c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>num_checkpoint</b> =-1</td></tr>
+<tr class="memdesc:a6118b1b5005137512e1521e515ce8b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numéro du dernier checkpoint franchi par le joueur. <br /></td></tr>
+<tr class="separator:a6118b1b5005137512e1521e515ce8b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Classe du jeu. </p>
+<div class="textblock"><p>Classe du jeu sans interface graphique. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acc5795ee00edf75516d3dfe65be3e6d6" name="acc5795ee00edf75516d3dfe65be3e6d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc5795ee00edf75516d3dfe65be3e6d6">&#9670;&#160;</a></span>Jeu() <span class="overload">[1/2]</span></h2>
@@ -130,13 +178,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructeur par défaut. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classJeu.html" title="Classe du jeu.">Jeu</a> </dd></dl>
+<p>Constructeur par défaut, figuratif. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classJeu.html" title="Classe du jeu sans interface graphique.">Jeu</a> </dd></dl>
 
 </div>
 </div>
-<a id="afc67a177622f4ef264a376ef1f75ba1b" name="afc67a177622f4ef264a376ef1f75ba1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc67a177622f4ef264a376ef1f75ba1b">&#9670;&#160;</a></span>Jeu() <span class="overload">[2/2]</span></h2>
+<a id="a09207b0267ba358807506cb3ac66b247" name="a09207b0267ba358807506cb3ac66b247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09207b0267ba358807506cb3ac66b247">&#9670;&#160;</a></span>Jeu() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,33 +192,33 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Jeu::Jeu </td>
           <td>(</td>
-          <td class="paramtype">string const &amp;&#160;</td>
-          <td class="paramname"><em>nom_fichier</em></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructeur avec paramètres. </p>
+<p>Constructeur avec le lien du <a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a> à charger. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nom_fichier</td><td>Nom du fichier à charger </td></tr>
+    <tr><td class="paramname">path</td><td>lien du circuit à charger </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classJeu.html" title="Classe du jeu.">Jeu</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classJeu.html" title="Classe du jeu sans interface graphique.">Jeu</a> </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adb2cf017710624992195dbd9555da8d3" name="adb2cf017710624992195dbd9555da8d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb2cf017710624992195dbd9555da8d3">&#9670;&#160;</a></span>AjouterVoiture()</h2>
+<a id="a34cf0ae3906e467080f93dc231bbaac0" name="a34cf0ae3906e467080f93dc231bbaac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34cf0ae3906e467080f93dc231bbaac0">&#9670;&#160;</a></span>ajouterVoiture()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Jeu::AjouterVoiture </td>
+          <td class="memname">void Jeu::ajouterVoiture </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classVoiture.html">Voiture</a> const &amp;&#160;</td>
           <td class="paramname"><em>V</em></td><td>)</td>
@@ -189,8 +237,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a560639838f39e1efccdbfbcc58b55c4a" name="a560639838f39e1efccdbfbcc58b55c4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a560639838f39e1efccdbfbcc58b55c4a">&#9670;&#160;</a></span>ChargerTerrain()</h2>
+<a id="a4bda73f98a2fa81c8725d0c9d5011c35" name="a4bda73f98a2fa81c8725d0c9d5011c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bda73f98a2fa81c8725d0c9d5011c35">&#9670;&#160;</a></span>ChargerTerrain()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,31 +246,69 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Jeu::ChargerTerrain </td>
           <td>(</td>
-          <td class="paramtype">string const &amp;&#160;</td>
-          <td class="paramname"><em>nom_fichier</em></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_tours</em> = <code>3</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Charge un terrain. </p>
+<p>Charge un terrain, pose la voiture au bon endroit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nom_fichier</td><td>Nom du fichier à charger, passé par référence </td></tr>
+    <tr><td class="paramname">path</td><td>chemin vers le fichier </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a4b5b107671761a6bb963475bf4ecc8dd" name="a4b5b107671761a6bb963475bf4ecc8dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b5b107671761a6bb963475bf4ecc8dd">&#9670;&#160;</a></span>getTerrain()</h2>
+<a id="ad9dbaa848dea8028c6f9f29ca805d22c" name="ad9dbaa848dea8028c6f9f29ca805d22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9dbaa848dea8028c6f9f29ca805d22c">&#9670;&#160;</a></span>getNbTours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Jeu::getNbTours </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie le nombre de tours effectués par le joueur. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nombre de tours </dd></dl>
+
+</div>
+</div>
+<a id="a0fb4cb30c5d7039d001b50c5b68626bc" name="a0fb4cb30c5d7039d001b50c5b68626bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb4cb30c5d7039d001b50c5b68626bc">&#9670;&#160;</a></span>getTerrain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classTerrain.html">Terrain</a> &amp; Jeu::getTerrain </td>
+          <td class="memname"><a class="el" href="classTerrain.html">Terrain</a> const  &amp; Jeu::getTerrain </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -230,8 +316,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Debug pour tenter de charger un terrain. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a> </dd></dl>
+<p>Renvoie une référence au terrain. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a> du jeu </dd></dl>
 
 </div>
 </div>
@@ -251,8 +337,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Debug pour tenter de charger une voiture (non fait) </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classVoiture.html" title="La classe Voiture.">Voiture</a> </dd></dl>
+<p>renvoie la ieme voiture du jeu </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>indice de la voiture (0 par défaut, c'est celle du joueur) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classVoiture.html" title="La classe Voiture.">Voiture</a> choisie </dd></dl>
 
 </div>
 </div>
@@ -282,8 +374,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af495db0e53f321a43a83b3e8041b8415" name="af495db0e53f321a43a83b3e8041b8415"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af495db0e53f321a43a83b3e8041b8415">&#9670;&#160;</a></span>update()</h2>
+<a id="a16dd1e8776e98e44b3d6043ed9060e82" name="a16dd1e8776e98e44b3d6043ed9060e82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16dd1e8776e98e44b3d6043ed9060e82">&#9670;&#160;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,8 +383,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int Jeu::update </td>
           <td>(</td>
-          <td class="paramtype">char const &amp;&#160;</td>
-          <td class="paramname"><em>touche</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structActionClavier.html">ActionClavier</a> const &amp;&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -301,11 +393,12 @@ Public Member Functions</h2></td></tr>
 <p>Met à jour le jeu. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">touche</td><td>Touche appuyée </td></tr>
+    <tr><td class="paramname">action</td><td>actions du joueur </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 si le joueur a gagné. -1 si un tour est effectué. 0 sinon <br  />
+ </dd></dl>
 
 </div>
 </div>

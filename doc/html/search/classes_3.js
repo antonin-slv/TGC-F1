@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['props_0',['Props',['../classProps.html',1,'']]]
+  ['interface_0',['Interface',['../classInterface.html',1,'']]]
 ];

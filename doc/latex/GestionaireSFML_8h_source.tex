@@ -1,0 +1,51 @@
+\hypertarget{GestionaireSFML_8h_source}{}\doxysection{Gestionaire\+SFML.\+h}
+\label{GestionaireSFML_8h_source}\index{/home/thomas/Documents/GitHub/test-\/project/src/GestionaireSFML.h@{/home/thomas/Documents/GitHub/test-\/project/src/GestionaireSFML.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_AFFICHAGESFML\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_AFFICHAGESFML\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Editeur.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Jeu.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Menu.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Terrain.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Voiture/Voiture.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Voiture/Vecteur.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Interface.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGestionSFML}{GestionSFML}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classJeu}{Jeu}}}
+\DoxyCodeLine{00026\ \{\ \ \ private\ :}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ decalage;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classInterface}{Interface}}\ interface;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ demarageJeuSFML(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00037\ \ \ \ \ public\ :}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGestionSFML_a3bb55643e1a192ec14248e80706c2ae9}{GestionSFML}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGestionSFML_a96026a465082c43d82178432bcf411aa}{\string~GestionSFML}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGestionSFML_abfeb27804d88e1ae375da2e81e6922f2}{chargerNiveau}}(\textcolor{keywordtype}{string}\ path,\ \textcolor{keywordtype}{int}\ nb\_tours=3);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ Time\ \mbox{\hyperlink{classGestionSFML_a9783d5f80397df098df3aec8a983b703}{boucleJeuSFML}}(RenderWindow\ \&\ window,\ Clock\ \&\ temps\_au\_tour,\ \textcolor{keywordtype}{float}\ decalage=0);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGestionSFML_a8d0899b69c985221ec7e80e138613860}{afficherJeuSFML}}(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGestionSFML_a107fca51f7a48b2d3406dd9a5681d33c}{test\_regression}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ getActionClavier(Event\ event,\ \mbox{\hyperlink{structActionClavier}{ActionClavier}}\ \&\ action);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

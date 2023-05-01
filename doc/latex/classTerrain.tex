@@ -31,13 +31,38 @@ int \mbox{\hyperlink{classTerrain_a704e45ae5884d23a42574a55c356ac53}{get\+Longue
 \begin{DoxyCompactList}\small\item\em Retourne la longueur du terrain. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}{get\+Nb\+Props}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le nombre de props du terrain. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classProps}{Props}} \& \mbox{\hyperlink{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}{get\+Prop}} (int i)
+\mbox{\hyperlink{classProps}{Props}} const \& \mbox{\hyperlink{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}{get\+Prop}} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le ième props du terrain. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTerrain_a747a6fa9dc1239b9b8dee9591dd8487d}{charger\+JSON}} (string const \&path)
+\begin{DoxyCompactList}\small\item\em Charge les données depuis un fichier JSON. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTerrain_a5fcf37fee3801f519b53f02ea50eb919}{get\+Prop}} (\mbox{\hyperlink{classVecteur}{Vecteur}} const \&pos)
+\begin{DoxyCompactList}\small\item\em Retourne le numéro du prop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProps}{Props}} const \& \mbox{\hyperlink{classTerrain_a5e8c5641f2ecf4443641a3c5c4fffc2d}{get\+Ligne\+Arrivee}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie une référence vers la ligne d\textquotesingle{}arrivée. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ const \mbox{\hyperlink{classTerrain_ac4db1b880e6ae6d18e9f0bd47703815d}{get\+Tab\+Props}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vector des props. \end{DoxyCompactList}\item 
+vector$<$ int $>$ const \& \mbox{\hyperlink{classTerrain_ab30942677a6d5dd3754b636b38572752}{get\+Ordre\+Checkpoint}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vector contenant les checkpoints dans l\textquotesingle{}ordre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}{charger\+JSON}} (string const \&path)
-\item 
-\mbox{\Hypertarget{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}\label{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}} 
-void {\bfseries afficher\+\_\+txt} ()
-\begin{DoxyCompactList}\small\item\em Affiche le terrain en TXT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classTerrain_adb3b6bc73480613208c75732db573507}\label{classTerrain_adb3b6bc73480613208c75732db573507}} 
+int {\bfseries largeur}
+\begin{DoxyCompactList}\small\item\em Largeur du terrain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_afb6ae76bf574629e089f086eaf18036a}\label{classTerrain_afb6ae76bf574629e089f086eaf18036a}} 
+int {\bfseries longueur}
+\begin{DoxyCompactList}\small\item\em Longueur du terrain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_a09c9006b36284c81eebaba24b19054e4}\label{classTerrain_a09c9006b36284c81eebaba24b19054e4}} 
+int {\bfseries nb\+\_\+props}
+\begin{DoxyCompactList}\small\item\em Nombre de props. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_ac956df7f5e97b0016ce7df00aba63521}\label{classTerrain_ac956df7f5e97b0016ce7df00aba63521}} 
+vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ {\bfseries tab\+\_\+props}
+\begin{DoxyCompactList}\small\item\em Vector contenant les props. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_ae68318b574e6b38df4d73684d10af853}\label{classTerrain_ae68318b574e6b38df4d73684d10af853}} 
+vector$<$ int $>$ {\bfseries ordre\+\_\+checkpoint}
+\begin{DoxyCompactList}\small\item\em Vector contenant le numéro des Checpoints(cf tab\+\_\+props) dans l\textquotesingle{}ordre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProps}{Props}} \mbox{\hyperlink{classTerrain_a0ad16e2153257ec07820427f95b87034}{prop\+\_\+undef}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -84,13 +109,17 @@ Constructeur avec paramètres.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}\label{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}} 
+\mbox{\Hypertarget{classTerrain_a747a6fa9dc1239b9b8dee9591dd8487d}\label{classTerrain_a747a6fa9dc1239b9b8dee9591dd8487d}} 
 \index{Terrain@{Terrain}!chargerJSON@{chargerJSON}}
 \index{chargerJSON@{chargerJSON}!Terrain@{Terrain}}
 \doxysubsubsection{\texorpdfstring{chargerJSON()}{chargerJSON()}}
-{\footnotesize\ttfamily void Terrain\+::charger\+JSON (\begin{DoxyParamCaption}\item[{string const \&}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Terrain\+::charger\+JSON (\begin{DoxyParamCaption}\item[{string const \&}]{path }\end{DoxyParamCaption})}
 
-Charge les données depuis un fichier JSON
+
+
+Charge les données depuis un fichier JSON. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em path} & Chemin du fichier \\
 \hline
@@ -107,6 +136,19 @@ Retourne la largeur du terrain.
 
 \begin{DoxyReturn}{Returns}
 int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_a5e8c5641f2ecf4443641a3c5c4fffc2d}\label{classTerrain_a5e8c5641f2ecf4443641a3c5c4fffc2d}} 
+\index{Terrain@{Terrain}!getLigneArrivee@{getLigneArrivee}}
+\index{getLigneArrivee@{getLigneArrivee}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getLigneArrivee()}{getLigneArrivee()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProps}{Props}} const  \& Terrain\+::get\+Ligne\+Arrivee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renvoie une référence vers la ligne d\textquotesingle{}arrivée. 
+
+\begin{DoxyReturn}{Returns}
+référence vers la ligne arrivée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classTerrain_a704e45ae5884d23a42574a55c356ac53}\label{classTerrain_a704e45ae5884d23a42574a55c356ac53}} 
 \index{Terrain@{Terrain}!getLongueur@{getLongueur}}
@@ -134,13 +176,30 @@ Retourne le nombre de props du terrain.
 \begin{DoxyReturn}{Returns}
 int 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}\label{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}} 
+\mbox{\Hypertarget{classTerrain_ab30942677a6d5dd3754b636b38572752}\label{classTerrain_ab30942677a6d5dd3754b636b38572752}} 
+\index{Terrain@{Terrain}!getOrdreCheckpoint@{getOrdreCheckpoint}}
+\index{getOrdreCheckpoint@{getOrdreCheckpoint}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getOrdreCheckpoint()}{getOrdreCheckpoint()}}
+{\footnotesize\ttfamily vector$<$ int $>$ const  \& Terrain\+::get\+Ordre\+Checkpoint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le vector contenant les checkpoints dans l\textquotesingle{}ordre. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}\label{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}} 
 \index{Terrain@{Terrain}!getProp@{getProp}}
 \index{getProp@{getProp}!Terrain@{Terrain}}
-\doxysubsubsection{\texorpdfstring{getProp()}{getProp()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classProps}{Props}} \& Terrain\+::get\+Prop (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{getProp()}{getProp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProps}{Props}} const  \& Terrain\+::get\+Prop (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
 
-Retourne le ième props du terrain
+
+
+Retourne le ième props du terrain. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em i} & Numéro du props \\
 \hline
@@ -148,7 +207,47 @@ Retourne le ième props du terrain
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classProps}{Props}} 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_a5fcf37fee3801f519b53f02ea50eb919}\label{classTerrain_a5fcf37fee3801f519b53f02ea50eb919}} 
+\index{Terrain@{Terrain}!getProp@{getProp}}
+\index{getProp@{getProp}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getProp()}{getProp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Terrain\+::get\+Prop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVecteur}{Vecteur}} const \&}]{pos }\end{DoxyParamCaption})}
 
+
+
+Retourne le numéro du prop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rang du prop si il existe, -\/1 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTerrain_ac4db1b880e6ae6d18e9f0bd47703815d}\label{classTerrain_ac4db1b880e6ae6d18e9f0bd47703815d}} 
+\index{Terrain@{Terrain}!getTabProps@{getTabProps}}
+\index{getTabProps@{getTabProps}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{getTabProps()}{getTabProps()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ const Terrain\+::get\+Tab\+Props (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le vector des props. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Props$>$ 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTerrain_a0ad16e2153257ec07820427f95b87034}\label{classTerrain_a0ad16e2153257ec07820427f95b87034}} 
+\index{Terrain@{Terrain}!prop\_undef@{prop\_undef}}
+\index{prop\_undef@{prop\_undef}!Terrain@{Terrain}}
+\doxysubsubsection{\texorpdfstring{prop\_undef}{prop\_undef}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProps}{Props}} Terrain\+::prop\+\_\+undef\hspace{0.3cm}{\ttfamily [protected]}}
+
+prop de Type undef pour pouvoir retourner un prop null 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

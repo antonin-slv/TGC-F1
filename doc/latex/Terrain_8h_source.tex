@@ -18,73 +18,84 @@
 \DoxyCodeLine{00014\ }
 \DoxyCodeLine{00016\ \textcolor{keyword}{enum}\ Tip\ :\ \textcolor{keywordtype}{int}}
 \DoxyCodeLine{00017\ \{\ \ \ nondef=0,}
-\DoxyCodeLine{00018\ \ \ \ \ arbre=1,}
-\DoxyCodeLine{00019\ \ \ \ \ gradin=2,}
-\DoxyCodeLine{00020\ \ \ \ \ Route=10,}
-\DoxyCodeLine{00021\ \ \ \ \ route\_b\_g=15,}
-\DoxyCodeLine{00022\ \ \ \ \ route\_b\_d=14,}
-\DoxyCodeLine{00023\ \ \ \ \ route\_h\_g=13,}
-\DoxyCodeLine{00024\ \ \ \ \ route\_h\_d=12,}
-\DoxyCodeLine{00025\ \ \ \ \ route\_g\_d=11,}
-\DoxyCodeLine{00026\ \ \ \ \ route\_h\_b=16,\ \ \ }
-\DoxyCodeLine{00027\ \};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProps}{Props}}}
-\DoxyCodeLine{00034\ \{\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ pos;}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classProps_a4f90e4a189c1ba05ceb9776cc4ce0105}{hitbox}};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rotation;\textcolor{comment}{//en\ radiant\ -\/>\ 0\ =\ bas\ ,\ pi/2\ =\ droite,\ pi\ =\ haut,\ 3pi/2\ =\ gauche}}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ Tip\ type;}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps_a8c536a129516681899157a8293c9ae05}{Props}}();\ }
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps_a8c536a129516681899157a8293c9ae05}{Props}}(\textcolor{keywordtype}{int}\ px,\ \textcolor{keywordtype}{int}\ py,\ Tip\ t,\ \textcolor{keywordtype}{float}\ rot=0,\textcolor{keywordtype}{float}\ l=0,\ \textcolor{keywordtype}{float}\ L=0);}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_ab6abc26ef8462acff672b9a49fc93aa1}{getX}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_a357c46890339b8a248209b2baf96f03a}{getY}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classProps_a56bd1b72125cbbacaedde0372e8213f0}{getPos}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_a030c25b4643913537176fcaede1ee140}{getRotation}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_aaa2700214e53e14874e78880c4d79f04}{getLarg}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_ae4b4d216b4d9f2c8e30f3de2de042b45}{getLong}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classProps_a4f5af825e8886fe696a3ae18c645336f}{getHitbox}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ Tip\ \mbox{\hyperlink{classProps_adc9c008375853928b54cb8de401a3d0d}{getType}}()\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_aa04f12c90c55f281401782b6e928b8da}{prop\_set\_type}}(Tip\ t);\ }
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}{setProp}}(\textcolor{keywordtype}{int}\ px,\ \textcolor{keywordtype}{int}\ py,\ \textcolor{keywordtype}{float}\ rot=0,\ \textcolor{keywordtype}{float}\ nl=0,\ \textcolor{keywordtype}{float}\ nL=0);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classProps_a2a52dd2a5547f81a6f373bedde31e41a}{chargerJSON}}(json\ \textcolor{keyword}{const}\ \&\ obj);\ }
-\DoxyCodeLine{00085\ \};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00091\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTerrain}{Terrain}}}
-\DoxyCodeLine{00092\ \{\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ largeur;\textcolor{comment}{//en\ m}}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ longueur;\textcolor{comment}{//en\ m}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_props;}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ vector<Props>\ tab\_props;}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}{Terrain}}();}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}{Terrain}}(\textcolor{keywordtype}{int}\ l,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ nb=1);}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a2f7f0a2aee54886324ccf48a6f321de0}{\string~Terrain}}();}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}{getLargeur}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_a704e45ae5884d23a42574a55c356ac53}{getLongueur}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}{getNbProps}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps}{Props}}\ \&\ \mbox{\hyperlink{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}{getProp}}(\textcolor{keywordtype}{int}\ i);}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}{chargerJSON}}(\textcolor{keywordtype}{string}\ \textcolor{keyword}{const}\ \&\ path);}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}{afficher\_txt}}();}
-\DoxyCodeLine{00126\ \ \ \ \ }
-\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00018\ \ \ \ \ finish=1,}
+\DoxyCodeLine{00019\ \ \ \ \ grass=2,}
+\DoxyCodeLine{00020\ \ \ \ \ road=3,}
+\DoxyCodeLine{00021\ \ \ \ \ road\_kerb\_a=4,}
+\DoxyCodeLine{00022\ \ \ \ \ road\_kerb\_m=5,}
+\DoxyCodeLine{00023\ \ \ \ \ road\_kerb\_z=6,}
+\DoxyCodeLine{00024\ \ \ \ \ turn1=7,}
+\DoxyCodeLine{00025\ \ \ \ \ turn2=8,}
+\DoxyCodeLine{00026\ \ \ \ \ turn3=9,}
+\DoxyCodeLine{00027\ \ \ \ \ turn4=10,}
+\DoxyCodeLine{00028\ \ \ \ \ checkpoint=11,}
+\DoxyCodeLine{00029\ \ \ \ \ end\_of\_class=12,\ \ \ }
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProps}{Props}}}
+\DoxyCodeLine{00037\ \{\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ pos;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ hitbox;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rotation;\textcolor{comment}{//en\ radiant\ -\/>\ 0\ =\ bas\ ,\ pi/2\ =\ droite,\ pi\ =\ haut,\ 3pi/2\ =\ gauche}}
+\DoxyCodeLine{00047\ \textcolor{comment}{}\ \ \ \ \ \ \ \ Tip\ type;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps_a8c536a129516681899157a8293c9ae05}{Props}}();\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps_a8c536a129516681899157a8293c9ae05}{Props}}(\textcolor{keywordtype}{int}\ px,\ \textcolor{keywordtype}{int}\ py,\ Tip\ t,\ \textcolor{keywordtype}{float}\ rot=0,\textcolor{keywordtype}{float}\ l=0,\ \textcolor{keywordtype}{float}\ L=0);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_ab6abc26ef8462acff672b9a49fc93aa1}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_a357c46890339b8a248209b2baf96f03a}{getY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classProps_a56bd1b72125cbbacaedde0372e8213f0}{getPos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_a030c25b4643913537176fcaede1ee140}{getRotation}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_aaa2700214e53e14874e78880c4d79f04}{getLarg}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classProps_ae4b4d216b4d9f2c8e30f3de2de042b45}{getLong}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVecteur}{Vecteur}}\ \mbox{\hyperlink{classProps_a4f5af825e8886fe696a3ae18c645336f}{getHitbox}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ Tip\ \mbox{\hyperlink{classProps_adc9c008375853928b54cb8de401a3d0d}{getType}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_ad378ad87830ffb8f184229d396865809}{set\_type}}(Tip\ t);\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_a0fe4837b3f0553411d6cf2ebd00fde2f}{setHitbox}}(\mbox{\hyperlink{classVecteur}{Vecteur}}\ \textcolor{keyword}{const}\ \&\ hitbox);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_aac00fae05366209131d642fbe86b3052}{setRot}}(\textcolor{keywordtype}{float}\ rot=0);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classProps_a5a5f706ae86afc1d20398dc5441ccfd2}{setPos}}(\mbox{\hyperlink{classVecteur}{Vecteur}}\ \textcolor{keyword}{const}\ \&\ pos);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classProps_a2a52dd2a5547f81a6f373bedde31e41a}{chargerJSON}}(json\ \textcolor{keyword}{const}\ \&\ obj);\ }
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTerrain}{Terrain}}}
+\DoxyCodeLine{00101\ \{\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_adb3b6bc73480613208c75732db573507}{largeur}};\textcolor{comment}{//en\ m}}
+\DoxyCodeLine{00105\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_afb6ae76bf574629e089f086eaf18036a}{longueur}};\textcolor{comment}{//en\ m}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_a09c9006b36284c81eebaba24b19054e4}{nb\_props}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ vector<Props>\ \mbox{\hyperlink{classTerrain_ac956df7f5e97b0016ce7df00aba63521}{tab\_props}};\textcolor{comment}{//tableaux\ de\ props}}
+\DoxyCodeLine{00112\ \textcolor{comment}{}\ \ \ \ \ \ \ \ vector<int>\ \mbox{\hyperlink{classTerrain_ae68318b574e6b38df4d73684d10af853}{ordre\_checkpoint}};\textcolor{comment}{//le\ ième\ élément\ est\ le\ numéro\ du\ props\ qui\ est\ le\ ième\ checkpoint}}
+\DoxyCodeLine{00114\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps}{Props}}\ \mbox{\hyperlink{classTerrain_a0ad16e2153257ec07820427f95b87034}{prop\_undef}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}{Terrain}}();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a7160a06ab07a86ed97d23374405e8ef6}{Terrain}}(\textcolor{keywordtype}{int}\ l,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ nb=1);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTerrain_a2f7f0a2aee54886324ccf48a6f321de0}{\string~Terrain}}();}
 \DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_a2ffc577b02e7d8cc06d70e92cf8bd8a1}{getLargeur}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_a704e45ae5884d23a42574a55c356ac53}{getLongueur}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}{getNbProps}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps}{Props}}\ \textcolor{keyword}{const}\ \&\ \mbox{\hyperlink{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}{getProp}}(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTerrain_a747a6fa9dc1239b9b8dee9591dd8487d}{chargerJSON}}(\textcolor{keywordtype}{string}\ \textcolor{keyword}{const}\ \&\ path);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}{getProp}}(\mbox{\hyperlink{classVecteur}{Vecteur}}\ \textcolor{keyword}{const}\ \&\ pos);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProps}{Props}}\ \textcolor{keyword}{const}\ \&\ \mbox{\hyperlink{classTerrain_a5e8c5641f2ecf4443641a3c5c4fffc2d}{getLigneArrivee}}();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ vector<Props>\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classTerrain_ac4db1b880e6ae6d18e9f0bd47703815d}{getTabProps}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ vector<int>\ \textcolor{keyword}{const}\ \&\mbox{\hyperlink{classTerrain_ab30942677a6d5dd3754b636b38572752}{getOrdreCheckpoint}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00151\ \ \ \ \ }
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

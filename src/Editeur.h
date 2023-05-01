@@ -36,7 +36,6 @@ bool Selection_niveau(string & path);
 
 
 /**
- * \class Classe Editeur
  * \brief Classe d'édition de Terrain, fille de ce dernier
  *  Cette classe permet de créer un terrain et de le sauvegarder dans un fichier json, ainsi que de le charger, ou de le supprimer.
  */

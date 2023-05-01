@@ -70,12 +70,13 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classEditeur-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Editeur Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Classe de l'éditeur de terrain (non fait)  
+<p>Classe d'édition de <a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a>, fille de ce dernier Cette classe permet de créer un terrain et de le sauvegarder dans un fichier json, ainsi que de le charger, ou de le supprimer.  
  <a href="classEditeur.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Editeur_8h_source.html">Editeur.h</a>&gt;</code></p>
@@ -89,8 +90,62 @@ Inheritance diagram for Editeur:</div>
   </map>
 </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9bcddfc63dada09233c785674c995221"><td class="memItemLeft" align="right" valign="top"><a id="a9bcddfc63dada09233c785674c995221" name="a9bcddfc63dada09233c785674c995221"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Editeur</b> ()</td></tr>
+<tr class="memdesc:a9bcddfc63dada09233c785674c995221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut. <br /></td></tr>
+<tr class="separator:a9bcddfc63dada09233c785674c995221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa1502f4561cd889f0b9b18ed1afda9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a9fa1502f4561cd889f0b9b18ed1afda9">lier_window</a> (RenderWindow &amp;window)</td></tr>
+<tr class="memdesc:a9fa1502f4561cd889f0b9b18ed1afda9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lie les éléments de l'<a class="el" href="classEditeur.html" title="Classe d&#39;édition de Terrain, fille de ce dernier Cette classe permet de créer un terrain et de le sau...">Editeur</a> à l'affichage utilise window.draw(). pas de window.display()  <br /></td></tr>
+<tr class="separator:a9fa1502f4561cd889f0b9b18ed1afda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6967bc1748daf916e857eae48f8b1a5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a6967bc1748daf916e857eae48f8b1a5b">zoom_</a> (float z)</td></tr>
+<tr class="memdesc:a6967bc1748daf916e857eae48f8b1a5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">zoom sur le terrain  <br /></td></tr>
+<tr class="separator:a6967bc1748daf916e857eae48f8b1a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c478187a821d23fbd52279b1b8a5a29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a1c478187a821d23fbd52279b1b8a5a29">deplacer</a> (float dx=0, float dy=0)</td></tr>
+<tr class="memdesc:a1c478187a821d23fbd52279b1b8a5a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace la caméra.  <br /></td></tr>
+<tr class="separator:a1c478187a821d23fbd52279b1b8a5a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e2225e2d32b91a0eee4fc7ee4ada5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a71e2225e2d32b91a0eee4fc7ee4ada5d">boucleEditeur</a> (RenderWindow &amp;window, int volume)</td></tr>
+<tr class="memdesc:a71e2225e2d32b91a0eee4fc7ee4ada5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle principale de l'éditeur.  <br /></td></tr>
+<tr class="separator:a71e2225e2d32b91a0eee4fc7ee4ada5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21757b841718cd4f8c136dad9ede7125"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a21757b841718cd4f8c136dad9ede7125">ajouter_prop</a> (Tip t=Tip::road, Vector2f pos=Vector2f(0, 0))</td></tr>
+<tr class="memdesc:a21757b841718cd4f8c136dad9ede7125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un prop au terrain.  <br /></td></tr>
+<tr class="separator:a21757b841718cd4f8c136dad9ede7125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b90d37b2d9aacf19bdd644960ee83f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a40b90d37b2d9aacf19bdd644960ee83f">select_prop</a> (bool plus_recent=true)</td></tr>
+<tr class="memdesc:a40b90d37b2d9aacf19bdd644960ee83f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sélectionne un prop nouveau prop, et centre la caméra dessus.  <br /></td></tr>
+<tr class="separator:a40b90d37b2d9aacf19bdd644960ee83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3cc8539f9b2c780395a93d626ceb5ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#aa3cc8539f9b2c780395a93d626ceb5ea">supprimer_prop</a> (int i=-1)</td></tr>
+<tr class="memdesc:aa3cc8539f9b2c780395a93d626ceb5ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime un prop.  <br /></td></tr>
+<tr class="separator:aa3cc8539f9b2c780395a93d626ceb5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63fbcd0c7016653254ce9157691be49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#ae63fbcd0c7016653254ce9157691be49">deplacer_prop</a> (float dx, float dy)</td></tr>
+<tr class="memdesc:ae63fbcd0c7016653254ce9157691be49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace le prop sélectionné  <br /></td></tr>
+<tr class="separator:ae63fbcd0c7016653254ce9157691be49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcc897e437725a46555752f150cd0cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#adbcc897e437725a46555752f150cd0cc">rotate_prop</a> (float angle=90)</td></tr>
+<tr class="memdesc:adbcc897e437725a46555752f150cd0cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tourne le prop sélectionné de angle dans le sens horaire.  <br /></td></tr>
+<tr class="separator:adbcc897e437725a46555752f150cd0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96d4ff6bc55c03aa89f95568d6ac707"><td class="memItemLeft" align="right" valign="top"><a id="af96d4ff6bc55c03aa89f95568d6ac707" name="af96d4ff6bc55c03aa89f95568d6ac707"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Init_props</b> ()</td></tr>
+<tr class="memdesc:af96d4ff6bc55c03aa89f95568d6ac707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les propriétés des props. <br /></td></tr>
+<tr class="separator:af96d4ff6bc55c03aa89f95568d6ac707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2657b7b70175692adeb482e3621d39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a8a2657b7b70175692adeb482e3621d39">sauvegarder</a> (string path)</td></tr>
+<tr class="memdesc:a8a2657b7b70175692adeb482e3621d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde le terrain dans un fichier json.  <br /></td></tr>
+<tr class="separator:a8a2657b7b70175692adeb482e3621d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e88336d57a719e5980e32190cc9ea7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a0e88336d57a719e5980e32190cc9ea7f">charger</a> (string path=&quot;data/circuits/test1.json&quot;)</td></tr>
+<tr class="memdesc:a0e88336d57a719e5980e32190cc9ea7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un nouveau terrain depuis un fichier json si il existe.  <br /></td></tr>
+<tr class="separator:a0e88336d57a719e5980e32190cc9ea7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef8a06aaab3d7673eddea1f313c80d5"><td class="memItemLeft" align="right" valign="top"><a id="a0ef8a06aaab3d7673eddea1f313c80d5" name="a0ef8a06aaab3d7673eddea1f313c80d5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Init_ref_props</b> ()</td></tr>
+<tr class="memdesc:a0ef8a06aaab3d7673eddea1f313c80d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les propriétés des props de référence ce sont les props à gauche de l'écran. <br /></td></tr>
+<tr class="separator:a0ef8a06aaab3d7673eddea1f313c80d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f87641638ed974e5e59669293e9286c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a2f87641638ed974e5e59669293e9286c">gestionEvent</a> (RenderWindow &amp;window)</td></tr>
+<tr class="memdesc:a2f87641638ed974e5e59669293e9286c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les évènements clavier et leurs conséquences de l'éditeur.  <br /></td></tr>
+<tr class="separator:a2f87641638ed974e5e59669293e9286c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57dc9f51f4774b510e57d77cf7027698"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a57dc9f51f4774b510e57d77cf7027698">gestionSouris</a> (RenderWindow const &amp;window)</td></tr>
+<tr class="memdesc:a57dc9f51f4774b510e57d77cf7027698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les évènements de la souris.  <br /></td></tr>
+<tr class="separator:a57dc9f51f4774b510e57d77cf7027698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37369a909a73765118673ad2c356761f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEditeur.html#a37369a909a73765118673ad2c356761f">test_regression</a> ()</td></tr>
+<tr class="memdesc:a37369a909a73765118673ad2c356761f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste les fonctions de l'éditeur.  <br /></td></tr>
+<tr class="separator:a37369a909a73765118673ad2c356761f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classTerrain"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTerrain')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTerrain.html">Terrain</a></td></tr>
 <tr class="memitem:a7160a06ab07a86ed97d23374405e8ef6 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a7160a06ab07a86ed97d23374405e8ef6">Terrain</a> ()</td></tr>
 <tr class="memdesc:a7160a06ab07a86ed97d23374405e8ef6 inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
@@ -111,19 +166,460 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ac5c6e548d6b4cc950df5ea4b967b2554 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ac5c6e548d6b4cc950df5ea4b967b2554">getNbProps</a> () const</td></tr>
 <tr class="memdesc:ac5c6e548d6b4cc950df5ea4b967b2554 inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de props du terrain.  <br /></td></tr>
 <tr class="separator:ac5c6e548d6b4cc950df5ea4b967b2554 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab874e714bd0f9e7fed6595f9885f3af6 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ab874e714bd0f9e7fed6595f9885f3af6">getProp</a> (int i)</td></tr>
-<tr class="separator:ab874e714bd0f9e7fed6595f9885f3af6 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b08e02c7f763bb3b135b5c5757d9422 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a7b08e02c7f763bb3b135b5c5757d9422">chargerJSON</a> (string const &amp;path)</td></tr>
-<tr class="separator:a7b08e02c7f763bb3b135b5c5757d9422 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb197bf84230d23ab452c0c6a0f276e inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="acdb197bf84230d23ab452c0c6a0f276e" name="acdb197bf84230d23ab452c0c6a0f276e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</td></tr>
-<tr class="memdesc:acdb197bf84230d23ab452c0c6a0f276e inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le terrain en TXT. <br /></td></tr>
-<tr class="separator:acdb197bf84230d23ab452c0c6a0f276e inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40ff8ac5489430bf9390f866bd562f7 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ae40ff8ac5489430bf9390f866bd562f7">getProp</a> (int i)</td></tr>
+<tr class="memdesc:ae40ff8ac5489430bf9390f866bd562f7 inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le ième props du terrain.  <br /></td></tr>
+<tr class="separator:ae40ff8ac5489430bf9390f866bd562f7 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747a6fa9dc1239b9b8dee9591dd8487d inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a747a6fa9dc1239b9b8dee9591dd8487d">chargerJSON</a> (string const &amp;path)</td></tr>
+<tr class="memdesc:a747a6fa9dc1239b9b8dee9591dd8487d inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les données depuis un fichier JSON.  <br /></td></tr>
+<tr class="separator:a747a6fa9dc1239b9b8dee9591dd8487d inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcf37fee3801f519b53f02ea50eb919 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a5fcf37fee3801f519b53f02ea50eb919">getProp</a> (<a class="el" href="classVecteur.html">Vecteur</a> const &amp;pos)</td></tr>
+<tr class="memdesc:a5fcf37fee3801f519b53f02ea50eb919 inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le numéro du prop.  <br /></td></tr>
+<tr class="separator:a5fcf37fee3801f519b53f02ea50eb919 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e8c5641f2ecf4443641a3c5c4fffc2d inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a5e8c5641f2ecf4443641a3c5c4fffc2d">getLigneArrivee</a> ()</td></tr>
+<tr class="memdesc:a5e8c5641f2ecf4443641a3c5c4fffc2d inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une référence vers la ligne d'arrivée.  <br /></td></tr>
+<tr class="separator:a5e8c5641f2ecf4443641a3c5c4fffc2d inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4db1b880e6ae6d18e9f0bd47703815d inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classProps.html">Props</a> &gt; const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ac4db1b880e6ae6d18e9f0bd47703815d">getTabProps</a> () const</td></tr>
+<tr class="memdesc:ac4db1b880e6ae6d18e9f0bd47703815d inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le vector des props.  <br /></td></tr>
+<tr class="separator:ac4db1b880e6ae6d18e9f0bd47703815d inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab30942677a6d5dd3754b636b38572752 inherit pub_methods_classTerrain"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt; const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ab30942677a6d5dd3754b636b38572752">getOrdreCheckpoint</a> () const</td></tr>
+<tr class="memdesc:ab30942677a6d5dd3754b636b38572752 inherit pub_methods_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le vector contenant les checkpoints dans l'ordre.  <br /></td></tr>
+<tr class="separator:ab30942677a6d5dd3754b636b38572752 inherit pub_methods_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classTerrain"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTerrain')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTerrain.html">Terrain</a></td></tr>
+<tr class="memitem:adb3b6bc73480613208c75732db573507 inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="adb3b6bc73480613208c75732db573507" name="adb3b6bc73480613208c75732db573507"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>largeur</b></td></tr>
+<tr class="memdesc:adb3b6bc73480613208c75732db573507 inherit pro_attribs_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largeur du terrain. <br /></td></tr>
+<tr class="separator:adb3b6bc73480613208c75732db573507 inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb6ae76bf574629e089f086eaf18036a inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="afb6ae76bf574629e089f086eaf18036a" name="afb6ae76bf574629e089f086eaf18036a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>longueur</b></td></tr>
+<tr class="memdesc:afb6ae76bf574629e089f086eaf18036a inherit pro_attribs_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur du terrain. <br /></td></tr>
+<tr class="separator:afb6ae76bf574629e089f086eaf18036a inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c9006b36284c81eebaba24b19054e4 inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="a09c9006b36284c81eebaba24b19054e4" name="a09c9006b36284c81eebaba24b19054e4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_props</b></td></tr>
+<tr class="memdesc:a09c9006b36284c81eebaba24b19054e4 inherit pro_attribs_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de props. <br /></td></tr>
+<tr class="separator:a09c9006b36284c81eebaba24b19054e4 inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac956df7f5e97b0016ce7df00aba63521 inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="ac956df7f5e97b0016ce7df00aba63521" name="ac956df7f5e97b0016ce7df00aba63521"></a>
+vector&lt; <a class="el" href="classProps.html">Props</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tab_props</b></td></tr>
+<tr class="memdesc:ac956df7f5e97b0016ce7df00aba63521 inherit pro_attribs_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector contenant les props. <br /></td></tr>
+<tr class="separator:ac956df7f5e97b0016ce7df00aba63521 inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68318b574e6b38df4d73684d10af853 inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a id="ae68318b574e6b38df4d73684d10af853" name="ae68318b574e6b38df4d73684d10af853"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ordre_checkpoint</b></td></tr>
+<tr class="memdesc:ae68318b574e6b38df4d73684d10af853 inherit pro_attribs_classTerrain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector contenant le numéro des Checpoints(cf tab_props) dans l'ordre. <br /></td></tr>
+<tr class="separator:ae68318b574e6b38df4d73684d10af853 inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad16e2153257ec07820427f95b87034 inherit pro_attribs_classTerrain"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a0ad16e2153257ec07820427f95b87034">prop_undef</a></td></tr>
+<tr class="separator:a0ad16e2153257ec07820427f95b87034 inherit pro_attribs_classTerrain"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Classe de l'éditeur de terrain (non fait) </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Classe d'édition de <a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a>, fille de ce dernier Cette classe permet de créer un terrain et de le sauvegarder dans un fichier json, ainsi que de le charger, ou de le supprimer. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a21757b841718cd4f8c136dad9ede7125" name="a21757b841718cd4f8c136dad9ede7125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21757b841718cd4f8c136dad9ede7125">&#9670;&#160;</a></span>ajouter_prop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::ajouter_prop </td>
+          <td>(</td>
+          <td class="paramtype">Tip&#160;</td>
+          <td class="paramname"><em>t</em> = <code>Tip::road</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2f&#160;</td>
+          <td class="paramname"><em>pos</em> = <code>Vector2f(0,0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un prop au terrain. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Type du prop </td></tr>
+    <tr><td class="paramname">pos</td><td>Position du prop </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71e2225e2d32b91a0eee4fc7ee4ada5d" name="a71e2225e2d32b91a0eee4fc7ee4ada5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e2225e2d32b91a0eee4fc7ee4ada5d">&#9670;&#160;</a></span>boucleEditeur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::boucleEditeur </td>
+          <td>(</td>
+          <td class="paramtype">RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>volume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boucle principale de l'éditeur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Fenêtre de rendu</td></tr>
+    <tr><td class="paramname">volume</td><td>Volume de la musique </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0e88336d57a719e5980e32190cc9ea7f" name="a0e88336d57a719e5980e32190cc9ea7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e88336d57a719e5980e32190cc9ea7f">&#9670;&#160;</a></span>charger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Editeur::charger </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em> = <code>&quot;data/circuits/test1.json&quot;</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge un nouveau terrain depuis un fichier json si il existe. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin du fichier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1c478187a821d23fbd52279b1b8a5a29" name="a1c478187a821d23fbd52279b1b8a5a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c478187a821d23fbd52279b1b8a5a29">&#9670;&#160;</a></span>deplacer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::deplacer </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dx</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dy</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace la caméra. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dx</td><td>Déplacement en x</td></tr>
+    <tr><td class="paramname">dy</td><td>Déplacement en y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae63fbcd0c7016653254ce9157691be49" name="ae63fbcd0c7016653254ce9157691be49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63fbcd0c7016653254ce9157691be49">&#9670;&#160;</a></span>deplacer_prop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::deplacer_prop </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace le prop sélectionné </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dx</td><td>Déplacement en x </td></tr>
+    <tr><td class="paramname">dy</td><td>Déplacement en y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2f87641638ed974e5e59669293e9286c" name="a2f87641638ed974e5e59669293e9286c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f87641638ed974e5e59669293e9286c">&#9670;&#160;</a></span>gestionEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Editeur::gestionEvent </td>
+          <td>(</td>
+          <td class="paramtype">RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les évènements clavier et leurs conséquences de l'éditeur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Fenêtre de rendu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true si on doit quitter l'éditeur </dd></dl>
+
+</div>
+</div>
+<a id="a57dc9f51f4774b510e57d77cf7027698" name="a57dc9f51f4774b510e57d77cf7027698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57dc9f51f4774b510e57d77cf7027698">&#9670;&#160;</a></span>gestionSouris()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::gestionSouris </td>
+          <td>(</td>
+          <td class="paramtype">RenderWindow const &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les évènements de la souris. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Fenêtre de rendu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9fa1502f4561cd889f0b9b18ed1afda9" name="a9fa1502f4561cd889f0b9b18ed1afda9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fa1502f4561cd889f0b9b18ed1afda9">&#9670;&#160;</a></span>lier_window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::lier_window </td>
+          <td>(</td>
+          <td class="paramtype">RenderWindow &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lie les éléments de l'<a class="el" href="classEditeur.html" title="Classe d&#39;édition de Terrain, fille de ce dernier Cette classe permet de créer un terrain et de le sau...">Editeur</a> à l'affichage utilise window.draw(). pas de window.display() </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>Fenêtre de rendu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adbcc897e437725a46555752f150cd0cc" name="adbcc897e437725a46555752f150cd0cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbcc897e437725a46555752f150cd0cc">&#9670;&#160;</a></span>rotate_prop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::rotate_prop </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle</em> = <code>90</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tourne le prop sélectionné de angle dans le sens horaire. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>Angle de rotation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8a2657b7b70175692adeb482e3621d39" name="a8a2657b7b70175692adeb482e3621d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2657b7b70175692adeb482e3621d39">&#9670;&#160;</a></span>sauvegarder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::sauvegarder </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde le terrain dans un fichier json. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin du fichier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a40b90d37b2d9aacf19bdd644960ee83f" name="a40b90d37b2d9aacf19bdd644960ee83f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b90d37b2d9aacf19bdd644960ee83f">&#9670;&#160;</a></span>select_prop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::select_prop </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>plus_recent</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sélectionne un prop nouveau prop, et centre la caméra dessus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plus_recent</td><td>Si true, sélectionne un plus récent, sinon un plus ancien </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa3cc8539f9b2c780395a93d626ceb5ea" name="aa3cc8539f9b2c780395a93d626ceb5ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3cc8539f9b2c780395a93d626ceb5ea">&#9670;&#160;</a></span>supprimer_prop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::supprimer_prop </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em> = <code>-1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime un prop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Indice du prop à supprimer. si i=-1, supprime le prop sélectionné </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a37369a909a73765118673ad2c356761f" name="a37369a909a73765118673ad2c356761f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37369a909a73765118673ad2c356761f">&#9670;&#160;</a></span>test_regression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Editeur::test_regression </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Teste les fonctions de l'éditeur. </p>
+<dl class="section return"><dt>Returns</dt><dd>true si les tests sont réussis </dd></dl>
+
+</div>
+</div>
+<a id="a6967bc1748daf916e857eae48f8b1a5b" name="a6967bc1748daf916e857eae48f8b1a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6967bc1748daf916e857eae48f8b1a5b">&#9670;&#160;</a></span>zoom_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Editeur::zoom_ </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>zoom sur le terrain </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z</td><td>Facteur de zoom </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/thomas/Documents/GitHub/test-project/src/<a class="el" href="Editeur_8h_source.html">Editeur.h</a></li>
+<li>/home/thomas/Documents/GitHub/test-project/src/Editeur.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

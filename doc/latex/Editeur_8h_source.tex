@@ -6,19 +6,74 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_Editeur\_H\_}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Terrain.h"{}}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEditeur}{Editeur}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTerrain}{Terrain}}}
-\DoxyCodeLine{00011\ \{\ \ \ }
-\DoxyCodeLine{00012\ \ \ \ \ private\ :}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ y;}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ zoom;\textcolor{comment}{//10\ par\ def}}
-\DoxyCodeLine{00015\ \ \ \ \ public\ :}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Editeur()\ :\ Terrain()\ \{x\ =\ 0;\ y\ =\ 0;\ zoom\ =\ 10;\};}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Interface.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Menu.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }sf;}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ }
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ Sauvegarder\_Niveau\_txtGlobal(\textcolor{keywordtype}{string}\ \&\ path);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{bool}\ Selection\_niveau(\textcolor{keywordtype}{string}\ \&\ path);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEditeur}{Editeur}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTerrain}{Terrain}}}
+\DoxyCodeLine{00043\ \{\ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ private\ :}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ Vector2f\ centre;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zoom;\textcolor{comment}{//10\ par\ défaut}}
+\DoxyCodeLine{00050\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ prop\_selectionne;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//varibles\ pour\ la\ gestion\ des\ évènements}}
+\DoxyCodeLine{00055\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ deplacer\_vue\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ajout\_prop\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ Vector2i\ mouse\_prev\_pos;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classInterface}{Interface}}\ interface;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ public\ :}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEditeur_a9bcddfc63dada09233c785674c995221}{Editeur}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a9fa1502f4561cd889f0b9b18ed1afda9}{lier\_window}}(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a6967bc1748daf916e857eae48f8b1a5b}{zoom\_}}(\textcolor{keywordtype}{float}\ z);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a1c478187a821d23fbd52279b1b8a5a29}{deplacer}}(\textcolor{keywordtype}{float}\ dx=0,\ \textcolor{keywordtype}{float}\ dy=0);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a71e2225e2d32b91a0eee4fc7ee4ada5d}{boucleEditeur}}(RenderWindow\ \&\ window,\ \textcolor{keywordtype}{int}\ volume);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a21757b841718cd4f8c136dad9ede7125}{ajouter\_prop}}(Tip\ t\ =\ Tip::road,\ Vector2f\ pos\ =\ Vector2f(0,0));}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a40b90d37b2d9aacf19bdd644960ee83f}{select\_prop}}(\textcolor{keywordtype}{bool}\ plus\_recent\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_aa3cc8539f9b2c780395a93d626ceb5ea}{supprimer\_prop}}(\textcolor{keywordtype}{int}\ i=-\/1);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_ae63fbcd0c7016653254ce9157691be49}{deplacer\_prop}}(\textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_adbcc897e437725a46555752f150cd0cc}{rotate\_prop}}(\textcolor{keywordtype}{float}\ angle=90);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_af96d4ff6bc55c03aa89f95568d6ac707}{Init\_props}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a8a2657b7b70175692adeb482e3621d39}{sauvegarder}}(\textcolor{keywordtype}{string}\ path);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEditeur_a0e88336d57a719e5980e32190cc9ea7f}{charger}}(\textcolor{keywordtype}{string}\ path\ =\ \textcolor{stringliteral}{"{}data/circuits/test1.json"{}});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a0ef8a06aaab3d7673eddea1f313c80d5}{Init\_ref\_props}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEditeur_a2f87641638ed974e5e59669293e9286c}{gestionEvent}}(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEditeur_a57dc9f51f4774b510e57d77cf7027698}{gestionSouris}}(RenderWindow\ \textcolor{keyword}{const}\ \&\ window);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEditeur_a37369a909a73765118673ad2c356761f}{test\_regression}}();}
+\DoxyCodeLine{00122\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{void}\ map\_pos\_to\_grid(\mbox{\hyperlink{classVecteur}{Vecteur}}\ \&\ pos);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

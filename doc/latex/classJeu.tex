@@ -2,41 +2,74 @@
 \label{classJeu}\index{Jeu@{Jeu}}
 
 
-Classe du jeu.  
+Classe du jeu sans interface graphique.  
 
 
 
 
 {\ttfamily \#include $<$Jeu.\+h$>$}
 
+Inheritance diagram for Jeu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJeu}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}{Jeu}} ()
-\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classJeu_afc67a177622f4ef264a376ef1f75ba1b}{Jeu}} (string const \&nom\+\_\+fichier)
-\begin{DoxyCompactList}\small\item\em Constructeur avec paramètres. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut, figuratif. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJeu_a09207b0267ba358807506cb3ac66b247}{Jeu}} (string path)
+\begin{DoxyCompactList}\small\item\em Constructeur avec le lien du \mbox{\hyperlink{classTerrain}{Terrain}} à charger. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classJeu_a9cd19e73df169d7f09397be61ba8548c}\label{classJeu_a9cd19e73df169d7f09397be61ba8548c}} 
 {\bfseries $\sim$\+Jeu} ()
-\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classTerrain}{Terrain}} \& \mbox{\hyperlink{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}{get\+Terrain}} ()
-\begin{DoxyCompactList}\small\item\em Debug pour tenter de charger un terrain. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destructeur explicite la destruction des voitures. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTerrain}{Terrain}} const \& \mbox{\hyperlink{classJeu_a0fb4cb30c5d7039d001b50c5b68626bc}{get\+Terrain}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie une référence au terrain. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classVoiture}{Voiture}} \& \mbox{\hyperlink{classJeu_a1348607f76e505e28c78c74a775f2723}{get\+Voiture}} (int i=0)
-\begin{DoxyCompactList}\small\item\em Debug pour tenter de charger une voiture (non fait) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em renvoie la ieme voiture du jeu \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJeu_ad9dbaa848dea8028c6f9f29ca805d22c}{get\+Nb\+Tours}} () const
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre de tours effectués par le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_affb0bf538fb219564204ad6b0df43224}\label{classJeu_affb0bf538fb219564204ad6b0df43224}} 
+void {\bfseries restart} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le niveau (voitures, checkpoint, tours...) chaque voiture est aussi réinitialisée (position, vitesse, rotation; numéro de checkpoint) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classJeu_a988460e745f29d87e906426398defd29}{setframe\+\_\+time}} (float const \&tps)
 \begin{DoxyCompactList}\small\item\em Définit le temps d\textquotesingle{}une frame. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classJeu_a560639838f39e1efccdbfbcc58b55c4a}{Charger\+Terrain}} (string const \&nom\+\_\+fichier)
-\begin{DoxyCompactList}\small\item\em Charge un terrain. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classJeu_adb2cf017710624992195dbd9555da8d3}{Ajouter\+Voiture}} (\mbox{\hyperlink{classVoiture}{Voiture}} const \&V)
+void \mbox{\hyperlink{classJeu_a4bda73f98a2fa81c8725d0c9d5011c35}{Charger\+Terrain}} (string path, int nb\+\_\+tours=3)
+\begin{DoxyCompactList}\small\item\em Charge un terrain, pose la voiture au bon endroit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a34cf0ae3906e467080f93dc231bbaac0}{ajouter\+Voiture}} (\mbox{\hyperlink{classVoiture}{Voiture}} const \&V)
 \begin{DoxyCompactList}\small\item\em Ajoute une voiture. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classJeu_af495db0e53f321a43a83b3e8041b8415}{update}} (char const \&touche)
+int \mbox{\hyperlink{classJeu_a16dd1e8776e98e44b3d6043ed9060e82}{update}} (\mbox{\hyperlink{structActionClavier}{Action\+Clavier}} const \&action)
 \begin{DoxyCompactList}\small\item\em Met à jour le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJeu_a280e269c42d0dc1b6358f60038fc172a}\label{classJeu_a280e269c42d0dc1b6358f60038fc172a}} 
+\mbox{\hyperlink{classTerrain}{Terrain}} {\bfseries terrain}
+\begin{DoxyCompactList}\small\item\em Circuit du jeu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a3cc5653dbace1feba8e2c9fc57df2611}\label{classJeu_a3cc5653dbace1feba8e2c9fc57df2611}} 
+vector$<$ \mbox{\hyperlink{classVoiture}{Voiture}} $>$ {\bfseries tab\+\_\+voit}
+\begin{DoxyCompactList}\small\item\em Tableau dynamique des voitures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_ad46e8f0c5406647089285ad75e5a4965}\label{classJeu_ad46e8f0c5406647089285ad75e5a4965}} 
+float {\bfseries frame\+\_\+time}
+\begin{DoxyCompactList}\small\item\em Temps d\textquotesingle{}une frame utilisé pour la physique (s\textquotesingle{}update à chaque frame pour avoir un comportement logique) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_aec31746dfacb189fff6fea239acc1cab}\label{classJeu_aec31746dfacb189fff6fea239acc1cab}} 
+int {\bfseries nb\+\_\+voit}
+\begin{DoxyCompactList}\small\item\em Nombre de voitures (toujours 1 ici) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a11fc4382cc189344b786303e0f9464a5}\label{classJeu_a11fc4382cc189344b786303e0f9464a5}} 
+unsigned int {\bfseries nb\+\_\+tour\+\_\+max} =1
+\begin{DoxyCompactList}\small\item\em Nombre de tours avant de gagner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_af4132856ea34c3de6146ac0ffef419ff}\label{classJeu_af4132856ea34c3de6146ac0ffef419ff}} 
+unsigned int {\bfseries nb\+\_\+tour}
+\begin{DoxyCompactList}\small\item\em Nombre de tours effectués par le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a6118b1b5005137512e1521e515ce8b7c}\label{classJeu_a6118b1b5005137512e1521e515ce8b7c}} 
+int {\bfseries num\+\_\+checkpoint} =-\/1
+\begin{DoxyCompactList}\small\item\em Numéro du dernier checkpoint franchi par le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Classe du jeu. 
-
-
+Classe du jeu sans interface graphique. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}\label{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}} 
@@ -47,24 +80,24 @@ Classe du jeu.
 
 
 
-Constructeur par défaut. 
+Constructeur par défaut, figuratif. 
 
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classJeu}{Jeu}} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classJeu_afc67a177622f4ef264a376ef1f75ba1b}\label{classJeu_afc67a177622f4ef264a376ef1f75ba1b}} 
+\mbox{\Hypertarget{classJeu_a09207b0267ba358807506cb3ac66b247}\label{classJeu_a09207b0267ba358807506cb3ac66b247}} 
 \index{Jeu@{Jeu}!Jeu@{Jeu}}
 \index{Jeu@{Jeu}!Jeu@{Jeu}}
 \doxysubsubsection{\texorpdfstring{Jeu()}{Jeu()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Jeu\+::\+Jeu (\begin{DoxyParamCaption}\item[{string const \&}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Jeu\+::\+Jeu (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
 
 
-Constructeur avec paramètres. 
+Constructeur avec le lien du \mbox{\hyperlink{classTerrain}{Terrain}} à charger. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em nom\+\_\+fichier} & Nom du fichier à charger \\
+{\em path} & lien du circuit à charger \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -73,11 +106,11 @@ Constructeur avec paramètres.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classJeu_adb2cf017710624992195dbd9555da8d3}\label{classJeu_adb2cf017710624992195dbd9555da8d3}} 
-\index{Jeu@{Jeu}!AjouterVoiture@{AjouterVoiture}}
-\index{AjouterVoiture@{AjouterVoiture}!Jeu@{Jeu}}
-\doxysubsubsection{\texorpdfstring{AjouterVoiture()}{AjouterVoiture()}}
-{\footnotesize\ttfamily void Jeu\+::\+Ajouter\+Voiture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVoiture}{Voiture}} const \&}]{V }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classJeu_a34cf0ae3906e467080f93dc231bbaac0}\label{classJeu_a34cf0ae3906e467080f93dc231bbaac0}} 
+\index{Jeu@{Jeu}!ajouterVoiture@{ajouterVoiture}}
+\index{ajouterVoiture@{ajouterVoiture}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{ajouterVoiture()}{ajouterVoiture()}}
+{\footnotesize\ttfamily void Jeu\+::ajouter\+Voiture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVoiture}{Voiture}} const \&}]{V }\end{DoxyParamCaption})}
 
 
 
@@ -88,33 +121,46 @@ Ajoute une voiture.
 {\em V} & \mbox{\hyperlink{classVoiture}{Voiture}} à ajouter, passé par référence \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classJeu_a560639838f39e1efccdbfbcc58b55c4a}\label{classJeu_a560639838f39e1efccdbfbcc58b55c4a}} 
+\mbox{\Hypertarget{classJeu_a4bda73f98a2fa81c8725d0c9d5011c35}\label{classJeu_a4bda73f98a2fa81c8725d0c9d5011c35}} 
 \index{Jeu@{Jeu}!ChargerTerrain@{ChargerTerrain}}
 \index{ChargerTerrain@{ChargerTerrain}!Jeu@{Jeu}}
 \doxysubsubsection{\texorpdfstring{ChargerTerrain()}{ChargerTerrain()}}
-{\footnotesize\ttfamily void Jeu\+::\+Charger\+Terrain (\begin{DoxyParamCaption}\item[{string const \&}]{nom\+\_\+fichier }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Jeu\+::\+Charger\+Terrain (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{int}]{nb\+\_\+tours = {\ttfamily 3} }\end{DoxyParamCaption})}
 
 
 
-Charge un terrain. 
+Charge un terrain, pose la voiture au bon endroit. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em nom\+\_\+fichier} & Nom du fichier à charger, passé par référence \\
+{\em path} & chemin vers le fichier \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}\label{classJeu_a4b5b107671761a6bb963475bf4ecc8dd}} 
+\mbox{\Hypertarget{classJeu_ad9dbaa848dea8028c6f9f29ca805d22c}\label{classJeu_ad9dbaa848dea8028c6f9f29ca805d22c}} 
+\index{Jeu@{Jeu}!getNbTours@{getNbTours}}
+\index{getNbTours@{getNbTours}!Jeu@{Jeu}}
+\doxysubsubsection{\texorpdfstring{getNbTours()}{getNbTours()}}
+{\footnotesize\ttfamily int Jeu\+::get\+Nb\+Tours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Renvoie le nombre de tours effectués par le joueur. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de tours 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJeu_a0fb4cb30c5d7039d001b50c5b68626bc}\label{classJeu_a0fb4cb30c5d7039d001b50c5b68626bc}} 
 \index{Jeu@{Jeu}!getTerrain@{getTerrain}}
 \index{getTerrain@{getTerrain}!Jeu@{Jeu}}
 \doxysubsubsection{\texorpdfstring{getTerrain()}{getTerrain()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classTerrain}{Terrain}} \& Jeu\+::get\+Terrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTerrain}{Terrain}} const  \& Jeu\+::get\+Terrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Debug pour tenter de charger un terrain. 
+Renvoie une référence au terrain. 
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classTerrain}{Terrain}} 
+\mbox{\hyperlink{classTerrain}{Terrain}} du jeu 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classJeu_a1348607f76e505e28c78c74a775f2723}\label{classJeu_a1348607f76e505e28c78c74a775f2723}} 
 \index{Jeu@{Jeu}!getVoiture@{getVoiture}}
@@ -124,10 +170,15 @@ Debug pour tenter de charger un terrain.
 
 
 
-Debug pour tenter de charger une voiture (non fait) 
+renvoie la ieme voiture du jeu 
 
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice de la voiture (0 par défaut, c\textquotesingle{}est celle du joueur) \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classVoiture}{Voiture}} 
+\mbox{\hyperlink{classVoiture}{Voiture}} choisie 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classJeu_a988460e745f29d87e906426398defd29}\label{classJeu_a988460e745f29d87e906426398defd29}} 
 \index{Jeu@{Jeu}!setframe\_time@{setframe\_time}}
@@ -144,11 +195,11 @@ Définit le temps d\textquotesingle{}une frame.
 {\em tps} & Temps d\textquotesingle{}une frame \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classJeu_af495db0e53f321a43a83b3e8041b8415}\label{classJeu_af495db0e53f321a43a83b3e8041b8415}} 
+\mbox{\Hypertarget{classJeu_a16dd1e8776e98e44b3d6043ed9060e82}\label{classJeu_a16dd1e8776e98e44b3d6043ed9060e82}} 
 \index{Jeu@{Jeu}!update@{update}}
 \index{update@{update}!Jeu@{Jeu}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily int Jeu\+::update (\begin{DoxyParamCaption}\item[{char const \&}]{touche }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Jeu\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structActionClavier}{Action\+Clavier}} const \&}]{action }\end{DoxyParamCaption})}
 
 
 
@@ -156,11 +207,12 @@ Met à jour le jeu.
 
 
 \begin{DoxyParams}{Parameters}
-{\em touche} & Touche appuyée \\
+{\em action} & actions du joueur \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-int 
+1 si le joueur a gagné. -\/1 si un tour est effectué. 0 sinon ~\newline
+ 
 \end{DoxyReturn}
 
 

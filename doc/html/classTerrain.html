@@ -71,6 +71,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classTerrain-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Terrain Class Reference</div></div>
 </div><!--header-->
@@ -86,7 +87,7 @@ Inheritance diagram for Terrain:</div>
  <div class="center">
   <img src="classTerrain.png" usemap="#Terrain_map" alt=""/>
   <map id="Terrain_map" name="Terrain_map">
-<area href="classEditeur.html" title="Classe de l&#39;éditeur de terrain (non fait)" alt="Editeur" shape="rect" coords="0,56,53,80"/>
+<area href="classEditeur.html" title="Classe d&#39;édition de Terrain, fille de ce dernier Cette classe permet de créer un terrain et de le sau..." alt="Editeur" shape="rect" coords="0,56,53,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -111,14 +112,49 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5c6e548d6b4cc950df5ea4b967b2554"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ac5c6e548d6b4cc950df5ea4b967b2554">getNbProps</a> () const</td></tr>
 <tr class="memdesc:ac5c6e548d6b4cc950df5ea4b967b2554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de props du terrain.  <br /></td></tr>
 <tr class="separator:ac5c6e548d6b4cc950df5ea4b967b2554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab874e714bd0f9e7fed6595f9885f3af6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ab874e714bd0f9e7fed6595f9885f3af6">getProp</a> (int i)</td></tr>
-<tr class="separator:ab874e714bd0f9e7fed6595f9885f3af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b08e02c7f763bb3b135b5c5757d9422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a7b08e02c7f763bb3b135b5c5757d9422">chargerJSON</a> (string const &amp;path)</td></tr>
-<tr class="separator:a7b08e02c7f763bb3b135b5c5757d9422"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb197bf84230d23ab452c0c6a0f276e"><td class="memItemLeft" align="right" valign="top"><a id="acdb197bf84230d23ab452c0c6a0f276e" name="acdb197bf84230d23ab452c0c6a0f276e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</td></tr>
-<tr class="memdesc:acdb197bf84230d23ab452c0c6a0f276e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le terrain en TXT. <br /></td></tr>
-<tr class="separator:acdb197bf84230d23ab452c0c6a0f276e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40ff8ac5489430bf9390f866bd562f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ae40ff8ac5489430bf9390f866bd562f7">getProp</a> (int i)</td></tr>
+<tr class="memdesc:ae40ff8ac5489430bf9390f866bd562f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le ième props du terrain.  <br /></td></tr>
+<tr class="separator:ae40ff8ac5489430bf9390f866bd562f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747a6fa9dc1239b9b8dee9591dd8487d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a747a6fa9dc1239b9b8dee9591dd8487d">chargerJSON</a> (string const &amp;path)</td></tr>
+<tr class="memdesc:a747a6fa9dc1239b9b8dee9591dd8487d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les données depuis un fichier JSON.  <br /></td></tr>
+<tr class="separator:a747a6fa9dc1239b9b8dee9591dd8487d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcf37fee3801f519b53f02ea50eb919"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a5fcf37fee3801f519b53f02ea50eb919">getProp</a> (<a class="el" href="classVecteur.html">Vecteur</a> const &amp;pos)</td></tr>
+<tr class="memdesc:a5fcf37fee3801f519b53f02ea50eb919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le numéro du prop.  <br /></td></tr>
+<tr class="separator:a5fcf37fee3801f519b53f02ea50eb919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e8c5641f2ecf4443641a3c5c4fffc2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a5e8c5641f2ecf4443641a3c5c4fffc2d">getLigneArrivee</a> ()</td></tr>
+<tr class="memdesc:a5e8c5641f2ecf4443641a3c5c4fffc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie une référence vers la ligne d'arrivée.  <br /></td></tr>
+<tr class="separator:a5e8c5641f2ecf4443641a3c5c4fffc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4db1b880e6ae6d18e9f0bd47703815d"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classProps.html">Props</a> &gt; const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ac4db1b880e6ae6d18e9f0bd47703815d">getTabProps</a> () const</td></tr>
+<tr class="memdesc:ac4db1b880e6ae6d18e9f0bd47703815d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le vector des props.  <br /></td></tr>
+<tr class="separator:ac4db1b880e6ae6d18e9f0bd47703815d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab30942677a6d5dd3754b636b38572752"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt; const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#ab30942677a6d5dd3754b636b38572752">getOrdreCheckpoint</a> () const</td></tr>
+<tr class="memdesc:ab30942677a6d5dd3754b636b38572752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le vector contenant les checkpoints dans l'ordre.  <br /></td></tr>
+<tr class="separator:ab30942677a6d5dd3754b636b38572752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:adb3b6bc73480613208c75732db573507"><td class="memItemLeft" align="right" valign="top"><a id="adb3b6bc73480613208c75732db573507" name="adb3b6bc73480613208c75732db573507"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>largeur</b></td></tr>
+<tr class="memdesc:adb3b6bc73480613208c75732db573507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largeur du terrain. <br /></td></tr>
+<tr class="separator:adb3b6bc73480613208c75732db573507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb6ae76bf574629e089f086eaf18036a"><td class="memItemLeft" align="right" valign="top"><a id="afb6ae76bf574629e089f086eaf18036a" name="afb6ae76bf574629e089f086eaf18036a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>longueur</b></td></tr>
+<tr class="memdesc:afb6ae76bf574629e089f086eaf18036a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur du terrain. <br /></td></tr>
+<tr class="separator:afb6ae76bf574629e089f086eaf18036a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c9006b36284c81eebaba24b19054e4"><td class="memItemLeft" align="right" valign="top"><a id="a09c9006b36284c81eebaba24b19054e4" name="a09c9006b36284c81eebaba24b19054e4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_props</b></td></tr>
+<tr class="memdesc:a09c9006b36284c81eebaba24b19054e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de props. <br /></td></tr>
+<tr class="separator:a09c9006b36284c81eebaba24b19054e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac956df7f5e97b0016ce7df00aba63521"><td class="memItemLeft" align="right" valign="top"><a id="ac956df7f5e97b0016ce7df00aba63521" name="ac956df7f5e97b0016ce7df00aba63521"></a>
+vector&lt; <a class="el" href="classProps.html">Props</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tab_props</b></td></tr>
+<tr class="memdesc:ac956df7f5e97b0016ce7df00aba63521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector contenant les props. <br /></td></tr>
+<tr class="separator:ac956df7f5e97b0016ce7df00aba63521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68318b574e6b38df4d73684d10af853"><td class="memItemLeft" align="right" valign="top"><a id="ae68318b574e6b38df4d73684d10af853" name="ae68318b574e6b38df4d73684d10af853"></a>
+vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ordre_checkpoint</b></td></tr>
+<tr class="memdesc:ae68318b574e6b38df4d73684d10af853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector contenant le numéro des Checpoints(cf tab_props) dans l'ordre. <br /></td></tr>
+<tr class="separator:ae68318b574e6b38df4d73684d10af853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad16e2153257ec07820427f95b87034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProps.html">Props</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTerrain.html#a0ad16e2153257ec07820427f95b87034">prop_undef</a></td></tr>
+<tr class="separator:a0ad16e2153257ec07820427f95b87034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La classe du <a class="el" href="classTerrain.html" title="La classe du Terrain.">Terrain</a>. </p>
@@ -189,14 +225,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7b08e02c7f763bb3b135b5c5757d9422" name="a7b08e02c7f763bb3b135b5c5757d9422"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b08e02c7f763bb3b135b5c5757d9422">&#9670;&#160;</a></span>chargerJSON()</h2>
+<a id="a747a6fa9dc1239b9b8dee9591dd8487d" name="a747a6fa9dc1239b9b8dee9591dd8487d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747a6fa9dc1239b9b8dee9591dd8487d">&#9670;&#160;</a></span>chargerJSON()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Terrain::chargerJSON </td>
+          <td class="memname">bool Terrain::chargerJSON </td>
           <td>(</td>
           <td class="paramtype">string const &amp;&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
@@ -204,7 +240,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Charge les données depuis un fichier JSON</p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Charge les données depuis un fichier JSON. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Chemin du fichier </td></tr>
   </table>
@@ -230,6 +268,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</
 
 <p>Retourne la largeur du terrain. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a5e8c5641f2ecf4443641a3c5c4fffc2d" name="a5e8c5641f2ecf4443641a3c5c4fffc2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e8c5641f2ecf4443641a3c5c4fffc2d">&#9670;&#160;</a></span>getLigneArrivee()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classProps.html">Props</a> const  &amp; Terrain::getLigneArrivee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie une référence vers la ligne d'arrivée. </p>
+<dl class="section return"><dt>Returns</dt><dd>référence vers la ligne arrivée </dd></dl>
 
 </div>
 </div>
@@ -273,14 +331,34 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</
 
 </div>
 </div>
-<a id="ab874e714bd0f9e7fed6595f9885f3af6" name="ab874e714bd0f9e7fed6595f9885f3af6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab874e714bd0f9e7fed6595f9885f3af6">&#9670;&#160;</a></span>getProp()</h2>
+<a id="ab30942677a6d5dd3754b636b38572752" name="ab30942677a6d5dd3754b636b38572752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab30942677a6d5dd3754b636b38572752">&#9670;&#160;</a></span>getOrdreCheckpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classProps.html">Props</a> &amp; Terrain::getProp </td>
+          <td class="memname">vector&lt; int &gt; const  &amp; Terrain::getOrdreCheckpoint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le vector contenant les checkpoints dans l'ordre. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector&lt;int&gt; </dd></dl>
+
+</div>
+</div>
+<a id="ae40ff8ac5489430bf9390f866bd562f7" name="ae40ff8ac5489430bf9390f866bd562f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae40ff8ac5489430bf9390f866bd562f7">&#9670;&#160;</a></span>getProp() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classProps.html">Props</a> const  &amp; Terrain::getProp </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
@@ -288,13 +366,86 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher_txt</b> ()</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retourne le ième props du terrain</p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Retourne le ième props du terrain. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">i</td><td>Numéro du props </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props.">Props</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classProps.html" title="La classe Props Modules de base d&#39;un terrain.">Props</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5fcf37fee3801f519b53f02ea50eb919" name="a5fcf37fee3801f519b53f02ea50eb919"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fcf37fee3801f519b53f02ea50eb919">&#9670;&#160;</a></span>getProp() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Terrain::getProp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVecteur.html">Vecteur</a> const &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le numéro du prop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>rang du prop si il existe, -1 sinon </dd></dl>
+
+</div>
+</div>
+<a id="ac4db1b880e6ae6d18e9f0bd47703815d" name="ac4db1b880e6ae6d18e9f0bd47703815d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4db1b880e6ae6d18e9f0bd47703815d">&#9670;&#160;</a></span>getTabProps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="classProps.html">Props</a> &gt; const Terrain::getTabProps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le vector des props. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector&lt;Props&gt; </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0ad16e2153257ec07820427f95b87034" name="a0ad16e2153257ec07820427f95b87034"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad16e2153257ec07820427f95b87034">&#9670;&#160;</a></span>prop_undef</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classProps.html">Props</a> Terrain::prop_undef</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>prop de Type undef pour pouvoir retourner un prop null </p>
 
 </div>
 </div>

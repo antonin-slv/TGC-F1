@@ -2,7 +2,7 @@
 \label{classEditeur}\index{Editeur@{Editeur}}
 
 
-Classe de l\textquotesingle{}éditeur de terrain (non fait)  
+Classe d\textquotesingle{}édition de \mbox{\hyperlink{classTerrain}{Terrain}}, fille de ce dernier Cette classe permet de créer un terrain et de le sauvegarder dans un fichier json, ainsi que de le charger, ou de le supprimer.  
 
 
 
@@ -15,7 +15,46 @@ Inheritance diagram for Editeur\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{classEditeur}
 \end{center}
 \end{figure}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEditeur_a9bcddfc63dada09233c785674c995221}\label{classEditeur_a9bcddfc63dada09233c785674c995221}} 
+{\bfseries Editeur} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a9fa1502f4561cd889f0b9b18ed1afda9}{lier\+\_\+window}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Lie les éléments de l\textquotesingle{}\mbox{\hyperlink{classEditeur}{Editeur}} à l\textquotesingle{}affichage utilise window.\+draw(). pas de window.\+display() \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a6967bc1748daf916e857eae48f8b1a5b}{zoom\+\_\+}} (float z)
+\begin{DoxyCompactList}\small\item\em zoom sur le terrain \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a1c478187a821d23fbd52279b1b8a5a29}{deplacer}} (float dx=0, float dy=0)
+\begin{DoxyCompactList}\small\item\em Déplace la caméra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a71e2225e2d32b91a0eee4fc7ee4ada5d}{boucle\+Editeur}} (Render\+Window \&window, int volume)
+\begin{DoxyCompactList}\small\item\em Boucle principale de l\textquotesingle{}éditeur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a21757b841718cd4f8c136dad9ede7125}{ajouter\+\_\+prop}} (Tip t=Tip\+::road, Vector2f pos=Vector2f(0, 0))
+\begin{DoxyCompactList}\small\item\em Ajoute un prop au terrain. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a40b90d37b2d9aacf19bdd644960ee83f}{select\+\_\+prop}} (bool plus\+\_\+recent=true)
+\begin{DoxyCompactList}\small\item\em Sélectionne un prop nouveau prop, et centre la caméra dessus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_aa3cc8539f9b2c780395a93d626ceb5ea}{supprimer\+\_\+prop}} (int i=-\/1)
+\begin{DoxyCompactList}\small\item\em Supprime un prop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_ae63fbcd0c7016653254ce9157691be49}{deplacer\+\_\+prop}} (float dx, float dy)
+\begin{DoxyCompactList}\small\item\em Déplace le prop sélectionné \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_adbcc897e437725a46555752f150cd0cc}{rotate\+\_\+prop}} (float angle=90)
+\begin{DoxyCompactList}\small\item\em Tourne le prop sélectionné de angle dans le sens horaire. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEditeur_af96d4ff6bc55c03aa89f95568d6ac707}\label{classEditeur_af96d4ff6bc55c03aa89f95568d6ac707}} 
+void {\bfseries Init\+\_\+props} ()
+\begin{DoxyCompactList}\small\item\em Initialise les propriétés des props. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a8a2657b7b70175692adeb482e3621d39}{sauvegarder}} (string path)
+\begin{DoxyCompactList}\small\item\em Sauvegarde le terrain dans un fichier json. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEditeur_a0e88336d57a719e5980e32190cc9ea7f}{charger}} (string path=\char`\"{}data/circuits/test1.\+json\char`\"{})
+\begin{DoxyCompactList}\small\item\em Charge un nouveau terrain depuis un fichier json si il existe. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEditeur_a0ef8a06aaab3d7673eddea1f313c80d5}\label{classEditeur_a0ef8a06aaab3d7673eddea1f313c80d5}} 
+void {\bfseries Init\+\_\+ref\+\_\+props} ()
+\begin{DoxyCompactList}\small\item\em Initialise les propriétés des props de référence ce sont les props à gauche de l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEditeur_a2f87641638ed974e5e59669293e9286c}{gestion\+Event}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Gère les évènements clavier et leurs conséquences de l\textquotesingle{}éditeur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEditeur_a57dc9f51f4774b510e57d77cf7027698}{gestion\+Souris}} (Render\+Window const \&window)
+\begin{DoxyCompactList}\small\item\em Gère les évènements de la souris. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEditeur_a37369a909a73765118673ad2c356761f}{test\+\_\+regression}} ()
+\begin{DoxyCompactList}\small\item\em Teste les fonctions de l\textquotesingle{}éditeur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTerrain}{Terrain}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,20 +71,267 @@ int \mbox{\hyperlink{classTerrain_a704e45ae5884d23a42574a55c356ac53}{get\+Longue
 \begin{DoxyCompactList}\small\item\em Retourne la longueur du terrain. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classTerrain_ac5c6e548d6b4cc950df5ea4b967b2554}{get\+Nb\+Props}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le nombre de props du terrain. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classProps}{Props}} \& \mbox{\hyperlink{classTerrain_ab874e714bd0f9e7fed6595f9885f3af6}{get\+Prop}} (int i)
+\mbox{\hyperlink{classProps}{Props}} const \& \mbox{\hyperlink{classTerrain_ae40ff8ac5489430bf9390f866bd562f7}{get\+Prop}} (int i)
+\begin{DoxyCompactList}\small\item\em Retourne le ième props du terrain. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTerrain_a747a6fa9dc1239b9b8dee9591dd8487d}{charger\+JSON}} (string const \&path)
+\begin{DoxyCompactList}\small\item\em Charge les données depuis un fichier JSON. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTerrain_a5fcf37fee3801f519b53f02ea50eb919}{get\+Prop}} (\mbox{\hyperlink{classVecteur}{Vecteur}} const \&pos)
+\begin{DoxyCompactList}\small\item\em Retourne le numéro du prop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProps}{Props}} const \& \mbox{\hyperlink{classTerrain_a5e8c5641f2ecf4443641a3c5c4fffc2d}{get\+Ligne\+Arrivee}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie une référence vers la ligne d\textquotesingle{}arrivée. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ const \mbox{\hyperlink{classTerrain_ac4db1b880e6ae6d18e9f0bd47703815d}{get\+Tab\+Props}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vector des props. \end{DoxyCompactList}\item 
+vector$<$ int $>$ const \& \mbox{\hyperlink{classTerrain_ab30942677a6d5dd3754b636b38572752}{get\+Ordre\+Checkpoint}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le vector contenant les checkpoints dans l\textquotesingle{}ordre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classTerrain}{Terrain}}}
+\begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classTerrain_a7b08e02c7f763bb3b135b5c5757d9422}{charger\+JSON}} (string const \&path)
-\item 
-\mbox{\Hypertarget{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}\label{classTerrain_acdb197bf84230d23ab452c0c6a0f276e}} 
-void {\bfseries afficher\+\_\+txt} ()
-\begin{DoxyCompactList}\small\item\em Affiche le terrain en TXT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classTerrain_adb3b6bc73480613208c75732db573507}\label{classTerrain_adb3b6bc73480613208c75732db573507}} 
+int {\bfseries largeur}
+\begin{DoxyCompactList}\small\item\em Largeur du terrain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_afb6ae76bf574629e089f086eaf18036a}\label{classTerrain_afb6ae76bf574629e089f086eaf18036a}} 
+int {\bfseries longueur}
+\begin{DoxyCompactList}\small\item\em Longueur du terrain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_a09c9006b36284c81eebaba24b19054e4}\label{classTerrain_a09c9006b36284c81eebaba24b19054e4}} 
+int {\bfseries nb\+\_\+props}
+\begin{DoxyCompactList}\small\item\em Nombre de props. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_ac956df7f5e97b0016ce7df00aba63521}\label{classTerrain_ac956df7f5e97b0016ce7df00aba63521}} 
+vector$<$ \mbox{\hyperlink{classProps}{Props}} $>$ {\bfseries tab\+\_\+props}
+\begin{DoxyCompactList}\small\item\em Vector contenant les props. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTerrain_ae68318b574e6b38df4d73684d10af853}\label{classTerrain_ae68318b574e6b38df4d73684d10af853}} 
+vector$<$ int $>$ {\bfseries ordre\+\_\+checkpoint}
+\begin{DoxyCompactList}\small\item\em Vector contenant le numéro des Checpoints(cf tab\+\_\+props) dans l\textquotesingle{}ordre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProps}{Props}} \mbox{\hyperlink{classTerrain_a0ad16e2153257ec07820427f95b87034}{prop\+\_\+undef}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Classe de l\textquotesingle{}éditeur de terrain (non fait) 
+Classe d\textquotesingle{}édition de \mbox{\hyperlink{classTerrain}{Terrain}}, fille de ce dernier Cette classe permet de créer un terrain et de le sauvegarder dans un fichier json, ainsi que de le charger, ou de le supprimer. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEditeur_a21757b841718cd4f8c136dad9ede7125}\label{classEditeur_a21757b841718cd4f8c136dad9ede7125}} 
+\index{Editeur@{Editeur}!ajouter\_prop@{ajouter\_prop}}
+\index{ajouter\_prop@{ajouter\_prop}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{ajouter\_prop()}{ajouter\_prop()}}
+{\footnotesize\ttfamily void Editeur\+::ajouter\+\_\+prop (\begin{DoxyParamCaption}\item[{Tip}]{t = {\ttfamily Tip\+:\+:road},  }\item[{Vector2f}]{pos = {\ttfamily Vector2f(0,0)} }\end{DoxyParamCaption})}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Ajoute un prop au terrain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Type du prop \\
+\hline
+{\em pos} & Position du prop \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a71e2225e2d32b91a0eee4fc7ee4ada5d}\label{classEditeur_a71e2225e2d32b91a0eee4fc7ee4ada5d}} 
+\index{Editeur@{Editeur}!boucleEditeur@{boucleEditeur}}
+\index{boucleEditeur@{boucleEditeur}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{boucleEditeur()}{boucleEditeur()}}
+{\footnotesize\ttfamily void Editeur\+::boucle\+Editeur (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window,  }\item[{int}]{volume }\end{DoxyParamCaption})}
+
+
+
+Boucle principale de l\textquotesingle{}éditeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu\\
+\hline
+{\em volume} & Volume de la musique \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a0e88336d57a719e5980e32190cc9ea7f}\label{classEditeur_a0e88336d57a719e5980e32190cc9ea7f}} 
+\index{Editeur@{Editeur}!charger@{charger}}
+\index{charger@{charger}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{charger()}{charger()}}
+{\footnotesize\ttfamily bool Editeur\+::charger (\begin{DoxyParamCaption}\item[{string}]{path = {\ttfamily \char`\"{}data/circuits/test1.json\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Charge un nouveau terrain depuis un fichier json si il existe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin du fichier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a1c478187a821d23fbd52279b1b8a5a29}\label{classEditeur_a1c478187a821d23fbd52279b1b8a5a29}} 
+\index{Editeur@{Editeur}!deplacer@{deplacer}}
+\index{deplacer@{deplacer}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{deplacer()}{deplacer()}}
+{\footnotesize\ttfamily void Editeur\+::deplacer (\begin{DoxyParamCaption}\item[{float}]{dx = {\ttfamily 0},  }\item[{float}]{dy = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Déplace la caméra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Déplacement en x\\
+\hline
+{\em dy} & Déplacement en y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_ae63fbcd0c7016653254ce9157691be49}\label{classEditeur_ae63fbcd0c7016653254ce9157691be49}} 
+\index{Editeur@{Editeur}!deplacer\_prop@{deplacer\_prop}}
+\index{deplacer\_prop@{deplacer\_prop}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{deplacer\_prop()}{deplacer\_prop()}}
+{\footnotesize\ttfamily void Editeur\+::deplacer\+\_\+prop (\begin{DoxyParamCaption}\item[{float}]{dx,  }\item[{float}]{dy }\end{DoxyParamCaption})}
+
+
+
+Déplace le prop sélectionné 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Déplacement en x \\
+\hline
+{\em dy} & Déplacement en y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a2f87641638ed974e5e59669293e9286c}\label{classEditeur_a2f87641638ed974e5e59669293e9286c}} 
+\index{Editeur@{Editeur}!gestionEvent@{gestionEvent}}
+\index{gestionEvent@{gestionEvent}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{gestionEvent()}{gestionEvent()}}
+{\footnotesize\ttfamily bool Editeur\+::gestion\+Event (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Gère les évènements clavier et leurs conséquences de l\textquotesingle{}éditeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si on doit quitter l\textquotesingle{}éditeur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEditeur_a57dc9f51f4774b510e57d77cf7027698}\label{classEditeur_a57dc9f51f4774b510e57d77cf7027698}} 
+\index{Editeur@{Editeur}!gestionSouris@{gestionSouris}}
+\index{gestionSouris@{gestionSouris}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{gestionSouris()}{gestionSouris()}}
+{\footnotesize\ttfamily void Editeur\+::gestion\+Souris (\begin{DoxyParamCaption}\item[{Render\+Window const \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Gère les évènements de la souris. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a9fa1502f4561cd889f0b9b18ed1afda9}\label{classEditeur_a9fa1502f4561cd889f0b9b18ed1afda9}} 
+\index{Editeur@{Editeur}!lier\_window@{lier\_window}}
+\index{lier\_window@{lier\_window}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{lier\_window()}{lier\_window()}}
+{\footnotesize\ttfamily void Editeur\+::lier\+\_\+window (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Lie les éléments de l\textquotesingle{}\mbox{\hyperlink{classEditeur}{Editeur}} à l\textquotesingle{}affichage utilise window.\+draw(). pas de window.\+display() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_adbcc897e437725a46555752f150cd0cc}\label{classEditeur_adbcc897e437725a46555752f150cd0cc}} 
+\index{Editeur@{Editeur}!rotate\_prop@{rotate\_prop}}
+\index{rotate\_prop@{rotate\_prop}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{rotate\_prop()}{rotate\_prop()}}
+{\footnotesize\ttfamily void Editeur\+::rotate\+\_\+prop (\begin{DoxyParamCaption}\item[{float}]{angle = {\ttfamily 90} }\end{DoxyParamCaption})}
+
+
+
+Tourne le prop sélectionné de angle dans le sens horaire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle de rotation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a8a2657b7b70175692adeb482e3621d39}\label{classEditeur_a8a2657b7b70175692adeb482e3621d39}} 
+\index{Editeur@{Editeur}!sauvegarder@{sauvegarder}}
+\index{sauvegarder@{sauvegarder}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{sauvegarder()}{sauvegarder()}}
+{\footnotesize\ttfamily void Editeur\+::sauvegarder (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde le terrain dans un fichier json. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin du fichier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a40b90d37b2d9aacf19bdd644960ee83f}\label{classEditeur_a40b90d37b2d9aacf19bdd644960ee83f}} 
+\index{Editeur@{Editeur}!select\_prop@{select\_prop}}
+\index{select\_prop@{select\_prop}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{select\_prop()}{select\_prop()}}
+{\footnotesize\ttfamily void Editeur\+::select\+\_\+prop (\begin{DoxyParamCaption}\item[{bool}]{plus\+\_\+recent = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Sélectionne un prop nouveau prop, et centre la caméra dessus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plus\+\_\+recent} & Si true, sélectionne un plus récent, sinon un plus ancien \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_aa3cc8539f9b2c780395a93d626ceb5ea}\label{classEditeur_aa3cc8539f9b2c780395a93d626ceb5ea}} 
+\index{Editeur@{Editeur}!supprimer\_prop@{supprimer\_prop}}
+\index{supprimer\_prop@{supprimer\_prop}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{supprimer\_prop()}{supprimer\_prop()}}
+{\footnotesize\ttfamily void Editeur\+::supprimer\+\_\+prop (\begin{DoxyParamCaption}\item[{int}]{i = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Supprime un prop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Indice du prop à supprimer. si i=-\/1, supprime le prop sélectionné \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEditeur_a37369a909a73765118673ad2c356761f}\label{classEditeur_a37369a909a73765118673ad2c356761f}} 
+\index{Editeur@{Editeur}!test\_regression@{test\_regression}}
+\index{test\_regression@{test\_regression}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{test\_regression()}{test\_regression()}}
+{\footnotesize\ttfamily bool Editeur\+::test\+\_\+regression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Teste les fonctions de l\textquotesingle{}éditeur. 
+
+\begin{DoxyReturn}{Returns}
+true si les tests sont réussis 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEditeur_a6967bc1748daf916e857eae48f8b1a5b}\label{classEditeur_a6967bc1748daf916e857eae48f8b1a5b}} 
+\index{Editeur@{Editeur}!zoom\_@{zoom\_}}
+\index{zoom\_@{zoom\_}!Editeur@{Editeur}}
+\doxysubsubsection{\texorpdfstring{zoom\_()}{zoom\_()}}
+{\footnotesize\ttfamily void Editeur\+::zoom\+\_\+ (\begin{DoxyParamCaption}\item[{float}]{z }\end{DoxyParamCaption})}
+
+
+
+zoom sur le terrain 
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Facteur de zoom \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Editeur.\+h\end{DoxyCompactItemize}
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Editeur.\+h\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Editeur.\+cpp\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hitbox_0',['hitbox',['../classProps.html#a4f90e4a189c1ba05ceb9776cc4ce0105',1,'Props']]]
+  ['accelere_0',['accelere',['../structActionClavier.html#a70efddc6b3a9303692cf04117258d69d',1,'ActionClavier']]]
 ];

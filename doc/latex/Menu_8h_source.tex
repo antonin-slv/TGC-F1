@@ -5,9 +5,43 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_Menu\_H\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_Menu\_H\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00005\ \textcolor{keywordtype}{bool}\ Menu\_Pause(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00007\ \textcolor{keywordtype}{bool}\ Menu\_Principal(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include"{}Interface.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSelection}{Selection}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{structSelection_a532399abb3cc05870edfb101fc6ee917}{nom\_circuit}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{structSelection_af9689220ced69f964ada992e36ed8cf6}{chemin\_circuit}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structSelection_a4d1bc33287ac6b24a15c1afacdd00d32}{nb\_tours}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structSelection_a898c93fe667b315795f6bc6549f2f06e}{indice\_circuit}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structSelection_a7ee2cb2c7d91255e9717928091b089e5}{volume}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structSelection_a2b04d9ec030fd90a41b6803dc02250c3}{decalage}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{structSelection_a62985d8adccea4a11627f35449a292ca}{choix}};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{bool}\ get\_parametre\_circuit(\mbox{\hyperlink{structSelection}{Selection}}\ \&\ parametre\_jeu);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{bool}\ sauvegarderTemp(\mbox{\hyperlink{structSelection}{Selection}}\ \textcolor{keyword}{const}\ \&\ param,\ \textcolor{keywordtype}{float}\ temps);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ initBoutonCentre(RenderWindow\ \&\ window,\ RectangleShape\ \&\ rectangle,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ largeur,\ \textcolor{keywordtype}{int}\ hauteur);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ initCurseur(RenderWindow\ \&\ window,\ RectangleShape\ \&\ rectangle,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ largeur,\ \textcolor{keywordtype}{int}\ hauteur);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ initTexteCentre(RenderWindow\ \&\ window,\ Text\ \&\ texte,\ Font\ \&\ font,\ \textcolor{keywordtype}{int}\ taille,\ \textcolor{keywordtype}{string}\ txt,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ initTitre(RenderWindow\ \&\ window,\ Text\ \&\ texte,\ Font\ \&\ font,\ \textcolor{keywordtype}{int}\ taille,\ \textcolor{keywordtype}{string}\ txt,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{bool}\ estSelectionne(RenderWindow\ \&\ window,\ RectangleShape\ \&\ rectangle);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ colorerSelectione(RenderWindow\ \&\ window,\ RectangleShape\ \&\ rectangle);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ colorerNonSelectione(RenderWindow\ \&\ window,\ RectangleShape\ \&\ rectangle);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{void}\ boucleMenu(RenderWindow\ \&\ window,\ \mbox{\hyperlink{structSelection}{Selection}}\ \&\ parametre\_jeu);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

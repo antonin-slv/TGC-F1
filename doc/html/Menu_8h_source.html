@@ -79,10 +79,52 @@ $(function() {
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _Menu_H_</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _Menu_H_</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keywordtype">bool</span> Menu_Pause(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">bool</span> Menu_Principal(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include&quot;Interface.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using namespace </span>std;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structSelection.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structSelection.html">Selection</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structSelection.html#a532399abb3cc05870edfb101fc6ee917">   16</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="structSelection.html#a532399abb3cc05870edfb101fc6ee917">nom_circuit</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structSelection.html#af9689220ced69f964ada992e36ed8cf6">   18</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="structSelection.html#af9689220ced69f964ada992e36ed8cf6">chemin_circuit</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structSelection.html#a4d1bc33287ac6b24a15c1afacdd00d32">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structSelection.html#a4d1bc33287ac6b24a15c1afacdd00d32">nb_tours</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structSelection.html#a898c93fe667b315795f6bc6549f2f06e">   22</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structSelection.html#a898c93fe667b315795f6bc6549f2f06e">indice_circuit</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structSelection.html#a7ee2cb2c7d91255e9717928091b089e5">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structSelection.html#a7ee2cb2c7d91255e9717928091b089e5">volume</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structSelection.html#a2b04d9ec030fd90a41b6803dc02250c3">   26</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structSelection.html#a2b04d9ec030fd90a41b6803dc02250c3">decalage</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structSelection.html#a62985d8adccea4a11627f35449a292ca">   28</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="structSelection.html#a62985d8adccea4a11627f35449a292ca">choix</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">bool</span> get_parametre_circuit(<a class="code hl_struct" href="structSelection.html">Selection</a> &amp; parametre_jeu);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">bool</span> sauvegarderTemp(<a class="code hl_struct" href="structSelection.html">Selection</a> <span class="keyword">const</span> &amp; param, <span class="keywordtype">float</span> temps);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> initBoutonCentre(RenderWindow &amp; window, RectangleShape &amp; rectangle, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> largeur, <span class="keywordtype">int</span> hauteur);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">void</span> initCurseur(RenderWindow &amp; window, RectangleShape &amp; rectangle, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> largeur, <span class="keywordtype">int</span> hauteur);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">void</span> initTexteCentre(RenderWindow &amp; window, Text &amp; texte, Font &amp; font, <span class="keywordtype">int</span> taille, <span class="keywordtype">string</span> txt, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> initTitre(RenderWindow &amp; window, Text &amp; texte, Font &amp; font, <span class="keywordtype">int</span> taille, <span class="keywordtype">string</span> txt, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">bool</span> estSelectionne(RenderWindow &amp; window, RectangleShape &amp; rectangle);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> colorerSelectione(RenderWindow &amp; window, RectangleShape &amp; rectangle);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> colorerNonSelectione(RenderWindow &amp; window, RectangleShape &amp; rectangle);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keywordtype">void</span> boucleMenu(RenderWindow &amp; window, <a class="code hl_struct" href="structSelection.html">Selection</a> &amp; parametre_jeu);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructSelection_html"><div class="ttname"><a href="structSelection.html">Selection</a></div><div class="ttdoc">Structure contenant les paramètres du jeu.</div><div class="ttdef"><b>Definition:</b> Menu.h:14</div></div>
+<div class="ttc" id="astructSelection_html_a2b04d9ec030fd90a41b6803dc02250c3"><div class="ttname"><a href="structSelection.html#a2b04d9ec030fd90a41b6803dc02250c3">Selection::decalage</a></div><div class="ttdeci">float decalage</div><div class="ttdoc">decalaga de la caméra dans le jeu</div><div class="ttdef"><b>Definition:</b> Menu.h:26</div></div>
+<div class="ttc" id="astructSelection_html_a4d1bc33287ac6b24a15c1afacdd00d32"><div class="ttname"><a href="structSelection.html#a4d1bc33287ac6b24a15c1afacdd00d32">Selection::nb_tours</a></div><div class="ttdeci">int nb_tours</div><div class="ttdoc">nombre de tours a faire</div><div class="ttdef"><b>Definition:</b> Menu.h:20</div></div>
+<div class="ttc" id="astructSelection_html_a532399abb3cc05870edfb101fc6ee917"><div class="ttname"><a href="structSelection.html#a532399abb3cc05870edfb101fc6ee917">Selection::nom_circuit</a></div><div class="ttdeci">string nom_circuit</div><div class="ttdoc">nom du circuit a charger</div><div class="ttdef"><b>Definition:</b> Menu.h:16</div></div>
+<div class="ttc" id="astructSelection_html_a62985d8adccea4a11627f35449a292ca"><div class="ttname"><a href="structSelection.html#a62985d8adccea4a11627f35449a292ca">Selection::choix</a></div><div class="ttdeci">string choix</div><div class="ttdoc">choix général (Jouer, editeur, quitter...)</div><div class="ttdef"><b>Definition:</b> Menu.h:28</div></div>
+<div class="ttc" id="astructSelection_html_a7ee2cb2c7d91255e9717928091b089e5"><div class="ttname"><a href="structSelection.html#a7ee2cb2c7d91255e9717928091b089e5">Selection::volume</a></div><div class="ttdeci">int volume</div><div class="ttdoc">volume de la musique</div><div class="ttdef"><b>Definition:</b> Menu.h:24</div></div>
+<div class="ttc" id="astructSelection_html_a898c93fe667b315795f6bc6549f2f06e"><div class="ttname"><a href="structSelection.html#a898c93fe667b315795f6bc6549f2f06e">Selection::indice_circuit</a></div><div class="ttdeci">unsigned int indice_circuit</div><div class="ttdoc">indice du circuit dans la liste des circuits</div><div class="ttdef"><b>Definition:</b> Menu.h:22</div></div>
+<div class="ttc" id="astructSelection_html_af9689220ced69f964ada992e36ed8cf6"><div class="ttname"><a href="structSelection.html#af9689220ced69f964ada992e36ed8cf6">Selection::chemin_circuit</a></div><div class="ttdeci">string chemin_circuit</div><div class="ttdoc">chemin vers le circuit a charger</div><div class="ttdef"><b>Definition:</b> Menu.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

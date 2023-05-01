@@ -1,0 +1,80 @@
+\hypertarget{Interface_8h_source}{}\doxysection{Interface.\+h}
+\label{Interface_8h_source}\index{/home/thomas/Documents/GitHub/test-\/project/src/Interface.h@{/home/thomas/Documents/GitHub/test-\/project/src/Interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_INTERFACE\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_INTERFACE\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Jeu.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Terrain.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Voiture/Voiture.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classEditeur}{Editeur}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }sf;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ afficherDebug(RenderWindow\ \&\ window,\ Text\ \&\ text,\ \textcolor{keywordtype}{int}\ charac\_size,\ \textcolor{keywordtype}{float}\ \_x,\ \textcolor{keywordtype}{float}\ \_y);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInterface}{Interface}}}
+\DoxyCodeLine{00036\ \{\ \ \ private\ :}
+\DoxyCodeLine{00037\ \ \ \ \ vector<Sprite>\ props;\textcolor{comment}{//charger\ depuis\ un\ terrain}}
+\DoxyCodeLine{00038\ \ \ \ \ vector<Sprite>\ ref\_props;\textcolor{comment}{//chargés\ quand\ on\ ouvre\ un\ editeur}}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ Texture\ checkpoint;}
+\DoxyCodeLine{00043\ \ \ \ \ Texture\ finish;}
+\DoxyCodeLine{00045\ \ \ \ \ Texture\ grass;}
+\DoxyCodeLine{00047\ \ \ \ \ Texture\ road\_kerb\_a;}
+\DoxyCodeLine{00049\ \ \ \ \ Texture\ road\_kerb\_m;}
+\DoxyCodeLine{00051\ \ \ \ \ Texture\ road\_kerb\_z;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \ \ Texture\ road;}
+\DoxyCodeLine{00056\ \ \ \ \ Texture\ turn1;}
+\DoxyCodeLine{00058\ \ \ \ \ Texture\ turn2;}
+\DoxyCodeLine{00060\ \ \ \ \ Texture\ turn3;}
+\DoxyCodeLine{00062\ \ \ \ \ Texture\ turn4;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ Texture\ text\_voiture;}
+\DoxyCodeLine{00067\ \ \ \ \ Texture\ text\_voiture\_ombre;}
+\DoxyCodeLine{00069\ \ \ \ \ Sprite\ voiture\_ombre;}
+\DoxyCodeLine{00070\ \ \ \ \ public\ :}
+\DoxyCodeLine{00072\ \ \ \ \ Sprite\ \mbox{\hyperlink{classInterface_a11584bdd4d7779e30dc698e25efcf300}{voiture}};}
+\DoxyCodeLine{00074\ \ \ \ \ View\ \mbox{\hyperlink{classInterface_a1002fb8c225efb978f2f31522bcaf93d}{vue}};}
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classInterface_a19179888f29f18f1be54a3dfe98f68c0}{\string~Interface}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_ada26729ce74ab1aa7ab73a9a2d7799f2}{supprimerProp}}(\textcolor{keywordtype}{int}\ i=-\/1);}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a57277c56fe6c4fc55168ac597a705f4f}{clearProps}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a8adf923c2fdd74728cc708910aa2ac74}{clearVoitures}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_aa40b1d191d85dabcbc0f120939f66635}{loadProp}}(\mbox{\hyperlink{classProps}{Props}}\ \textcolor{keyword}{const}\ \&\ prop);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_ae1a638503243edc9cffdc584c5fa337c}{loadTerrain}}(\mbox{\hyperlink{classTerrain}{Terrain}}\ \&\ terrain,\textcolor{keywordtype}{string}\ texture\_path);}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a5dbc1c3e99987b48ded422c1046cb1ec}{loadVoiture}}(\mbox{\hyperlink{classVoiture}{Voiture}}\ \&\ voiture\_,\ \textcolor{keywordtype}{string}\ texture\_path);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a88c62dd779e464a9ba461d20968569ad}{loadRefProps}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a61c26a0edb001f8f535fb670c0030c51}{drawTerrain}}(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a5a4797f5cf87d4a9d7adfd13db7b4d6d}{drawVoiture}}(RenderWindow\ \&\ window,\mbox{\hyperlink{classVoiture}{Voiture}}\ \&\ voiture\_);}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_a1260be5ad60492053eb2cc8db597bd1c}{drawVoitureHitbox}}(RenderWindow\ \&\ window,\mbox{\hyperlink{classVoiture}{Voiture}}\ \&\ voiture\_);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00139\ \ \ \ \ Texture\ *\ \mbox{\hyperlink{classInterface_acca5585035600a89ead5ee82eab63303}{getTexture}}(Tip\ t);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterface_aa11438aaabf09898f9741fe119c35dc4}{drawRefProps}}(RenderWindow\ \&\ window);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00148\ \ \ \ \ Tip\ \mbox{\hyperlink{classInterface_a1956e5d03f3b1d62294468f784404fbc}{refPropSelected}}(RenderWindow\ \textcolor{keyword}{const}\ \&\ window);}
+\DoxyCodeLine{00152\ \ \ \ \ Sprite\ \&\ \mbox{\hyperlink{classInterface_a3304eca2b7b60033b506772718bcce10}{dernierProp}}();}
+\DoxyCodeLine{00157\ \ \ \ \ Sprite\ \&\ \mbox{\hyperlink{classInterface_a3ed19038bb02ef454a4ae5dc8f0897e5}{getProp}}(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00158\ \};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

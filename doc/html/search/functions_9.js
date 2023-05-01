@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['setframe_5ftime_0',['setframe_time',['../classJeu.html#a988460e745f29d87e906426398defd29',1,'Jeu']]],
-  ['setprop_1',['setProp',['../classProps.html#a33c5d1f121cb3ade19f1f3fd936c87d1',1,'Props']]],
-  ['setvecteur_2',['setVecteur',['../classVecteur.html#a00a626fa55dcdf4484ffbe6ad787ab85',1,'Vecteur']]]
+  ['moteur_0',['Moteur',['../classMoteur.html#a90033e47e0caf0b8808d7cd7ba53da2c',1,'Moteur::Moteur()'],['../classMoteur.html#a5f55909478b7bdcb7a713ed5dcd7641c',1,'Moteur::Moteur(string n, int p)'],['../classMoteur.html#ab17926ed3cbdf1fefbaa49895d625c2e',1,'Moteur::Moteur(const Moteur &amp;M)']]]
 ];

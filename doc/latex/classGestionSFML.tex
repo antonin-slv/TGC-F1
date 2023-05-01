@@ -1,0 +1,176 @@
+\hypertarget{classGestionSFML}{}\doxysection{Gestion\+SFML Class Reference}
+\label{classGestionSFML}\index{GestionSFML@{GestionSFML}}
+
+
+classe Gestion SFML, héritée de jeu  
+
+
+
+
+{\ttfamily \#include $<$Gestionaire\+SFML.\+h$>$}
+
+Inheritance diagram for Gestion\+SFML\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGestionSFML}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGestionSFML_a3bb55643e1a192ec14248e80706c2ae9}{Gestion\+SFML}} ()
+\begin{DoxyCompactList}\small\item\em appeller dans la boucle de jeu \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGestionSFML_a96026a465082c43d82178432bcf411aa}\label{classGestionSFML_a96026a465082c43d82178432bcf411aa}} 
+{\bfseries $\sim$\+Gestion\+SFML} ()
+\begin{DoxyCompactList}\small\item\em Destructeur par défaut purment figuratif \+: montre que le destructeur est appelé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGestionSFML_abfeb27804d88e1ae375da2e81e6922f2}{charger\+Niveau}} (string path, int nb\+\_\+tours=3)
+\begin{DoxyCompactList}\small\item\em charge un nouveau niveau \end{DoxyCompactList}\item 
+Time \mbox{\hyperlink{classGestionSFML_a9783d5f80397df098df3aec8a983b703}{boucle\+Jeu\+SFML}} (Render\+Window \&window, Clock \&temps\+\_\+au\+\_\+tour, float decalage=0)
+\begin{DoxyCompactList}\small\item\em boucle principale du jeu en SFML \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGestionSFML_a8d0899b69c985221ec7e80e138613860}{afficher\+Jeu\+SFML}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em affiche le jeu avec SFML demande à l\textquotesingle{}interface d\textquotesingle{}afficher les éléments (\mbox{\hyperlink{classTerrain}{Terrain}} et voiture) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGestionSFML_a107fca51f7a48b2d3406dd9a5681d33c}{test\+\_\+regression}} ()
+\begin{DoxyCompactList}\small\item\em test certaines fonctions de la classe \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classJeu}{Jeu}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJeu_acc5795ee00edf75516d3dfe65be3e6d6}{Jeu}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut, figuratif. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classJeu_a09207b0267ba358807506cb3ac66b247}{Jeu}} (string path)
+\begin{DoxyCompactList}\small\item\em Constructeur avec le lien du \mbox{\hyperlink{classTerrain}{Terrain}} à charger. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a9cd19e73df169d7f09397be61ba8548c}\label{classJeu_a9cd19e73df169d7f09397be61ba8548c}} 
+{\bfseries $\sim$\+Jeu} ()
+\begin{DoxyCompactList}\small\item\em Destructeur explicite la destruction des voitures. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTerrain}{Terrain}} const \& \mbox{\hyperlink{classJeu_a0fb4cb30c5d7039d001b50c5b68626bc}{get\+Terrain}} ()
+\begin{DoxyCompactList}\small\item\em Renvoie une référence au terrain. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVoiture}{Voiture}} \& \mbox{\hyperlink{classJeu_a1348607f76e505e28c78c74a775f2723}{get\+Voiture}} (int i=0)
+\begin{DoxyCompactList}\small\item\em renvoie la ieme voiture du jeu \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJeu_ad9dbaa848dea8028c6f9f29ca805d22c}{get\+Nb\+Tours}} () const
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre de tours effectués par le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_affb0bf538fb219564204ad6b0df43224}\label{classJeu_affb0bf538fb219564204ad6b0df43224}} 
+void {\bfseries restart} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le niveau (voitures, checkpoint, tours...) chaque voiture est aussi réinitialisée (position, vitesse, rotation; numéro de checkpoint) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a988460e745f29d87e906426398defd29}{setframe\+\_\+time}} (float const \&tps)
+\begin{DoxyCompactList}\small\item\em Définit le temps d\textquotesingle{}une frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a4bda73f98a2fa81c8725d0c9d5011c35}{Charger\+Terrain}} (string path, int nb\+\_\+tours=3)
+\begin{DoxyCompactList}\small\item\em Charge un terrain, pose la voiture au bon endroit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJeu_a34cf0ae3906e467080f93dc231bbaac0}{ajouter\+Voiture}} (\mbox{\hyperlink{classVoiture}{Voiture}} const \&V)
+\begin{DoxyCompactList}\small\item\em Ajoute une voiture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJeu_a16dd1e8776e98e44b3d6043ed9060e82}{update}} (\mbox{\hyperlink{structActionClavier}{Action\+Clavier}} const \&action)
+\begin{DoxyCompactList}\small\item\em Met à jour le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classJeu}{Jeu}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJeu_a280e269c42d0dc1b6358f60038fc172a}\label{classJeu_a280e269c42d0dc1b6358f60038fc172a}} 
+\mbox{\hyperlink{classTerrain}{Terrain}} {\bfseries terrain}
+\begin{DoxyCompactList}\small\item\em Circuit du jeu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a3cc5653dbace1feba8e2c9fc57df2611}\label{classJeu_a3cc5653dbace1feba8e2c9fc57df2611}} 
+vector$<$ \mbox{\hyperlink{classVoiture}{Voiture}} $>$ {\bfseries tab\+\_\+voit}
+\begin{DoxyCompactList}\small\item\em Tableau dynamique des voitures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_ad46e8f0c5406647089285ad75e5a4965}\label{classJeu_ad46e8f0c5406647089285ad75e5a4965}} 
+float {\bfseries frame\+\_\+time}
+\begin{DoxyCompactList}\small\item\em Temps d\textquotesingle{}une frame utilisé pour la physique (s\textquotesingle{}update à chaque frame pour avoir un comportement logique) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_aec31746dfacb189fff6fea239acc1cab}\label{classJeu_aec31746dfacb189fff6fea239acc1cab}} 
+int {\bfseries nb\+\_\+voit}
+\begin{DoxyCompactList}\small\item\em Nombre de voitures (toujours 1 ici) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a11fc4382cc189344b786303e0f9464a5}\label{classJeu_a11fc4382cc189344b786303e0f9464a5}} 
+unsigned int {\bfseries nb\+\_\+tour\+\_\+max} =1
+\begin{DoxyCompactList}\small\item\em Nombre de tours avant de gagner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_af4132856ea34c3de6146ac0ffef419ff}\label{classJeu_af4132856ea34c3de6146ac0ffef419ff}} 
+unsigned int {\bfseries nb\+\_\+tour}
+\begin{DoxyCompactList}\small\item\em Nombre de tours effectués par le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJeu_a6118b1b5005137512e1521e515ce8b7c}\label{classJeu_a6118b1b5005137512e1521e515ce8b7c}} 
+int {\bfseries num\+\_\+checkpoint} =-\/1
+\begin{DoxyCompactList}\small\item\em Numéro du dernier checkpoint franchi par le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+classe Gestion SFML, héritée de jeu 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGestionSFML_a3bb55643e1a192ec14248e80706c2ae9}\label{classGestionSFML_a3bb55643e1a192ec14248e80706c2ae9}} 
+\index{GestionSFML@{GestionSFML}!GestionSFML@{GestionSFML}}
+\index{GestionSFML@{GestionSFML}!GestionSFML@{GestionSFML}}
+\doxysubsubsection{\texorpdfstring{GestionSFML()}{GestionSFML()}}
+{\footnotesize\ttfamily Gestion\+SFML\+::\+Gestion\+SFML (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+appeller dans la boucle de jeu 
+
+Constructeur par défaut, ne fait rien 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGestionSFML_a8d0899b69c985221ec7e80e138613860}\label{classGestionSFML_a8d0899b69c985221ec7e80e138613860}} 
+\index{GestionSFML@{GestionSFML}!afficherJeuSFML@{afficherJeuSFML}}
+\index{afficherJeuSFML@{afficherJeuSFML}!GestionSFML@{GestionSFML}}
+\doxysubsubsection{\texorpdfstring{afficherJeuSFML()}{afficherJeuSFML()}}
+{\footnotesize\ttfamily void Gestion\+SFML\+::afficher\+Jeu\+SFML (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+affiche le jeu avec SFML demande à l\textquotesingle{}interface d\textquotesingle{}afficher les éléments (\mbox{\hyperlink{classTerrain}{Terrain}} et voiture) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGestionSFML_a9783d5f80397df098df3aec8a983b703}\label{classGestionSFML_a9783d5f80397df098df3aec8a983b703}} 
+\index{GestionSFML@{GestionSFML}!boucleJeuSFML@{boucleJeuSFML}}
+\index{boucleJeuSFML@{boucleJeuSFML}!GestionSFML@{GestionSFML}}
+\doxysubsubsection{\texorpdfstring{boucleJeuSFML()}{boucleJeuSFML()}}
+{\footnotesize\ttfamily Time Gestion\+SFML\+::boucle\+Jeu\+SFML (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window,  }\item[{Clock \&}]{temps\+\_\+au\+\_\+tour,  }\item[{float}]{decalage = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+boucle principale du jeu en SFML 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+{\em temps\+\_\+au\+\_\+tour} & clock qui permet de savoir combien de temps s\textquotesingle{}est écoulé depuis le dernier tour \\
+\hline
+{\em decalage} & point auquel la caméra est décalée par apport à la voiture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGestionSFML_abfeb27804d88e1ae375da2e81e6922f2}\label{classGestionSFML_abfeb27804d88e1ae375da2e81e6922f2}} 
+\index{GestionSFML@{GestionSFML}!chargerNiveau@{chargerNiveau}}
+\index{chargerNiveau@{chargerNiveau}!GestionSFML@{GestionSFML}}
+\doxysubsubsection{\texorpdfstring{chargerNiveau()}{chargerNiveau()}}
+{\footnotesize\ttfamily void Gestion\+SFML\+::charger\+Niveau (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{int}]{nb\+\_\+tours = {\ttfamily 3} }\end{DoxyParamCaption})}
+
+
+
+charge un nouveau niveau 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & chemin du fichier json contenant la liste des props \\
+\hline
+{\em nb\+\_\+tours} & nombre de tours à faire pour gagner \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGestionSFML_a107fca51f7a48b2d3406dd9a5681d33c}\label{classGestionSFML_a107fca51f7a48b2d3406dd9a5681d33c}} 
+\index{GestionSFML@{GestionSFML}!test\_regression@{test\_regression}}
+\index{test\_regression@{test\_regression}!GestionSFML@{GestionSFML}}
+\doxysubsubsection{\texorpdfstring{test\_regression()}{test\_regression()}}
+{\footnotesize\ttfamily bool Gestion\+SFML\+::test\+\_\+regression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+test certaines fonctions de la classe 
+
+\begin{DoxyReturn}{Returns}
+true si les tests sont réussis, false sinon 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Gestionaire\+SFML.\+h\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Gestionaire\+SFML.\+cpp\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vecteur_0',['Vecteur',['../classVecteur.html#a8227543ef6aadc8f9fbbc93de68af43b',1,'Vecteur::Vecteur()'],['../classVecteur.html#a182a3c1858a560f0642342dec9dda4a6',1,'Vecteur::Vecteur(float px, float py)']]],
-  ['voiture_1',['Voiture',['../classVoiture.html#a5bcf57fecc474ac7dba49ca67529e31b',1,'Voiture::Voiture()'],['../classVoiture.html#acecda298456a3ecd11f435e54bdc9861',1,'Voiture::Voiture(const Moteur &amp;m, const Roues &amp;r, float poi, float coef, float largeur, float longu, float orient=M_PI/2, float vit=0, float x=0, float y=0, float acc=0)'],['../classVoiture.html#abef23da1b535c884524875918a918b3d',1,'Voiture::Voiture(const Voiture &amp;V)']]]
+  ['passer_5fcheckpoint_0',['passer_checkpoint',['../classVoiture.html#afd1421fcb5fdfcfca0b3c132452b88d1',1,'Voiture']]],
+  ['props_1',['Props',['../classProps.html#a8c536a129516681899157a8293c9ae05',1,'Props::Props()'],['../classProps.html#a5c53bf58e15fe819c68bb6023bf74a35',1,'Props::Props(int px, int py, Tip t, float rot=0, float l=0, float L=0)']]]
 ];

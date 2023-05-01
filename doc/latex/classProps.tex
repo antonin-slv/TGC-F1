@@ -2,7 +2,7 @@
 \label{classProps}\index{Props@{Props}}
 
 
-La classe \mbox{\hyperlink{classProps}{Props}}.  
+La classe \mbox{\hyperlink{classProps}{Props}} Modules de base d\textquotesingle{}un terrain.  
 
 
 
@@ -32,30 +32,20 @@ float \mbox{\hyperlink{classProps_ae4b4d216b4d9f2c8e30f3de2de042b45}{get\+Long}}
 \begin{DoxyCompactList}\small\item\em Retourne le vecteur hitbox. \end{DoxyCompactList}\item 
 Tip \mbox{\hyperlink{classProps_adc9c008375853928b54cb8de401a3d0d}{get\+Type}} () const
 \begin{DoxyCompactList}\small\item\em Retourne le type. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classProps_aa04f12c90c55f281401782b6e928b8da}{prop\+\_\+set\+\_\+type}} (Tip t)
-\begin{DoxyCompactList}\small\item\em Donne le type. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}{set\+Prop}} (int px, int py, float rot=0, float nl=0, float nL=0)
-\begin{DoxyCompactList}\small\item\em Donne la position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProps_ad378ad87830ffb8f184229d396865809}{set\+\_\+type}} (Tip t)
+\begin{DoxyCompactList}\small\item\em Remplace le type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProps_a0fe4837b3f0553411d6cf2ebd00fde2f}{set\+Hitbox}} (\mbox{\hyperlink{classVecteur}{Vecteur}} const \&hitbox)
+\begin{DoxyCompactList}\small\item\em permet de donner une nouvelle hitbox \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProps_aac00fae05366209131d642fbe86b3052}{set\+Rot}} (float rot=0)
+\begin{DoxyCompactList}\small\item\em permet de donner une nouvelle rotation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProps_a5a5f706ae86afc1d20398dc5441ccfd2}{set\+Pos}} (\mbox{\hyperlink{classVecteur}{Vecteur}} const \&pos)
+\begin{DoxyCompactList}\small\item\em permet de donner une nouvelle position \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classProps_a2a52dd2a5547f81a6f373bedde31e41a}{charger\+JSON}} (json const \&obj)
-\begin{DoxyCompactList}\small\item\em Charge les données depuis un fichier JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classProps_a08dab30c52d9d01538d599e0c2f05911}\label{classProps_a08dab30c52d9d01538d599e0c2f05911}} 
-\mbox{\hyperlink{classVecteur}{Vecteur}} {\bfseries pos}
-\item 
-\mbox{\Hypertarget{classProps_a4f90e4a189c1ba05ceb9776cc4ce0105}\label{classProps_a4f90e4a189c1ba05ceb9776cc4ce0105}} 
-\mbox{\hyperlink{classVecteur}{Vecteur}} {\bfseries hitbox}
-\begin{DoxyCompactList}\small\item\em !la largeur et longueur sont la moitié de leur taille réelle -\/\texorpdfstring{$>$}{>} calcul plus simple \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classProps_ad9588ee120973dcba9a8261b57bea872}\label{classProps_ad9588ee120973dcba9a8261b57bea872}} 
-float {\bfseries rotation}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Charge les données du prop depuis un fichier JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-La classe \mbox{\hyperlink{classProps}{Props}}. 
-
-
+La classe \mbox{\hyperlink{classProps}{Props}} Modules de base d\textquotesingle{}un terrain. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classProps_a8c536a129516681899157a8293c9ae05}\label{classProps_a8c536a129516681899157a8293c9ae05}} 
@@ -110,7 +100,7 @@ Constructeur avec paramètres.
 
 
 
-Charge les données depuis un fichier JSON. 
+Charge les données du prop depuis un fichier JSON. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -118,7 +108,7 @@ Charge les données depuis un fichier JSON.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-bool 
+booléen vrai si la fonction a marchée 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classProps_a4f5af825e8886fe696a3ae18c645336f}\label{classProps_a4f5af825e8886fe696a3ae18c645336f}} 
 \index{Props@{Props}!getHitbox@{getHitbox}}
@@ -224,39 +214,64 @@ Retourne la position en y.
 \begin{DoxyReturn}{Returns}
 float 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classProps_aa04f12c90c55f281401782b6e928b8da}\label{classProps_aa04f12c90c55f281401782b6e928b8da}} 
-\index{Props@{Props}!prop\_set\_type@{prop\_set\_type}}
-\index{prop\_set\_type@{prop\_set\_type}!Props@{Props}}
-\doxysubsubsection{\texorpdfstring{prop\_set\_type()}{prop\_set\_type()}}
-{\footnotesize\ttfamily void Props\+::prop\+\_\+set\+\_\+type (\begin{DoxyParamCaption}\item[{Tip}]{t }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classProps_ad378ad87830ffb8f184229d396865809}\label{classProps_ad378ad87830ffb8f184229d396865809}} 
+\index{Props@{Props}!set\_type@{set\_type}}
+\index{set\_type@{set\_type}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{set\_type()}{set\_type()}}
+{\footnotesize\ttfamily void Props\+::set\+\_\+type (\begin{DoxyParamCaption}\item[{Tip}]{t }\end{DoxyParamCaption})}
 
 
 
-Donne le type. 
+Remplace le type. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em t} & Type \\
+{\em t} & Nouveau Type \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}\label{classProps_a33c5d1f121cb3ade19f1f3fd936c87d1}} 
-\index{Props@{Props}!setProp@{setProp}}
-\index{setProp@{setProp}!Props@{Props}}
-\doxysubsubsection{\texorpdfstring{setProp()}{setProp()}}
-{\footnotesize\ttfamily void Props\+::set\+Prop (\begin{DoxyParamCaption}\item[{int}]{px,  }\item[{int}]{py,  }\item[{float}]{rot = {\ttfamily 0},  }\item[{float}]{nl = {\ttfamily 0},  }\item[{float}]{nL = {\ttfamily 0} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classProps_a0fe4837b3f0553411d6cf2ebd00fde2f}\label{classProps_a0fe4837b3f0553411d6cf2ebd00fde2f}} 
+\index{Props@{Props}!setHitbox@{setHitbox}}
+\index{setHitbox@{setHitbox}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{setHitbox()}{setHitbox()}}
+{\footnotesize\ttfamily void Props\+::set\+Hitbox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVecteur}{Vecteur}} const \&}]{hitbox }\end{DoxyParamCaption})}
 
 
 
-Donne la position. 
+permet de donner une nouvelle hitbox 
 
 
 \begin{DoxyParams}{Parameters}
-{\em px} & Position en x \\
+{\em hitbox} & nouvelle hitbox \\
 \hline
-{\em py} & Position en y \\
+\end{DoxyParams}
+\mbox{\Hypertarget{classProps_a5a5f706ae86afc1d20398dc5441ccfd2}\label{classProps_a5a5f706ae86afc1d20398dc5441ccfd2}} 
+\index{Props@{Props}!setPos@{setPos}}
+\index{setPos@{setPos}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Props\+::set\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVecteur}{Vecteur}} const \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+permet de donner une nouvelle position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & nouvelle position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProps_aac00fae05366209131d642fbe86b3052}\label{classProps_aac00fae05366209131d642fbe86b3052}} 
+\index{Props@{Props}!setRot@{setRot}}
+\index{setRot@{setRot}!Props@{Props}}
+\doxysubsubsection{\texorpdfstring{setRot()}{setRot()}}
+{\footnotesize\ttfamily void Props\+::set\+Rot (\begin{DoxyParamCaption}\item[{float}]{rot = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+permet de donner une nouvelle rotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rot} & nouvelle rotation \\
 \hline
 \end{DoxyParams}
 

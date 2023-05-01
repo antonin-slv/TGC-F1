@@ -1,0 +1,263 @@
+\hypertarget{classInterface}{}\doxysection{Interface Class Reference}
+\label{classInterface}\index{Interface@{Interface}}
+
+
+Classe \mbox{\hyperlink{classInterface}{Interface}} Cette classe permet de charger les textures et de les afficher. Elle permet aussi de charger les props et les voitures. Elle permet aussi de charger les props de référence (pour l\textquotesingle{}éditeur)  
+
+
+
+
+{\ttfamily \#include $<$Interface.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}\label{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}} 
+{\bfseries Interface} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut Charge les textures depuis le dossier textures. immuable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterface_a19179888f29f18f1be54a3dfe98f68c0}\label{classInterface_a19179888f29f18f1be54a3dfe98f68c0}} 
+{\bfseries $\sim$\+Interface} ()
+\begin{DoxyCompactList}\small\item\em Destructeur par défaut explicite la destruction des vectors permet de savoir que le destructeur de la classe est appelé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_ada26729ce74ab1aa7ab73a9a2d7799f2}{supprimer\+Prop}} (int i=-\/1)
+\begin{DoxyCompactList}\small\item\em supprime le ième prop du vector props \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterface_a57277c56fe6c4fc55168ac597a705f4f}\label{classInterface_a57277c56fe6c4fc55168ac597a705f4f}} 
+void {\bfseries clear\+Props} ()
+\begin{DoxyCompactList}\small\item\em supprime tous les sprites du vector props les textures sont conservées \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterface_a8adf923c2fdd74728cc708910aa2ac74}\label{classInterface_a8adf923c2fdd74728cc708910aa2ac74}} 
+void {\bfseries clear\+Voitures} ()
+\begin{DoxyCompactList}\small\item\em supprime le sprite de la voiture neutralisé pour l\textquotesingle{}instant \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_aa40b1d191d85dabcbc0f120939f66635}{load\+Prop}} (\mbox{\hyperlink{classProps}{Props}} const \&prop)
+\begin{DoxyCompactList}\small\item\em Charge le sprite associé au prop dans le vector props. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_ae1a638503243edc9cffdc584c5fa337c}{load\+Terrain}} (\mbox{\hyperlink{classTerrain}{Terrain}} \&terrain, string texture\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Charge l\textquotesingle{}ensemble des props du terrain dans le vector props. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_a5dbc1c3e99987b48ded422c1046cb1ec}{load\+Voiture}} (\mbox{\hyperlink{classVoiture}{Voiture}} \&voiture\+\_\+, string texture\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Charge la voiture dans le sprite voiture, et redéfini sa hitbox en accord avec la texture l\textquotesingle{}ombre de la voiture est aussi chargée. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterface_a88c62dd779e464a9ba461d20968569ad}\label{classInterface_a88c62dd779e464a9ba461d20968569ad}} 
+void {\bfseries load\+Ref\+Props} ()
+\begin{DoxyCompactList}\small\item\em Charge les props de référence dans le vector ref\+\_\+props Charge simplement un sprite pour chaque prop de référence si la texture existe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_a61c26a0edb001f8f535fb670c0030c51}{draw\+Terrain}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em affiche l\textquotesingle{}ensemble des props du vector props \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_a5a4797f5cf87d4a9d7adfd13db7b4d6d}{draw\+Voiture}} (Render\+Window \&window, \mbox{\hyperlink{classVoiture}{Voiture}} \&voiture\+\_\+)
+\begin{DoxyCompactList}\small\item\em affiche la voiture et son ombre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_a1260be5ad60492053eb2cc8db597bd1c}{draw\+Voiture\+Hitbox}} (Render\+Window \&window, \mbox{\hyperlink{classVoiture}{Voiture}} \&voiture\+\_\+)
+\begin{DoxyCompactList}\small\item\em affiche la hitbox de la voiture \end{DoxyCompactList}\item 
+Texture $\ast$ \mbox{\hyperlink{classInterface_acca5585035600a89ead5ee82eab63303}{get\+Texture}} (Tip t)
+\begin{DoxyCompactList}\small\item\em retourne un lien vers la texture associée au Tip t \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_aa11438aaabf09898f9741fe119c35dc4}{draw\+Ref\+Props}} (Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em affiche les props de référence sur la gauche de la fenêtre \end{DoxyCompactList}\item 
+Tip \mbox{\hyperlink{classInterface_a1956e5d03f3b1d62294468f784404fbc}{ref\+Prop\+Selected}} (Render\+Window const \&window)
+\begin{DoxyCompactList}\small\item\em retourne le Tip du prop sélectionné par le joueur (parmis les props de référence) \end{DoxyCompactList}\item 
+Sprite \& \mbox{\hyperlink{classInterface_a3304eca2b7b60033b506772718bcce10}{dernier\+Prop}} ()
+\begin{DoxyCompactList}\small\item\em retourne le dernier prop du vector props \end{DoxyCompactList}\item 
+Sprite \& \mbox{\hyperlink{classInterface_a3ed19038bb02ef454a4ae5dc8f0897e5}{get\+Prop}} (int i)
+\begin{DoxyCompactList}\small\item\em retourne le ième prop du vector props \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterface_a11584bdd4d7779e30dc698e25efcf300}\label{classInterface_a11584bdd4d7779e30dc698e25efcf300}} 
+Sprite {\bfseries voiture}
+\begin{DoxyCompactList}\small\item\em Sprite de la voiture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterface_a1002fb8c225efb978f2f31522bcaf93d}\label{classInterface_a1002fb8c225efb978f2f31522bcaf93d}} 
+View {\bfseries vue}
+\begin{DoxyCompactList}\small\item\em Vue avec laquelle sont \char`\"{}draw\char`\"{} les éléments de l\textquotesingle{}interafce qui dépendent de la vue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe \mbox{\hyperlink{classInterface}{Interface}} Cette classe permet de charger les textures et de les afficher. Elle permet aussi de charger les props et les voitures. Elle permet aussi de charger les props de référence (pour l\textquotesingle{}éditeur) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInterface_a3304eca2b7b60033b506772718bcce10}\label{classInterface_a3304eca2b7b60033b506772718bcce10}} 
+\index{Interface@{Interface}!dernierProp@{dernierProp}}
+\index{dernierProp@{dernierProp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{dernierProp()}{dernierProp()}}
+{\footnotesize\ttfamily Sprite \& Interface\+::dernier\+Prop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retourne le dernier prop du vector props 
+
+\begin{DoxyReturn}{Returns}
+LE prop lui même (pas de copie) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInterface_aa11438aaabf09898f9741fe119c35dc4}\label{classInterface_aa11438aaabf09898f9741fe119c35dc4}} 
+\index{Interface@{Interface}!drawRefProps@{drawRefProps}}
+\index{drawRefProps@{drawRefProps}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{drawRefProps()}{drawRefProps()}}
+{\footnotesize\ttfamily void Interface\+::draw\+Ref\+Props (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+affiche les props de référence sur la gauche de la fenêtre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a61c26a0edb001f8f535fb670c0030c51}\label{classInterface_a61c26a0edb001f8f535fb670c0030c51}} 
+\index{Interface@{Interface}!drawTerrain@{drawTerrain}}
+\index{drawTerrain@{drawTerrain}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{drawTerrain()}{drawTerrain()}}
+{\footnotesize\ttfamily void Interface\+::draw\+Terrain (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+affiche l\textquotesingle{}ensemble des props du vector props 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a5a4797f5cf87d4a9d7adfd13db7b4d6d}\label{classInterface_a5a4797f5cf87d4a9d7adfd13db7b4d6d}} 
+\index{Interface@{Interface}!drawVoiture@{drawVoiture}}
+\index{drawVoiture@{drawVoiture}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{drawVoiture()}{drawVoiture()}}
+{\footnotesize\ttfamily void Interface\+::draw\+Voiture (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{classVoiture}{Voiture}} \&}]{voiture\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+affiche la voiture et son ombre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+{\em voiture\+\_\+} & \mbox{\hyperlink{classVoiture}{Voiture}} à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a1260be5ad60492053eb2cc8db597bd1c}\label{classInterface_a1260be5ad60492053eb2cc8db597bd1c}} 
+\index{Interface@{Interface}!drawVoitureHitbox@{drawVoitureHitbox}}
+\index{drawVoitureHitbox@{drawVoitureHitbox}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{drawVoitureHitbox()}{drawVoitureHitbox()}}
+{\footnotesize\ttfamily void Interface\+::draw\+Voiture\+Hitbox (\begin{DoxyParamCaption}\item[{Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{classVoiture}{Voiture}} \&}]{voiture\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+affiche la hitbox de la voiture 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+{\em voiture\+\_\+} & \mbox{\hyperlink{classVoiture}{Voiture}} dont la hitbox est à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a3ed19038bb02ef454a4ae5dc8f0897e5}\label{classInterface_a3ed19038bb02ef454a4ae5dc8f0897e5}} 
+\index{Interface@{Interface}!getProp@{getProp}}
+\index{getProp@{getProp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getProp()}{getProp()}}
+{\footnotesize\ttfamily Sprite \& Interface\+::get\+Prop (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+retourne le ième prop du vector props 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice du prop à si \texorpdfstring{$<$}{<}0, boucle vers la fin du vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+LE prop lui même (pas de copie) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInterface_acca5585035600a89ead5ee82eab63303}\label{classInterface_acca5585035600a89ead5ee82eab63303}} 
+\index{Interface@{Interface}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily Texture $\ast$ Interface\+::get\+Texture (\begin{DoxyParamCaption}\item[{Tip}]{t }\end{DoxyParamCaption})}
+
+
+
+retourne un lien vers la texture associée au Tip t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Tip dont on veut la texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_aa40b1d191d85dabcbc0f120939f66635}\label{classInterface_aa40b1d191d85dabcbc0f120939f66635}} 
+\index{Interface@{Interface}!loadProp@{loadProp}}
+\index{loadProp@{loadProp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{loadProp()}{loadProp()}}
+{\footnotesize\ttfamily void Interface\+::load\+Prop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProps}{Props}} const \&}]{prop }\end{DoxyParamCaption})}
+
+
+
+Charge le sprite associé au prop dans le vector props. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prop} & Prop à charger \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_ae1a638503243edc9cffdc584c5fa337c}\label{classInterface_ae1a638503243edc9cffdc584c5fa337c}} 
+\index{Interface@{Interface}!loadTerrain@{loadTerrain}}
+\index{loadTerrain@{loadTerrain}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{loadTerrain()}{loadTerrain()}}
+{\footnotesize\ttfamily void Interface\+::load\+Terrain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTerrain}{Terrain}} \&}]{terrain,  }\item[{string}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Charge l\textquotesingle{}ensemble des props du terrain dans le vector props. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em terrain} & \mbox{\hyperlink{classTerrain}{Terrain}} à charger \\
+\hline
+{\em texture\+\_\+path} & Chemin inutilisé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a5dbc1c3e99987b48ded422c1046cb1ec}\label{classInterface_a5dbc1c3e99987b48ded422c1046cb1ec}} 
+\index{Interface@{Interface}!loadVoiture@{loadVoiture}}
+\index{loadVoiture@{loadVoiture}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{loadVoiture()}{loadVoiture()}}
+{\footnotesize\ttfamily void Interface\+::load\+Voiture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVoiture}{Voiture}} \&}]{voiture\+\_\+,  }\item[{string}]{texture\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Charge la voiture dans le sprite voiture, et redéfini sa hitbox en accord avec la texture l\textquotesingle{}ombre de la voiture est aussi chargée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voiture\+\_\+} & \mbox{\hyperlink{classVoiture}{Voiture}} à charger \\
+\hline
+{\em texture\+\_\+path} & Chemin inutilisé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_a1956e5d03f3b1d62294468f784404fbc}\label{classInterface_a1956e5d03f3b1d62294468f784404fbc}} 
+\index{Interface@{Interface}!refPropSelected@{refPropSelected}}
+\index{refPropSelected@{refPropSelected}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{refPropSelected()}{refPropSelected()}}
+{\footnotesize\ttfamily Tip Interface\+::ref\+Prop\+Selected (\begin{DoxyParamCaption}\item[{Render\+Window const \&}]{window }\end{DoxyParamCaption})}
+
+
+
+retourne le Tip du prop sélectionné par le joueur (parmis les props de référence) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre de rendu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInterface_ada26729ce74ab1aa7ab73a9a2d7799f2}\label{classInterface_ada26729ce74ab1aa7ab73a9a2d7799f2}} 
+\index{Interface@{Interface}!supprimerProp@{supprimerProp}}
+\index{supprimerProp@{supprimerProp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{supprimerProp()}{supprimerProp()}}
+{\footnotesize\ttfamily void Interface\+::supprimer\+Prop (\begin{DoxyParamCaption}\item[{int}]{i = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+supprime le ième prop du vector props 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & indice du prop à supprimer. le dernier par défaut ou si i = -\/1 \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Interface.\+h\item 
+/home/thomas/\+Documents/\+Git\+Hub/test-\/project/src/Interface.\+cpp\end{DoxyCompactItemize}
