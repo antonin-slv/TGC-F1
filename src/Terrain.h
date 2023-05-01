@@ -31,7 +31,7 @@ enum Tip : int
 
 /** 
  * @brief La classe Props
- * 
+ * Modules de base d'un terrain
  */
 class Props
 {   public:
@@ -75,14 +75,18 @@ class Props
         /** \brief Retourne le type \return Tip */
         Tip getType() const; 
         
-        /** \brief Donne le type \param t Type \return void */
+        /** \brief Remplace le type \param t Nouveau Type */
         void set_type(Tip t); 
 
+        /** \brief permet de donner une nouvelle hitbox \param hitbox nouvelle hitbox*/
         void setHitbox(Vecteur const & hitbox);
+        /** \brief permet de donner une nouvelle rotation \param rot nouvelle rotation*/
         void setRot(float rot=0);
+        /** \brief permet de donner une nouvelle position \param pos nouvelle position*/
         void setPos(Vecteur const & pos);
 
-        /** \brief Charge les données depuis un fichier JSON \param obj Objet JSON \return bool */
+        /** \brief Charge les données du prop depuis un fichier JSON
+         * \param obj Objet JSON \return booléen vrai si la fonction a marchée */
         bool chargerJSON(json const & obj); 
 };
 
@@ -120,19 +124,22 @@ class Terrain
         /** \brief Retourne le nombre de props du terrain \return int */
         int getNbProps() const;
 
-        /** Retourne le ième props du terrain \param i Numéro du props \return Props */
+        /** \brief Retourne le ième props du terrain \param i Numéro du props \return Props */
         Props const & getProp(int i);
 
-        /** Charge les données depuis un fichier JSON \param path Chemin du fichier */
+        /** \brief Charge les données depuis un fichier JSON \param path Chemin du fichier */
         bool chargerJSON(string const & path);
         /** \brief Affiche le terrain en TXT */
         void afficher_txt();
 
-
+        /** \brief Retourne le numéro du prop \param pos Position \return rang du prop si il existe, -1 sinon */
         int getProp(Vecteur const & pos);
+        /** \brief Renvoie une référence vers la ligne d'arrivée \return référence vers la ligne arrivée*/
         Props const & getLigneArrivee();
         
+        /** \brief Retourne le vector des props \return vector<Props> */
         vector<Props> const getTabProps() const;
+        /** \brief Retourne le vector contenant les checkpoints dans l'ordre \return vector<int> */
         vector<int> const &getOrdreCheckpoint() const;
     
 };
