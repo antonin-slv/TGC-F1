@@ -38,11 +38,16 @@ class Vecteur
        
 
         
-/** \brief Opérateur d'addition \param a Premier vecteur \param b Second vecteur \return Vecteur */
-Vecteur operator+(const Vecteur & a, const Vecteur & b);
-/** \brief Opérateur de soustraction \param a Premier vecteur \param b Second vecteur \return Vecteur */
-Vecteur operator-(const Vecteur & a, const Vecteur & b);
-/** \brief Opérateur de multiplication \param a Premier vecteur \param b Second vecteur \return Vecteur */
-Vecteur operator*(const Vecteur & a, const float & b);
+/** \brief Opérateur d'addition \param a Premier vecteur \param b Second vecteur \return Nouveau vecteur */
+Vecteur operator+(Vecteur a, Vecteur b);
+/** \brief Opérateur de soustraction \param a Premier vecteur \param b Second vecteur \return Nouveau vecteur */
+Vecteur operator-(Vecteur a, Vecteur b);
+/** \brief Opérateur de multiplication \param a Premier vecteur \param b Second vecteur \return Nouveau vecteur */
+Vecteur operator*(Vecteur a, float b);  
+
+
+
+
+
 
 #endif

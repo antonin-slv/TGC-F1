@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
- * @brief La classe Roues
+ * @brief La classe Roues (utile seulement pour l'initialisation d'une voiture)
  * 
  */
 class Roues{

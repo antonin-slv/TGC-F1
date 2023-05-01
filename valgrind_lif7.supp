@@ -1,0 +1,66 @@
+{
+   <SDL2:SDL_CreateTextureFromSurface>
+   Memcheck:Leak
+   ...
+   fun:SDL_CreateTextureFromSurface
+}
+
+{
+   <SDL2:SDL_RenderClear>
+   Memcheck:Leak
+   ...
+   fun:SDL_RenderClear
+}
+
+{
+   <SDL2:SDL_CreateRenderer>
+   Memcheck:Leak
+   ...
+   fun:SDL_CreateRenderer
+}
+
+{
+   <SDL2:SDL_CreateWindow>
+   Memcheck:Leak
+   ...
+   fun:SDL_CreateWindow
+}
+
+{
+   <SDL2:SDL_ConvertSurfaceFormat>
+   Memcheck:Leak
+   ...
+   fun:SDL_ConvertSurfaceFormat
+}
+
+{
+   <SDL2:SDL_RenderCopy>
+   Memcheck:Leak
+   ...
+   fun:SDL_RenderCopy
+}
+{
+   <SFML:Window>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+}
+
+{
+   <SFML:Graphics>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+}
+{
+    jsp_ce_que_cest
+    Memcheck:Leak
+    ...
+    obj:/usr/lib/x86_64-linux-gnu/dri/swrast_dri.so
+}
+{
+    driver_random
+    Memcheck:all
+    ...
+    obj:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_f52c4b8723f8dd33/libnvwgf2umx.so
+}
