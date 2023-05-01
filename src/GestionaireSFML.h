@@ -34,8 +34,8 @@ class GestionSFML : public Jeu
         bool demarageJeuSFML(RenderWindow & window);//!appeller dans la boucle de jeu
         void chargerNiveau(string path, int nb_tours=3);
         void afficherterrain(Terrain & terrain, Vecteur centre, int rotation=0, int zoom=1);
-        void afficherJeuSFML(sf::RenderWindow & window);
-        sf::Time boucleJeuSFML(sf::RenderWindow & window, Clock & temps_au_tour, float decalage);
+        void afficherJeuSFML(RenderWindow & window);
+        Time boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage);
 
         float afficheTemps(float t);
 
