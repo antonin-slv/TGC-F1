@@ -26,8 +26,6 @@ int main() {
     Editeur E1;
 
     Clock temps_au_tour;
-
-    E1.charger("data/circuits/test.json");
     bool quitter = false;
     RenderWindow window(VideoMode(1920, 1080), "TGC : F1", Style::Fullscreen);
     window.setFramerateLimit(120);
@@ -47,6 +45,7 @@ int main() {
             window.setVisible(true);
         }
         else if (action.choix == "editeur"){
+            E1.charger(action.chemin_circuit);
             E1.boucleEditeur(window, action.volume);
         }
         else if (action.choix == "quitter"){

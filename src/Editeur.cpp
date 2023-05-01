@@ -38,6 +38,7 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
 
     select_prop();
     select_prop(false);
+    window.setView(interface.vue);
     cout<<"boucle editeur"<<endl;
     do {
         //gestion des actions clavier et de ce qui en dépend + mollette souris
@@ -46,7 +47,6 @@ void Editeur::boucleEditeur(RenderWindow & window, int volume)
         //gestion des actions souris et de ce qui en dépend
         gestionSouris(window);
        
-
         lier_window(window);
         text.setScale(0.3/(float)zoom,0.3/(float)zoom);
         text.setString("Position : " + to_string(centre.x) + " , " + to_string(centre.y));

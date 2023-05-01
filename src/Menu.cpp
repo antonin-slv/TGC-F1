@@ -49,14 +49,19 @@ void colorerNonSelectionne(RectangleShape & rectangle){
 }
 
 
-bool get_parametre_circuit(Selection & parametre_jeu) {
+json get_liste_circuit() {
     ifstream fich_liste;
     fich_liste.open("data/liste_niveaux.json");
     //on charge la liste des niveaux dans un objet json
     json liste_niveaux;
     fich_liste >> liste_niveaux;
     fich_liste.close();//le fichier, ouvert en lecture, n'est plus utile
+    return liste_niveaux;
+}
 
+bool get_parametre_circuit(Selection & parametre_jeu) {
+    
+    json liste_niveaux=get_liste_circuit();
     //si le circuit existe dans la liste, on actualise le chemin du circuit et le nombre de tours
     unsigned int i = 0;
     for (auto niveau : liste_niveaux) {
@@ -199,7 +204,6 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
     Sprite spriteFond2(fond2);
     spriteFond2.setScale(0.4, 0.4);
     spriteFond2.setPosition(0, (window.getSize().y-spriteFond.getGlobalBounds().height)*0.6);
-
     //BOUCLE PRINCIPALE============================================================================
     while (window.isOpen()){
         Event event;
@@ -215,7 +219,9 @@ void boucleMenu(RenderWindow & window, Selection & parametre_jeu){
                             choix_niveau = true;
                         }
                         if (estSelectionne(window, boutonEditeur)){
+                            
                             parametre_jeu.choix="editeur";
+                            parametre_jeu.chemin_circuit=get_liste_circuit()[0]["path"];
                             return;
                         }
                         if (estSelectionne(window, boutonParametre)){
