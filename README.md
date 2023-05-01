@@ -77,6 +77,20 @@ Pour vous déplacer dans l'éditeur, glissez simplement avec la souris sur le te
 | Droite | Augmenter le déplacement de la caméra |
 | Echap | Retour au menu principal |
 
+## Compilation
+
+Compilation si besoin :
+```bash
+    make clean
+    make
+```
+
+Lancer le jeu :
+```bash
+    bin/VroumSFML
+```
+
+Attention, la librairie [SFML](https://www.sfml-dev.org/index-fr.php)doit être installée sur votre machine au préalable !
 ## Architecture de l'archive
 
 bin/ : Dossier de l'éxécutable à lancer
