@@ -38,7 +38,7 @@ Jeu::~Jeu() {
     cout<<"fin destruction jeu"<<endl;
 }
 
-Terrain & Jeu::getTerrain() { return terrain; }
+Terrain const & Jeu::getTerrain() { return terrain; }
 
 
 void Jeu::ajouterVoiture(Voiture const & V)
