@@ -4,8 +4,8 @@ CC = g++
 PATH_VOIT = src/Voiture/
 EXTERNAL = src/External/
 
-ISFML = -Iextern/include
-LIBSFML= -Lextern/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -Wl,-rpath,extern/lib
+ISFML = -I/usr/include/SFML
+LIBSFML= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 
