@@ -17,7 +17,11 @@
 
 using namespace std;
 using namespace sf;
-
+/** \brief classe Gestion SFML, héritée de jeu
+ * 
+ * 
+ * 
+*/
 class GestionSFML : public Jeu
 {   private :
         float zoom;
