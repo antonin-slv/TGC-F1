@@ -46,17 +46,17 @@ void Vecteur::tourner(float angle)
     y = x*sin(angle) + y*cos(angle);
     x = x2;
 }
-Vecteur operator+(const Vecteur & a, const Vecteur & b)
+Vecteur operator+(Vecteur a, Vecteur b)
 {
     return Vecteur(a.x+b.x, a.y+b.y);
 }
 
-Vecteur operator-(const Vecteur & a, const Vecteur & b)
+Vecteur operator-(Vecteur a, Vecteur b)
 {
     return Vecteur(a.x-b.x, a.y-b.y);
 }
 
-Vecteur operator*(const Vecteur & a, const float & b)
+Vecteur operator*(Vecteur a, float b)
 {
     return Vecteur(a.x*b, a.y*b);
 }

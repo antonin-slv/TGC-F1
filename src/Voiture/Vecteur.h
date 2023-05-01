@@ -42,7 +42,7 @@ class Vecteur
 Vecteur operator+(Vecteur a, Vecteur b);
 /** \brief Opérateur de soustraction \param a Premier vecteur \param b Second vecteur \return Nouveau vecteur */
 Vecteur operator-(Vecteur a, Vecteur b);
-/** \brief Opérateur de multiplication \param a Premier vecteur \param b Second vecteur \return Nouveau vecteur */
+/** \brief Opérateur de multiplication \param a Premier vecteur \param b Scalaire \return Nouveau vecteur */
 Vecteur operator*(Vecteur a, float b);  
 
 
