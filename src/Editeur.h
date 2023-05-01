@@ -43,16 +43,25 @@ bool Selection_niveau(string & path);
 class Editeur : public Terrain
 {   
     private :
+        /** \brief centre de la vue */
         Vector2f centre;
-        float zoom;//10 par def
+        /** \brief niveau de zoom*/
+        float zoom;//10 par défaut
+        /** \brief indice du prop sélectionné*/
         int prop_selectionne;
         
 
         //varibles pour la gestion des évènements
+        /** \brief booléen qui indique si on est en train de déplacer la vue*/ 
         bool deplacer_vue = false;
+        /** \brief booléen qui indique si on est en train d'ajouter un prop*/
         bool ajout_prop = false;
+        /** \brief position de la souris à la frame précédente*/
         Vector2i mouse_prev_pos;
 
+        /** \brief Interface de l'éditeur
+         *  y sont stockés les textures et les différents éléments à afficher
+        */
         Interface interface;
         
     public :

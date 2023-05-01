@@ -19,13 +19,23 @@ using json = nlohmann::json; // pour le json
  */
 class Jeu
 {   protected :
+
+        /** \brief Circuit du jeu */
         Terrain terrain;
+        /** \brief Tableau dynamique des voitures */
         vector<Voiture> tab_voit;
+        /** \brief Temps d'une frame
+         * utilisé pour la physique (s'update à chaque frame pour avoir un comportement logique)
+         */
         float frame_time;
+        /** \brief Nombre de voitures (toujours 1 ici) */
         int nb_voit;
 
+        /** \brief Nombre de tours avant de gagner */
         unsigned int nb_tour_max=1;
+        /** \brief Nombre de tours effectués par le joueur */
         unsigned int nb_tour;
+        /** \brief Numéro du dernier checkpoint franchi par le joueur*/
         int num_checkpoint=-1;
 
     public:

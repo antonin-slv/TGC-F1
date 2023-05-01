@@ -37,26 +37,42 @@ class Interface
     vector<Sprite> props;//charger depuis un terrain
     vector<Sprite> ref_props;//chargés quand on ouvre un editeur
     
+    /** \brief texture des checkpoints */
     Texture checkpoint;
+    /** \brief texture de la ligne d'arrivée */
     Texture finish;
+    /** \brief texture de l'herbe */
     Texture grass;
+    /** \brief texture de la route avec vibreur */
     Texture road_kerb_a;
+    /** \brief texture de la route avec vibreur 2*/
     Texture road_kerb_m;
+    /** \brief texture de la route avec vibreur 3*/
     Texture road_kerb_z;
 
+    /** \brief texture de la route */
     Texture road;
+    /** \brief texture du virage de 12 mètres */
     Texture turn1;
+    /** \brief texture du virage de 18 mètres */
     Texture turn2;
+    /** \brief texture du virage de 24 mètres */
     Texture turn3;
+    /** \brief texture du virage de 30 mètres */
     Texture turn4;
 
-    Texture text_voiture;//temporaire en attente de multiple voitures
-    Texture text_voiture_ombre;//pour l'ombre de la voiture
+    /** \brief texture de la voiture */
+    Texture text_voiture;
+    /** \brief texture de l'ombre de la voiture */
+    Texture text_voiture_ombre;
+    /** \brief Sprite de l'ombre de la voiture*/
     Sprite voiture_ombre;
     public :
-
-    View vue;
+    /** \brief Sprite de la voiture */
     Sprite voiture;
+    /** \brief Vue avec laquelle sont "draw" les éléments de l'interafce qui dépendent de la vue*/
+    View vue;
+    
 
     /** \brief Constructeur par défaut
      * Charge les textures depuis le dossier textures. immuable.

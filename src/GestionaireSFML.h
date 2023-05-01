@@ -24,7 +24,7 @@ using namespace sf;
 */
 class GestionSFML : public Jeu
 {   private :
-        float zoom;
+        
         float decalage;
 
         Interface interface;
@@ -35,9 +35,7 @@ class GestionSFML : public Jeu
         */
         bool demarageJeuSFML(RenderWindow & window);//!appeller dans la boucle de jeu
     public :
-        /** \brief Constructeur par défaut
-         * ne fait que mettre le zoom à 1
-        */
+        /** \brief Constructeur par défaut, ne fait rien */
         GestionSFML();
 
         /** \brief Destructeur par défaut

@@ -13,8 +13,9 @@ using namespace std;
 class Moteur{
 
     private:
-
+        /** \brief Nom du moteur (inutilisé)*/
         string nom;
+        /** \brief Puissance du moteur */
         int puissance;
 
     public:
