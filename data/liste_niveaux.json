@@ -1,36 +1,28 @@
 [
     {
-        "nom": "test",
-        "nombreTour": 3,
-        "path": "data/circuits/test.json"
-    },
-    {
-        "nom": "testjson2",
-        "nombreTour": 2,
-        "path": "data/circuits/testjson2.json"
-    },
-    {
-        "listeTemps": [
-            {
-                "nom": "ninotnas",
-                "temps": 59.671138763427734
-            },
-            {
-                "nom": "nino",
-                "temps": 54.80261993408203
-            },
-            {
-                "nom": "sipior",
-                "temps": 53.38109588623047
-            },
-            {
-                "nom": "sipior",
-                "temps": 49.59535217285156
-            }
-        ],
         "nom": "niveau_1",
         "nombreTour": 2,
         "path": "data/circuits/niveau_1.json"
+    },
+    {
+        "nom": "niveau_2",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_2.json"
+    },
+    {
+        "nom": "niveau_3",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_3.json"
+    },
+    {
+        "nom": "niveau_4",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_4.json"
+    },
+    {
+        "nom": "niveau_5",
+        "nombreTour": 2,
+        "path": "data/circuits/niveau_5.json"
     },
     {
         "nom": "barhain",
@@ -43,15 +35,9 @@
         "path": "data/circuits/monza.json"
     },
     {
-        "listeTemps": [
-            {
-                "nom": "Dev_Sama",
-                "temps": 39.21160888671875
-            }
-        ],
-        "nom": "niveau_2",
+        "nom": "silverstone",
         "nombreTour": 2,
-        "path": "data/circuits/niveau_2.json"
+        "path": "data/circuits/silverstone.json"
     },
     {
         "nom": "spa",
@@ -59,28 +45,13 @@
         "path": "data/circuits/spa.json"
     },
     {
-        "nom": "niveau_3",
-        "nombreTour": 2,
-        "path": "data/circuits/niveau_3.json"
-    },
-    {
-        "nom": "silverstone",
-        "nombreTour": 2,
-        "path": "data/circuits/silverstone.json"
-    },
-    {
-        "nom": "niveau_4",
-        "nombreTour": 2,
-        "path": "data/circuits/niveau_4.json"
-    },
-    {
         "nom": "monaco",
         "nombreTour": 2,
         "path": "data/circuits/monaco.json"
     },
     {
-        "nom": "niveau_5",
+        "nom": "vide",
         "nombreTour": 2,
-        "path": "data/circuits/niveau_5.json"
+        "path": "data/circuits/vide.json"
     }
 ]
