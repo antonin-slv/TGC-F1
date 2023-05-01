@@ -165,7 +165,11 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
                 }
             }
             //actions dans le jeu
-            getActionClavier(event, action);            
+            getActionClavier(event, action);  
+            // Fermeture de la fenêtre avec la croix (inutile pour le moment)
+            if (event.type == Event::Closed){
+                quitter = true;
+            }          
         }
 
         //fait tout le bouleau d'update du jeu
@@ -179,12 +183,7 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
             }
         }
         
-        // Fermeture de la fenêtre avec la croix (inutile pour le moment)
-        if (event.type == Event::Closed){
-            window.close();
-        }
         string affichage;
-        
         
         //actualise position des voitures du jeu pour le texte ET L'OFFSET DE LA VUE !!!
         Voiture & voit = getVoiture(0);
