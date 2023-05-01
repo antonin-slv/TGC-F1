@@ -34,13 +34,12 @@ enum Tip : int
  * Modules de base d'un terrain
  */
 class Props
-{   public:
+{   private:
 
         Vecteur pos;
         //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
         Vecteur hitbox;
         float rotation;//en radiant -> 0 = bas , pi/2 = droite, pi = haut, 3pi/2 = gauche
-    private:
         Tip type;
 
     public:
