@@ -43,50 +43,6 @@ bool testColPropVoit(Props const & prop, Voiture & voit)
     return false;
 }
 
-bool testColPropVoit2(Props const & prop, Voiture & voit)
-{   Vecteur diff= voit.getPos() - prop.getPos();
-    
-    //on fait tourner le centre de la voiture autour de celui du prop
-    diff.tourner(prop.getRotation());
-
-    //somme de la rotation de la voiture et de la rotation du prop
-    float nrot = prop.getRotation() + voit.getAngle();
-    
-    Vecteur hitbox_voit = voit.getHitbox();
-
-    float crot = cos(nrot);
-    float srot = sin(nrot);
-    //on fait tourner le point de la voiture à l'avant pour le ramener au bon endroit
-    float lgx = crot*hitbox_voit.x;
-    float lgy = srot*hitbox_voit.x;
-    //pareil avec celui à droite
-    float rx = crot*hitbox_voit.y;
-    float ry = srot*hitbox_voit.y;
-
-    //mieux de dabord récupérer Larg et Long dans 2 variables ?
-
-    //test si le point au bout de la voiture est dedans
-    if (test_point_in_box(diff.x+lgx, diff.y+lgy, prop.getLong(), prop.getLarg())) return true;
-    //test si le point à l'arrière de la voiture est dedans
-    if (test_point_in_box(diff.x-lgx, diff.y-lgy, prop.getLong(), prop.getLarg())) return true;
-    //test si le point à droite de la voiture est dedans
-    if (test_point_in_box(diff.x+rx, diff.y+ry, prop.getLong(), prop.getLarg())) return true;
-    //test si le point à gauche de la voiture est dedans
-    if (test_point_in_box(diff.x-rx, diff.y-ry, prop.getLong(), prop.getLarg())) return true;
-
-    //test si le coin avant droit de la voiture est dedans
-    if (test_point_in_box(diff.x+lgx+rx, diff.y+lgy+ry, prop.getLong(), prop.getLarg())) return true;
-    //test si le coin avant gauche de la voiture est dedans
-    if (test_point_in_box(diff.x+lgx-rx, diff.y+lgy-ry, prop.getLong(), prop.getLarg())) return true;
-    //test si le coin arrière droit de la voiture est dedans
-    if (test_point_in_box(diff.x-lgx+rx, diff.y-lgy+ry, prop.getLong(), prop.getLarg())) return true;
-    //test si le coin arrière gauche de la voiture est dedans
-    if (test_point_in_box(diff.x-lgx-rx, diff.y-lgy-ry, prop.getLong(), prop.getLarg())) return true;
-
-    return false;
-}
-
-
 void collisionPropVoit(Props const & prop, Voiture & voit)
 {   Vecteur diff = prop.getPos() - voit.getPos();
     voit.crash(diff, prop.getRotation());

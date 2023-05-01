@@ -55,9 +55,11 @@ class Voiture {
         /** \brief Actualise la voiture \n !!penser à mettre a jour les action avant  \param dt Delta temps */
         void update(float dt=1/60);
 
-
+        /** \brief Actualise la rotation de la voiture \param angle_ Angle de rotation */
         void setRotation(float angle_);
+        /** \brief Actualise la position de la voiture \param pos_ Vecteur position */
         void setPos(Vecteur pos_);
+        /** \brief Actualise la hitbox de la voiture \param hitbox_ Vecteur hitbox */
         void setHitbox(Vecteur hitbox_);
 
         /** \brief Constructeur par défaut \return Voiture */
