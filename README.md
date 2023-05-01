@@ -77,24 +77,6 @@ Pour vous déplacer dans l'éditeur, glissez simplement avec la souris sur le te
 | Droite | Augmenter le déplacement de la caméra |
 | Echap | Retour au menu principal |
 
-## Commandes
-Récupérer le projet (si vous disposez des droits) :
-
-```bash
-  git clone https://forge.univ-lyon1.fr/fantomas/test-project.git
-```
-
-Compiler en cas de besoin :
-
-```bash
-  make clean
-  make
-```
-
-Lancer le jeu :
-```bash
-  bin/VroumSFML
-```
 ## Architecture de l'archive
 
 bin/ : Dossier de l'éxécutable à lancer
