@@ -89,17 +89,12 @@ bool GestionSFML::demarageJeuSFML(RenderWindow & window) {
 
 
 Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, float decalage) {
-    
     Font font;//charge la police
     font.loadFromFile("data/fonts/Consolas.ttf");
 
     Text text;//text pour le coin en haut à gauche (affiché par une fct de l'interface)
     text.setFont(font);
     text.setScale(0.025,0.025);
-    
-    long int nb_frames = 0;
-    float temps = 0;
-    Time temps_circuit = seconds(0);
 
     cout << "debut ok" << endl;
     
@@ -134,10 +129,14 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         cout<<"Jeu arrêté avant d'avoir commencé"<<endl;
         return seconds(-1);
     }
-    window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
+    //window.setVisible(true);//évite que le démarage ne cache la fenêtre par inadvertance
 
     ActionClavier action;//action à effectuer par le joueur
 
+    long int nb_frames = 0;
+    float temps = 0;
+    Time temps_circuit = seconds(0);
+    
     //on démarre les chrono
     Clock clock;//temps réel de la boucle
     clock.restart();
@@ -192,8 +191,8 @@ Time GestionSFML::boucleJeuSFML(RenderWindow & window, Clock & temps_au_tour, fl
         //actualise position des voitures du jeu pour le texte ET L'OFFSET DE LA VUE !!!
         Voiture & voit = getVoiture(0);
         if (!gagne){
-            affichage = "Tour : " + to_string(nb_tour+1) + " / " +to_string(nb_tour_max) + "\n" +
-                        "Checkpoint : " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size());
+            affichage = "Tour " + to_string(nb_tour+1) + " / " +to_string(nb_tour_max) + "\n" +
+                        "Checkpoint " + to_string(num_checkpoint) + " / " + to_string(terrain.getOrdreCheckpoint().size());
             texte_temps_au_tour.setString("Temps ce tour : "+affiche_temps(temps_au_tour.getElapsedTime().asSeconds()));
             vitesse.setString(to_string(int(voit.getVitesse()*3.6))+" km/h");
             float v = abs(voit.getVitesse()*3.6);

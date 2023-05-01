@@ -18,6 +18,23 @@
 using namespace std;
 using namespace sf;
 
+
+
+/** \brief fonction permettant de préparer le fichier liste_niveau.json !!!interface dans la console!!! 
+ * Cette fonction update le fichier liste_niveau.json si l'utilisateur valide
+ * et donne un lien pour pouvoir sauvegarder le niveau
+ * \param path chemin dans lequel le niveau sera sauvegardé si il est validé
+ * \return true si if faut effectuer la sauvegarde, false sinon 
+*/
+bool Sauvegarder_Niveau_txtGlobal(string & path);
+
+/** \brief fonction permettant de sélectionner un niveau !!!interface dans la console!!! 
+ *  \param path chemin du fichier circuit à charger
+ * \return true si on charge un niveau, false sinon (y compris si on en supprime un)
+*/
+bool Selection_niveau(string & path);
+
+
 /**
  * \class Classe Editeur
  * \brief Classe d'édition de Terrain, fille de ce dernier

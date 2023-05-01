@@ -41,11 +41,12 @@ class Jeu
         
          /** \brief Renvoie une référence au terrain \return Terrain du jeu*/
         Terrain const & getTerrain();
-         
          /** \brief renvoie la ieme voiture du jeu 
           *  \param i indice de la voiture (0 par défaut, c'est celle du joueur)
           * \return Voiture choisie*/
         Voiture & getVoiture(int i=0);
+        /** \brief Renvoie le nombre de tours effectués par le joueur \return Nombre de tours */
+        int getNbTours() const { return (int)nb_tour; }
         
         /** \brief Réinitialise le niveau (voitures, checkpoint, tours...)
          * chaque voiture est aussi réinitialisée (position, vitesse, rotation; numéro de checkpoint)
@@ -58,16 +59,11 @@ class Jeu
           *  \param path chemin vers le fichier */
         void ChargerTerrain(string path, int nb_tours=3);
         /** \brief Ajoute une voiture \param V Voiture à ajouter, passé par référence */
-        void ajouterVoiture(Voiture const & V);
-        
+        void ajouterVoiture(Voiture const & V); 
 
         /** \brief Met à jour le jeu \param action actions du joueur
          * \return 1 si le joueur a gagné. -1 si un tour est effectué. 0 sinon  */
         int update(ActionClavier const & action);
-
-        /** \brief Renvoie le nombre de tours effectués par le joueur \return Nombre de tours */
-        int getNbTours() const { return (int)nb_tour; }
-
         
 };
 

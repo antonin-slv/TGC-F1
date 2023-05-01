@@ -5,12 +5,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 
-#include "Voiture/Voiture.h"
-#include "Voiture/Vecteur.h"
-
-#include "Terrain.h"
-#include "Jeu.h"
-#include "Collision.h"
 #include "GestionaireSFML.h"
 #include "Editeur.h"
 #include "Menu.h"
@@ -40,6 +34,7 @@ int main() {
     Time temps;
     
     while (!quitter){
+
         boucleMenu(window, action);
         if (action.choix == "Jouer"){
             G1.chargerNiveau(action.chemin_circuit,action.nb_tours);

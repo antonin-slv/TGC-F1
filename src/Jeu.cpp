@@ -1,7 +1,6 @@
 #include "Jeu.h"
 #include <string>
 #include "Collision.h"
-#include "Voiture/Physique.h"
 #include "Voiture/Vecteur.h"
 
 using namespace std;
@@ -85,6 +84,7 @@ int Jeu::update(ActionClavier const & Action)
                         cout<<"nouveau tour"<<endl;
                         code_sortie = -1;
                     }
+                    on_road = true;
                  }
                 break;
             case Tip::grass :

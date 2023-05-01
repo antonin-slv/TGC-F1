@@ -128,8 +128,6 @@ class Terrain
 
         /** \brief Charge les données depuis un fichier JSON \param path Chemin du fichier */
         bool chargerJSON(string const & path);
-        /** \brief Affiche le terrain en TXT */
-        void afficher_txt();
 
         /** \brief Retourne le numéro du prop \param pos Position \return rang du prop si il existe, -1 sinon */
         int getProp(Vecteur const & pos);
