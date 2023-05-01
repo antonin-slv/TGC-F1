@@ -35,11 +35,15 @@ enum Tip : int
  */
 class Props
 {   private:
-
+        /** \brief Position du props (centre) */
         Vecteur pos;
-        //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
+        /** \brief Hitbox du props (longueur, largeur)
+        *!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
+        */
         Vecteur hitbox;
+        /** \brief Rotation du props en radians (toujours ainsi par défaut)*/
         float rotation;//en radiant -> 0 = bas , pi/2 = droite, pi = haut, 3pi/2 = gauche
+        /** \brief Tip du props */
         Tip type;
 
     public:
@@ -95,12 +99,18 @@ class Props
  */
 class Terrain
 {   protected:
+        /** \brief Largeur du terrain */
         int largeur;//en m
+        /** \brief Longueur du terrain */
         int longueur;//en m
         
+        /** \brief Nombre de props */
         int nb_props;
+        /** \brief Vector contenant les props */
         vector<Props> tab_props;//tableaux de props
+        /** \brief Vector contenant le numéro des Checpoints(cf tab_props) dans l'ordre */
         vector<int> ordre_checkpoint;//le ième élément est le numéro du props qui est le ième checkpoint
+        /** prop de Type undef pour pouvoir retourner un prop null*/
         Props prop_undef;
 
     public:
@@ -128,8 +138,6 @@ class Terrain
 
         /** \brief Charge les données depuis un fichier JSON \param path Chemin du fichier */
         bool chargerJSON(string const & path);
-        /** \brief Affiche le terrain en TXT */
-        void afficher_txt();
 
         /** \brief Retourne le numéro du prop \param pos Position \return rang du prop si il existe, -1 sinon */
         int getProp(Vecteur const & pos);

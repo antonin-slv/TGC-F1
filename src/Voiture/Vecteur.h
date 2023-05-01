@@ -9,7 +9,9 @@
  */
 class Vecteur
 {   public :
+        /** \brief Coordonnée x du vecteur */
         float x;
+        /** \brief Coordonnée y du vecteur */
         float y;
         
         /** \brief Constructeur par défaut \return Vecteur */

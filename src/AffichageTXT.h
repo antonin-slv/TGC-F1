@@ -26,7 +26,6 @@ void afficherVoitureTxt(Voiture & voit);
 //AFFICHE LE JEU EN TXT Fenetré
 
 /** \brief Affiche le jeu en mode texte fenetré textuel
- * 
  * Ne fonctionne plus, était basé sur les hitbox des objets.
 */
 void afficherJeuFTXT(WinTXT & win,Jeu & jeu, const int i, const int zoom=10);

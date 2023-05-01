@@ -13,9 +13,12 @@ using namespace std;
 class Roues{
 
     private:
-    
+        /** \brief Nom des roues (inutilisé)*/
         string nom;
-        float orientation, grip;
+        /** \brief Orientation des roues (inutilisé)*/
+        float orientation;
+        /** \brief Grip des roues (inutilisé)*/
+        float grip;
 
     public:
 

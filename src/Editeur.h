@@ -18,6 +18,23 @@
 using namespace std;
 using namespace sf;
 
+
+
+/** \brief fonction permettant de préparer le fichier liste_niveau.json !!!interface dans la console!!! 
+ * Cette fonction update le fichier liste_niveau.json si l'utilisateur valide
+ * et donne un lien pour pouvoir sauvegarder le niveau
+ * \param path chemin dans lequel le niveau sera sauvegardé si il est validé
+ * \return true si if faut effectuer la sauvegarde, false sinon 
+*/
+bool Sauvegarder_Niveau_txtGlobal(string & path);
+
+/** \brief fonction permettant de sélectionner un niveau !!!interface dans la console!!! 
+ *  \param path chemin du fichier circuit à charger
+ * \return true si on charge un niveau, false sinon (y compris si on en supprime un)
+*/
+bool Selection_niveau(string & path);
+
+
 /**
  * \class Classe Editeur
  * \brief Classe d'édition de Terrain, fille de ce dernier
@@ -26,16 +43,25 @@ using namespace sf;
 class Editeur : public Terrain
 {   
     private :
+        /** \brief centre de la vue */
         Vector2f centre;
-        float zoom;//10 par def
+        /** \brief niveau de zoom*/
+        float zoom;//10 par défaut
+        /** \brief indice du prop sélectionné*/
         int prop_selectionne;
         
 
         //varibles pour la gestion des évènements
+        /** \brief booléen qui indique si on est en train de déplacer la vue*/ 
         bool deplacer_vue = false;
+        /** \brief booléen qui indique si on est en train d'ajouter un prop*/
         bool ajout_prop = false;
+        /** \brief position de la souris à la frame précédente*/
         Vector2i mouse_prev_pos;
 
+        /** \brief Interface de l'éditeur
+         *  y sont stockés les textures et les différents éléments à afficher
+        */
         Interface interface;
         
     public :

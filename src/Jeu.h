@@ -19,13 +19,23 @@ using json = nlohmann::json; // pour le json
  */
 class Jeu
 {   protected :
+
+        /** \brief Circuit du jeu */
         Terrain terrain;
+        /** \brief Tableau dynamique des voitures */
         vector<Voiture> tab_voit;
+        /** \brief Temps d'une frame
+         * utilisé pour la physique (s'update à chaque frame pour avoir un comportement logique)
+         */
         float frame_time;
+        /** \brief Nombre de voitures (toujours 1 ici) */
         int nb_voit;
 
+        /** \brief Nombre de tours avant de gagner */
         unsigned int nb_tour_max=1;
+        /** \brief Nombre de tours effectués par le joueur */
         unsigned int nb_tour;
+        /** \brief Numéro du dernier checkpoint franchi par le joueur*/
         int num_checkpoint=-1;
 
     public:
@@ -41,11 +51,12 @@ class Jeu
         
          /** \brief Renvoie une référence au terrain \return Terrain du jeu*/
         Terrain const & getTerrain();
-         
          /** \brief renvoie la ieme voiture du jeu 
           *  \param i indice de la voiture (0 par défaut, c'est celle du joueur)
           * \return Voiture choisie*/
         Voiture & getVoiture(int i=0);
+        /** \brief Renvoie le nombre de tours effectués par le joueur \return Nombre de tours */
+        int getNbTours() const { return (int)nb_tour; }
         
         /** \brief Réinitialise le niveau (voitures, checkpoint, tours...)
          * chaque voiture est aussi réinitialisée (position, vitesse, rotation; numéro de checkpoint)
@@ -58,16 +69,11 @@ class Jeu
           *  \param path chemin vers le fichier */
         void ChargerTerrain(string path, int nb_tours=3);
         /** \brief Ajoute une voiture \param V Voiture à ajouter, passé par référence */
-        void ajouterVoiture(Voiture const & V);
-        
+        void ajouterVoiture(Voiture const & V); 
 
         /** \brief Met à jour le jeu \param action actions du joueur
          * \return 1 si le joueur a gagné. -1 si un tour est effectué. 0 sinon  */
         int update(ActionClavier const & action);
-
-        /** \brief Renvoie le nombre de tours effectués par le joueur \return Nombre de tours */
-        int getNbTours() const { return (int)nb_tour; }
-
         
 };
 

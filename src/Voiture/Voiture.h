@@ -11,12 +11,16 @@
 
 using namespace std;
 
-
+/** \brief Structure contenant les actions du joueur sur la voiture */
 struct ActionClavier
 {
+    /** \brief vrai si le joueur freine */
     bool freine=false;
+    /** \brief vrai si le joueur tourne à gauche */
     bool gauche=false;
+    /** \brief vrai si le joueur tourne à droite */
     bool droite=false;
+    /** \brief vrai si le joueur accélère */
     bool accelere=false;
 };
 
@@ -28,20 +32,29 @@ struct ActionClavier
 class Voiture {
 
     private:
-
+        /** \brief Moteur de la voiture */
         Moteur mot;
+        /** \brief Roues de la voiture */
         Roues roue;
 
+        /** \brief Position de la voiture */
         Vecteur position;
+        /** \brief Hitbox de la voiture */
         Vecteur hitbox; //!!la largeur et longueur sont la moitié de leur taille réelle -> calcul plus simple
 
+        /** \brief acceleration de la voiture */
         float acceleration;
+        /** \brief vitesse de la voiture */
         float vitesse;
+        /** \brief angle de la voiture */
         float angle;
-        
+        /** \brief numéro du checkpoint de la voiture */
         int numero_checkpoint=-1;
 
-        float poids, coef_aero;
+        /** \brief Poids de la voiture */
+        float poids;
+        /** \brief Coefficient aérodynamique de la voiture */
+        float coef_aero;
 
         /** \brief Actualise la vitesse de la voiture \param dt Delta temps */
         void calculVitesse(float dt=1); 
