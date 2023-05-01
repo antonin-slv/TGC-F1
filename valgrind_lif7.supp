@@ -1,66 +1,48 @@
 {
-   <SDL2:SDL_CreateTextureFromSurface>
+   <SFML:Graphics>
    Memcheck:Leak
    ...
-   fun:SDL_CreateTextureFromSurface
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 }
 
 {
-   <SDL2:SDL_RenderClear>
-   Memcheck:Leak
-   ...
-   fun:SDL_RenderClear
-}
-
-{
-   <SDL2:SDL_CreateRenderer>
-   Memcheck:Leak
-   ...
-   fun:SDL_CreateRenderer
-}
-
-{
-   <SDL2:SDL_CreateWindow>
-   Memcheck:Leak
-   ...
-   fun:SDL_CreateWindow
-}
-
-{
-   <SDL2:SDL_ConvertSurfaceFormat>
-   Memcheck:Leak
-   ...
-   fun:SDL_ConvertSurfaceFormat
-}
-
-{
-   <SDL2:SDL_RenderCopy>
-   Memcheck:Leak
-   ...
-   fun:SDL_RenderCopy
-}
-{
-   <SFML:Window>
+   <SFML:window>
    Memcheck:Leak
    ...
    obj:/usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
 }
 
 {
-   <SFML:Graphics>
+   <SFML:system>
    Memcheck:Leak
    ...
-   obj:/usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 }
+
 {
-    jsp_ce_que_cest
-    Memcheck:Leak
-    ...
-    obj:/usr/lib/x86_64-linux-gnu/dri/swrast_dri.so
+   driver_1_wsl
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/wsl/drivers/iigd_dch.inf_amd64_e96a2752f171d22c/libigd12um64xel.so
 }
+
 {
-    driver_random
-    Memcheck:all
-    ...
-    obj:/usr/lib/wsl/drivers/nv_dispi.inf_amd64_f52c4b8723f8dd33/libnvwgf2umx.so
+   lib_1_wsl
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/wsl/lib/libd3d12.so
+}
+
+{
+   lib_1_x86_64
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+}
+
+{
+   lib_2_x86_64
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
 }

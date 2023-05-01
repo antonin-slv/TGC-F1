@@ -19,7 +19,7 @@ using namespace std;
 using namespace sf;
 /** \brief classe Gestion SFML, héritée de jeu
  * 
- * 
+ *  
  * 
 */
 class GestionSFML : public Jeu
@@ -30,6 +30,7 @@ class GestionSFML : public Jeu
         Interface interface;
         
     public :
+        
         GestionSFML();
         GestionSFML(int width, int height, std::string title);
 
