@@ -440,9 +440,7 @@ void Editeur::supprimer_prop(int i)
 
 bool Editeur::test_regression()
 {   charger();
-    //Init_props();
     sauvegarder("data/circuit/test_regression.json");
-    //TODO
     return true;
 }
 
