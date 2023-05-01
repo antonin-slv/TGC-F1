@@ -27,7 +27,7 @@ SFML : $(EXECUTABLESFML)
 TXT : $(EXECUTABLETXT)
 
 $(EXECUTABLESFML): obj/mainSFML.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o
-	$(CC) obj/mainSFML.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o $(LIBSFML) -o $(EXECUTABLESFML)
+	$(CC) obj/mainSFML.o $(OVOITURE) $(OEDITEUR) $(OINTERFACE) obj/Jeu.o obj/Collision.o $(ISFML) $(LIBSFML) -o $(EXECUTABLESFML)
 
 $(EXECUTABLETXT): obj/mainTXT.o $(OVOITURE) $(OEDITEUR) obj/AffichageTXT.o obj/Jeu.o obj/Collision.o obj/winTxt.o
 	$(CC) obj/mainTXT.o $(OVOITURE) $(OEDITEUR) obj/AffichageTXT.o obj/Jeu.o obj/Collision.o obj/winTxt.o -o $(EXECUTABLETXT)
